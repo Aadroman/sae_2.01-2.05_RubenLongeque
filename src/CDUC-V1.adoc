@@ -6,10 +6,17 @@ Lorem Ipsum
 ----
 
 ## Sujet
+----
+----
 ### Client 
+----
+----
 ### Besoin
+----
+----
 #### Version à développer
-
+----
+----
 ## Contraintes
 ----
 Lorem ipsum
