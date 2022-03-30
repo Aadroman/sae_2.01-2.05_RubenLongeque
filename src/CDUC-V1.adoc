@@ -1,13 +1,19 @@
 # CDUC VERSION 1
+
+## Contexte du projet
 ----
-Lorem ipsum
+Lorem Ipsum
 ----
 
-# Title 1
+## Besoin
 ----
 Lorem ipsum
 ----
-# Title 2
+## Contraintes
+----
+Lorem ipsum
+----
+## Contraintes
 ----
 Lorem ipsum
 ----
