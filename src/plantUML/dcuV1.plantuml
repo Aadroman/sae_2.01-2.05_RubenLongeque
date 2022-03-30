@@ -4,6 +4,7 @@
 skinparam actorStyle awesome
 left to right direction
 
+
 package Application{
     usecase 1 as "Modifier info client"
 usecase 2 as "Créer un nouveau client"
