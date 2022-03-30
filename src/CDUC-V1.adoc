@@ -5,10 +5,11 @@
 Lorem Ipsum
 ----
 
-## Besoin
-----
-Lorem ipsum
-----
+## Sujet
+### Client 
+### Besoin
+#### Version à développer
+
 ## Contraintes
 ----
 Lorem ipsum
