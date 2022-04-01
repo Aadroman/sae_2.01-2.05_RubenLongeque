@@ -2,169 +2,61 @@
 :toc: left
 :toc-title: Table des matières
 
-## Présentation du projet
-### Contexte
+## Client 
+
+### Nom
+Notre client est la banque DailyBank
+
+### Structure
+Cette banque est composée de 100 Agences où sera déployé notre application 
+
+## Personne(s) consultée(s)
+
+### Rôle(s)
+
+## Rappel du contexte
+Ces dernières années, les banques ont dû s'adaptées aux exigences en termes d'instantanéité de leurs clients. Pour ce faire, les banques françaises ont accentué leurs efforts de restructuration et leurs investissements dans le digital. +
+Par exemple, la Banque Postale ont mis en place au printemps 2019 une application mobile "Ma French Bank". +
+
+
 Pour s’adapter aux exigences d’instantanéité de leurs clients, les banques françaises ont accentué leurs efforts de restructuration et leurs investissements dans le digital. Des chantiers longs et coûteux. Par exemple, la Banque Postale a indiqué que sa banque mobile baptisée Ma French Bank sera disponible dans les bureaux de Poste au printemps 2019. Mais les banques ne se contentent pas de créer des offres alternatives : elles rénovent aussi en profondeur leurs services de banque au quotidien.
-Au sein des réseaux de banque de détail, cela se traduit par des investissements majeurs dans la modernisation des outils de bureautique des guichetiers, et dans la robotisation des tâches automatisables. Un exercice qui s’accompagne de restructurations et, dans certains cas, d’une refonte du réseau.
 
-"essai"
+## Problématique 
 
-Ainsi, le modèle organisationnel de BNP Paribas, basé sur une structure historique hiérarchique, vit actuellement une petite révolution, alors qu’il évolue vers une approche transversale et pluridisciplinaire. "De la phase de la simulation d’un emprunt à la signature de l’acte définitif chez le notaire, il faut que nous puissions suivre notre client sans interruption et que nous sachions (tout comme lui) en permanence où il en est", décrit Sophie Heller (directeur des opérations). Les équipes seront ainsi réparties en fonction de parcours clients – achat d’un bien, projet d’investissement ou de retraite, succession… Pour chacun de ces "projets de vie", des professionnels de diverses disciplines (marketeurs, développeurs, designers mais aussi des fonctions "juridiques" ou "risque") interagissent pour développer les parcours et les trajectoires de chaque client, captées, traitées, mises à jour et accessibles par tous en temps réel. "Cela nécessite de profonds changements culturels et organisationnels, en plus d’une nouvelle architecture IT", évalue Sophie Heller.
 
-Sources :
+## Objectifs poursuivies 
+L'objectif recherche par la banque DailyBank est de développer une application Java-Oracle de gestion de comptes, pour remplacer plusieurs outils obsolètes. +
+Pour ce faire, une première version est mise à dispotion "DailyBank" qu'il faudra adapter aux nouveaux besoins. +
+Ces nouveaux besoins sont :
 
-* Les échos février 2018 : Banques, des restructurations menées tambour battant
+* Elle doit permettre de gérer des comptes bancaires de dépôt pour des clients créés 
+* Elle doit permettre de débiter et de créditer un compte de deux manières différentes : 
+** Par échange d'argent  entre deux comptes distincts domiciliés dans le même réseau bancaire
+** Par personne physique se présentant devant un guichet
 
-* JDN Février 2018 : BNP Paribas accélère sa transformation digitale
 
-### Sujet
-La banque DailyBank souhaite développer une application JAVA-Oracle de gestion des comptes clients pour remplacer plusieurs outils obsolètes. Ce développement s’inscrit dans le cadre de la restructuration de ses services bancaires et l’application sera déployée dans les 100 agences que compte son réseau. Vous travaillerez à partir d’une application existante « Daily Bank » qu’il faudra adapter aux nouveaux besoins de la banque.
+## Rappel de l'existant (V0)
+Dans la version actuelle de l'application, plusieurs actions peuvent êtres effectuer :
 
-### Objectif
-L’application doit permettre de gérer des comptes bancaires de dépôt pour des clients préalablement créés. Elle devra permettre de débiter, créditer un compte soit par virement c’est à dire un échange d’argent entre deux comptes distincts mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant un guichet.
+* Un guichetier peut :
+** Modifier les informations des clients (adresse, téléphone, …)
+** Créer de nouveaux clients
+** Consulter un compte
+** Débiter un compte
 
-### Version de l'existant (V0)
-Dans la version existante (V0), un guichetier peut :
+* Un chef d'agence peut :
+** Rendre inactif un client
 
-* Modifier informations client (adresse, téléphone, …)
+## Gains attendus 
 
-* Créer un nouveau client
 
-* Consulter un compte
+## Contraintes 
+Plusieurs contraintes nous sont donner :
 
-* Débiter un compte (BD)
+* Le projet doit être réalisé par 3 à 4 étudiants qui réaliserons au moins 1 fonctionnalités de l'application
+* Les codes et documentations doivent être déposer sur Github
+* Les différentes versions des CDUC doivent être rédigez en asciidoc
+* Les étudiants doivent ordonnancer les tâches du projet en les formalisant via des issues et les classe en fonction de l'avancée de ces tâches
+* Un GANTT doit être réalisés et déposer en PDF sur discord
 
-* Dans la version existante (V0), un chef d’agence peut :
-
-* Rendre inactif un client
-
-### Version de l'existant
-Voici l’ordre de développement des UC[1] à respecter dans les différentes versions du logiciel (V1, V2 et V3)
-
-Cas d’utilisation à développer dans la Version 1 :
-
-* Guichetier :
-
-** Créditer/débiter un compte (java et BD avec procédure stockée)
-
-** Créer un compte
-
-** Effectuer un virement de compte à compte
-
-** Clôturer un compte
-
-* Chef d’Agence :
-
-** Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
-
-Cas d’utilisation à développer dans la Version 2 :
-
-* Guichetier :
-
-** Générer un relevé mensuel d’un compte en PDF
-
-** Gérer (faire le « CRUD[2] ») les prélèvements automatiques
-
-** Chef d’Agence : uniquement les spécifications
-
-** Effectuer un Débit exceptionnel
-
-** Simuler un emprunt
-
-** Simuler une assurance d’emprunt
-
-Cas d’utilisation à développer dans la Version 3 :
-
-* Chef d’Agence :
-
-** Les spécifications finalisées de la version 2
-
-** Supers options pour les tops …
-
-** Développer une ou plusieurs fonctionnalités au choix et selon vos compétences
-
-* « Batch »:
-
-** Générer les relevés mensuels en PDF
-
-** Exécuter les prélèvements automatiques
-
-## Organisation et gestion du projet
-
-### Général
-* Travail en équipe de 3 à 4 étudiants
-
-* Dépot sous GITHUB de vos codes et de vos documentations
-
-* 6 séances d’autonomie en gestion de projet et 6 séances d’autonomie en développement
-
-* 1 séance guidée en gestion de projet pour préparer l’oral et faire le suivi du projet
-
-* 6 tds d’accompagnement en développement
-
-* Des intervenants en gestion de projet (EP et PGA) et des intervenants en developpement (AP, JMB, MDM, MFC)
-
-* Tous les étudiants rédigent au moins un peu, tous les étudiants codent au moins une fonctionnalité
-
-### Gestion de projet
-* 2 séances semaine 13 :
-
-** Lire toutes les consignes,
-
-** Préparer le dépôt du groupe sous GIT,
-
-** Rédiger en asciidoc le CDCU V1,
-
-** Définir et ordonnancer les tâches du projet, les formaliser via des issues, les classer (Must/Should/Could/Will), les affecter,
-
-** Faire un GANTT à l’aide de l’outil de votre choix et le déposer en pdf de préférence sur 1 seule page,
-
-** créer les issues du projet.
-
-* 1 séance semaine 15 :
-
-** Prendre en compte les remarques de la V1 dans le WIKI du projet,
-
-** Rédiger le CDCU V2 et V3, **Faire le GANTT V2 et V3,
-
-** Créer les issues correspondantes,
-
-** Créer la documentation Technique et la documentation utilisateur de la V0,
-
-** créer le cahier de TEST V1
-
-** 1 séance semaine 20 :
-
-** Prendre en compte les remarques,
-
-** Rédiger la documentation technique et la documentation utilisateur V1,
-
-** Rédiger le cahier de test V2,
-
-** Mettre à jour le GANTT et les issues
-
-* 1 séance semaine 22 :
-
-** Prendre en compte les remarques,
-
-** Rédiger la documentation technique et la documentation utilisateur V2,
-
-** Rédiger le cahier de test V3,
-
-** Mettre à jour le GANTT et les issues
-
-* 1 séance semaine 23 :
-
-** préparer le bilan du projet, son chiffrage et son diaporama de présentation cf. TP Guidé semaine 20
-
-** Préparation de la livraison finale dans le dépôt GIT
-
-### Développement
-* semaine 19 à 22 : Développer V1
-
-* semaine 22 à 23 : Développer V2 et V3
-
-### Evaluation
-* semaine 24 : oraux
-
-* semaine 24 : évaluation finale des livrables
+## Risques 
