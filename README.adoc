@@ -5,3 +5,8 @@
 *Marie-Angélique Christopher* +
 *Guillevic Yann* +
 *Longèque Ruben* +
+
+[#img-sunset] 
+.A mountain sunset 
+ 
+image::svg-bank.jpg[svg-bank,200,100]
