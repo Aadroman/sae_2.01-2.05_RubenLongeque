@@ -6,7 +6,6 @@
 *Guillevic Yann* +
 *Longèque Ruben* +
 
-[#img-sunset] 
-.A mountain sunset 
+[#svg-bank] 
  
 image::svg-bank.jpg[svg-bank,200,100]
