@@ -5,7 +5,3 @@
 *Marie-Angélique Christopher* +
 *Guillevic Yann* +
 *Longèque Ruben* +
-
-[#svg-bank] 
- 
-image::svg-bank.jpg[svg-bank,300,300]
