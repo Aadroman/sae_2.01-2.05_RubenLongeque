@@ -8,4 +8,4 @@
 
 [#svg-bank] 
  
-image::svg-bank.jpg[svg-bank,200,100]
+image::svg-bank.jpg[svg-bank,300,300]
