@@ -55,7 +55,7 @@ Dans la version actuelle de l'application, plusieurs actions/fonctionnalités pe
 ** Rendre inactif un client
 
 ## Gains attendus 
-Dans la version à développer, plusieurs fonctionnalités devront être mises en place : 
+Dans la première version à développer, plusieurs fonctionnalités devront être mises en place : 
 
 * Guichetier : 
 ** Créditer/débiter un compte (java et BD avec procédure stockée)
