@@ -57,9 +57,17 @@ Dans la version actuelle de l'application, plusieurs actions/fonctionnalités pe
 ## Gains attendus 
 Dans la version à développer, plusieurs fonctionnalités devront être mises en place : 
 
-* lorem
-* lorem
-* lorem
+* Guichetier : 
+** Créditer/débiter un compte (java et BD avec procédure stockée)
+
+** Créer un compte
+
+** Effectuer un virement de compte à compte
+
+** Clôturer un compte
+* Chef d'Agence :
+** Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
+
 
 ## Contraintes 
 Plusieurs contraintes nous sont donner :
