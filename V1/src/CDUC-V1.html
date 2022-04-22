@@ -458,8 +458,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_problématique">Problématique</a></li>
 <li><a href="#_objectifs_poursuivies">Objectifs poursuivies</a></li>
 <li><a href="#_rappel_de_lexistant_v0">Rappel de l&#8217;existant (V0)</a></li>
-<li><a href="#_gains_attendus">Gains attendus</a></li>
-<li><a href="#_contraintes">Contraintes</a></li>
+<li><a href="#_gains_attendus_version_1">Gains attendus : version 1</a></li>
+<li><a href="#_contraintes">Contraintes</a>
+<ul class="sectlevel2">
+<li><a href="#_techniques">Techniques :</a></li>
+<li><a href="#_organisationnelles">Organisationnelles :</a></li>
+</ul>
+</li>
 <li><a href="#_risques">Risques</a></li>
 </ul>
 </div>
@@ -501,9 +506,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2 data-line-18">
 <h3 id="_rôles">Rôle(s)</h3>
 <div class="paragraph data-line-20">
-<p>Christopher : &#8594; réalisation des CDUC v1 et développeur de l&#8217;Application<br>
-Yann : &#8594; réalisation du GANTT et développeur de l&#8217;application<br>
-Ruben : &#8594; réalisation des use-cases et développeur de l&#8217;application</p>
+<p>Christopher : &#8594; réalisation du CDUC v2 et du cahier des tests v1<br>
+Yann : &#8594; réalisation du GANTT v2 et du cahier des tests v1<br>
+Ruben : &#8594; réalisation du GANTT v3 et du cahier des tests v1</p>
 </div>
 </div>
 <div class="sect2 data-line-24">
@@ -513,54 +518,69 @@ Ruben : &#8594; réalisation des use-cases et développeur de l&#8217;applicatio
 Nous utiliserons aussi le logiciel : ProjectLibre qui nous permettra de réaliser les différentes version du GANTT du projet pour ainsi planifier les tâches de celui-ci.<br>
 Les livrables attendues ainsi que leur dates de livraisons sont :</p>
 </div>
-<div class="paragraph data-line-30">
-<p>*
-*</p>
+<div class="ulist data-line-30">
+<ul>
+<li class="data-line-30">
+<p>GANTT v1 / CDUC v1 : Semaine 13</p>
+</li>
+<li class="data-line-31">
+<p>GANTT v2 et v3 / CDUC v2 et v3 / Cahier Tests v1 : Semaine 16</p>
+</li>
+<li class="data-line-32">
+<p>Doc technique v2 et v3 / Doc util v2 et v3 / Cahier test v3 / GANTT à jour : Semaine 20</p>
+</li>
+<li class="data-line-33">
+<p>Livraison finale / Chiffrage du projet : Semaine 23</p>
+</li>
+<li class="data-line-34">
+<p>Bilan du projet : Semaine 24</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
-<div class="sect1 data-line-34">
+<div class="sect1 data-line-37">
 <h2 id="_rappel_du_contexte">Rappel du contexte</h2>
 <div class="sectionbody">
-<div class="paragraph data-line-35">
+<div class="paragraph data-line-38">
 <p>Ces dernières années, les banques ont dû s&#8217;adaptées aux exigences en termes d&#8217;instantanéité de leurs clients. Pour ce faire, les banques françaises ont accentué leurs efforts de restructuration et leurs investissements dans le digital.<br>
 Par exemple, la Banque Postale ont mis en place au printemps 2019 une application mobile "Ma French Bank".<br></p>
 </div>
-<div class="paragraph data-line-39">
+<div class="paragraph data-line-42">
 <p>Pour s’adapter aux exigences d’instantanéité de leurs clients, les banques françaises ont accentué leurs efforts de restructuration et leurs investissements dans le digital. Des chantiers longs et coûteux. Par exemple, la Banque Postale a indiqué que sa banque mobile baptisée Ma French Bank sera disponible dans les bureaux de Poste au printemps 2019. Mais les banques ne se contentent pas de créer des offres alternatives : elles rénovent aussi en profondeur leurs services de banque au quotidien.</p>
 </div>
 </div>
 </div>
-<div class="sect1 data-line-41">
+<div class="sect1 data-line-44">
 <h2 id="_problématique">Problématique</h2>
 <div class="sectionbody">
-<div class="paragraph data-line-42">
+<div class="paragraph data-line-45">
 <p>La problématique à laquelle répond ce projet est : Comment robotiser les tâches automatisables pour offrir un service digitale plus moderne ainsi que plus rapide pour les client ?</p>
 </div>
 </div>
 </div>
-<div class="sect1 data-line-45">
+<div class="sect1 data-line-48">
 <h2 id="_objectifs_poursuivies">Objectifs poursuivies</h2>
 <div class="sectionbody">
-<div class="paragraph data-line-46">
+<div class="paragraph data-line-49">
 <p>L&#8217;objectif recherché par la banque DailyBank est de développer une application Java-Oracle de gestion de comptes, pour remplacer plusieurs outils obsolètes.<br>
 Pour ce faire, une première version est mise à dispotion "DailyBank" qu&#8217;il faudra adapter aux nouveaux besoins.<br>
 Ces nouveaux besoins sont :</p>
 </div>
-<div class="ulist data-line-50">
+<div class="ulist data-line-53">
 <ul>
-<li class="data-line-50">
+<li class="data-line-53">
 <p>Elle doit permettre de gérer des comptes bancaires de dépôt pour des clients créés</p>
 </li>
-<li class="data-line-51">
+<li class="data-line-54">
 <p>Elle doit permettre de débiter et de créditer un compte de deux manières différentes :</p>
-<div class="ulist data-line-52">
+<div class="ulist data-line-55">
 <ul>
-<li class="data-line-52">
+<li class="data-line-55">
 <p>Par échange d&#8217;argent  entre deux comptes distincts domiciliés dans le même réseau bancaire</p>
 </li>
-<li class="data-line-53">
+<li class="data-line-56">
 <p>Par personne physique se présentant devant un guichet</p>
 </li>
 </ul>
@@ -570,38 +590,41 @@ Ces nouveaux besoins sont :</p>
 </div>
 </div>
 </div>
-<div class="sect1 data-line-56">
+<div class="sect1 data-line-59">
 <h2 id="_rappel_de_lexistant_v0">Rappel de l&#8217;existant (V0)</h2>
 <div class="sectionbody">
-<div class="paragraph data-line-57">
+<div class="paragraph data-line-61">
+<p>image::existant.png</p>
+</div>
+<div class="paragraph data-line-63">
 <p>Dans la version actuelle de l&#8217;application, plusieurs actions/fonctionnalités peuvent êtres effectuer :</p>
 </div>
-<div class="ulist data-line-59">
+<div class="ulist data-line-65">
 <ul>
-<li class="data-line-59">
+<li class="data-line-65">
 <p>Un guichetier peut :</p>
-<div class="ulist data-line-60">
+<div class="ulist data-line-66">
 <ul>
-<li class="data-line-60">
+<li class="data-line-66">
 <p>Modifier les informations des clients (adresse, téléphone, …)</p>
 </li>
-<li class="data-line-61">
+<li class="data-line-67">
 <p>Créer de nouveaux clients</p>
 </li>
-<li class="data-line-62">
+<li class="data-line-68">
 <p>Consulter un compte</p>
 </li>
-<li class="data-line-63">
+<li class="data-line-69">
 <p>Débiter un compte</p>
 </li>
 </ul>
 </div>
 </li>
-<li class="data-line-65">
+<li class="data-line-71">
 <p>Un chef d&#8217;agence peut :</p>
-<div class="ulist data-line-66">
+<div class="ulist data-line-72">
 <ul>
-<li class="data-line-66">
+<li class="data-line-72">
 <p>Rendre inactif un client</p>
 </li>
 </ul>
@@ -611,38 +634,38 @@ Ces nouveaux besoins sont :</p>
 </div>
 </div>
 </div>
-<div class="sect1 data-line-68">
-<h2 id="_gains_attendus">Gains attendus</h2>
+<div class="sect1 data-line-74">
+<h2 id="_gains_attendus_version_1">Gains attendus : version 1</h2>
 <div class="sectionbody">
-<div class="paragraph data-line-69">
+<div class="paragraph data-line-75">
 <p>Dans la première version à développer, plusieurs fonctionnalités devront être mises en place :</p>
 </div>
-<div class="ulist data-line-71">
+<div class="ulist data-line-77">
 <ul>
-<li class="data-line-71">
+<li class="data-line-77">
 <p>Guichetier :</p>
-<div class="ulist data-line-72">
+<div class="ulist data-line-78">
 <ul>
-<li class="data-line-72">
+<li class="data-line-78">
 <p>Créditer/débiter un compte (java et BD avec procédure stockée)</p>
 </li>
-<li class="data-line-74">
+<li class="data-line-80">
 <p>Créer un compte</p>
 </li>
-<li class="data-line-76">
+<li class="data-line-82">
 <p>Effectuer un virement de compte à compte</p>
 </li>
-<li class="data-line-78">
+<li class="data-line-84">
 <p>Clôturer un compte</p>
 </li>
 </ul>
 </div>
 </li>
-<li class="data-line-79">
+<li class="data-line-85">
 <p>Chef d&#8217;Agence :</p>
-<div class="ulist data-line-80">
+<div class="ulist data-line-86">
 <ul>
-<li class="data-line-80">
+<li class="data-line-86">
 <p>Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)</p>
 </li>
 </ul>
@@ -652,49 +675,65 @@ Ces nouveaux besoins sont :</p>
 </div>
 </div>
 </div>
-<div class="sect1 data-line-83">
+<div class="sect1 data-line-89">
 <h2 id="_contraintes">Contraintes</h2>
 <div class="sectionbody">
-<div class="paragraph data-line-84">
-<p>La première version de l&#8217;application bancaire est développer avec une IHM grâce au langage de programmation JavaFX, que nous devrons donc réutilisé pour les prochaines versions.<br>
-Ensuite, plusieurs contraintes nous sont donner :</p>
-</div>
-<div class="ulist data-line-87">
+<div class="sect2 data-line-91">
+<h3 id="_techniques">Techniques :</h3>
+<div class="ulist data-line-93">
 <ul>
-<li class="data-line-87">
-<p>Le projet doit être réalisé par 3 à 4 étudiants qui réaliserons au moins 1 fonctionnalités de l&#8217;application chacun</p>
+<li class="data-line-93">
+<p>La première version de l&#8217;application bancaire est développer avec une IHM grâce au langage de programmation JavaFX, que nous devrons donc réutilisé pour les prochaines versions.</p>
 </li>
-<li class="data-line-88">
-<p>Les codes sources et les différentes documentations doivent être déposer sur Github</p>
+<li class="data-line-94">
+<p>Chaque étudiants devra programmer au moins 1 fonctionnalités de l&#8217;application</p>
 </li>
-<li class="data-line-89">
+<li class="data-line-95">
 <p>Les différentes versions des CDUC doivent être rédigez en asciidoc</p>
 </li>
-<li class="data-line-90">
+</ul>
+</div>
+</div>
+<div class="sect2 data-line-97">
+<h3 id="_organisationnelles">Organisationnelles :</h3>
+<div class="paragraph data-line-98">
+<p>Ensuite, plusieurs contraintes nous sont donner :</p>
+</div>
+<div class="ulist data-line-100">
+<ul>
+<li class="data-line-100">
+<p>Le projet doit être réalisé par 3 à 4 étudiants</p>
+</li>
+<li class="data-line-101">
+<p>Les codes sources et les différentes documentations doivent être déposer sur Github</p>
+</li>
+<li class="data-line-102">
 <p>Les étudiants doivent ordonnancer les tâches du projet en les formalisant via des issues et les classées en fonction de l&#8217;avancée de ces tâches</p>
 </li>
-<li class="data-line-91">
+<li class="data-line-103">
 <p>Un GANTT doit être réalisés et déposer en PDF sur discord</p>
 </li>
-<li class="data-line-92">
+<li class="data-line-104">
 <p>des Use-cases doivent être mises en place pour permettre de distinguer les différentes actions réalisable dans l&#8217;application</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
-<div class="sect1 data-line-94">
+</div>
+<div class="sect1 data-line-106">
 <h2 id="_risques">Risques</h2>
 <div class="sectionbody">
-<div class="paragraph data-line-95">
-<p>Le principale risque qui peut être relevé lors de ce projet et une mauvaise gestion du temps. En effet, nous devons respecter la deadline posez par notre client.</p>
+<div class="paragraph data-line-107">
+<p>Le principale risque qui peut être relevé lors de ce projet et une mauvaise gestion du temps. En effet, nous devons respecter la deadline posez par notre client.
+Ensuite, il est fort probable que des conflits se produisent sur GitHub, dû fait d&#8217;une mauvaise gestion des commits et des pull.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-04-22 21:13:36 +0200
+Last updated 2022-04-22 21:56:35 +0200
 </div>
 </div>
 </body>
