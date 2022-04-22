@@ -17,9 +17,22 @@ Cette banque est composée de 100 Agences où notre application sera déployée
 
 ### Rôle(s)
 
-Christopher : -> réalisation de la CDUC v1 +
-Yann : -> réalisation du GANTT +
-Ruben : -> réalisation des use-cases 
+Christopher : -> réalisation des CDUC v1 et développeur de l'Application +
+Yann : -> réalisation du GANTT et développeur de l'application +
+Ruben : -> réalisation des use-cases et développeur de l'application
+
+### Organisation de l'équipe 
+
+Pour réaliser ce projet, nous utiliserons tout d'abord divers outils collaboratifs tels que le site web GitHub qui nous permettra de structurer notre code pour mieux le gérer ainsi que de déposer nos livrables. Il nous permettra aussi de gérer les différentes tâches du projet, et d'ainsi voir quels tâches sont attribuer à quelle personne. +
+Nous utiliserons aussi le logiciel : ProjectLibre qui nous permettra de réaliser les différentes version du GANTT du projet pour ainsi planifier les tâches de celui-ci. +
+Les livrables attendues ainsi que leur dates de livraisons sont : 
+
+* GANTT v1 / CDUC v1 : Semaine 13
+* GANTT v2 et v3 / CDUC v2 et v3 / Cahier Tests v1 : Semaine 16
+* Doc technique v2 et v3 / Doc util v2 et v3 / Cahier test v3 / GANTT à jour : Semaine 20
+* Livraison finale / Chiffrage du projet : Semaine 23
+* Bilan du projet : Semaine 24 
+
 
 ## Rappel du contexte
 Ces dernières années, les banques ont dû s'adaptées aux exigences en termes d'instantanéité de leurs clients. Pour ce faire, les banques françaises ont accentué leurs efforts de restructuration et leurs investissements dans le digital. +
@@ -29,10 +42,11 @@ Par exemple, la Banque Postale ont mis en place au printemps 2019 une applicatio
 Pour s’adapter aux exigences d’instantanéité de leurs clients, les banques françaises ont accentué leurs efforts de restructuration et leurs investissements dans le digital. Des chantiers longs et coûteux. Par exemple, la Banque Postale a indiqué que sa banque mobile baptisée Ma French Bank sera disponible dans les bureaux de Poste au printemps 2019. Mais les banques ne se contentent pas de créer des offres alternatives : elles rénovent aussi en profondeur leurs services de banque au quotidien.
 
 ## Problématique 
+La problématique à laquelle répond ce projet est : Comment robotiser les tâches automatisables pour offrir un service digitale plus moderne ainsi que plus rapide pour les client ? 
 
 
 ## Objectifs poursuivies 
-L'objectif recherche par la banque DailyBank est de développer une application Java-Oracle de gestion de comptes, pour remplacer plusieurs outils obsolètes. +
+L'objectif recherché par la banque DailyBank est de développer une application Java-Oracle de gestion de comptes, pour remplacer plusieurs outils obsolètes. +
 Pour ce faire, une première version est mise à dispotion "DailyBank" qu'il faudra adapter aux nouveaux besoins. +
 Ces nouveaux besoins sont :
 
@@ -69,8 +83,9 @@ Dans la première version à développer, plusieurs fonctionnalités devront êt
 ** Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
 
 
-## Contraintes 
-Plusieurs contraintes nous sont donner :
+## Contraintes
+La première version de l'application bancaire est développer avec une IHM grâce au langage de programmation JavaFX, que nous devrons donc réutilisé pour les prochaines versions. +
+Ensuite, plusieurs contraintes nous sont donner :
 
 * Le projet doit être réalisé par 3 à 4 étudiants qui réaliserons au moins 1 fonctionnalités de l'application chacun
 * Les codes sources et les différentes documentations doivent être déposer sur Github
