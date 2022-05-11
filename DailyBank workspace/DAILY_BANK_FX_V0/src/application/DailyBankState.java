@@ -8,11 +8,11 @@ public class DailyBankState {
 	private Employe empAct;
 	private AgenceBancaire agAct;
 	private boolean isChefDAgence;
-
+	
 	public Employe getEmpAct() {
 		return this.empAct;
 	}
-
+	
 	public void setEmpAct(Employe employeActif) {
 		this.empAct = employeActif;
 	}
