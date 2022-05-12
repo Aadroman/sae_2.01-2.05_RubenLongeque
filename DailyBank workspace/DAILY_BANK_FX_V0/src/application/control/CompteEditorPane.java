@@ -13,11 +13,24 @@ import javafx.stage.Stage;
 import model.data.Client;
 import model.data.CompteCourant;
 
+/**
+ * @author yann
+ * classe dédié à la gestion des informations d'un nouveau compte
+ */
 public class CompteEditorPane {
 
-	private Stage primaryStage;
-	private CompteEditorPaneController cepc;
+	/**
+	 * Attributs
+	 */
+	
+	private Stage primaryStage; //fenêtre principale
+	private CompteEditorPaneController cepc; //controller relié à la création d'un nouveau compte
 
+	/**
+	 * @param _parentStage
+	 * @param _dbstate
+	 * gère la fenêtre de "nouveau compte" dans la gestion de compte
+	 */
 	public CompteEditorPane(Stage _parentStage, DailyBankState _dbstate) {
 
 		try {
@@ -43,6 +56,12 @@ public class CompteEditorPane {
 		}
 	}
 
+	/**
+	 * @param client
+	 * @param cpte
+	 * @param em
+	 * @return 
+	 */
 	public CompteCourant doCompteEditorDialog(Client client, CompteCourant cpte, EditionMode em) {
 		return this.cepc.displayDialog(client, cpte, em);
 	}

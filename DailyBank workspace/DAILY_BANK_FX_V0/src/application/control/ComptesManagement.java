@@ -22,13 +22,28 @@ import model.orm.exception.DatabaseConnexionException;
 import model.orm.exception.Order;
 import model.orm.exception.Table;
 
+/**
+ * @author yann
+ * classe qui gère la fenêtre de gestion d'un compte
+ */
 public class ComptesManagement {
 
-	private Stage primaryStage;
-	private ComptesManagementController cmc;
+	/**
+	 * Attributs
+	 */
+	
+	private Stage primaryStage; //la fenêtre principale
+	private ComptesManagementController cmc; //le controller relié à la gestion d'un compte
 	private DailyBankState dbs;
-	private Client clientDesComptes;
+	private Client clientDesComptes; //un client ayant un compte
 
+	/**
+	 * @param _parentStage
+	 * @param _dbstate
+	 * @param client
+	 * gère la fenêtre "gestion de compte" après avoir cliquer sur le bouton "comptes client"
+	 * d'un client de l'agence
+	 */
 	public ComptesManagement(Stage _parentStage, DailyBankState _dbstate, Client client) {
 
 		this.clientDesComptes = client;
@@ -60,11 +75,17 @@ public class ComptesManagement {
 		this.cmc.displayDialog();
 	}
 
+	/**
+	 * @param cpt
+	 */
 	public void gererOperations(CompteCourant cpt) {
 		OperationsManagement om = new OperationsManagement(this.primaryStage, this.dbs, this.clientDesComptes, cpt);
 		om.doOperationsManagementDialog();
 	}
 
+	/**
+	 * @return le compteCourant que l'on créer
+	 */
 	public CompteCourant creerCompte() {
 		CompteCourant compte;
 		CompteEditorPane cep = new CompteEditorPane(this.primaryStage, this.dbs);
@@ -96,6 +117,9 @@ public class ComptesManagement {
 		return compte;
 	}
 
+	/**
+	 * @return une liste de compteCourant en fonction du client sélectionné
+	 */
 	public ArrayList<CompteCourant> getComptesDunClient() {
 		ArrayList<CompteCourant> listeCpt = new ArrayList<>();
 

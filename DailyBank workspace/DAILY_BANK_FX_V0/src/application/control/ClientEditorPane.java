@@ -25,7 +25,7 @@ public class ClientEditorPane {
 	 */
 	
 	private Stage primaryStage; //la fenêtre principale
-	private ClientEditorPaneController cepc; //constructeur relié à l'édition d'un client
+	private ClientEditorPaneController cepc; //controller relié à l'édition d'un client
 
 	/**
 	 * @param _parentStage
