@@ -47,7 +47,14 @@ public class CompteEditorPaneController implements Initializable {
 		this.txtDecAutorise.focusedProperty().addListener((t, o, n) -> this.focusDecouvert(t, o, n));
 		this.txtSolde.focusedProperty().addListener((t, o, n) -> this.focusSolde(t, o, n));
 	}
-
+	
+	/*
+	 * Configuration de la fenêtre d'édition d'un compte
+	 * @param in client : le client
+	 * @param in cpte : le client
+	 * @param in mode : le mode de modification
+	 * return le resultat
+	 */
 	public CompteCourant displayDialog(Client client, CompteCourant cpte, EditionMode mode) {
 		this.clientDuCompte = client;
 		this.em = mode;
@@ -106,7 +113,10 @@ public class CompteEditorPaneController implements Initializable {
 		e.consume();
 		return null;
 	}
-
+	
+	/*
+	 * 
+	 */
 	private Object focusDecouvert(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
 			boolean newPropertyValue) {
 		if (oldPropertyValue) {
@@ -123,7 +133,10 @@ public class CompteEditorPaneController implements Initializable {
 		}
 		return null;
 	}
-
+	
+	/*
+	 * 
+	 */
 	private Object focusSolde(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
 			boolean newPropertyValue) {
 		if (oldPropertyValue) {
@@ -165,13 +178,19 @@ public class CompteEditorPaneController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
-
+	
+	/*
+	 * Permet de fermer une fenêtre au clique d'un bouton 
+	 */
 	@FXML
 	private void doCancel() {
 		this.compteResult = null;
 		this.primaryStage.close();
 	}
-
+	
+	/*
+	 * Permet d'ajouter un compte au clique d'un bouton
+	 */
 	@FXML
 	private void doAjouter() {
 		switch (this.em) {
@@ -194,7 +213,16 @@ public class CompteEditorPaneController implements Initializable {
 		}
 
 	}
-
+	
+	/*
+	 * Permet de vérifiez si les saisies sont valides : 
+	 * renvoie une alerte si :
+	 * - id du client n'est pas valide 
+	 * - id de l'agence n'est pas valide
+	 * - le numéro de compte n'est pas valide
+	 * - le montant du découvert est négatif
+	 * - le montant du solde (du premier dépôt est négatif)
+	 */
 	private boolean isSaisieValide() {
 
 		return true;

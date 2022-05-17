@@ -21,14 +21,30 @@ import model.orm.AccessOperation;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
 
+/**
+ * @author yann
+ * classe dédié à la gestion de la fenêtre "gestion des opérations"
+ */
 public class OperationsManagement {
 
-	private Stage primaryStage;
+	/**
+	 * Attributs
+	 */
+	
+	private Stage primaryStage; //la fenêtre
 	private DailyBankState dbs;
-	private OperationsManagementController omc;
-	private Client clientDuCompte;
-	private CompteCourant compteConcerne;
+	private OperationsManagementController omc; //le controller de gestion des opérations
+	private Client clientDuCompte; //un client ayant un compte
+	private CompteCourant compteConcerne; //le compte du client
 
+	/**
+	 * @param _parentStage
+	 * @param _dbstate
+	 * @param client
+	 * @param compte
+	 * représente la fenêtre "gestion des opérations" après avoir cliquer sur le bouton
+	 * "voir opérations" des opérations d'un compte d'un client
+	 */
 	public OperationsManagement(Stage _parentStage, DailyBankState _dbstate, Client client, CompteCourant compte) {
 
 		this.clientDuCompte = client;
@@ -62,6 +78,9 @@ public class OperationsManagement {
 		this.omc.displayDialog();
 	}
 
+	/**
+	 * @return une opération lorsqu'on effectue un débit sur un compte
+	 */
 	public Operation enregistrerDebit() {
 
 		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dbs);

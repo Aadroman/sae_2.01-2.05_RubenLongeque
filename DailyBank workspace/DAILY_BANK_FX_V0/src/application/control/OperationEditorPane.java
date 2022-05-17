@@ -13,11 +13,24 @@ import javafx.stage.Stage;
 import model.data.CompteCourant;
 import model.data.Operation;
 
+/**
+ * @author yann
+ * classe qui gère la fenêtre "enregistrement d'une opération" lors d'un crédit ou débit sur un compte
+ */
 public class OperationEditorPane {
 
-	private Stage primaryStage;
-	private OperationEditorPaneController oepc;
+	/**
+	 * Attributs
+	 */
+	
+	private Stage primaryStage; //la fenêtre
+	private OperationEditorPaneController oepc; //le controller relié à la gestion des opérations
 
+	/**
+	 * @param _parentStage
+	 * @param _dbstate
+	 * représente la fenêtre d'enregistrement d'une opération
+	 */
 	public OperationEditorPane(Stage _parentStage, DailyBankState _dbstate) {
 
 		try {

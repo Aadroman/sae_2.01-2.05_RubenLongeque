@@ -17,12 +17,26 @@ import model.orm.AccessClient;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
 
+/**
+ * @author yann
+ * classe dédié à la gestion d'un client
+ */
 public class ClientsManagement {
+	
 
-	private Stage primaryStage;
+	/**
+	 * attributs
+	 */
+	
+	private Stage primaryStage; //fenêtre principale
 	private DailyBankState dbs;
-	private ClientsManagementController cmc;
+	private ClientsManagementController cmc; //le controller relié au management d'un client
 
+	/**
+	 * @param _parentStage
+	 * @param _dbstate
+	 * représente la fenêtre de l'application "gestion d"un client" lorsque l'on s'est connecté
+	 */
 	public ClientsManagement(Stage _parentStage, DailyBankState _dbstate) {
 		this.dbs = _dbstate;
 		try {
@@ -48,10 +62,17 @@ public class ClientsManagement {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	public void doClientManagementDialog() {
 		this.cmc.displayDialog();
 	}
 
+	/**
+	 * @param c le client que l'on veut modifier
+	 * @return le client avec ses informations modifiées
+	 */
 	public Client modifierClient(Client c) {
 		ClientEditorPane cep = new ClientEditorPane(this.primaryStage, this.dbs);
 		Client result = cep.doClientEditorDialog(c, EditionMode.MODIFICATION);
@@ -73,6 +94,9 @@ public class ClientsManagement {
 		return result;
 	}
 
+	/**
+	 * @return un nouveau client avec ses informations de nom, prénom, adresse, téléphone, mail et status d'activité
+	 */
 	public Client nouveauClient() {
 		Client client;
 		ClientEditorPane cep = new ClientEditorPane(this.primaryStage, this.dbs);
@@ -96,11 +120,20 @@ public class ClientsManagement {
 		return client;
 	}
 
+	/**
+	 * @param c
+	 */
 	public void gererComptesClient(Client c) {
 		ComptesManagement cm = new ComptesManagement(this.primaryStage, this.dbs, c);
 		cm.doComptesManagementDialog();
 	}
 
+	/**
+	 * @param _numCompte
+	 * @param _debutNom
+	 * @param _debutPrenom
+	 * @return une liste de client en fonction de plusieurs spécifications
+	 */
 	public ArrayList<Client> getlisteComptes(int _numCompte, String _debutNom, String _debutPrenom) {
 		ArrayList<Client> listeCli = new ArrayList<>();
 		try {

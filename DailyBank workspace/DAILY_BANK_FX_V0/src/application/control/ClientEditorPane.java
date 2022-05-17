@@ -13,11 +13,25 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.data.Client;
 
+
+/**
+ * @author yann
+ * classe dédié à la gestion des informations d'un nouveau client
+ */
 public class ClientEditorPane {
 
-	private Stage primaryStage;
-	private ClientEditorPaneController cepc;
+	/**
+	 * Attribut
+	 */
+	
+	private Stage primaryStage; //la fenêtre principale
+	private ClientEditorPaneController cepc; //controller relié à l'édition d'un client
 
+	/**
+	 * @param _parentStage
+	 * @param _dbstate
+	 * représente la fenêtre de l'application de renseignement des informations d'un nouveau client
+	 */
 	public ClientEditorPane(Stage _parentStage, DailyBankState _dbstate) {
 
 		try {
@@ -43,6 +57,11 @@ public class ClientEditorPane {
 		}
 	}
 
+	/**
+	 * @param client
+	 * @param em
+	 * @return 
+	 */
 	public Client doClientEditorDialog(Client client, EditionMode em) {
 		return this.cepc.displayDialog(client, em);
 	}
