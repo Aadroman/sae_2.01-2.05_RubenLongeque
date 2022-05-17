@@ -40,10 +40,7 @@ public class ComptesManagementController implements Initializable {
 		this.clientDesComptes = client;
 		this.configure();
 	}
-	
-	/*
-	 * Configuration de la fenêtre de la gestion des comptes
-	 */
+
 	private void configure() {
 		String info;
 
@@ -85,23 +82,16 @@ public class ComptesManagementController implements Initializable {
 	private Button btnModifierCompte;
 	@FXML
 	private Button btnSupprCompte;
-	
-		
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
-	
-	/*
-	 * Permet de fermer la fenêtre au clique d'un bouton
-	 */
+
 	@FXML
 	private void doCancel() {
 		this.primaryStage.close();
 	}
-	
-	/*
-	 * Permet de voir les opérations d'un compte
-	 */
+
 	@FXML
 	private void doVoirOperations() {
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
@@ -112,22 +102,15 @@ public class ComptesManagementController implements Initializable {
 		this.loadList();
 		this.validateComponentState();
 	}
-	
-	/*
-	 * Permet de modifier les informations d'un compte
-	 */
+
 	@FXML
 	private void doModifierCompte() {
 	}
-	/*
-	 * Permet de supprimer un compte
-	 */
+
 	@FXML
 	private void doSupprimerCompte() {
 	}
-	/*
-	 * Permet d'ajouter un nouveau compte
-	 */
+
 	@FXML
 	private void doNouveauCompte() {
 		CompteCourant compte;
@@ -136,9 +119,7 @@ public class ComptesManagementController implements Initializable {
 			this.olCompteCourant.add(compte);
 		}
 	}
-	/*
-	 * Ajoute les comptes d'un client dans une liste
-	 */
+
 	private void loadList () {
 		ArrayList<CompteCourant> listeCpt;
 		listeCpt = this.cm.getComptesDunClient();
@@ -147,10 +128,7 @@ public class ComptesManagementController implements Initializable {
 			this.olCompteCourant.add(co);
 		}
 	}
-	
-	/*
-	 * Vérifie si les informations sont valide
-	 */
+
 	private void validateComponentState() {
 		// Non implémenté => désactivé
 		this.btnModifierCompte.setDisable(true);

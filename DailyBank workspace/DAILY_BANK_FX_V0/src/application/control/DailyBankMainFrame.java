@@ -14,22 +14,11 @@ import model.orm.LogToDatabase;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
 
-/**
- * @author yann
- * classe dédié à le gestion de la première page qui s'ouvre lorsqu'on lance l'application
- */
 public class DailyBankMainFrame extends Application {
 
-	/**
-	 * Attributs
-	 */
-	
 	private DailyBankState dbs;
-	private Stage primaryStage; //la fenêtre principale
+	private Stage primaryStage;
 
-	/**
-	 * représente la première méthode qui se lance lorsqu'on lance l'applicaton
-	 */
 	@Override
 	public void start(Stage primaryStage) {
 
@@ -103,9 +92,6 @@ public class DailyBankMainFrame extends Application {
 		}
 	}
 
-	/**
-	 * méthode qui permet de lancer l'application
-	 */
 	public static void runApp() {
 		Application.launch();
 	}
@@ -122,9 +108,6 @@ public class DailyBankMainFrame extends Application {
 		}
 	}
 
-	/**
-	 * méthode qui gère l'exécution de code lorsqu'on clique sur le bouton "connexion"
-	 */
 	public void login() {
 		LoginDialog ld = new LoginDialog(this.primaryStage, this.dbs);
 		ld.doLoginDialog();

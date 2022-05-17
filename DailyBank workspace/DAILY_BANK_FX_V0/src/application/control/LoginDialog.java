@@ -14,24 +14,12 @@ import model.orm.AccessEmploye;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
 
-/**
- * @author yann
- * classe qui gère la fenêtre de connexion d'une personne
- */
 public class LoginDialog {
 
-	/**
-	 * Attributs
-	 */
-	
-	private Stage primaryStage; //la fenêtre principale
+	private Stage primaryStage;
 	private DailyBankState dbs;
-	private LoginDialogController ldc; //le controller relié à la connexion d'une personne
+	private LoginDialogController ldc;
 
-	/**
-	 * @param _parentStage
-	 * @param _dbstate
-	 */
 	public LoginDialog(Stage _parentStage, DailyBankState _dbstate) {
 		this.dbs = _dbstate;
 		try {
@@ -61,11 +49,6 @@ public class LoginDialog {
 		this.ldc.displayDialog();
 	}
 
-	/**
-	 * @param login
-	 * @param password
-	 * @return un employé en fonction de son identifiant et mot de passe
-	 */
 	public Employe chercherParLogin(String login, String password) {
 		Employe employe = null;
 		try {

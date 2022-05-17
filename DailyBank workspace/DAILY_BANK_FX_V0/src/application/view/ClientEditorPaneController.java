@@ -43,18 +43,11 @@ public class ClientEditorPaneController implements Initializable {
 		this.dbs = _dbstate;
 		this.configure();
 	}
-	
 
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 	}
-	
-	/*
-	 * Configuration de la fenêtre d'ajout/modification/suppression d'un client
-	 * @param in client : Le client à ajouter
-	 * @param in mode : mode d'édition utiliser
-	 *
-	 */
+
 	public Client displayDialog(Client client, EditionMode mode) {
 
 		this.em = mode;
@@ -174,19 +167,13 @@ public class ClientEditorPaneController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
-	
-	/*
-	 * Permet de fermer la fenêtre au clique d'un bouton
-	 */
+
 	@FXML
 	private void doCancel() {
 		this.clientResult = null;
 		this.primaryStage.close();
 	}
-	
-	/*
-	 * Permet de confirmer les informations au clique d'un bouton
-	 */
+
 	@FXML
 	private void doAjouter() {
 		switch (this.em) {
@@ -209,15 +196,7 @@ public class ClientEditorPaneController implements Initializable {
 		}
 
 	}
-	
-	/*
-	 * Permet de vérifiez si la saisie des différent champs est correct
-	 * renvoie une alerte si :
-	 * - le nom est vide
-	 * - le prénom est vide
-	 * - le téléphone n'est pas valide
-	 * - le mail n'est pas valide
-	 */
+
 	private boolean isSaisieValide() {
 		this.clientEdite.nom = this.txtNom.getText().trim();
 		this.clientEdite.prenom = this.txtPrenom.getText().trim();

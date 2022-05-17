@@ -79,19 +79,12 @@ public class ClientsManagementController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
-	
-	/*
-	 * Permet de fermer la fenêtre au clique d'un bouton
-	 */
+
 	@FXML
 	private void doCancel() {
 		this.primaryStage.close();
 	}
-	
-	/*
-	 * Permet de rechercher un client avec des informations spécifiques
-	 * si les informations ne sont pas présentes, elle seront vides dans le ListView
-	 */
+
 	@FXML
 	private void doRechercher() {
 		int numCompte;
@@ -137,23 +130,16 @@ public class ClientsManagementController implements Initializable {
 
 		this.validateComponentState();
 	}
-	
-	/*
-	 * Affiche le compte d'un client
-	 */
+
 	@FXML
 	private void doComptesClient() {
 		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
-		// ouvre une fenêtre pour gérer les opérations du client
 		if (selectedIndice >= 0) {
 			Client client = this.olc.get(selectedIndice);
 			this.cm.gererComptesClient(client);
 		}
 	}
-	
-	/*
-	 * Permet de modifier les informations d'un client
-	 */
+
 	@FXML
 	private void doModifierClient() {
 
@@ -166,17 +152,11 @@ public class ClientsManagementController implements Initializable {
 			}
 		}
 	}
-	
-	/*
-	 * Permet de désactiver (supprimer) un client
-	 */
+
 	@FXML
 	private void doDesactiverClient() {
 	}
-	
-	/*
-	 * Permet d'ajouter un nouveau client
-	 */
+
 	@FXML
 	private void doNouveauClient() {
 		Client client;
@@ -185,10 +165,7 @@ public class ClientsManagementController implements Initializable {
 			this.olc.add(client);
 		}
 	}
-	
-	/*
-	 * Permet de désactiver certains boutons
-	 */
+
 	private void validateComponentState() {
 		// Non implémenté => désactivé
 		this.btnDesactClient.setDisable(true);
