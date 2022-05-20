@@ -34,5 +34,15 @@ public class Client {
 		return "[" + this.idNumCli + "]  " + this.nom.toUpperCase() + " " + this.prenom + "(" + this.email + ")  {"
 				+ this.telephone + "}";
 	}
+	
+	//accesseur
+	public String getEstInactif() {
+		return estInactif;
+	}
+	
+	//tansformateurs
+	public void setEstInactif(String estInactif) {
+		this.estInactif = estInactif;
+	}
 
 }

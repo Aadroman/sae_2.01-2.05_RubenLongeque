@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import application.DailyBankState;
 import application.control.ClientsManagement;
+import application.control.ExceptionDialog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,6 +18,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
+import model.orm.AccessClient;
+import model.orm.exception.DataAccessException;
+import model.orm.exception.DatabaseConnexionException;
+import model.orm.exception.RowNotFoundOrTooManyRowsException;
 
 public class ClientsManagementController implements Initializable {
 
@@ -172,6 +177,18 @@ public class ClientsManagementController implements Initializable {
 	 */
 	@FXML
 	private void doDesactiverClient() {
+		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			Client cliDesac = this.olc.get(selectedIndice);
+			cliDesac.setEstInactif("O");
+			AccessClient ac = new AccessClient();
+			try {
+				ac.updateClient(cliDesac);
+			} catch (RowNotFoundOrTooManyRowsException | DataAccessException | DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+				ed.doExceptionDialog();
+			}
+		}
 	}
 	
 	/*
@@ -190,15 +207,15 @@ public class ClientsManagementController implements Initializable {
 	 * Permet de désactiver certains boutons
 	 */
 	private void validateComponentState() {
-		// Non implémenté => désactivé
-		this.btnDesactClient.setDisable(true);
 		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			this.btnModifClient.setDisable(false);
 			this.btnComptesClient.setDisable(false);
+			this.btnDesactClient.setDisable(false);
 		} else {
 			this.btnModifClient.setDisable(true);
 			this.btnComptesClient.setDisable(true);
+			this.btnDesactClient.setDisable(true);
 		}
 	}
 }
