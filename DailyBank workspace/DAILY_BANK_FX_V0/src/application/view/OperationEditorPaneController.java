@@ -71,10 +71,24 @@ public class OperationEditorPaneController implements Initializable {
 			this.cbTypeOpe.getSelectionModel().select(0);
 			break;
 		case CREDIT:
-			AlertUtilities.showAlert(this.primaryStage, "Non implémenté", "Modif de compte n'est pas implémenté", null,
-					AlertType.ERROR);
-			return null;
-		// break;
+			
+			String infoCredit = "Cpt. : " + this.compteEdite.idNumCompte + "  "
+					+ String.format(Locale.ENGLISH, "%12.02f", this.compteEdite.solde) + "  /  "
+					+ String.format(Locale.ENGLISH, "%8d", this.compteEdite.debitAutorise);
+			this.lblMessage.setText(infoCredit);
+
+			this.btnOk.setText("Effectuer Crédit");
+			this.btnCancel.setText("Annuler Crédit");
+
+			ObservableList<String> listCredit = FXCollections.observableArrayList();
+
+			for (String tyOp : ConstantesIHM.OPERATIONS_CREDIT_GUICHET) {
+				listCredit.add(tyOp);
+			}
+
+			this.cbTypeOpe.setItems(listCredit);
+			this.cbTypeOpe.getSelectionModel().select(0);
+			break;
 		}
 
 		// Paramétrages spécifiques pour les chefs d'agences
@@ -148,6 +162,9 @@ public class OperationEditorPaneController implements Initializable {
 				this.txtMontant.requestFocus();
 				return;
 			}
+			if(this.compteEdite.debitAutorise > 0) {
+				return;
+			}
 			if (this.compteEdite.solde - montant < this.compteEdite.debitAutorise) {
 				info = "Dépassement du découvert ! - Cpt. : " + this.compteEdite.idNumCompte + "  "
 						+ String.format(Locale.ENGLISH, "%12.02f", this.compteEdite.solde) + "  /  "
@@ -165,7 +182,22 @@ public class OperationEditorPaneController implements Initializable {
 			break;
 		case CREDIT:
 			// ce genre d'operation n'est pas encore géré
-			this.operationResultat = null;
+			double montantCredit;
+
+			this.txtMontant.getStyleClass().remove("borderred");
+			this.lblMontant.getStyleClass().remove("borderred");
+			this.lblMessage.getStyleClass().remove("borderred");
+			String infoc = "Cpt. : " + this.compteEdite.idNumCompte + "  "
+					+ String.format(Locale.ENGLISH, "%12.02f", this.compteEdite.solde) + "  /  "
+					+ String.format(Locale.ENGLISH, "%8d", this.compteEdite.debitAutorise);
+			this.lblMessage.setText(infoc);
+
+			
+				montantCredit = Double.parseDouble(this.txtMontant.getText().trim());
+				
+			
+			String typeOpCredit = this.cbTypeOpe.getValue();
+			this.operationResultat = new Operation(-1, montantCredit, null, null, this.compteEdite.idNumCli, typeOpCredit);
 			this.primaryStage.close();
 			break;
 		}
