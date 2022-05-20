@@ -1,10 +1,15 @@
 package application.view;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 import application.DailyBankState;
+import application.control.CompteEditorPane;
 import application.tools.AlertUtilities;
 import application.tools.ConstantesIHM;
 import application.tools.EditionMode;
@@ -19,6 +24,8 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
+import model.orm.LogToDatabase;
+import model.orm.exception.DatabaseConnexionException;
 
 public class CompteEditorPaneController implements Initializable {
 
@@ -47,7 +54,7 @@ public class CompteEditorPaneController implements Initializable {
 		this.txtDecAutorise.focusedProperty().addListener((t, o, n) -> this.focusDecouvert(t, o, n));
 		this.txtSolde.focusedProperty().addListener((t, o, n) -> this.focusSolde(t, o, n));
 	}
-	
+
 	/*
 	 * Configuration de la fenêtre d'édition d'un compte
 	 * @param in client : le client
@@ -81,12 +88,12 @@ public class CompteEditorPaneController implements Initializable {
 			AlertUtilities.showAlert(this.primaryStage, "Non implémenté", "Modif de compte n'est pas implémenté", null,
 					AlertType.ERROR);
 			return null;
-		// break;
+			// break;
 		case SUPPRESSION:
 			AlertUtilities.showAlert(this.primaryStage, "Non implémenté", "Suppression de compte n'est pas implémenté",
 					null, AlertType.ERROR);
 			return null;
-		// break;
+			// break;
 		}
 
 		// Paramétrages spécifiques pour les chefs d'agences
@@ -106,6 +113,46 @@ public class CompteEditorPaneController implements Initializable {
 		this.primaryStage.showAndWait();
 		return this.compteResult;
 	}
+	
+	/*
+	 * Ajoute un compte à la base de donnée
+	 */
+	public CompteCourant creerCompte() {
+	
+		CompteCourant compte = this.compteEdite; // compte courant
+
+		if (compte != null) {
+			try {
+				Connection con = LogToDatabase.getConnexion();
+				
+				// requete sql pour ajouter un compte à la BD
+				String query = "INSERT INTO COMPTECOURANT VALUES (" + "seq_id_client.NEXTVAL" + ", " + "?" + ", " + "?" + ", " + "?" + ", " + "?" + ")";
+
+				PreparedStatement pst = con.prepareStatement(query);
+				pst.setInt(1, compte.debitAutorise);
+				pst.setDouble(2, compte.solde);
+				pst.setInt(3, compte.idNumCli);
+				pst.setString(4, compte.estCloture);
+
+				int result = pst.executeUpdate();
+				pst.close();
+
+				if (result != 1) {
+					con.rollback();
+					System.out.println("Problèmes");
+				}else {
+					con.commit();
+					System.out.println("commit");
+
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return compte;
+	}
 
 	// Gestion du stage
 	private Object closeWindow(WindowEvent e) {
@@ -113,7 +160,7 @@ public class CompteEditorPaneController implements Initializable {
 		e.consume();
 		return null;
 	}
-	
+
 	/*
 	 * 
 	 */
@@ -133,7 +180,7 @@ public class CompteEditorPaneController implements Initializable {
 		}
 		return null;
 	}
-	
+
 	/*
 	 * 
 	 */
@@ -178,7 +225,7 @@ public class CompteEditorPaneController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
-	
+
 	/*
 	 * Permet de fermer une fenêtre au clique d'un bouton 
 	 */
@@ -187,33 +234,87 @@ public class CompteEditorPaneController implements Initializable {
 		this.compteResult = null;
 		this.primaryStage.close();
 	}
-	
+
 	/*
 	 * Permet d'ajouter un compte au clique d'un bouton
 	 */
 	@FXML
-	private void doAjouter() {
+	private void doAjouter() throws DatabaseConnexionException, SQLException {
 		switch (this.em) {
 		case CREATION:
+			// Utilisation de la méthode créer compte
+			
+			this.creerCompte();
+			this.primaryStage.close();
+			
+			/*
+
+			////////////////////////////////////////////////////////////
+			NE PAS EFFACER : UTILISER POUR LA FONCTIONNALITE CREERCOMPTE
+			////////////////////////////////////////////////////////////
+
+			 requete sql :
+			 insert into comptecourant 
+			 values (12, 0, 350, 5, 'N'); 
+
+
+			int idNumCompte, idNumClient;
+			double debitAuto, solde;
+			String cloture;
+
+			idNumCompte = Integer.parseInt(this.txtIdNumCompte.getText());
+			debitAuto = Double.parseDouble(this.txtDecAutorise.getText());
+			solde = Double.parseDouble(this.txtSolde.getText());
+			idNumClient = Integer.parseInt(this.txtIdNumCompte.getText());
+			cloture = this.compteEdite.estCloture;
+
+
+
+				Connection con = LogToDatabase.getConnexion();
+
+				String query = "INSERT INTO COMPTECOURANT";
+				query += " VALUES(seq_IDNUMCOMPTE.NEXTVAL,?,?,?,?)";
+
+				String query = "INSERT INTO COMPTECOURANT VALUES (" + "seq_id_client.NEXTVAL" + ", " + "?" + ", " + "?" + ", " + "?" + ", " + "?" + ")";
+
+				try {
+					PreparedStatement pst = con.prepareStatement(query);
+					pst.setDouble(1, debitAuto);
+					pst.setDouble(2, solde);
+					pst.setInt(3, idNumClient);
+					pst.setString(4, cloture);
+
+					ResultSet rs = pst.executeQuery();
+					pst.close();
+				} catch (Exception e ) {
+					e.printStackTrace();
+				}
+
 			if (this.isSaisieValide()) {
 				this.compteResult = this.compteEdite;
 				this.primaryStage.close();
 			}
+
+			 */
+
 			break;
+
 		case MODIFICATION:
 			if (this.isSaisieValide()) {
 				this.compteResult = this.compteEdite;
 				this.primaryStage.close();
+
 			}
 			break;
 		case SUPPRESSION:
 			this.compteResult = this.compteEdite;
 			this.primaryStage.close();
+
 			break;
 		}
 
 	}
-	
+
 	/*
 	 * Permet de vérifiez si les saisies sont valides : 
 	 * renvoie une alerte si :

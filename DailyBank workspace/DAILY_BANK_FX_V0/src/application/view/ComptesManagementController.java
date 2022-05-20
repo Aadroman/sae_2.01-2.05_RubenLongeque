@@ -74,7 +74,6 @@ public class ComptesManagementController implements Initializable {
 		return null;
 	}
 
-	// Attributs de la scene + actions
 	@FXML
 	private Label lblInfosClient;
 	@FXML
