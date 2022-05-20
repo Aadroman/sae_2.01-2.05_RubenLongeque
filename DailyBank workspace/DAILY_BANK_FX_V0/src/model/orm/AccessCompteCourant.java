@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import application.tools.EditionMode;
 import model.data.CompteCourant;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
@@ -58,7 +59,7 @@ public class AccessCompteCourant {
 
 		return alResult;
 	}
-
+	
 	/**
 	 * Recherche d'un CompteCourant à partir de son id (idNumCompte).
 	 *
@@ -109,6 +110,8 @@ public class AccessCompteCourant {
 			throw new DataAccessException(Table.CompteCourant, Order.SELECT, "Erreur accès", e);
 		}
 	}
+	
+	
 
 	/**
 	 * Mise à jour d'un CompteCourant.

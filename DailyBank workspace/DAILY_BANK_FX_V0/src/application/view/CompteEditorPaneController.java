@@ -242,12 +242,13 @@ public class CompteEditorPaneController implements Initializable {
 	private void doAjouter() throws DatabaseConnexionException, SQLException {
 		switch (this.em) {
 		case CREATION:
+			/*
 			// Utilisation de la méthode créer compte
 			
 			this.creerCompte();
 			this.primaryStage.close();
 			
-			/*
+			
 
 			////////////////////////////////////////////////////////////
 			NE PAS EFFACER : UTILISER POUR LA FONCTIONNALITE CREERCOMPTE
@@ -289,13 +290,12 @@ public class CompteEditorPaneController implements Initializable {
 				} catch (Exception e ) {
 					e.printStackTrace();
 				}
-
+			*/
 			if (this.isSaisieValide()) {
 				this.compteResult = this.compteEdite;
 				this.primaryStage.close();
 			}
 
-			 */
 
 			break;
 
