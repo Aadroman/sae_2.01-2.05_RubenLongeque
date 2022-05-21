@@ -1,6 +1,7 @@
 package application.view;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -117,6 +118,13 @@ public class ComptesManagementController implements Initializable {
 	 */
 	@FXML
 	private void doModifierCompte() {
+//		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+//		if (selectedIndice >= 0) {
+//			CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
+//			this.cm.modifierCompte(cpt);
+//		}
+//		this.loadList();
+//		this.validateComponentState();
 	}
 	/*
 	 * Permet de supprimer un compte
@@ -128,7 +136,7 @@ public class ComptesManagementController implements Initializable {
 	 * Permet d'ajouter un nouveau compte
 	 */
 	@FXML
-	private void doNouveauCompte() {
+	private void doNouveauCompte() throws SQLException {
 		CompteCourant compte;
 		compte = this.cm.creerCompte();
 		if (compte != null) {

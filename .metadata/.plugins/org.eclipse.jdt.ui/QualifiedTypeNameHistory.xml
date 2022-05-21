@@ -2,4 +2,6 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="model.orm.exception.DatabaseConnexionException"/>
     <fullyQualifiedTypeName name="application.tools.ConstantesIHM"/>
+    <fullyQualifiedTypeName name="application.tools.EditionMode"/>
+    <fullyQualifiedTypeName name="model.data.CompteCourant"/>
 </qualifiedTypeNameHistroy>
