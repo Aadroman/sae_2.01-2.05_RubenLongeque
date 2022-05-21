@@ -1,0 +1,145 @@
+# DOCUMENTATION UTILISATEUR VERSION 1
+:toc: left
+:toc-title: Table des matières
+:icons: font
+:nofooter:
+
+## Présentation générale
+
+### Contexte 
+
+Pour s’adapter aux exigences d’instantanéité de leurs clients, les banques françaises ont accentué leurs efforts de restructuration et leurs investissements dans le digital. Des chantiers longs et coûteux. Elles ne se contentent pas de créer des offres alternatives : elles rénovent aussi en profondeur leurs services de banque au quotidien. +
+Le réseaux de bancaire Dailybank possèdent plusieurs outils qui deviennent obsolètes et une première version d’application qui nécessite une refonte. Les besoins de la banque ont évolués, tout comme ceux de leurs clients, il faut donc développer plusieurs fonctionnalités pour répondre à ces nouveaux besoins.
+
+### Objectifs de l'application
+
+L’objectif recherché par la banque DailyBank est de développer une application Java-Oracle de gestion de comptes, pour remplacer plusieurs outils obsolètes.
+Pour ce faire, une première version est mise à dispotion "DailyBank" qu’il faudra adapter aux nouveaux besoins.
+Ces nouveaux besoins sont :
+
+* Elle doit permettre de gérer des comptes bancaires de dépôt pour des clients créés
+
+* Elle doit permettre de débiter et de créditer un compte de deux manières différentes :
+
+** Par échange d’argent entre deux comptes distincts domiciliés dans le même réseau bancaire
+
+** Par personne physique se présentant devant un guichet
+
+## Installation de l'application
+
+Pour pouvoir lancer l'application, l'installation de Java en version 1.8 est nécessaire.
+Pour ce faire, vous devez  suivre ces étapes : 
+
+* Télécharger gratuitement la version 1.8 de Java sur le https://www.java.com/fr/download/[site d'Oracle]
+** Vous pouvez au préalable vérifiez que l'installation c'est bien réaliser (depuis un terminal) :
+
+    $ java -version 
+
+Ensuite lancer le fichier .jar depuis un terminal (si il ne s'ouvre par en double cliquant dessus) :
+
+(depuis un terminal) :
+
+    $ cd '.\Desktop\DailyBank workspace\'
+    $ java -jar Dailybank.jar
+
+
+
+## Utilisation de l'application
+
+Deux utilisateurs distincts peuvent être constaté, ils sont le guichetier et le chef d'agence. En plus des fonctionnalités qu'ont les guichertion qui sont :
+
+* Créditer/débiter un compte (java et BD avec procédure stockée)
+
+* Créer un compte
+
+* Effectuer un virement de compte à compte
+
+* Clôturer un compte
+
+les chef d'agence peuvent :
+
+Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
+
+## Fonctionnement de l'application
+
+### Fenêtre principale
+
+*quitter l'application*
+
+En cliquant sur le bouton quitter, accessible depuis l'onglet utilisateur, cela aura pour action de quitter l'application.
+
+NOTE: Une alerte de validation s'ouvrira
+
+*Connexion à un compte*
+
+En cliquant sur le bouton « connexion » l'utilisateur pourra se connecter à son compte.
+Ce bouton ouvre une fenêtre de connexion demandant les information de l'utilisateur :
+
+* Login (le nom / identifiant de l'utilisateur)
+
+* Mot de passe
+
+Dans le cas où l'une de ces deux informations est fausse, un message d'erreur sera affiché à l'écran.
+
+*Deconnexion d'un compte*
+
+En cliquant sur le bouton « deconnexion » l'utilisateur pourra se déconnecter de son compte.
+
+*Gestion des clients*
+
+NOTE: Cette fonctionnalités n'est accessible que si l'utilisateur est connectée
+
+En cliquant sur le bouton « client » accessible depuis l'onglet « gestion » l'utilisateur pourra gérer les utilisateurs de l'agence bancaire en ouvrant une feêtre de gestion des clients.
+
+### Fenêtre gestion des clients
+
+*Recherche d'un client*
+
+En cliquant sur le bouton « rechercher » l'utilisateur pour rechercher un client de l'agence bancaire.
+Les résultats seront visible sur la ListView et peuvent être affinés en entrant les informations :
+
+* Numéro (numéro du client)
+
+* Nom
+
+* Prénom
+
+*Création d'un nouveau client*
+
+En cliquant sur le bouton « nouveau client » l'utilisateur pourra créer un nouveau client en ouvrant une nouvelle fenêtre de création d'un client et en entrant les informations :
+
+* Nom 
+* Prénom
+* Adresse
+* Téléphone
+* E-mail
+* Cliant actif
+
+WARNING: Si l'une de ces informations n'est pas entrée une alerte s'affiche présentant l'erreur
+
+Cliquer sur le bouton « Ajouter » aura pour action de créer le nouveau client et cliquer sur le bouton « annuler » aura pour action d'annuler la création du client. 
+
+*Modification d'un client*
+
+Il est possible de modifier les informations d'un client en le sélectionnant et en cliquant sur le bouton « modifier client ». +
+Cela aura pour action d'ouvrir une nouvelles fenêtre de modification d'un client.
+L'utilisateur devra entrée les informations qu'il souhaite modifier :
+
+* Nom
+* Prénom
+* Adresse
+* Téléphone
+* E-mail
+* Client-actif
+
+WARNING: Si l'une de ces informations n'est pas entrée une alerte s'affiche présentant l'erreur
+
+Cliquer sur le bouton « modifier » aura pour action de modifier le client et cliquer sur le bouton « annuler » aura pour action d'annuler la modification du client. 
+
+*Gestion des comptes d'un client*
+
+Il est possible de consulter les comptes d'un client en le sélectionnant et en cliquant sur le bouton « comptes client ». +
+Cela aura pour action d'ouvrir une nouvelles fenêtre de gestion des comptes d'un client dans laquelle l'utilisateur pourra voir les opérations du client en cliquant sur le bouton « voir opérations». + 
+Cela aura pour action d'ouvrir une nouvelles fenêtre de gestion des opérations.
+
+## Résultats et production de l'application
