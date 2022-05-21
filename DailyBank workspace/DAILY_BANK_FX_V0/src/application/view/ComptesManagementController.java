@@ -118,24 +118,13 @@ public class ComptesManagementController implements Initializable {
 	 */
 	@FXML
 	private void doModifierCompte() {
-//		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
-//		if (selectedIndice >= 0) {
-//			CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
-//			this.cm.modifierCompte(cpt);
-//		}
-//		this.loadList();
-//		this.validateComponentState();
 	}
-	
-	
 	/*
 	 * Permet de supprimer un compte
 	 */
 	@FXML
 	private void doSupprimerCompte() {
 	}
-	
-	
 	/*
 	 * Permet d'ajouter un nouveau compte
 	 */

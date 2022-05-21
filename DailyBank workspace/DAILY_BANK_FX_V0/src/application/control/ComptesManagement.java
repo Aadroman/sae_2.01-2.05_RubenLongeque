@@ -7,11 +7,13 @@ import java.util.ArrayList;
 
 import application.DailyBankApp;
 import application.DailyBankState;
+import application.tools.AlertUtilities;
 import application.tools.EditionMode;
 import application.tools.StageManagement;
 import application.view.ComptesManagementController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -139,21 +141,7 @@ public class ComptesManagement {
 		}
 		return compte;
 	}
-	
-	
-	/**
-	 * Permet de modifier le compte d'un client
-	 * @param compte : compte du client selectionné
-	 * @return compte modifié
-	 */
-	public CompteCourant modifierCompte(CompteCourant compte) {
-		CompteEditorPane cep = new CompteEditorPane(this.primaryStage, this.dbs);
-		compte = cep.doCompteEditorDialog(this.clientDesComptes, compte, EditionMode.MODIFICATION);
-		
-		return compte;
-	}
 
-	
 	/**
 	 * @return une liste de compteCourant en fonction du client sélectionné
 	 */
