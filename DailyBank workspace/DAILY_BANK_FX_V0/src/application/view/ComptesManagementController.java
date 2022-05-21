@@ -126,12 +126,16 @@ public class ComptesManagementController implements Initializable {
 //		this.loadList();
 //		this.validateComponentState();
 	}
+	
+	
 	/*
 	 * Permet de supprimer un compte
 	 */
 	@FXML
 	private void doSupprimerCompte() {
 	}
+	
+	
 	/*
 	 * Permet d'ajouter un nouveau compte
 	 */

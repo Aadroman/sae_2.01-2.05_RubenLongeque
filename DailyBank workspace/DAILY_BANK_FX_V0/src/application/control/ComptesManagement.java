@@ -147,6 +147,8 @@ public class ComptesManagement {
 	 * @return compte modifié
 	 */
 	public CompteCourant modifierCompte(CompteCourant compte) {
+		CompteEditorPane cep = new CompteEditorPane(this.primaryStage, this.dbs);
+		compte = cep.doCompteEditorDialog(this.clientDesComptes, compte, EditionMode.MODIFICATION);
 		
 		return compte;
 	}
