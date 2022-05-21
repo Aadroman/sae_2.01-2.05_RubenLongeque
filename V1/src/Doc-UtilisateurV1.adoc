@@ -1,6 +1,8 @@
 # DOCUMENTATION UTILISATEUR VERSION 1
 :toc: left
 :toc-title: Table des matières
+:icons: font
+:nofooter:
 
 ## Présentation générale
 
@@ -25,14 +27,17 @@ Ces nouveaux besoins sont :
 
 ## Installation de l'application
 
-L'installation de Java en version 1.8 est nécessaire pour lancer l'application.
-Pour ce faire, vous pouvez suivre ces étapes : 
+Pour pouvoir lancer l'application, l'installation de Java en version 1.8 est nécessaire.
+Pour ce faire, vous devez  suivre ces étapes : 
 
 * Télécharger gratuitement la version 1.8 de Java sur le https://www.java.com/fr/download/[site d'Oracle]
+** Vous pouvez au préalable vérifiez que l'installation c'est bien réaliser (depuis un terminal) :
+
+    $ java -version 
 
 Ensuite lancer le fichier .jar depuis un terminal (si il ne s'ouvre par en double cliquant dessus) :
 
-(depuis PowerShell) :
+(depuis un terminal) :
 
     $ cd '.\Desktop\DailyBank workspace\'
     $ java -jar Dailybank.jar
@@ -41,93 +46,78 @@ Ensuite lancer le fichier .jar depuis un terminal (si il ne s'ouvre par en doubl
 
 ## Utilisation de l'application
 
+Deux utilisateurs distincts peuvent être constaté, ils sont le guichetier et le chef d'agence. En plus des fonctionnalités qu'ont les guichetier qui sont :
+
+* Modifier les informations des clients (adresse, téléphone, …)
+* Créer de nouveaux clients
+* Consulter un compte
+* Créditer/débiter un compte (java et BD avec procédure stockée)
+* Créer un compte
+* Effectuer un virement de compte à compte
+* Clôturer un compte
+
+les chef d'agence peuvent :
+
+* Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
 
 ## Fonctionnement de l'application
 
-### Fenêtre principale
+*Création d'un compte bancaire (développer par Christopher)*
 
-*Connexion à un compte*
+NOTE: Accessible depuis la fenêtre gestion des comptes
 
-_expliquer se que ça fait + les actions possible_
+En cliquant sur le bouton « nouveau compte » une fenêtre de création de compte s'ouvrira.
+L'utilisateur pourra créer un nouveau compte pour le client en entrant les informations : 
 
-*Deconnexion d'un compte*
+* Découvert autorisé 
+* solde (premier dépôt)    
 
-_expliquer se que ça fait + les actions possible_
+En cliquant sur le bouton « ajouter », cela aura pour action d'ajouter le nouveau compte du client dans la base de données et en cliquant sur le bouton « annuler », cela aura pour action d'annuler l'ajout de ce nouveau compte.
 
+*Clôturation d'un compte bancaire (développer par Ruben)*
 
-*Gestion des clients*
+NOTE: Accessible depuis la fenêtre gestion des comptes
 
-_expliquer se que ça fait + les actions possible_
+En cliquant sur le bouton « supprimer compte » une fenêtre de confirmation s'ouvrira demandant à l'utilisateur de confirmer sa demande. +
+En cliquant sur le bouton « confirmer » le compte sera clôturer et en cliquant sur le bouton « annuler » le compte ne sera pas clôturer.
 
-### Fenêtre gestion des clients
+NOTE: Un compte clôturer sera toujours visible, mais plus aucune actions ne sera possible à moins de le rendre actif
 
-*Recherche d'un client*
+*Enregistrer un débit (développer par Yann)*
 
-_expliquer se que ça fait + les actions possible_
+NOTE: Accessible depuis la fenêtre gestion des opérations
 
-*Création d'un nouveau client*
+En cliquant sur le bouton « enregistrer débit » une fenêtre d'enregistrement d'un débit s'ouvre.
+L'utilisateur pourra enregistrer un débit pour un client en séléctionnant :
 
-_expliquer se que ça fait + les actions possible_
+* Le type d'opération
+* Le montant de l'opération
 
-*Gestion des comptes d'un clients*
+WARNING: Le montant de débit ne doit pas être supérieur au montant du découvert autorisé du client
 
-_expliquer se que ça fait + les actions possible_
+*Enregistrer un crédit (développer par Yann)*
 
-*Modification d'un client*
+NOTE: Accessible depuis la fenêtre gestion des opérations
 
-_expliquer se que ça fait + les actions possible_
+En cliquant sur le bouton « enregistrer crédit » une fenêtre d'enregistrement d'un crédit s'ouvre.
+L'utilisateur pourra enregistrer un crédit pour un client en séléctionnant :
 
-*Désactivation d'un client*
+* Le type d'opération
+* Le montant de l'opération
 
-_expliquer se que ça fait + les actions possible_
+*Enregistrer un virement (développer par Christopher)*
 
-### Fenêtre gestion des comptes d'un clients
+NOTE: Accessible depuis la fenêtre gestion des opérations
 
-*Création d'un nouveau compte*
+En cliquant sur le bouton « enregistrer virement » une fenêtre d'enregistrement d'un virement s'ouvre.
+L'utilisateur pourra enregistrer un virement pour un client en séléctionnant :
 
-_expliquer se que ça fait + les actions possible_
+* Le montant de l'opération
+* Le compte qui effectuent le virement
+* Le compte qui reçoit le virement
 
-*Voir les opération d'un comptes*
+WARNING: Le montant du virement ne doit pas être supérieur au montant du découvert autorisé du compte +
+         Le numéro de compte qui reçoit le virement doit être correct + 
+         Le numéro de compte qui effectuent le virement doit être correct
 
-_expliquer se que ça fait + les actions possible_
-
-*Modifier un compte*
-
-_expliquer se que ça fait + les actions possible_
-
-*Supprimer un compte*
-
-_expliquer se que ça fait + les actions possible_
-
-### Fenêtre modification d'un client
-
-*Modifier le client*
-
-_expliquer se que ça fait + les actions possible_
-
-*Annuler les modifications*
-
-_expliquer se que ça fait + les actions possible_
-
-### Fenêtre création d'un nouveau client
-
-*Ajouter le nouveau client*
-
-_expliquer se que ça fait + les actions possible_
-
-*Annuler l'ajout du nouveau client*
-
-_expliquer se que ça fait + les actions possible_
-
-### Fenêtre nouveau compte 
-
-*Ajouter le nouveau compte*
-
-_expliquer se que ça fait + les actions possible_
-
-*Annuler l'ajout du nouveau compte*
-
-_expliquer se que ça fait + les actions possible_
-
-
-## Résultats et production de l'application
+*Gestion du CRUD*
