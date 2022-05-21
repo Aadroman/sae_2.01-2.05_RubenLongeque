@@ -1,0 +1,133 @@
+# DOCUMENTATION UTILISATEUR VERSION 1
+:toc: left
+:toc-title: Table des matières
+
+## Présentation générale
+
+### Contexte 
+
+Pour s’adapter aux exigences d’instantanéité de leurs clients, les banques françaises ont accentué leurs efforts de restructuration et leurs investissements dans le digital. Des chantiers longs et coûteux. Elles ne se contentent pas de créer des offres alternatives : elles rénovent aussi en profondeur leurs services de banque au quotidien. +
+Le réseaux de bancaire Dailybank possèdent plusieurs outils qui deviennent obsolètes et une première version d’application qui nécessite une refonte. Les besoins de la banque ont évolués, tout comme ceux de leurs clients, il faut donc développer plusieurs fonctionnalités pour répondre à ces nouveaux besoins.
+
+### Objectifs de l'application
+
+L’objectif recherché par la banque DailyBank est de développer une application Java-Oracle de gestion de comptes, pour remplacer plusieurs outils obsolètes.
+Pour ce faire, une première version est mise à dispotion "DailyBank" qu’il faudra adapter aux nouveaux besoins.
+Ces nouveaux besoins sont :
+
+* Elle doit permettre de gérer des comptes bancaires de dépôt pour des clients créés
+
+* Elle doit permettre de débiter et de créditer un compte de deux manières différentes :
+
+** Par échange d’argent entre deux comptes distincts domiciliés dans le même réseau bancaire
+
+** Par personne physique se présentant devant un guichet
+
+## Installation de l'application
+
+L'installation de Java en version 1.8 est nécessaire pour lancer l'application.
+Pour ce faire, vous pouvez suivre ces étapes : 
+
+* Télécharger gratuitement la version 1.8 de Java sur le https://www.java.com/fr/download/[site d'Oracle]
+
+Ensuite lancer le fichier .jar depuis un terminal (si il ne s'ouvre par en double cliquant dessus) :
+
+(depuis PowerShell) :
+
+    $ cd '.\Desktop\DailyBank workspace\'
+    $ java -jar Dailybank.jar
+
+
+
+## Utilisation de l'application
+
+
+## Fonctionnement de l'application
+
+### Fenêtre principale
+
+*Connexion à un compte*
+
+_expliquer se que ça fait + les actions possible_
+
+*Deconnexion d'un compte*
+
+_expliquer se que ça fait + les actions possible_
+
+
+*Gestion des clients*
+
+_expliquer se que ça fait + les actions possible_
+
+### Fenêtre gestion des clients
+
+*Recherche d'un client*
+
+_expliquer se que ça fait + les actions possible_
+
+*Création d'un nouveau client*
+
+_expliquer se que ça fait + les actions possible_
+
+*Gestion des comptes d'un clients*
+
+_expliquer se que ça fait + les actions possible_
+
+*Modification d'un client*
+
+_expliquer se que ça fait + les actions possible_
+
+*Désactivation d'un client*
+
+_expliquer se que ça fait + les actions possible_
+
+### Fenêtre gestion des comptes d'un clients
+
+*Création d'un nouveau compte*
+
+_expliquer se que ça fait + les actions possible_
+
+*Voir les opération d'un comptes*
+
+_expliquer se que ça fait + les actions possible_
+
+*Modifier un compte*
+
+_expliquer se que ça fait + les actions possible_
+
+*Supprimer un compte*
+
+_expliquer se que ça fait + les actions possible_
+
+### Fenêtre modification d'un client
+
+*Modifier le client*
+
+_expliquer se que ça fait + les actions possible_
+
+*Annuler les modifications*
+
+_expliquer se que ça fait + les actions possible_
+
+### Fenêtre création d'un nouveau client
+
+*Ajouter le nouveau client*
+
+_expliquer se que ça fait + les actions possible_
+
+*Annuler l'ajout du nouveau client*
+
+_expliquer se que ça fait + les actions possible_
+
+### Fenêtre nouveau compte 
+
+*Ajouter le nouveau compte*
+
+_expliquer se que ça fait + les actions possible_
+
+*Annuler l'ajout du nouveau compte*
+
+_expliquer se que ça fait + les actions possible_
+
+
+## Résultats et production de l'application
