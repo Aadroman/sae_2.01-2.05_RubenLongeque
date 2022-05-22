@@ -7,11 +7,13 @@ import java.util.ArrayList;
 
 import application.DailyBankApp;
 import application.DailyBankState;
+import application.tools.AlertUtilities;
 import application.tools.EditionMode;
 import application.tools.StageManagement;
 import application.view.ComptesManagementController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -139,7 +141,6 @@ public class ComptesManagement {
 		}
 		return compte;
 	}
-	
 	
 	/**
 	 * Permet de modifier le compte d'un client

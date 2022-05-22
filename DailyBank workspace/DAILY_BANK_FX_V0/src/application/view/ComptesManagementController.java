@@ -113,6 +113,7 @@ public class ComptesManagementController implements Initializable {
 		this.validateComponentState();
 	}
 	
+	
 	/*
 	 * Permet de modifier les informations d'un compte
 	 */
@@ -132,8 +133,6 @@ public class ComptesManagementController implements Initializable {
 	@FXML
 	private void doSupprimerCompte() {
 	}
-	
-	
 	/*
 	 * Permet d'ajouter un nouveau compte
 	 */

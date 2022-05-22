@@ -44,6 +44,7 @@
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
                         </Button>
+                        <Button fx:id="btnVirement" mnemonicParsing="false" onAction="#doVirement" prefHeight="25.0" prefWidth="233.0" text="Réaliser virement" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                </children>

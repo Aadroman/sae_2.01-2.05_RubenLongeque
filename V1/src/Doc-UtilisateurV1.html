@@ -435,6 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="article toc2 toc-left data-line-1">
 <div id="header">
@@ -450,51 +451,41 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_installation_de_lapplication">Installation de l&#8217;application</a></li>
 <li><a href="#_utilisation_de_lapplication">Utilisation de l&#8217;application</a></li>
-<li><a href="#_fonctionnement_de_lapplication">Fonctionnement de l&#8217;application</a>
-<ul class="sectlevel2">
-<li><a href="#_fenêtre_principale">Fenêtre principale</a></li>
-<li><a href="#_fenêtre_gestion_des_clients">Fenêtre gestion des clients</a></li>
-<li><a href="#_fenêtre_gestion_des_comptes_dun_clients">Fenêtre gestion des comptes d&#8217;un clients</a></li>
-<li><a href="#_fenêtre_modification_dun_client">Fenêtre modification d&#8217;un client</a></li>
-<li><a href="#_fenêtre_création_dun_nouveau_client">Fenêtre création d&#8217;un nouveau client</a></li>
-<li><a href="#_fenêtre_nouveau_compte">Fenêtre nouveau compte</a></li>
-</ul>
-</li>
-<li><a href="#_résultats_et_production_de_lapplication">Résultats et production de l&#8217;application</a></li>
+<li><a href="#_fonctionnement_de_lapplication">Fonctionnement de l&#8217;application</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
-<div class="sect1 data-line-5">
+<div class="sect1 data-line-7">
 <h2 id="_présentation_générale">Présentation générale</h2>
 <div class="sectionbody">
-<div class="sect2 data-line-7">
+<div class="sect2 data-line-9">
 <h3 id="_contexte">Contexte</h3>
-<div class="paragraph data-line-9">
+<div class="paragraph data-line-11">
 <p>Pour s’adapter aux exigences d’instantanéité de leurs clients, les banques françaises ont accentué leurs efforts de restructuration et leurs investissements dans le digital. Des chantiers longs et coûteux. Elles ne se contentent pas de créer des offres alternatives : elles rénovent aussi en profondeur leurs services de banque au quotidien.<br>
 Le réseaux de bancaire Dailybank possèdent plusieurs outils qui deviennent obsolètes et une première version d’application qui nécessite une refonte. Les besoins de la banque ont évolués, tout comme ceux de leurs clients, il faut donc développer plusieurs fonctionnalités pour répondre à ces nouveaux besoins.</p>
 </div>
 </div>
-<div class="sect2 data-line-12">
+<div class="sect2 data-line-14">
 <h3 id="_objectifs_de_lapplication">Objectifs de l&#8217;application</h3>
-<div class="paragraph data-line-14">
+<div class="paragraph data-line-16">
 <p>L’objectif recherché par la banque DailyBank est de développer une application Java-Oracle de gestion de comptes, pour remplacer plusieurs outils obsolètes.
 Pour ce faire, une première version est mise à dispotion "DailyBank" qu’il faudra adapter aux nouveaux besoins.
 Ces nouveaux besoins sont :</p>
 </div>
-<div class="ulist data-line-18">
+<div class="ulist data-line-20">
 <ul>
-<li class="data-line-18">
+<li class="data-line-20">
 <p>Elle doit permettre de gérer des comptes bancaires de dépôt pour des clients créés</p>
 </li>
-<li class="data-line-20">
-<p>Elle doit permettre de débiter et de créditer un compte de deux manières différentes :</p>
-<div class="ulist data-line-22">
-<ul>
 <li class="data-line-22">
+<p>Elle doit permettre de débiter et de créditer un compte de deux manières différentes :</p>
+<div class="ulist data-line-24">
+<ul>
+<li class="data-line-24">
 <p>Par échange d’argent entre deux comptes distincts domiciliés dans le même réseau bancaire</p>
 </li>
-<li class="data-line-24">
+<li class="data-line-26">
 <p>Par personne physique se présentant devant un guichet</p>
 </li>
 </ul>
@@ -505,27 +496,39 @@ Ces nouveaux besoins sont :</p>
 </div>
 </div>
 </div>
-<div class="sect1 data-line-26">
+<div class="sect1 data-line-28">
 <h2 id="_installation_de_lapplication">Installation de l&#8217;application</h2>
 <div class="sectionbody">
-<div class="paragraph data-line-28">
-<p>L&#8217;installation de Java en version 1.8 est nécessaire pour lancer l&#8217;application.
-Pour ce faire, vous pouvez suivre ces étapes :</p>
+<div class="paragraph data-line-30">
+<p>Pour pouvoir lancer l&#8217;application, l&#8217;installation de Java en version 1.8 est nécessaire.
+Pour ce faire, vous devez  suivre ces étapes :</p>
 </div>
-<div class="ulist data-line-31">
+<div class="ulist data-line-33">
 <ul>
-<li class="data-line-31">
+<li class="data-line-33">
 <p>Télécharger gratuitement la version 1.8 de Java sur le <a href="https://www.java.com/fr/download/" data-href="https://www.java.com/fr/download/">site d&#8217;Oracle</a></p>
+<div class="ulist data-line-34">
+<ul>
+<li class="data-line-34">
+<p>Vous pouvez au préalable vérifiez que l&#8217;installation c&#8217;est bien réaliser (depuis un terminal) :</p>
+<div class="literalblock data-line-36">
+<div class="content">
+<pre>$ java -version</pre>
+</div>
+</div>
 </li>
 </ul>
 </div>
-<div class="paragraph data-line-33">
+</li>
+</ul>
+</div>
+<div class="paragraph data-line-38">
 <p>Ensuite lancer le fichier .jar depuis un terminal (si il ne s&#8217;ouvre par en double cliquant dessus) :</p>
 </div>
-<div class="paragraph data-line-35">
-<p>(depuis PowerShell) :</p>
+<div class="paragraph data-line-40">
+<p>(depuis un terminal) :</p>
 </div>
-<div class="literalblock data-line-37">
+<div class="literalblock data-line-42">
 <div class="content">
 <pre>$ cd '.\Desktop\DailyBank workspace\'
 $ java -jar Dailybank.jar</pre>
@@ -533,153 +536,236 @@ $ java -jar Dailybank.jar</pre>
 </div>
 </div>
 </div>
-<div class="sect1 data-line-42">
+<div class="sect1 data-line-47">
 <h2 id="_utilisation_de_lapplication">Utilisation de l&#8217;application</h2>
 <div class="sectionbody">
-
+<div class="paragraph data-line-49">
+<p>Deux utilisateurs distincts peuvent être constaté, ils sont le guichetier et le chef d&#8217;agence. En plus des fonctionnalités qu&#8217;ont les guichetier qui sont :</p>
+</div>
+<div class="ulist data-line-51">
+<ul>
+<li class="data-line-51">
+<p>Modifier les informations des clients (adresse, téléphone, …)</p>
+</li>
+<li class="data-line-52">
+<p>Créer de nouveaux clients</p>
+</li>
+<li class="data-line-53">
+<p>Consulter un compte</p>
+</li>
+<li class="data-line-54">
+<p>Créditer/débiter un compte (java et BD avec procédure stockée)</p>
+</li>
+<li class="data-line-55">
+<p>Créer un compte</p>
+</li>
+<li class="data-line-56">
+<p>Effectuer un virement de compte à compte</p>
+</li>
+<li class="data-line-57">
+<p>Clôturer un compte</p>
+</li>
+</ul>
+</div>
+<div class="paragraph data-line-59">
+<p>les chef d&#8217;agence peuvent :</p>
+</div>
+<div class="ulist data-line-61">
+<ul>
+<li class="data-line-61">
+<p>Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)</p>
+</li>
+</ul>
 </div>
 </div>
-<div class="sect1 data-line-45">
+</div>
+<div class="sect1 data-line-63">
 <h2 id="_fonctionnement_de_lapplication">Fonctionnement de l&#8217;application</h2>
 <div class="sectionbody">
-<div class="sect2 data-line-47">
-<h3 id="_fenêtre_principale">Fenêtre principale</h3>
-<div class="paragraph data-line-49">
-<p><strong>Connexion à un compte</strong></p>
+<div class="paragraph data-line-65">
+<p><strong>Création d&#8217;un compte bancaire (développer par Christopher)</strong></p>
 </div>
-<div class="paragraph data-line-51">
-<p><em>expliquer se que ça fait + les actions possible</em></p>
+<div class="admonitionblock note data-line-67">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Accessible depuis la fenêtre gestion des comptes
+</td>
+</tr>
+</table>
 </div>
-<div class="paragraph data-line-53">
-<p><strong>Deconnexion d&#8217;un compte</strong></p>
+<div class="paragraph data-line-69">
+<p>En cliquant sur le bouton « nouveau compte » une fenêtre de création de compte s&#8217;ouvrira.
+L&#8217;utilisateur pourra créer un nouveau compte pour le client en entrant les informations :</p>
 </div>
-<div class="paragraph data-line-55">
-<p><em>expliquer se que ça fait + les actions possible</em></p>
+<div class="ulist data-line-72">
+<ul>
+<li class="data-line-72">
+<p>Découvert autorisé</p>
+</li>
+<li class="data-line-73">
+<p>solde (premier dépôt)</p>
+</li>
+</ul>
 </div>
-<div class="paragraph data-line-58">
-<p><strong>Gestion des clients</strong></p>
+<div class="paragraph data-line-75">
+<p>En cliquant sur le bouton « ajouter », cela aura pour action d&#8217;ajouter le nouveau compte du client dans la base de données et en cliquant sur le bouton « annuler », cela aura pour action d&#8217;annuler l&#8217;ajout de ce nouveau compte.</p>
 </div>
-<div class="paragraph data-line-60">
-<p><em>expliquer se que ça fait + les actions possible</em></p>
+<div class="paragraph data-line-77">
+<p><strong>Clôturation d&#8217;un compte bancaire (développer par Ruben)</strong></p>
 </div>
+<div class="admonitionblock note data-line-79">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Accessible depuis la fenêtre gestion des comptes
+</td>
+</tr>
+</table>
 </div>
-<div class="sect2 data-line-62">
-<h3 id="_fenêtre_gestion_des_clients">Fenêtre gestion des clients</h3>
-<div class="paragraph data-line-64">
-<p><strong>Recherche d&#8217;un client</strong></p>
+<div class="paragraph data-line-81">
+<p>En cliquant sur le bouton « supprimer compte » une fenêtre de confirmation s&#8217;ouvrira demandant à l&#8217;utilisateur de confirmer sa demande.<br>
+En cliquant sur le bouton « confirmer » le compte sera clôturer et en cliquant sur le bouton « annuler » le compte ne sera pas clôturer.</p>
 </div>
-<div class="paragraph data-line-66">
-<p><em>expliquer se que ça fait + les actions possible</em></p>
+<div class="admonitionblock note data-line-84">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Un compte clôturer sera toujours visible, mais plus aucune actions ne sera possible à moins de le rendre actif
+</td>
+</tr>
+</table>
 </div>
-<div class="paragraph data-line-68">
-<p><strong>Création d&#8217;un nouveau client</strong></p>
-</div>
-<div class="paragraph data-line-70">
-<p><em>expliquer se que ça fait + les actions possible</em></p>
-</div>
-<div class="paragraph data-line-72">
-<p><strong>Gestion des comptes d&#8217;un clients</strong></p>
-</div>
-<div class="paragraph data-line-74">
-<p><em>expliquer se que ça fait + les actions possible</em></p>
-</div>
-<div class="paragraph data-line-76">
-<p><strong>Modification d&#8217;un client</strong></p>
-</div>
-<div class="paragraph data-line-78">
-<p><em>expliquer se que ça fait + les actions possible</em></p>
-</div>
-<div class="paragraph data-line-80">
-<p><strong>Désactivation d&#8217;un client</strong></p>
-</div>
-<div class="paragraph data-line-82">
-<p><em>expliquer se que ça fait + les actions possible</em></p>
-</div>
-</div>
-<div class="sect2 data-line-84">
-<h3 id="_fenêtre_gestion_des_comptes_dun_clients">Fenêtre gestion des comptes d&#8217;un clients</h3>
 <div class="paragraph data-line-86">
-<p><strong>Création d&#8217;un nouveau compte</strong></p>
+<p><strong>Enregistrer un débit (développer par Yann)</strong></p>
 </div>
-<div class="paragraph data-line-88">
-<p><em>expliquer se que ça fait + les actions possible</em></p>
+<div class="admonitionblock note data-line-88">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Accessible depuis la fenêtre gestion des opérations
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph data-line-90">
-<p><strong>Voir les opération d&#8217;un comptes</strong></p>
+<p>En cliquant sur le bouton « enregistrer débit » une fenêtre d&#8217;enregistrement d&#8217;un débit s&#8217;ouvre.
+L&#8217;utilisateur pourra enregistrer un débit pour un client en séléctionnant :</p>
 </div>
-<div class="paragraph data-line-92">
-<p><em>expliquer se que ça fait + les actions possible</em></p>
+<div class="ulist data-line-93">
+<ul>
+<li class="data-line-93">
+<p>Le type d&#8217;opération</p>
+</li>
+<li class="data-line-94">
+<p>Le montant de l&#8217;opération</p>
+</li>
+</ul>
 </div>
-<div class="paragraph data-line-94">
-<p><strong>Modifier un compte</strong></p>
-</div>
-<div class="paragraph data-line-96">
-<p><em>expliquer se que ça fait + les actions possible</em></p>
+<div class="admonitionblock warning data-line-96">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Le montant de débit ne doit pas être supérieur au montant du découvert autorisé du client
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph data-line-98">
-<p><strong>Supprimer un compte</strong></p>
+<p><strong>Enregistrer un crédit (développer par Yann)</strong></p>
 </div>
-<div class="paragraph data-line-100">
-<p><em>expliquer se que ça fait + les actions possible</em></p>
+<div class="admonitionblock note data-line-100">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Accessible depuis la fenêtre gestion des opérations
+</td>
+</tr>
+</table>
 </div>
+<div class="paragraph data-line-102">
+<p>En cliquant sur le bouton « enregistrer crédit » une fenêtre d&#8217;enregistrement d&#8217;un crédit s&#8217;ouvre.
+L&#8217;utilisateur pourra enregistrer un crédit pour un client en séléctionnant :</p>
 </div>
-<div class="sect2 data-line-102">
-<h3 id="_fenêtre_modification_dun_client">Fenêtre modification d&#8217;un client</h3>
-<div class="paragraph data-line-104">
-<p><strong>Modifier le client</strong></p>
-</div>
-<div class="paragraph data-line-106">
-<p><em>expliquer se que ça fait + les actions possible</em></p>
+<div class="ulist data-line-105">
+<ul>
+<li class="data-line-105">
+<p>Le type d&#8217;opération</p>
+</li>
+<li class="data-line-106">
+<p>Le montant de l&#8217;opération</p>
+</li>
+</ul>
 </div>
 <div class="paragraph data-line-108">
-<p><strong>Annuler les modifications</strong></p>
+<p><strong>Enregistrer un virement (développer par Christopher)</strong></p>
 </div>
-<div class="paragraph data-line-110">
-<p><em>expliquer se que ça fait + les actions possible</em></p>
+<div class="admonitionblock note data-line-110">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Accessible depuis la fenêtre gestion des opérations
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph data-line-112">
+<p>En cliquant sur le bouton « enregistrer virement » une fenêtre d&#8217;enregistrement d&#8217;un virement s&#8217;ouvre.
+L&#8217;utilisateur pourra enregistrer un virement pour un client en séléctionnant :</p>
+</div>
+<div class="ulist data-line-115">
+<ul>
+<li class="data-line-115">
+<p>Le montant de l&#8217;opération</p>
+</li>
+<li class="data-line-116">
+<p>Le compte qui effectuent le virement</p>
+</li>
+<li class="data-line-117">
+<p>Le compte qui reçoit le virement</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning data-line-119">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Le montant du virement ne doit pas être supérieur au montant du découvert autorisé du compte<br>
+         Le numéro de compte qui reçoit le virement doit être correct<br>
+         Le numéro de compte qui effectuent le virement doit être correct
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph data-line-123">
+<p><strong>Gestion du CRUD</strong>
+&gt;</p>
 </div>
 </div>
-<div class="sect2 data-line-112">
-<h3 id="_fenêtre_création_dun_nouveau_client">Fenêtre création d&#8217;un nouveau client</h3>
-<div class="paragraph data-line-114">
-<p><strong>Ajouter le nouveau client</strong></p>
-</div>
-<div class="paragraph data-line-116">
-<p><em>expliquer se que ça fait + les actions possible</em></p>
-</div>
-<div class="paragraph data-line-118">
-<p><strong>Annuler l&#8217;ajout du nouveau client</strong></p>
-</div>
-<div class="paragraph data-line-120">
-<p><em>expliquer se que ça fait + les actions possible</em></p>
-</div>
-</div>
-<div class="sect2 data-line-122">
-<h3 id="_fenêtre_nouveau_compte">Fenêtre nouveau compte</h3>
-<div class="paragraph data-line-124">
-<p><strong>Ajouter le nouveau compte</strong></p>
-</div>
-<div class="paragraph data-line-126">
-<p><em>expliquer se que ça fait + les actions possible</em></p>
-</div>
-<div class="paragraph data-line-128">
-<p><strong>Annuler l&#8217;ajout du nouveau compte</strong></p>
-</div>
-<div class="paragraph data-line-130">
-<p><em>expliquer se que ça fait + les actions possible</em></p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1 data-line-133">
-<h2 id="_résultats_et_production_de_lapplication">Résultats et production de l&#8217;application</h2>
-<div class="sectionbody">
-
-</div>
-</div>
-</div>
-<div id="footer">
-<div id="footer-text">
-Last updated 2022-05-21 11:16:09 +0200
 </div>
 </div>
 </body>

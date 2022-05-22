@@ -119,42 +119,42 @@ public class CompteEditorPaneController implements Initializable {
 	/*
 	 * Ajoute un compte à la base de donnée
 	 */
-//	public CompteCourant creerCompte() {
-//	
-//		CompteCourant compte = this.compteEdite; // compte courant
-//
-//		if (compte != null) {
-//			try {
-//				Connection con = LogToDatabase.getConnexion();
-//				
-//				// requete sql pour ajouter un compte à la BD
-//				String query = "INSERT INTO COMPTECOURANT VALUES (" + "seq_id_client.NEXTVAL" + ", " + "?" + ", " + "?" + ", " + "?" + ", " + "?" + ")";
-//
-//				PreparedStatement pst = con.prepareStatement(query);
-//				pst.setInt(1, compte.debitAutorise);
-//				pst.setDouble(2, compte.solde);
-//				pst.setInt(3, compte.idNumCli);
-//				pst.setString(4, compte.estCloture);
-//
-//				int result = pst.executeUpdate();
-//				pst.close();
-//
-//				if (result != 1) {
-//					con.rollback();
-//					System.out.println("Problèmes");
-//				}else {
-//					con.commit();
-//					System.out.println("commit");
-//
-//				}
-//
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
-//
-//		return compte;
-//	}
+	public CompteCourant creerCompte() {
+	
+		CompteCourant compte = this.compteEdite; // compte courant
+
+		if (compte != null) {
+			try {
+				Connection con = LogToDatabase.getConnexion();
+				
+				// requete sql pour ajouter un compte à la BD
+				String query = "INSERT INTO COMPTECOURANT VALUES (" + "seq_id_client.NEXTVAL" + ", " + "?" + ", " + "?" + ", " + "?" + ", " + "?" + ")";
+
+				PreparedStatement pst = con.prepareStatement(query);
+				pst.setInt(1, compte.debitAutorise);
+				pst.setDouble(2, compte.solde);
+				pst.setInt(3, compte.idNumCli);
+				pst.setString(4, compte.estCloture);
+
+				int result = pst.executeUpdate();
+				pst.close();
+
+				if (result != 1) {
+					con.rollback();
+					System.out.println("Problèmes");
+				}else {
+					con.commit();
+					System.out.println("commit");
+
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return compte;
+	}
 
 	// Gestion du stage
 	private Object closeWindow(WindowEvent e) {

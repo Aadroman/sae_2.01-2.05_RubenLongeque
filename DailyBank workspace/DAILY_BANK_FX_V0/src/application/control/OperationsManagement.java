@@ -131,6 +131,34 @@ public class OperationsManagement {
 		}
 		return op;
 	}
+	
+	/**
+	 * @return une opération lorsqu'on effectue un virement de compte à compte
+	 */
+	public Operation enregistrerVirement() {
+
+		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dbs);
+		Operation op = oep.doOperationEditorDialog(this.compteConcerne, CategorieOperation.VIREMENT);
+		if (op != null) {
+			try {
+				AccessOperation ao = new AccessOperation();
+
+				ao.insertVirement(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
+
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+				ed.doExceptionDialog();
+				this.primaryStage.close();
+				op = null;
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+				op = null;
+			}
+		}
+		return op;
+	}
+	
 
 	public PairsOfValue<CompteCourant, ArrayList<Operation>>  operationsEtSoldeDunCompte() {
 		ArrayList<Operation> listeOP = new ArrayList<>();
