@@ -40,6 +40,7 @@ public class ComptesManagement {
 	private ComptesManagementController cmc; //le controller relié à la gestion d'un compte
 	private DailyBankState dbs;
 	private Client clientDesComptes; //un client ayant un compte
+	private ArrayList<CompteCourant> test = new ArrayList<CompteCourant>();
 
 	/**
 	 * @param _parentStage

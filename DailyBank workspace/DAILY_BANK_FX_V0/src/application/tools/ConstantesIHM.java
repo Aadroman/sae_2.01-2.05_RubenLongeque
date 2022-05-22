@@ -1,9 +1,14 @@
 package application.tools;
 
+import java.util.ArrayList;
+
+import application.control.ComptesManagement;
 import model.data.Client;
+import model.data.CompteCourant;
 import model.data.Employe;
 
 public class ConstantesIHM {
+	private ComptesManagement cm;
 
 	public static final String CLIENT_INACTIF = "O";
 	public static final String CLIENT_ACTIF = "N";
@@ -40,5 +45,13 @@ public class ConstantesIHM {
 	public static boolean estInactif(Client c) {
 		return c.estInactif.equals(ConstantesIHM.CLIENT_INACTIF);
 	}
+	
+	/*public String[] test() {
+		ArrayList<CompteCourant> test = cm.getComptesDunClient();
+		String tab[] = new String[test.size()];
+		for(int i = 0; i < tab.length; i++) {
+			tab[i] = test.get(i).getId();
+		}
+	}*/
 
 }

@@ -32,6 +32,7 @@ public class ComptesManagementController implements Initializable {
 	// Données de la fenêtre
 	private Client clientDesComptes;
 	private ObservableList<CompteCourant> olCompteCourant;
+	private ObservableList<CompteCourant> test;
 
 	// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, ComptesManagement _cm, DailyBankState _dbstate, Client client) {
