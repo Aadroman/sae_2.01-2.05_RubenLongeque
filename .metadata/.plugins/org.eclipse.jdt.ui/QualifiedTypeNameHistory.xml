@@ -3,6 +3,14 @@
     <fullyQualifiedTypeName name="model.orm.exception.DatabaseConnexionException"/>
     <fullyQualifiedTypeName name="application.tools.ConstantesIHM"/>
     <fullyQualifiedTypeName name="application.tools.EditionMode"/>
+    <fullyQualifiedTypeName name="model.orm.LogToDatabase"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="model.orm.AccessCompteCourant"/>
+    <fullyQualifiedTypeName name="javafx.scene.control.Alert"/>
+    <fullyQualifiedTypeName name="java.util.Optional"/>
+    <fullyQualifiedTypeName name="javafx.scene.control.ButtonType"/>
+    <fullyQualifiedTypeName name="javafx.collections.ObservableList"/>
+    <fullyQualifiedTypeName name="javafx.collections.FXCollections"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="model.data.CompteCourant"/>
 </qualifiedTypeNameHistroy>

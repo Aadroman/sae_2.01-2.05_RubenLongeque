@@ -7,13 +7,11 @@ import java.util.ArrayList;
 
 import application.DailyBankApp;
 import application.DailyBankState;
-import application.tools.AlertUtilities;
 import application.tools.EditionMode;
 import application.tools.StageManagement;
 import application.view.ComptesManagementController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -97,19 +95,13 @@ public class ComptesManagement {
 		compte = cep.doCompteEditorDialog(this.clientDesComptes, null, EditionMode.CREATION);
 		if (compte != null) {
 			try {
-				/*
-				compte = null;
-				AlertUtilities.showAlert(this.primaryStage, "En cours de développement", "Non implémenté",
-						"Enregistrement réel en BDD du compe non effectué\nEn cours de développement", AlertType.ERROR);
-				*/
-				
 				
 				Connection con = LogToDatabase.getConnexion(); //Connexion à la base de données
                 
                 String query = "INSERT INTO COMPTECOURANT VALUES (" + "seq_id_client.NEXTVAL" + ", " + "?" + ", " + "?" + ", " + "?" + ", " + "?" + ")";
                 
                 PreparedStatement pst = con.prepareStatement(query);
-                pst.setInt(1, compte.debitAutorise);
+                pst.setInt(1, -compte.debitAutorise);
                 pst.setDouble(2, compte.solde);
                 pst.setInt(3, compte.idNumCli);
                 pst.setString(4, compte.estCloture);

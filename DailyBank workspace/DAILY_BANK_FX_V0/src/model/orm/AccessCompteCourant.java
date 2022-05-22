@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import application.tools.EditionMode;
 import model.data.CompteCourant;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
@@ -160,4 +159,82 @@ public class AccessCompteCourant {
 			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
 		}
 	}
+	
+	
+	/**
+	 * Clôture d'un compte courant
+	 * 
+	 * @param cc IN comptre courant selectionné 
+	 * @throws RowNotFoundOrTooManyRowsException
+	 * @throws DataAccessException
+	 * @throws DatabaseConnexionException
+	 * @throws ManagementRuleViolation
+	 */
+	public void closeCompteCourant(CompteCourant cc)throws RowNotFoundOrTooManyRowsException, DataAccessException,
+			DatabaseConnexionException, ManagementRuleViolation {
+		try {
+			
+			Connection con = LogToDatabase.getConnexion();
+			
+			String query = "UPDATE CompteCourant SET " + "Solde = 0, estCloture='O' " + "WHERE idNumCompte = ?";
+			
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1, cc.idNumCompte);
+			
+			System.err.println(query);
+			
+			int result = pst.executeUpdate();
+			pst.close();
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.CompteCourant, Order.UPDATE,
+						"Update anormal (update de moins ou plus d'une ligne)", null, result);
+			}
+			con.commit();
+			
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
+		}
+	}
+	
+	
+	/**
+	 * Permet la réacitvation d'un compte
+	 * 
+	 * Met par défaut un découvert de 200 euros et un solde de 10 euros
+	 * 
+	 * @param cc
+	 * @throws RowNotFoundOrTooManyRowsException
+	 * @throws DataAccessException
+	 * @throws DatabaseConnexionException
+	 * @throws ManagementRuleViolation
+	 */
+	public void openagainCompteCourant(CompteCourant cc) throws RowNotFoundOrTooManyRowsException, DataAccessException,
+			DatabaseConnexionException, ManagementRuleViolation {
+		try {
+
+			Connection con = LogToDatabase.getConnexion();
+
+			String query = "UPDATE CompteCourant SET " + "debitAutorise = -200 ,Solde = 10, estCloture='N' " + "WHERE idNumCompte = ?";
+
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1, cc.idNumCompte);
+
+			System.err.println(query);
+
+			int result = pst.executeUpdate();
+			pst.close();
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.CompteCourant, Order.UPDATE,
+						"Update anormal (update de moins ou plus d'une ligne)", null, result);
+			}
+			con.commit();
+
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
+		}
+	}
+	
+	
 }

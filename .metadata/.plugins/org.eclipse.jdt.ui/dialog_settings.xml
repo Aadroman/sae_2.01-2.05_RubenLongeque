@@ -15,4 +15,7 @@
 	</section>
 	<section name="JavaElementSearchActions">
 	</section>
+	<section name="OptionalMessageDialog.hide.">
+		<item key="configure_problem_severity_dialog_id" value="false"/>
+	</section>
 </section>
