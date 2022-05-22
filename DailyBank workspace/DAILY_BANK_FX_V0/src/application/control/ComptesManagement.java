@@ -148,9 +148,25 @@ public class ComptesManagement {
 	 */
 	public CompteCourant modifierCompte(CompteCourant compte) {
 		CompteEditorPane cep = new CompteEditorPane(this.primaryStage, this.dbs);
-		compte = cep.doCompteEditorDialog(this.clientDesComptes, compte, EditionMode.MODIFICATION);
+		CompteCourant result = cep.doCompteEditorDialog(this.clientDesComptes, compte, EditionMode.MODIFICATION);
+		if(result != null) {
+			try {
+				AccessCompteCourant acpt = new AccessCompteCourant();
+				acpt.updateCompteCourant(result);
+				
+			}catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+				ed.doExceptionDialog();
+				this.primaryStage.close();
+				result = null;
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+				result = null;
+			}
+		}
 		
-		return compte;
+		return result;
 	}
 
 	

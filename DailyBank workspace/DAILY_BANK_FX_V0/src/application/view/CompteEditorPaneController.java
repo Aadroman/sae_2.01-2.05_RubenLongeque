@@ -85,10 +85,12 @@ public class CompteEditorPaneController implements Initializable {
 			this.btnCancel.setText("Annuler");
 			break;
 		case MODIFICATION:
-			AlertUtilities.showAlert(this.primaryStage, "Non implémenté", "Modif de compte n'est pas implémenté", null,
-					AlertType.ERROR);
-			return null;
-			// break;
+			this.txtDecAutorise.setDisable(false);
+			this.txtSolde.setDisable(true);
+			this.lblMessage.setText("Modification du compte");
+			this.btnOk.setText("Modifier");
+			this.btnCancel.setText("Annuler");
+			break;
 		case SUPPRESSION:
 			AlertUtilities.showAlert(this.primaryStage, "Non implémenté", "Suppression de compte n'est pas implémenté",
 					null, AlertType.ERROR);
