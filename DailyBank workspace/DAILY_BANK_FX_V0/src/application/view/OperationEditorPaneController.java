@@ -1,10 +1,13 @@
 package application.view;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 import application.DailyBankState;
+import application.control.ComptesManagement;
+import application.tools.AlertUtilities;
 import application.tools.CategorieOperation;
 import application.tools.ConstantesIHM;
 import javafx.collections.FXCollections;
@@ -88,6 +91,12 @@ public class OperationEditorPaneController implements Initializable {
 			this.cbTypeOpe.getSelectionModel().select(0);
 			break;
 		case VIREMENT:
+			String infoV = "Cpt. : " + this.compteEdite.idNumCompte + "  "
+					+ String.format(Locale.ENGLISH, "%12.02f", this.compteEdite.solde) + "  /  "
+					+ String.format(Locale.ENGLISH, "%8d", this.compteEdite.debitAutorise);
+			this.lblMessage.setText(infoV);
+
+			
 			this.btnOk.setText("Effectuer Virement");
 			this.btnCancel.setText("Annuler Virement");
 

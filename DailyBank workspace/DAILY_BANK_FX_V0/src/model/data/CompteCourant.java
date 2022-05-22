@@ -25,6 +25,10 @@ public class CompteCourant {
 	public CompteCourant() {
 		this(0, 0, 0, "N", -1000);
 	}
+	
+	public String getId() {
+		return ""+this.idNumCli;
+	}
 
 	@Override
 	public String toString() {

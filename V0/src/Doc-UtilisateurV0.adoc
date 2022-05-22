@@ -62,15 +62,25 @@ Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
 
 ## Fonctionnement de l'application
 
-### Fenêtre principale
+### Utilisateur : Guichetier
+
+#### Fenêtre principale
 
 *quitter l'application*
 
-En cliquant sur le bouton quitter, accessible depuis l'onglet utilisateur, cela aura pour action de quitter l'application.
+TIP: Un bouton « quitter » est accessible depuis l'onglet « utilisateur » 
+
+En cliquant sur ce bouton, l'utilisateur quittera l'application
+
+image:img/quitter-appli.png[]
 
 NOTE: Une alerte de validation s'ouvrira
 
+image:img/alerte-quitter.png[]
+
 *Connexion à un compte*
+
+TIP: Un bouton « connexion »  est accessible depuis l'onglet « utilisateur » 
 
 En cliquant sur le bouton « connexion » l'utilisateur pourra se connecter à son compte.
 Ce bouton ouvre une fenêtre de connexion demandant les information de l'utilisateur :
@@ -79,19 +89,32 @@ Ce bouton ouvre une fenêtre de connexion demandant les information de l'utilisa
 
 * Mot de passe
 
-Dans le cas où l'une de ces deux informations est fausse, un message d'erreur sera affiché à l'écran.
+image:img/connection.png[]
+
+WARNING: Si l'une de ces deux informations est fausse ou bien les deux, un message d'erreur sera affiché à l'écran.
+
+image:img/erreur-connection.png[]
 
 *Deconnexion d'un compte*
 
+TIP: Un bouton « deconnexion »  est accessible depuis l'onglet « utilisateur » 
+
 En cliquant sur le bouton « deconnexion » l'utilisateur pourra se déconnecter de son compte.
+
+image:img/deconnection.png[]
 
 *Gestion des clients*
 
 NOTE: Cette fonctionnalités n'est accessible que si l'utilisateur est connectée
+      Cette fonctionnalités est accessible depuis l'onglet « gestion »
 
-En cliquant sur le bouton « client » accessible depuis l'onglet « gestion » l'utilisateur pourra gérer les utilisateurs de l'agence bancaire en ouvrant une feêtre de gestion des clients.
+image:img/gestion-client.png[]
 
-### Fenêtre gestion des clients
+En cliquant sur le bouton « client » l'utilisateur pourra gérer les clients de l'agence bancaire en ouvrant une fenêtre de gestion des clients.
+
+image:img/gestion-client2.png[]
+
+#### Fenêtre gestion des clients
 
 *Recherche d'un client*
 
@@ -104,6 +127,8 @@ Les résultats seront visible sur la ListView et peuvent être affinés en entra
 
 * Prénom
 
+image:img/recherche-client.png[]
+
 *Création d'un nouveau client*
 
 En cliquant sur le bouton « nouveau client » l'utilisateur pourra créer un nouveau client en ouvrant une nouvelle fenêtre de création d'un client et en entrant les informations :
@@ -115,15 +140,24 @@ En cliquant sur le bouton « nouveau client » l'utilisateur pourra créer un no
 * E-mail
 * Cliant actif
 
+image:img/nouveau-client.png[]
+image:img/nouveau-client2.png[]
+
 WARNING: Si l'une de ces informations n'est pas entrée une alerte s'affiche présentant l'erreur
 
-Cliquer sur le bouton « Ajouter » aura pour action de créer le nouveau client et cliquer sur le bouton « annuler » aura pour action d'annuler la création du client. 
+Cliquer sur le bouton « Ajouter » aura pour action de créer le nouveau client et de l'ajouter à la Base de Donnée et cliquer sur le bouton « annuler » aura pour action d'annuler la création du client. 
+
+image:img/nouveau-client-erreur.png[]
 
 *Modification d'un client*
 
-Il est possible de modifier les informations d'un client en le sélectionnant et en cliquant sur le bouton « modifier client ». +
-Cela aura pour action d'ouvrir une nouvelles fenêtre de modification d'un client.
-L'utilisateur devra entrée les informations qu'il souhaite modifier :
+TIP: Un client doit être sélectionner pour effectuer cette action
+
+image:img/modification-client.png[]
+
+En cliquant sur le bouton « modifier client » une fenêtre s'ouvrira dans laquelle l'utilisateur pour modifier les informations de celui-ci :
+
+Cliquer sur le bouton « modifier » aura pour action de modifier les informations du client et de les enregistrer dans la Base de Donnée et cliquer sur le bouton « annuler » aura pour action d'annuler la modification du client. 
 
 * Nom
 * Prénom
@@ -132,14 +166,33 @@ L'utilisateur devra entrée les informations qu'il souhaite modifier :
 * E-mail
 * Client-actif
 
+image:img/modification-client2.png[]
+
 WARNING: Si l'une de ces informations n'est pas entrée une alerte s'affiche présentant l'erreur
 
-Cliquer sur le bouton « modifier » aura pour action de modifier le client et cliquer sur le bouton « annuler » aura pour action d'annuler la modification du client. 
+image:img/modification-client-erreur.png[]
+
 
 *Gestion des comptes d'un client*
 
-Il est possible de consulter les comptes d'un client en le sélectionnant et en cliquant sur le bouton « comptes client ». +
-Cela aura pour action d'ouvrir une nouvelles fenêtre de gestion des comptes d'un client dans laquelle l'utilisateur pourra voir les opérations du client en cliquant sur le bouton « voir opérations». + 
-Cela aura pour action d'ouvrir une nouvelles fenêtre de gestion des opérations.
+TIP: Un client doit être sélectionner pour effectuer cette action
+
+En cliquant sur le bouton « comptes client » une fenêtre s'ouvrira dans laquelle l'utilisateur pour consulter les comptes d'un client.
+
+image:img/gestion-compte.png[]
+
+image:img/gestion-compte2.png[]
+
+#### Fenêtre gestion des comptes 
+
+*voir les opération d'un comptes*
+
+TIP: Cette fonctionnalité est accessible en sélectionnant un compte
+
+image:img/gestion-operation.png[]
+
+En cliquant sur le bouton « voir opérations » un fenêtre s'ouvrira dans laquelle l'utilisateur pourra consulter les opérations du comptes d'un client.
+
+image:img/gestion-operation2.png[]
 
 ## Résultats et production de l'application
