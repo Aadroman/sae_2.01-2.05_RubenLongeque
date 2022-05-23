@@ -28,7 +28,7 @@ public class EmployeManagementController implements Initializable {
 
 	// Etat application
 	private DailyBankState dbs;
-	private EmployeManagement cm;
+	private EmployeManagement em;
 
 	// Fenêtre physique
 	private Stage primaryStage;
@@ -37,8 +37,8 @@ public class EmployeManagementController implements Initializable {
 	private ObservableList<Employe> olc;
 
 	// Manipulation de la fenêtre
-	public void initContext(Stage _primaryStage, EmployeManagement _cm, DailyBankState _dbstate) {
-		this.cm = _cm;
+	public void initContext(Stage _primaryStage, EmployeManagement _em, DailyBankState _dbstate) {
+		this.em = _em;
 		this.primaryStage = _primaryStage;
 		this.dbs = _dbstate;
 		this.configure();
@@ -68,6 +68,8 @@ public class EmployeManagementController implements Initializable {
 
 	// Attributs de la scene + actions
 	@FXML
+	private TextField txtNum;
+	@FXML
 	private TextField txtLogin;
 	@FXML
 	private TextField txtMDP;
@@ -95,27 +97,27 @@ public class EmployeManagementController implements Initializable {
 	 */
 	@FXML
 	private void doRechercher() {
-		int log;
+		int idEmp;
 		try {
-			String nc = this.txtLogin.getText();
+			String nc = this.txtNum.getText();
 			if (nc.equals("")) {
-				log = -1;
+				idEmp = -1;
 			} else {
-				log = Integer.parseInt(nc);
-				if (log < 0) {
-					this.txtLogin.setText("");
-					log = -1;
+				idEmp = Integer.parseInt(nc);
+				if (idEmp < 0) {
+					this.txtNum.setText("");
+					idEmp = -1;
 				}
 			}
 		} catch (NumberFormatException nfe) {
-			this.txtLogin.setText("");
-			log = -1;
+			this.txtNum.setText("");
+			idEmp = -1;
 		}
 	
 		String login = this.txtLogin.getText();
 		String mdp = this.txtMDP.getText();
 
-		if (log != -1) {
+		if (idEmp != -1) {
 			this.txtMDP.setText("");
 		}
 
@@ -124,7 +126,7 @@ public class EmployeManagementController implements Initializable {
 		// numCompte != -1 et debutNom non vide => recherche nom/prenom
 		// numCompte != -1 et debutNom vide => recherche tous les clients
 		ArrayList<Employe> listeEmp;
-		listeEmp = this.cm.getlisteEmploye(login, mdp);
+		listeEmp = this.em.getlisteEmploye(idEmp, login, mdp);
 
 		this.olc.clear();
 		for (Employe cli : listeEmp) {
@@ -145,7 +147,7 @@ public class EmployeManagementController implements Initializable {
 		int selectedIndice = this.lvEmploye.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			Employe empMod = this.olc.get(selectedIndice);
-			Employe result = this.cm.modifierEmploye(empMod);
+			Employe result = this.em.modifierEmploye(empMod);
 			if (result != null) {
 				this.olc.set(selectedIndice, result);
 			}
@@ -176,7 +178,7 @@ public class EmployeManagementController implements Initializable {
 	@FXML
 	private void doNouveauEmploye() {
 		Employe employe;
-		employe = this.cm.nouveauEmploye();
+		employe = this.em.nouveauEmploye();
 		if (employe != null) {
 			this.olc.add(employe);
 		}

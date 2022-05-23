@@ -131,7 +131,7 @@ public class EmployeManagement {
 	 * @param _debutPrenom
 	 * @return une liste d'employé en fonction de plusieurs spécifications
 	 */
-	public ArrayList<Employe> getlisteEmploye(String _login, String _mdp) {
+	public ArrayList<Employe> getlisteEmploye(int _numCompte, String _login, String _mdp) {
 		ArrayList<Employe> listeEmp = new ArrayList<>();
 		try {
 			// Recherche des employés en BD. cf. AccessEmploye > getEmploye(.)
@@ -140,9 +140,7 @@ public class EmployeManagement {
 			// numCompte != -1 et debutNom vide => recherche tous les clients
 
 			AccessEmploye ac = new AccessEmploye();
-			for(int i = 0; i < listeEmp.size(); i++) {
-				listeEmp.add(ac.getEmploye(_login, _mdp));
-			}
+			listeEmp = ac.getEmployes(this.dbs.getEmpAct().idAg, _numCompte, _login, _mdp);
 
 		} catch (DatabaseConnexionException e) {
 			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);

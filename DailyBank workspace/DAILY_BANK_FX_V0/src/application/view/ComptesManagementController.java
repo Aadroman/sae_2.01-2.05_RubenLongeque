@@ -64,6 +64,7 @@ public class ComptesManagementController implements Initializable {
 
 		this.olCompteCourant = FXCollections.observableArrayList();
 		this.olCompteDesactive = FXCollections.observableArrayList();
+		this.lvComptes.setItems(this.olCompteCourant);
 		this.lvComptes.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		this.lvComptes.getFocusModel().focus(-1);
 		this.lvComptes.getSelectionModel().selectedItemProperty().addListener(e -> this.validateComponentState());

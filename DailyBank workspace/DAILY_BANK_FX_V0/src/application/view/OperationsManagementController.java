@@ -50,8 +50,8 @@ public class OperationsManagementController implements Initializable {
 
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
-
 		this.olOperation = FXCollections.observableArrayList();
+		this.lvOperations.setItems(this.olOperation);
 		this.lvOperations.setSelectionModel(new NoSelectionModel<Operation>());
 		this.updateInfoCompteClient();
 		this.validateComponentState();

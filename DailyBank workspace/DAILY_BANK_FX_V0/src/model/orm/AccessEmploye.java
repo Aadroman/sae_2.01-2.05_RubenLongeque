@@ -29,7 +29,7 @@ public class AccessEmploye {
 	 * @throws DataAccessException
 	 * @throws DatabaseConnexionException
 	 */
-	public ArrayList<Employe> getEmployes(int idAg, int idEmploye, String debutNom, String debutPrenom)
+	public ArrayList<Employe> getEmployes(int idAg, int idEmploye, String login, String mdp)
 			throws DataAccessException, DatabaseConnexionException {
 		ArrayList<Employe> alResult = new ArrayList<>();
 
@@ -40,46 +40,46 @@ public class AccessEmploye {
 
 			String query;
 			if (idEmploye != -1) {
-				query = "SELECT * FROM Client where idAg = ?";
-				query += " AND idNumCli = ?";
-				query += " ORDER BY nom";
+				query = "SELECT * FROM Employe where idAg = ?";
+				query += " AND idEmploye = ?";
+				query += " ORDER BY login";
 				pst = con.prepareStatement(query);
 				pst.setInt(1, idAg);
 				pst.setInt(2, idEmploye);
 
-			} else if (!debutNom.equals("")) {
-				debutNom = debutNom.toUpperCase() + "%";
-				debutPrenom = debutPrenom.toUpperCase() + "%";
-				query = "SELECT * FROM Client where idAg = ?";
-				query += " AND UPPER(nom) like ?" + " AND UPPER(prenom) like ?";
-				query += " ORDER BY nom";
+			} else if (!login.equals("")) {
+				login = login.toUpperCase() + "%";
+				login = login.toUpperCase() + "%";
+				query = "SELECT * FROM Employe where idAg = ?";
+				query += " AND UPPER(login) like ?" + " AND UPPER(motpasse) like ?";
+				query += " ORDER BY login";
 				pst = con.prepareStatement(query);
 				pst.setInt(1, idAg);
-				pst.setString(2, debutNom);
-				pst.setString(3, debutPrenom);
+				pst.setString(2, login);
+				pst.setString(3, mdp);
 			} else {
-				query = "SELECT * FROM Client where idAg = ?";
-				query += " ORDER BY nom";
+				query = "SELECT * FROM Employe where idAg = ?";
+				query += " ORDER BY login";
 				pst = con.prepareStatement(query);
 				pst.setInt(1, idAg);
 			}
-			System.err.println(query + " nom : " + debutNom + " prenom : " + debutPrenom + "#");
+			System.err.println(query + " login : " + login + " mdp : " + mdp + "#");
 
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
-				int idEmpTri = rs.getInt("idEmploye");
+				int idEmp = rs.getInt("idEmploye");
 				String nom = rs.getString("nom");
 				String prenom = rs.getString("prenom");
-				String droitAccess = rs.getString("DroitAccess");
+				String droitAccess = rs.getString("droitsaccess");
 				droitAccess = (droitAccess == null ? "" : droitAccess);
-				String login = rs.getString("email");
-				login = (login == null ? "" : login);
-				String mdp = rs.getString("telephone");
-				mdp = (mdp == null ? "" : mdp);
+				String identifiant = rs.getString("login");
+				identifiant = (identifiant == null ? "" : identifiant);
+				String password = rs.getString("motpasse");
+				password = (password == null ? "" : password);
 				int idAgEmp = rs.getInt("idAg");
 
 				alResult.add(
-						new Employe(idEmpTri, nom, prenom, droitAccess, login, mdp, idAgEmp));
+						new Employe(idEmp, nom, prenom, droitAccess, identifiant, password, idAgEmp));
 			}
 			rs.close();
 			pst.close();
