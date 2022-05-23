@@ -64,7 +64,6 @@ public class ComptesManagementController implements Initializable {
 
 		this.olCompteCourant = FXCollections.observableArrayList();
 		this.olCompteDesactive = FXCollections.observableArrayList();
-		this.lvComptes.setItems(this.olCompteCourant);
 		this.lvComptes.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		this.lvComptes.getFocusModel().focus(-1);
 		this.lvComptes.getSelectionModel().selectedItemProperty().addListener(e -> this.validateComponentState());
@@ -103,6 +102,7 @@ public class ComptesManagementController implements Initializable {
 		
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		this.lvComptes.setItems(this.olCompteCourant);
 	}
 	
 	/*
@@ -190,6 +190,7 @@ public class ComptesManagementController implements Initializable {
 			}
 			reac.close();
 		}
+		this.loadList();
 		this.desaclist();
 		this.validateComponentState();
 	}

@@ -102,7 +102,7 @@ public class ComptesManagement {
                 String query = "INSERT INTO COMPTECOURANT VALUES (" + "seq_id_client.NEXTVAL" + ", " + "?" + ", " + "?" + ", " + "?" + ", " + "?" + ")";
                 
                 PreparedStatement pst = con.prepareStatement(query);
-                pst.setInt(1, -compte.debitAutorise);
+                pst.setInt(1, compte.debitAutorise);
                 pst.setDouble(2, compte.solde);
                 pst.setInt(3, compte.idNumCli);
                 pst.setString(4, compte.estCloture);

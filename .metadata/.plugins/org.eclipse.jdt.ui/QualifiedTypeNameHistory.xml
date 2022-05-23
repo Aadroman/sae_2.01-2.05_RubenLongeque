@@ -13,4 +13,5 @@
     <fullyQualifiedTypeName name="javafx.collections.FXCollections"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="model.data.CompteCourant"/>
+    <fullyQualifiedTypeName name="model.data.Employe"/>
 </qualifiedTypeNameHistroy>

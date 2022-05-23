@@ -52,7 +52,6 @@ public class OperationsManagementController implements Initializable {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 
 		this.olOperation = FXCollections.observableArrayList();
-		this.lvOperations.setItems(this.olOperation);
 		this.lvOperations.setSelectionModel(new NoSelectionModel<Operation>());
 		this.updateInfoCompteClient();
 		this.validateComponentState();
@@ -85,6 +84,7 @@ public class OperationsManagementController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		this.lvOperations.setItems(this.olOperation);
 	}
 
 	@FXML

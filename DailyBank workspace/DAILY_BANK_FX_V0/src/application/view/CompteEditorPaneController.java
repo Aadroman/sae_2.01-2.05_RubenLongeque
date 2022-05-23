@@ -90,10 +90,7 @@ public class CompteEditorPaneController implements Initializable {
 			this.btnCancel.setText("Annuler");
 			break;
 		case SUPPRESSION:
-			AlertUtilities.showAlert(this.primaryStage, "Non implémenté", "Suppression de compte n'est pas implémenté",
-					null, AlertType.ERROR);
-			return null;
-			// break;
+			//break;
 		}
 
 		// Paramétrages spécifiques pour les chefs d'agences
@@ -170,7 +167,11 @@ public class CompteEditorPaneController implements Initializable {
 			try {
 				int val;
 				val = Integer.parseInt(this.txtDecAutorise.getText().trim());
-				if (val < 0) {
+				val *= -1;
+//				if (val < 0) {
+//					throw new NumberFormatException();
+//				}
+				if (val > 0) {
 					throw new NumberFormatException();
 				}
 				this.compteEdite.debitAutorise = val;

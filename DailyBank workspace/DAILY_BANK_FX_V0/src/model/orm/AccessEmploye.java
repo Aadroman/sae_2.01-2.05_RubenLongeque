@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import model.data.Client;
 import model.data.Employe;
@@ -18,6 +19,78 @@ public class AccessEmploye {
 	public AccessEmploye() {
 	}
 
+	
+	/**
+	 * @param idAg
+	 * @param idEmploye
+	 * @param debutNom
+	 * @param debutPrenom
+	 * @return
+	 * @throws DataAccessException
+	 * @throws DatabaseConnexionException
+	 */
+	public ArrayList<Employe> getEmployes(int idAg, int idEmploye, String debutNom, String debutPrenom)
+			throws DataAccessException, DatabaseConnexionException {
+		ArrayList<Employe> alResult = new ArrayList<>();
+
+		try {
+			Connection con = LogToDatabase.getConnexion();
+
+			PreparedStatement pst;
+
+			String query;
+			if (idEmploye != -1) {
+				query = "SELECT * FROM Client where idAg = ?";
+				query += " AND idNumCli = ?";
+				query += " ORDER BY nom";
+				pst = con.prepareStatement(query);
+				pst.setInt(1, idAg);
+				pst.setInt(2, idEmploye);
+
+			} else if (!debutNom.equals("")) {
+				debutNom = debutNom.toUpperCase() + "%";
+				debutPrenom = debutPrenom.toUpperCase() + "%";
+				query = "SELECT * FROM Client where idAg = ?";
+				query += " AND UPPER(nom) like ?" + " AND UPPER(prenom) like ?";
+				query += " ORDER BY nom";
+				pst = con.prepareStatement(query);
+				pst.setInt(1, idAg);
+				pst.setString(2, debutNom);
+				pst.setString(3, debutPrenom);
+			} else {
+				query = "SELECT * FROM Client where idAg = ?";
+				query += " ORDER BY nom";
+				pst = con.prepareStatement(query);
+				pst.setInt(1, idAg);
+			}
+			System.err.println(query + " nom : " + debutNom + " prenom : " + debutPrenom + "#");
+
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				int idEmpTri = rs.getInt("idEmploye");
+				String nom = rs.getString("nom");
+				String prenom = rs.getString("prenom");
+				String droitAccess = rs.getString("DroitAccess");
+				droitAccess = (droitAccess == null ? "" : droitAccess);
+				String login = rs.getString("email");
+				login = (login == null ? "" : login);
+				String mdp = rs.getString("telephone");
+				mdp = (mdp == null ? "" : mdp);
+				int idAgEmp = rs.getInt("idAg");
+
+				alResult.add(
+						new Employe(idEmpTri, nom, prenom, droitAccess, login, mdp, idAgEmp));
+			}
+			rs.close();
+			pst.close();
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.Client, Order.SELECT, "Erreur accès", e);
+		}
+
+		return alResult;
+	}
+	
+	
 	/**
 	 * Recherche d'un employe par son login / mot de passe.
 	 *
