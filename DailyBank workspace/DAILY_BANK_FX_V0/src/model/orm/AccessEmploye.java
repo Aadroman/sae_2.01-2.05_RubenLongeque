@@ -222,8 +222,8 @@ public class AccessEmploye {
 			Connection con = LogToDatabase.getConnexion();
 
 			String query = "UPDATE EMPLOYE SET " + "nom = " + "? , " + "prenom = " + "? , " + "droitsaccess = "
-					+ "? , " + "login = " + "? , " + "motdepasse = " + "? , "  + " "
-					+ "WHERE idNumEmploye = ? ";
+					+ "? , " + "login = " + "? , " + "motpasse = " + "?"  + " "
+					+ "WHERE idemploye = ? ";
 
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setString(1, employe.nom);
@@ -231,7 +231,7 @@ public class AccessEmploye {
 			pst.setString(3, employe.droitsAccess);
 			pst.setString(4, employe.login);
 			pst.setString(5, employe.motPasse);
-			pst.setInt(7, employe.idEmploye);
+			pst.setInt(6, employe.idEmploye);
 
 			System.err.println(query);
 
