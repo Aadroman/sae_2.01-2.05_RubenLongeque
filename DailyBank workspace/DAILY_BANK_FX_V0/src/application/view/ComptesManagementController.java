@@ -43,7 +43,6 @@ public class ComptesManagementController implements Initializable {
 	private Client clientDesComptes;
 	private ObservableList<CompteCourant> olCompteCourant;
 	private ObservableList<CompteCourant> olCompteDesactive;
-	private ObservableList<CompteCourant> test;
 
 	// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, ComptesManagement _cm, DailyBankState _dbstate, Client client) {
@@ -209,7 +208,7 @@ public class ComptesManagementController implements Initializable {
 	/*
 	 * Ajoute les comptes d'un client dans une liste
 	 */
-	private void loadList () {
+	public void loadList () {
 		ArrayList<CompteCourant> listeCpt;
 		listeCpt = this.cm.getComptesDunClient();
 		this.olCompteCourant.clear();

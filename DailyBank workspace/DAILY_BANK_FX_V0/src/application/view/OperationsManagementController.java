@@ -1,12 +1,11 @@
 package application.view;
 
-import java.net.URL;
+import java.net.URL;	
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 import application.DailyBankState;
-import application.control.OperationVirement;
 import application.control.OperationsManagement;
 import application.tools.NoSelectionModel;
 import application.tools.PairsOfValue;
@@ -28,7 +27,6 @@ public class OperationsManagementController implements Initializable {
 	// Etat application
 	private DailyBankState dbs;
 	private OperationsManagement om;
-	private OperationVirement ov;
 
 	// Fenêtre physique
 	private Stage primaryStage;
@@ -60,6 +58,7 @@ public class OperationsManagementController implements Initializable {
 	public void displayDialog() {
 		this.primaryStage.showAndWait();
 	}
+	
 
 	// Gestion du stage
 	private Object closeWindow(WindowEvent e) {

@@ -91,6 +91,8 @@ public class OperationEditorPaneController implements Initializable {
 			this.cbTypeOpe.getSelectionModel().select(0);
 			break;
 		case VIREMENT:
+			this.txtNumCompte.setVisible(true);
+			this.lblNumCompte.setVisible(true);
 			String infoV = "Cpt. : " + this.compteEdite.idNumCompte + "  "
 					+ String.format(Locale.ENGLISH, "%12.02f", this.compteEdite.solde) + "  /  "
 					+ String.format(Locale.ENGLISH, "%8d", this.compteEdite.debitAutorise);
@@ -129,6 +131,10 @@ public class OperationEditorPaneController implements Initializable {
 		e.consume();
 		return null;
 	}
+	
+	public int getId() {
+		return Integer.parseInt(this.txtNumCompte.getText());
+	}
 
 	// Attributs de la scene + actions
 	@FXML
@@ -136,9 +142,13 @@ public class OperationEditorPaneController implements Initializable {
 	@FXML
 	private Label lblMontant;
 	@FXML
+	private Label lblNumCompte;
+	@FXML
 	private ComboBox<String> cbTypeOpe;
 	@FXML
 	private TextField txtMontant;
+	@FXML
+	private TextField txtNumCompte;
 	@FXML
 	private Button btnOk;
 	@FXML
@@ -242,7 +252,7 @@ public class OperationEditorPaneController implements Initializable {
 			
 			try {
 				montantV = Double.parseDouble(this.txtMontant.getText().trim());
-				if (montantV <= 0)
+				if (montantV <= 0 || this.txtNumCompte.getText() == "")
 					throw new NumberFormatException();
 				} catch (NumberFormatException nfe) {
 					this.txtMontant.getStyleClass().add("borderred");

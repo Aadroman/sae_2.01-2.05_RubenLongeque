@@ -65,4 +65,6 @@ public class CompteEditorPane {
 	public CompteCourant doCompteEditorDialog(Client client, CompteCourant cpte, EditionMode em) {
 		return this.cepc.displayDialog(client, cpte, em);
 	}
+	
+
 }

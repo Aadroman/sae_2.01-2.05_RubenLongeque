@@ -38,7 +38,7 @@ public class OperationEditorPane {
 					OperationEditorPaneController.class.getResource("operationeditorpane.fxml"));
 			BorderPane root = loader.load();
 
-			Scene scene = new Scene(root, 500 + 20, 250 + 10);
+			Scene scene = new Scene(root, 500 + 70, 250 + 50);
 			scene.getStylesheets().add(DailyBankApp.class.getResource("application.css").toExternalForm());
 
 			this.primaryStage = new Stage();
@@ -59,5 +59,13 @@ public class OperationEditorPane {
 
 	public Operation doOperationEditorDialog(CompteCourant cpte, CategorieOperation cm) {
 		return this.oepc.displayDialog(cpte, cm);
+	}
+	
+	
+	/**
+	 * @return le controller de la classe : OperationEditorPane
+	 */
+	public OperationEditorPaneController getOepc() {
+		return oepc;
 	}
 }

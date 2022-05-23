@@ -26,8 +26,12 @@ public class CompteCourant {
 		this(0, 0, 0, "N", -1000);
 	}
 	
-	public String getId() {
-		return ""+this.idNumCli;
+	public int getId() {
+		return this.idNumCompte;
+	}
+	
+	public void setId(int nouveauNum) {
+		this.idNumCompte = nouveauNum;
 	}
 
 	@Override

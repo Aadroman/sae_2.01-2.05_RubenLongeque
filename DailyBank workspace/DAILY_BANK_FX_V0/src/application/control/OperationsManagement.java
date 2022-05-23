@@ -7,6 +7,8 @@ import application.DailyBankState;
 import application.tools.CategorieOperation;
 import application.tools.PairsOfValue;
 import application.tools.StageManagement;
+import application.view.ComptesManagementController;
+import application.view.OperationEditorPaneController;
 import application.view.OperationsManagementController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -36,6 +38,7 @@ public class OperationsManagement {
 	private OperationsManagementController omc; //le controller de gestion des opérations
 	private Client clientDuCompte; //un client ayant un compte
 	private CompteCourant compteConcerne; //le compte du client
+	private OperationEditorPaneController oepc;
 
 	/**
 	 * @param _parentStage
@@ -136,16 +139,25 @@ public class OperationsManagement {
 	 * @return une opération lorsqu'on effectue un virement de compte à compte
 	 */
 	public Operation enregistrerVirement() {
-
+		
+		ArrayList<CompteCourant> numCompte = new ArrayList<CompteCourant>();
 		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dbs);
 		Operation op = oep.doOperationEditorDialog(this.compteConcerne, CategorieOperation.VIREMENT);
 		if (op != null) {
 			try {
+				AccessCompteCourant acc = new AccessCompteCourant();
+				numCompte = acc.getListCompteCourant();
 				AccessOperation ao = new AccessOperation();
-
 				ao.insertDebit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
-				ao.insertCredit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
-
+				for(int i=0;i<numCompte.size();i++) {
+					if(oep.getOepc().getId() == numCompte.get(i).idNumCompte) {
+						CompteCourant compteDeux = acc.getCompteCourant(numCompte.get(i).idNumCompte);
+						ao.insertCredit(compteDeux.idNumCompte, op.montant, op.idTypeOp);
+						if(compteDeux.solde - op.montant < compteDeux.debitAutorise) {
+							
+						}
+					}
+				}
 			} catch (DatabaseConnexionException e) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
 				ed.doExceptionDialog();
