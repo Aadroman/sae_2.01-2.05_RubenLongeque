@@ -1,0 +1,35 @@
+# DOCUMENTATION TECHNIQUE VERSION 1
+:toc: left
+:toc-title: Table des matières
+:icons: font
+:nofooter:
+
+## Présentation générale
+
+### Use Case global
+
+### Structuration en packages
+
+#### Architecture de la V1
+
+image:img/architecture-v1.png[]
+
+#### Arborescence des packages
+
+* Application
+
+* Application.control
+
+* Application.view
+
+* Application.tools
+
+* Model.data
+
+* Model.orm
+
+* Model.exception +
+packages contenant les classes des exceptions 
+
+### Fonctionnalités de l'application
+

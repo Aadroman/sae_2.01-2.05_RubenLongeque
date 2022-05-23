@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.17">
-<title>DOCUMENTATION UTILISATEUR VERSION 1</title>
+<title>DOCUMENTATION UTILISATEUR VERSION 0</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -439,7 +439,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left data-line-1">
 <div id="header">
-<h1>DOCUMENTATION UTILISATEUR VERSION 1</h1>
+<h1>DOCUMENTATION UTILISATEUR VERSION 0</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table des matières</div>
 <ul class="sectlevel1">
@@ -451,7 +451,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_installation_de_lapplication">Installation de l&#8217;application</a></li>
 <li><a href="#_utilisation_de_lapplication">Utilisation de l&#8217;application</a></li>
-<li><a href="#_fonctionnement_de_lapplication">Fonctionnement de l&#8217;application</a></li>
+<li><a href="#_fonctionnement_de_lapplication">Fonctionnement de l&#8217;application</a>
+<ul class="sectlevel2">
+<li><a href="#_utilisateur_guichetier">Utilisateur : Guichetier</a></li>
+<li><a href="#_utilisateur_chef_dagence">utilisateur : Chef D&#8217;agence</a></li>
+</ul>
+</li>
+<li><a href="#_résultats_et_production_de_lapplication">Résultats et production de l&#8217;application</a></li>
 </ul>
 </div>
 </div>
@@ -545,21 +551,12 @@ $ java -jar Dailybank.jar</pre>
 <div class="ulist data-line-51">
 <ul>
 <li class="data-line-51">
-<p>Modifier les informations des clients (adresse, téléphone, …)</p>
-</li>
-<li class="data-line-52">
-<p>Créer de nouveaux clients</p>
+<p>débiter un compte (java et BD avec procédure stockée)</p>
 </li>
 <li class="data-line-53">
-<p>Consulter un compte</p>
-</li>
-<li class="data-line-54">
-<p>Créditer/débiter un compte (java et BD avec procédure stockée)</p>
-</li>
-<li class="data-line-55">
 <p>Créer un compte</p>
 </li>
-<li class="data-line-56">
+<li class="data-line-55">
 <p>Effectuer un virement de compte à compte</p>
 </li>
 <li class="data-line-57">
@@ -570,201 +567,57 @@ $ java -jar Dailybank.jar</pre>
 <div class="paragraph data-line-59">
 <p>les chef d&#8217;agence peuvent :</p>
 </div>
-<div class="ulist data-line-61">
-<ul>
-<li class="data-line-61">
+<div class="paragraph data-line-61">
 <p>Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)</p>
-</li>
-</ul>
 </div>
 </div>
 </div>
 <div class="sect1 data-line-63">
 <h2 id="_fonctionnement_de_lapplication">Fonctionnement de l&#8217;application</h2>
 <div class="sectionbody">
-<div class="paragraph data-line-65">
-<p><strong>Création d&#8217;un compte bancaire (développer par Christopher)</strong></p>
-</div>
-<div class="admonitionblock note data-line-67">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Accessible depuis la fenêtre gestion des comptes
-</td>
-</tr>
-</table>
-</div>
+<div class="sect2 data-line-65">
+<h3 id="_utilisateur_guichetier">Utilisateur : Guichetier</h3>
+<div class="sect3 data-line-67">
+<h4 id="_fenêtre_gestion_clients">Fenêtre gestion clients</h4>
 <div class="paragraph data-line-69">
-<p>En cliquant sur le bouton « nouveau compte » une fenêtre de création de compte s&#8217;ouvrira.
-L&#8217;utilisateur pourra créer un nouveau compte pour le client en entrant les informations :</p>
+<p><strong>Désactivation d&#8217;un client</strong></p>
 </div>
-<div class="ulist data-line-72">
-<ul>
-<li class="data-line-72">
-<p>Découvert autorisé</p>
-</li>
-<li class="data-line-73">
-<p>solde (premier dépôt)</p>
-</li>
-</ul>
+</div>
+<div class="sect3 data-line-71">
+<h4 id="_fenêtre_gestion_des_comptes">Fenêtre gestion des comptes</h4>
+<div class="paragraph data-line-73">
+<p><strong>modification d&#8217;un compte</strong></p>
 </div>
 <div class="paragraph data-line-75">
-<p>En cliquant sur le bouton « ajouter », cela aura pour action d&#8217;ajouter le nouveau compte du client dans la base de données et en cliquant sur le bouton « annuler », cela aura pour action d&#8217;annuler l&#8217;ajout de ce nouveau compte.</p>
+<p><strong>clôturation d&#8217;un compte</strong></p>
 </div>
 <div class="paragraph data-line-77">
-<p><strong>Clôturation d&#8217;un compte bancaire (développer par Ruben)</strong></p>
+<p><strong>création d&#8217;un nouveau compte</strong></p>
 </div>
-<div class="admonitionblock note data-line-79">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Accessible depuis la fenêtre gestion des comptes
-</td>
-</tr>
-</table>
 </div>
+<div class="sect3 data-line-79">
+<h4 id="_fenêtre_gestion_des_opérations">Fenêtre gestion des opérations</h4>
 <div class="paragraph data-line-81">
-<p>En cliquant sur le bouton « supprimer compte » une fenêtre de confirmation s&#8217;ouvrira demandant à l&#8217;utilisateur de confirmer sa demande.<br>
-En cliquant sur le bouton « confirmer » le compte sera clôturer et en cliquant sur le bouton « annuler » le compte ne sera pas clôturer.</p>
+<p><strong>enregistrer un débit</strong></p>
 </div>
-<div class="admonitionblock note data-line-84">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Un compte clôturer sera toujours visible, mais plus aucune actions ne sera possible à moins de le rendre actif
-</td>
-</tr>
-</table>
+<div class="paragraph data-line-83">
+<p><strong>enregistrer un crédit</strong></p>
 </div>
-<div class="paragraph data-line-86">
-<p><strong>Enregistrer un débit (développer par Yann)</strong></p>
+<div class="paragraph data-line-85">
+<p><strong>réaliser un virement</strong></p>
 </div>
-<div class="admonitionblock note data-line-88">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Accessible depuis la fenêtre gestion des opérations
-</td>
-</tr>
-</table>
 </div>
-<div class="paragraph data-line-90">
-<p>En cliquant sur le bouton « enregistrer débit » une fenêtre d&#8217;enregistrement d&#8217;un débit s&#8217;ouvre.
-L&#8217;utilisateur pourra enregistrer un débit pour un client en séléctionnant :</p>
 </div>
-<div class="ulist data-line-93">
-<ul>
-<li class="data-line-93">
-<p>Le type d&#8217;opération</p>
-</li>
-<li class="data-line-94">
-<p>Le montant de l&#8217;opération</p>
-</li>
-</ul>
+<div class="sect2 data-line-87">
+<h3 id="_utilisateur_chef_dagence">utilisateur : Chef D&#8217;agence</h3>
+
 </div>
-<div class="admonitionblock warning data-line-96">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Le montant de débit ne doit pas être supérieur au montant du découvert autorisé du client
-</td>
-</tr>
-</table>
 </div>
-<div class="paragraph data-line-98">
-<p><strong>Enregistrer un crédit (développer par Yann)</strong></p>
 </div>
-<div class="admonitionblock note data-line-100">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Accessible depuis la fenêtre gestion des opérations
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph data-line-102">
-<p>En cliquant sur le bouton « enregistrer crédit » une fenêtre d&#8217;enregistrement d&#8217;un crédit s&#8217;ouvre.
-L&#8217;utilisateur pourra enregistrer un crédit pour un client en séléctionnant :</p>
-</div>
-<div class="ulist data-line-105">
-<ul>
-<li class="data-line-105">
-<p>Le type d&#8217;opération</p>
-</li>
-<li class="data-line-106">
-<p>Le montant de l&#8217;opération</p>
-</li>
-</ul>
-</div>
-<div class="paragraph data-line-108">
-<p><strong>Enregistrer un virement (développer par Christopher)</strong></p>
-</div>
-<div class="admonitionblock note data-line-110">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Accessible depuis la fenêtre gestion des opérations
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph data-line-112">
-<p>En cliquant sur le bouton « enregistrer virement » une fenêtre d&#8217;enregistrement d&#8217;un virement s&#8217;ouvre.
-L&#8217;utilisateur pourra enregistrer un virement pour un client en séléctionnant :</p>
-</div>
-<div class="ulist data-line-115">
-<ul>
-<li class="data-line-115">
-<p>Le montant de l&#8217;opération</p>
-</li>
-<li class="data-line-116">
-<p>Le compte qui effectuent le virement</p>
-</li>
-<li class="data-line-117">
-<p>Le compte qui reçoit le virement</p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock warning data-line-119">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Le montant du virement ne doit pas être supérieur au montant du découvert autorisé du compte<br>
-         Le numéro de compte qui reçoit le virement doit être correct<br>
-         Le numéro de compte qui effectuent le virement doit être correct
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph data-line-123">
-<p><strong>Gestion du CRUD</strong>
-&gt;</p>
-</div>
+<div class="sect1 data-line-91">
+<h2 id="_résultats_et_production_de_lapplication">Résultats et production de l&#8217;application</h2>
+<div class="sectionbody">
+
 </div>
 </div>
 </div>

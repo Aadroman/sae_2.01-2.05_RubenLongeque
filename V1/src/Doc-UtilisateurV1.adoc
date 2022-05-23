@@ -1,4 +1,4 @@
-# DOCUMENTATION UTILISATEUR VERSION 1
+# DOCUMENTATION UTILISATEUR VERSION 0
 :toc: left
 :toc-title: Table des matières
 :icons: font
@@ -48,76 +48,44 @@ Ensuite lancer le fichier .jar depuis un terminal (si il ne s'ouvre par en doubl
 
 Deux utilisateurs distincts peuvent être constaté, ils sont le guichetier et le chef d'agence. En plus des fonctionnalités qu'ont les guichetier qui sont :
 
-* Modifier les informations des clients (adresse, téléphone, …)
-* Créer de nouveaux clients
-* Consulter un compte
-* Créditer/débiter un compte (java et BD avec procédure stockée)
+* débiter un compte (java et BD avec procédure stockée)
+
 * Créer un compte
+
 * Effectuer un virement de compte à compte
+
 * Clôturer un compte
 
 les chef d'agence peuvent :
 
-* Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
+Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
 
 ## Fonctionnement de l'application
 
-*Création d'un compte bancaire (développer par Christopher)*
+### Utilisateur : Guichetier
 
-NOTE: Accessible depuis la fenêtre gestion des comptes
+#### Fenêtre gestion clients 
 
-En cliquant sur le bouton « nouveau compte » une fenêtre de création de compte s'ouvrira.
-L'utilisateur pourra créer un nouveau compte pour le client en entrant les informations : 
+*Désactivation d'un client*
 
-* Découvert autorisé 
-* solde (premier dépôt)    
+#### Fenêtre gestion des comptes
 
-En cliquant sur le bouton « ajouter », cela aura pour action d'ajouter le nouveau compte du client dans la base de données et en cliquant sur le bouton « annuler », cela aura pour action d'annuler l'ajout de ce nouveau compte.
+*modification d'un compte*
 
-*Clôturation d'un compte bancaire (développer par Ruben)*
+*clôturation d'un compte*
 
-NOTE: Accessible depuis la fenêtre gestion des comptes
+*création d'un nouveau compte*
 
-En cliquant sur le bouton « supprimer compte » une fenêtre de confirmation s'ouvrira demandant à l'utilisateur de confirmer sa demande. +
-En cliquant sur le bouton « confirmer » le compte sera clôturer et en cliquant sur le bouton « annuler » le compte ne sera pas clôturer.
+#### Fenêtre gestion des opérations
 
-NOTE: Un compte clôturer sera toujours visible, mais plus aucune actions ne sera possible à moins de le rendre actif
+*enregistrer un débit*
 
-*Enregistrer un débit (développer par Yann)*
+*enregistrer un crédit*
 
-NOTE: Accessible depuis la fenêtre gestion des opérations
+*réaliser un virement*
 
-En cliquant sur le bouton « enregistrer débit » une fenêtre d'enregistrement d'un débit s'ouvre.
-L'utilisateur pourra enregistrer un débit pour un client en séléctionnant :
+### utilisateur : Chef D'agence
 
-* Le type d'opération
-* Le montant de l'opération
 
-WARNING: Le montant de débit ne doit pas être supérieur au montant du découvert autorisé du client
 
-*Enregistrer un crédit (développer par Yann)*
-
-NOTE: Accessible depuis la fenêtre gestion des opérations
-
-En cliquant sur le bouton « enregistrer crédit » une fenêtre d'enregistrement d'un crédit s'ouvre.
-L'utilisateur pourra enregistrer un crédit pour un client en séléctionnant :
-
-* Le type d'opération
-* Le montant de l'opération
-
-*Enregistrer un virement (développer par Christopher)*
-
-NOTE: Accessible depuis la fenêtre gestion des opérations
-
-En cliquant sur le bouton « enregistrer virement » une fenêtre d'enregistrement d'un virement s'ouvre.
-L'utilisateur pourra enregistrer un virement pour un client en séléctionnant :
-
-* Le montant de l'opération
-* Le compte qui effectuent le virement
-* Le compte qui reçoit le virement
-
-WARNING: Le montant du virement ne doit pas être supérieur au montant du découvert autorisé du compte +
-         Le numéro de compte qui reçoit le virement doit être correct + 
-         Le numéro de compte qui effectuent le virement doit être correct
-
-*Gestion du CRUD*
+## Résultats et production de l'application

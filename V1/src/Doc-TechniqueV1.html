@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.17">
-<title>DOCUMENTATION UTILISATEUR VERSION 0</title>
+<title>DOCUMENTATION TECHNIQUE VERSION 1</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -439,24 +439,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left data-line-1">
 <div id="header">
-<h1>DOCUMENTATION UTILISATEUR VERSION 0</h1>
+<h1>DOCUMENTATION TECHNIQUE VERSION 1</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table des matières</div>
 <ul class="sectlevel1">
 <li><a href="#_présentation_générale">Présentation générale</a>
 <ul class="sectlevel2">
-<li><a href="#_contexte">Contexte</a></li>
-<li><a href="#_objectifs_de_lapplication">Objectifs de l&#8217;application</a></li>
+<li><a href="#_use_case_global">Use Case global</a></li>
+<li><a href="#_structuration_en_packages">Structuration en packages</a></li>
+<li><a href="#_fonctionnalités_de_lapplication">Fonctionnalités de l&#8217;application</a></li>
 </ul>
 </li>
-<li><a href="#_installation_de_lapplication">Installation de l&#8217;application</a></li>
-<li><a href="#_utilisation_de_lapplication">Utilisation de l&#8217;application</a></li>
-<li><a href="#_fonctionnement_de_lapplication">Fonctionnement de l&#8217;application</a>
-<ul class="sectlevel2">
-<li><a href="#_utilisateur_guichetier">Utilisateur : Guichetier</a></li>
-</ul>
-</li>
-<li><a href="#_résultats_et_production_de_lapplication">Résultats et production de l&#8217;application</a></li>
 </ul>
 </div>
 </div>
@@ -465,447 +458,51 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_présentation_générale">Présentation générale</h2>
 <div class="sectionbody">
 <div class="sect2 data-line-9">
-<h3 id="_contexte">Contexte</h3>
-<div class="paragraph data-line-11">
-<p>Pour s’adapter aux exigences d’instantanéité de leurs clients, les banques françaises ont accentué leurs efforts de restructuration et leurs investissements dans le digital. Des chantiers longs et coûteux. Elles ne se contentent pas de créer des offres alternatives : elles rénovent aussi en profondeur leurs services de banque au quotidien.<br>
-Le réseaux de bancaire Dailybank possèdent plusieurs outils qui deviennent obsolètes et une première version d’application qui nécessite une refonte. Les besoins de la banque ont évolués, tout comme ceux de leurs clients, il faut donc développer plusieurs fonctionnalités pour répondre à ces nouveaux besoins.</p>
-</div>
-</div>
-<div class="sect2 data-line-14">
-<h3 id="_objectifs_de_lapplication">Objectifs de l&#8217;application</h3>
-<div class="paragraph data-line-16">
-<p>L’objectif recherché par la banque DailyBank est de développer une application Java-Oracle de gestion de comptes, pour remplacer plusieurs outils obsolètes.
-Pour ce faire, une première version est mise à dispotion "DailyBank" qu’il faudra adapter aux nouveaux besoins.
-Ces nouveaux besoins sont :</p>
-</div>
-<div class="ulist data-line-20">
-<ul>
-<li class="data-line-20">
-<p>Elle doit permettre de gérer des comptes bancaires de dépôt pour des clients créés</p>
-</li>
-<li class="data-line-22">
-<p>Elle doit permettre de débiter et de créditer un compte de deux manières différentes :</p>
-<div class="ulist data-line-24">
-<ul>
-<li class="data-line-24">
-<p>Par échange d’argent entre deux comptes distincts domiciliés dans le même réseau bancaire</p>
-</li>
-<li class="data-line-26">
-<p>Par personne physique se présentant devant un guichet</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1 data-line-28">
-<h2 id="_installation_de_lapplication">Installation de l&#8217;application</h2>
-<div class="sectionbody">
-<div class="paragraph data-line-30">
-<p>Pour pouvoir lancer l&#8217;application, l&#8217;installation de Java en version 1.8 est nécessaire.
-Pour ce faire, vous devez  suivre ces étapes :</p>
-</div>
-<div class="ulist data-line-33">
-<ul>
-<li class="data-line-33">
-<p>Télécharger gratuitement la version 1.8 de Java sur le <a href="https://www.java.com/fr/download/" data-href="https://www.java.com/fr/download/">site d&#8217;Oracle</a></p>
-<div class="ulist data-line-34">
-<ul>
-<li class="data-line-34">
-<p>Vous pouvez au préalable vérifiez que l&#8217;installation c&#8217;est bien réaliser (depuis un terminal) :</p>
-<div class="literalblock data-line-36">
-<div class="content">
-<pre>$ java -version</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph data-line-38">
-<p>Ensuite lancer le fichier .jar depuis un terminal (si il ne s&#8217;ouvre par en double cliquant dessus) :</p>
-</div>
-<div class="paragraph data-line-40">
-<p>(depuis un terminal) :</p>
-</div>
-<div class="literalblock data-line-42">
-<div class="content">
-<pre>$ cd '.\Desktop\DailyBank workspace\'
-$ java -jar Dailybank.jar</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1 data-line-47">
-<h2 id="_utilisation_de_lapplication">Utilisation de l&#8217;application</h2>
-<div class="sectionbody">
-<div class="paragraph data-line-49">
-<p>Deux utilisateurs distincts peuvent être constaté, ils sont le guichetier et le chef d&#8217;agence. En plus des fonctionnalités qu&#8217;ont les guichetier qui sont :</p>
-</div>
-<div class="ulist data-line-51">
-<ul>
-<li class="data-line-51">
-<p>débiter un compte (java et BD avec procédure stockée)</p>
-</li>
-<li class="data-line-53">
-<p>Créer un compte</p>
-</li>
-<li class="data-line-55">
-<p>Effectuer un virement de compte à compte</p>
-</li>
-<li class="data-line-57">
-<p>Clôturer un compte</p>
-</li>
-</ul>
-</div>
-<div class="paragraph data-line-59">
-<p>les chef d&#8217;agence peuvent :</p>
-</div>
-<div class="paragraph data-line-61">
-<p>Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)</p>
-</div>
-</div>
-</div>
-<div class="sect1 data-line-63">
-<h2 id="_fonctionnement_de_lapplication">Fonctionnement de l&#8217;application</h2>
-<div class="sectionbody">
-<div class="sect2 data-line-65">
-<h3 id="_utilisateur_guichetier">Utilisateur : Guichetier</h3>
-<div class="sect3 data-line-67">
-<h4 id="_fenêtre_principale">Fenêtre principale</h4>
-<div class="paragraph data-line-69">
-<p><strong>quitter l&#8217;application</strong></p>
-</div>
-<div class="admonitionblock tip data-line-71">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Un bouton « quitter » est accessible depuis l&#8217;onglet « utilisateur »
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph data-line-73">
-<p>En cliquant sur ce bouton, l&#8217;utilisateur quittera l&#8217;application</p>
-</div>
-<div class="paragraph data-line-75">
-<p><span class="image"><img src="img/quitter-appli.png" alt="quitter appli"></span></p>
-</div>
-<div class="admonitionblock note data-line-77">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Une alerte de validation s&#8217;ouvrira
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph data-line-79">
-<p><span class="image"><img src="img/alerte-quitter.png" alt="alerte quitter"></span></p>
-</div>
-<div class="paragraph data-line-81">
-<p><strong>Connexion à un compte</strong></p>
-</div>
-<div class="admonitionblock tip data-line-83">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Un bouton « connexion »  est accessible depuis l&#8217;onglet « utilisateur »
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph data-line-85">
-<p>En cliquant sur le bouton « connexion » l&#8217;utilisateur pourra se connecter à son compte.
-Ce bouton ouvre une fenêtre de connexion demandant les information de l&#8217;utilisateur :</p>
-</div>
-<div class="ulist data-line-88">
-<ul>
-<li class="data-line-88">
-<p>Login (le nom / identifiant de l&#8217;utilisateur)</p>
-</li>
-<li class="data-line-90">
-<p>Mot de passe</p>
-</li>
-</ul>
-</div>
-<div class="paragraph data-line-92">
-<p><span class="image"><img src="img/connection.png" alt="connection"></span></p>
-</div>
-<div class="admonitionblock warning data-line-94">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Si l&#8217;une de ces deux informations est fausse ou bien les deux, un message d&#8217;erreur sera affiché à l&#8217;écran.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph data-line-96">
-<p><span class="image"><img src="img/erreur-connection.png" alt="erreur connection"></span></p>
-</div>
-<div class="paragraph data-line-98">
-<p><strong>Deconnexion d&#8217;un compte</strong></p>
-</div>
-<div class="admonitionblock tip data-line-100">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Un bouton « deconnexion »  est accessible depuis l&#8217;onglet « utilisateur »
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph data-line-102">
-<p>En cliquant sur le bouton « deconnexion » l&#8217;utilisateur pourra se déconnecter de son compte.</p>
-</div>
-<div class="paragraph data-line-104">
-<p><span class="image"><img src="img/deconnection.png" alt="deconnection"></span></p>
-</div>
-<div class="paragraph data-line-106">
-<p><strong>Gestion des clients</strong></p>
-</div>
-<div class="admonitionblock note data-line-108">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Cette fonctionnalités n&#8217;est accessible que si l&#8217;utilisateur est connectée
-      Cette fonctionnalités est accessible depuis l&#8217;onglet « gestion »
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph data-line-111">
-<p><span class="image"><img src="img/gestion-client.png" alt="gestion client"></span></p>
-</div>
-<div class="paragraph data-line-113">
-<p>En cliquant sur le bouton « client » l&#8217;utilisateur pourra gérer les clients de l&#8217;agence bancaire en ouvrant une fenêtre de gestion des clients.</p>
-</div>
-<div class="paragraph data-line-115">
-<p><span class="image"><img src="img/gestion-client2.png" alt="gestion client2"></span></p>
-</div>
-</div>
-<div class="sect3 data-line-117">
-<h4 id="_fenêtre_gestion_des_clients">Fenêtre gestion des clients</h4>
-<div class="paragraph data-line-119">
-<p><strong>Recherche d&#8217;un client</strong></p>
-</div>
-<div class="paragraph data-line-121">
-<p>En cliquant sur le bouton « rechercher » l&#8217;utilisateur pour rechercher un client de l&#8217;agence bancaire.
-Les résultats seront visible sur la ListView et peuvent être affinés en entrant les informations :</p>
-</div>
-<div class="ulist data-line-124">
-<ul>
-<li class="data-line-124">
-<p>Numéro (numéro du client)</p>
-</li>
-<li class="data-line-126">
-<p>Nom</p>
-</li>
-<li class="data-line-128">
-<p>Prénom</p>
-</li>
-</ul>
-</div>
-<div class="paragraph data-line-130">
-<p><span class="image"><img src="img/recherche-client.png" alt="recherche client"></span></p>
-</div>
-<div class="paragraph data-line-132">
-<p><strong>Création d&#8217;un nouveau client</strong></p>
-</div>
-<div class="paragraph data-line-134">
-<p>En cliquant sur le bouton « nouveau client » l&#8217;utilisateur pourra créer un nouveau client en ouvrant une nouvelle fenêtre de création d&#8217;un client et en entrant les informations :</p>
-</div>
-<div class="ulist data-line-136">
-<ul>
-<li class="data-line-136">
-<p>Nom</p>
-</li>
-<li class="data-line-137">
-<p>Prénom</p>
-</li>
-<li class="data-line-138">
-<p>Adresse</p>
-</li>
-<li class="data-line-139">
-<p>Téléphone</p>
-</li>
-<li class="data-line-140">
-<p>E-mail</p>
-</li>
-<li class="data-line-141">
-<p>Cliant actif</p>
-</li>
-</ul>
-</div>
-<div class="paragraph data-line-143">
-<p><span class="image"><img src="img/nouveau-client.png" alt="nouveau client"></span>
-<span class="image"><img src="img/nouveau-client2.png" alt="nouveau client2"></span></p>
-</div>
-<div class="admonitionblock warning data-line-146">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Si l&#8217;une de ces informations n&#8217;est pas entrée une alerte s&#8217;affiche présentant l&#8217;erreur
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph data-line-148">
-<p>Cliquer sur le bouton « Ajouter » aura pour action de créer le nouveau client et de l&#8217;ajouter à la Base de Donnée et cliquer sur le bouton « annuler » aura pour action d&#8217;annuler la création du client.</p>
-</div>
-<div class="paragraph data-line-150">
-<p><span class="image"><img src="img/nouveau-client-erreur.png" alt="nouveau client erreur"></span></p>
-</div>
-<div class="paragraph data-line-152">
-<p><strong>Modification d&#8217;un client</strong></p>
-</div>
-<div class="admonitionblock tip data-line-154">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Un client doit être sélectionner pour effectuer cette action
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph data-line-156">
-<p><span class="image"><img src="img/modification-client.png" alt="modification client"></span></p>
-</div>
-<div class="paragraph data-line-158">
-<p>En cliquant sur le bouton « modifier client » une fenêtre s&#8217;ouvrira dans laquelle l&#8217;utilisateur pour modifier les informations de celui-ci :</p>
-</div>
-<div class="paragraph data-line-160">
-<p>Cliquer sur le bouton « modifier » aura pour action de modifier les informations du client et de les enregistrer dans la Base de Donnée et cliquer sur le bouton « annuler » aura pour action d&#8217;annuler la modification du client.</p>
-</div>
-<div class="ulist data-line-162">
-<ul>
-<li class="data-line-162">
-<p>Nom</p>
-</li>
-<li class="data-line-163">
-<p>Prénom</p>
-</li>
-<li class="data-line-164">
-<p>Adresse</p>
-</li>
-<li class="data-line-165">
-<p>Téléphone</p>
-</li>
-<li class="data-line-166">
-<p>E-mail</p>
-</li>
-<li class="data-line-167">
-<p>Client-actif</p>
-</li>
-</ul>
-</div>
-<div class="paragraph data-line-169">
-<p><span class="image"><img src="img/modification-client2.png" alt="modification client2"></span></p>
-</div>
-<div class="admonitionblock warning data-line-171">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Si l&#8217;une de ces informations n&#8217;est pas entrée une alerte s&#8217;affiche présentant l&#8217;erreur
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph data-line-173">
-<p><span class="image"><img src="img/modification-client-erreur.png" alt="modification client erreur"></span></p>
-</div>
-<div class="paragraph data-line-176">
-<p><strong>Gestion des comptes d&#8217;un client</strong></p>
-</div>
-<div class="admonitionblock tip data-line-178">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Un client doit être sélectionner pour effectuer cette action
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph data-line-180">
-<p>En cliquant sur le bouton « comptes client » une fenêtre s&#8217;ouvrira dans laquelle l&#8217;utilisateur pour consulter les comptes d&#8217;un client.</p>
-</div>
-<div class="paragraph data-line-182">
-<p><span class="image"><img src="img/gestion-compte.png" alt="gestion compte"></span></p>
-</div>
-<div class="paragraph data-line-184">
-<p><span class="image"><img src="img/gestion-compte2.png" alt="gestion compte2"></span></p>
-</div>
-</div>
-<div class="sect3 data-line-186">
-<h4 id="_fenêtre_gestion_des_comptes">Fenêtre gestion des comptes</h4>
-<div class="paragraph data-line-188">
-<p><strong>voir les opération d&#8217;un comptes</strong></p>
-</div>
-<div class="admonitionblock tip data-line-190">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Cette fonctionnalité est accessible en sélectionnant un compte
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph data-line-192">
-<p><span class="image"><img src="img/gestion-operation.png" alt="gestion operation"></span></p>
-</div>
-<div class="paragraph data-line-194">
-<p>En cliquant sur le bouton « voir opérations » un fenêtre s&#8217;ouvrira dans laquelle l&#8217;utilisateur pourra consulter les opérations du comptes d&#8217;un client.</p>
-</div>
-<div class="paragraph data-line-196">
-<p><span class="image"><img src="img/gestion-operation2.png" alt="gestion operation2"></span></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1 data-line-198">
-<h2 id="_résultats_et_production_de_lapplication">Résultats et production de l&#8217;application</h2>
-<div class="sectionbody">
+<h3 id="_use_case_global">Use Case global</h3>
 
+</div>
+<div class="sect2 data-line-11">
+<h3 id="_structuration_en_packages">Structuration en packages</h3>
+<div class="sect3 data-line-13">
+<h4 id="_architecture_de_la_v1">Architecture de la V1</h4>
+<div class="paragraph data-line-15">
+<p><span class="image"><img src="img/architecture-v1.png" alt="architecture v1"></span></p>
+</div>
+</div>
+<div class="sect3 data-line-17">
+<h4 id="_arborescence_des_packages">Arborescence des packages</h4>
+<div class="ulist data-line-19">
+<ul>
+<li class="data-line-19">
+<p>Application</p>
+</li>
+<li class="data-line-21">
+<p>Application.control</p>
+</li>
+<li class="data-line-23">
+<p>Application.view</p>
+</li>
+<li class="data-line-25">
+<p>Application.tools</p>
+</li>
+<li class="data-line-27">
+<p>Model.data</p>
+</li>
+<li class="data-line-29">
+<p>Model.orm</p>
+</li>
+<li class="data-line-31">
+<p>Model.exception<br>
+packages contenant les classes des exceptions</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2 data-line-34">
+<h3 id="_fonctionnalités_de_lapplication">Fonctionnalités de l&#8217;application</h3>
+
+</div>
 </div>
 </div>
 </div>
