@@ -149,7 +149,7 @@ public class ComptesManagementController implements Initializable {
 	@FXML
 	private void doCloturerCompte() {
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
-		if (selectedIndice >= 0 && btnSupprCompte.getText().equals("Supprimer Compte")) {
+		if (selectedIndice >= 0 && btnSupprCompte.getText().equals("Clôturer Compte")) {
 			CompteCourant cptDesac = this.olCompteCourant.get(selectedIndice);
 
 			Alert desac = new Alert(AlertType.CONFIRMATION);
@@ -246,7 +246,7 @@ public class ComptesManagementController implements Initializable {
 			this.btnVoirOpes.setDisable(false);
 			this.btnModifierCompte.setDisable(false);
 			this.btnSupprCompte.setDisable(false);
-			this.btnSupprCompte.setText("Supprimer Compte");
+			this.btnSupprCompte.setText("Clôturer Compte");
 		}
 	}
 }

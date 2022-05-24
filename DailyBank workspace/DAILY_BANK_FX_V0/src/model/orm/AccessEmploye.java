@@ -247,4 +247,38 @@ public class AccessEmploye {
 			throw new DataAccessException(Table.Employe, Order.UPDATE, "Erreur accès", e);
 		}
 	}
+	
+	public void deleteEmploye(Employe employe)
+			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
+		try {
+
+			Connection con = LogToDatabase.getConnexion();
+
+			String query = "DELETE FROM EMPLOYE WHERE idEmploye=?";
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1, employe.idEmploye);
+
+
+			System.err.println(query);
+			System.out.println(employe.idEmploye);
+			int result = pst.executeUpdate();
+			pst.close();
+
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.Employe, Order.DELETE,
+						"Delete anormal (delete de moins ou plus d'une ligne)", null, result);
+			}
+
+			query = "SELECT seq_id_employe.CURRVAL from DUAL";
+
+			System.err.println(query);
+			PreparedStatement pst2 = con.prepareStatement(query);
+
+			con.commit();
+			
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.Employe, Order.INSERT, "Erreur accès", e);
+		}
+	}
 }

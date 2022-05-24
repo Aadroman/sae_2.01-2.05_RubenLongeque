@@ -194,5 +194,3 @@ image:img/gestion-operation.png[]
 En cliquant sur le bouton « voir opérations » un fenêtre s'ouvrira dans laquelle l'utilisateur pourra consulter les opérations du comptes d'un client.
 
 image:img/gestion-operation2.png[]
-
-## Résultats et production de l'application
