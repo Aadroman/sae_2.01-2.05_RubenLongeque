@@ -12,7 +12,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Employe;
@@ -62,7 +64,7 @@ public class EmployeEditorPaneController implements Initializable {
 			this.txtIdemp.setDisable(true);
 			this.txtNom.setDisable(false);
 			this.txtPrenom.setDisable(false);
-			this.txtAccess.setDisable(false);
+			
 			this.txtLogin.setDisable(false);
 			this.txtMDP.setDisable(false);
 			this.lblMessage.setText("Informations sur le nouvel employé");
@@ -73,7 +75,7 @@ public class EmployeEditorPaneController implements Initializable {
 			this.txtIdemp.setDisable(true);
 			this.txtNom.setDisable(false);
 			this.txtPrenom.setDisable(false);
-			this.txtAccess.setDisable(false);
+			
 			this.txtLogin.setDisable(false);
 			this.txtMDP.setDisable(false);
 			this.lblMessage.setText("Informations employé");
@@ -92,7 +94,7 @@ public class EmployeEditorPaneController implements Initializable {
 		this.txtIdemp.setText("" + this.employeEdite.idEmploye);
 		this.txtNom.setText(this.employeEdite.nom);
 		this.txtPrenom.setText(this.employeEdite.prenom);
-		this.txtAccess.setText(this.employeEdite.droitsAccess);
+		
 		this.txtLogin.setText(this.employeEdite.login);
 		this.txtMDP.setText(this.employeEdite.motPasse);
 
@@ -120,7 +122,13 @@ public class EmployeEditorPaneController implements Initializable {
 	@FXML
 	private TextField txtPrenom;
 	@FXML
-	private TextField txtAccess;
+    private RadioButton rbGuichetier;
+
+    @FXML
+    private ToggleGroup guichetierChefAgence;
+
+    @FXML
+    private RadioButton rbChefAgence;
 	@FXML
 	private TextField txtLogin;
 	@FXML
@@ -152,12 +160,22 @@ public class EmployeEditorPaneController implements Initializable {
 		case CREATION:
 			if (this.isSaisieValide()) {
 				this.employeResult = this.employeEdite;
+				if(this.rbGuichetier.isSelected()) {
+					this.employeResult.droitsAccess = "guichetier";
+				} else {
+					this.employeResult.droitsAccess = "chefAgence";
+				}
 				this.primaryStage.close();
 			}
 			break;
 		case MODIFICATION:
 			if (this.isSaisieValide()) {
 				this.employeResult = this.employeEdite;
+				if(this.rbGuichetier.isSelected()) {
+					this.employeResult.droitsAccess = "guichetier";
+				} else {
+					this.employeResult.droitsAccess = "chefAgence";
+				}
 				this.primaryStage.close();
 			}
 			break;
