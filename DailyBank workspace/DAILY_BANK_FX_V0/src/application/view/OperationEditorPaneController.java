@@ -240,11 +240,14 @@ public class OperationEditorPaneController implements Initializable {
 		case VIREMENT:
 			//règle de validation d'un crédit :
 			//le montant doit être un montant valide (montantCredit > 0)
+			//le champ "montant" doit être renseigné
+			//le champ "vers compte numéro :" doit être renseigné
 			double montantV;
 
 			this.txtMontant.getStyleClass().remove("borderred");
 			this.lblMontant.getStyleClass().remove("borderred");
 			this.lblMessage.getStyleClass().remove("borderred");
+			this.lblNumCompte.getStyleClass().remove("borderred");
 			String infoV = "Cpt. : " + this.compteEdite.idNumCompte + "  "
 					+ String.format(Locale.ENGLISH, "%12.02f", this.compteEdite.solde) + "  /  "
 					+ String.format(Locale.ENGLISH, "%8d", this.compteEdite.debitAutorise);
@@ -252,11 +255,12 @@ public class OperationEditorPaneController implements Initializable {
 			
 			try {
 				montantV = Double.parseDouble(this.txtMontant.getText().trim());
-				if (montantV <= 0 || this.txtNumCompte.getText() == "")
+				if (montantV <= 0 || this.txtNumCompte.getText().equals(""))
 					throw new NumberFormatException();
 				} catch (NumberFormatException nfe) {
 					this.txtMontant.getStyleClass().add("borderred");
 					this.lblMontant.getStyleClass().add("borderred");
+					this.lblNumCompte.getStyleClass().add("borderrred");
 					this.txtMontant.requestFocus();
 					return;
 				}
