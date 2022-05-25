@@ -442,15 +442,60 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Table des matières</div>
 <ul class="sectlevel1">
-<li><a href="#_fiche_de_test">Fiche de Test</a></li>
+<li><a href="#_fiche_de_test_gestion_de_lapplication">Fiche de Test : gestion de l&#8217;Application</a></li>
+<li><a href="#_fiche_de_test_gestion_des_clients">Fiche de Test : gestion des clients</a></li>
+<li><a href="#_fiche_de_test_gestion_des_comptes">Fiche de test : Gestion des comptes</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect1 data-line-6">
-<h2 id="_fiche_de_test">Fiche de Test</h2>
+<h2 id="_fiche_de_test_gestion_de_lapplication">Fiche de Test : gestion de l&#8217;Application</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch data-line-9">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">id Test</th>
+<th class="tableblock halign-left valign-top">nom Test</th>
+<th class="tableblock halign-left valign-top">Condition de satisfaction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TestQuitterApplicationOK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Une fenêtre de confirmation s&#8217;affiche à l&#8217;écran.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">02</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TestConnexionOK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La connexion avec le compte de l&#8217;Agence bancaire à bien lieu.<br>
+Le bouton de gestion des clients devient cliquable.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">03</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TestConnexionNOK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La connexion avec le compte de l&#8217;Agence bancaire n&#8217;a pas lieu, les saisies ne sont pas correct. Affichage d&#8217;un message d&#8217;erreur.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">04</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TestDeconnexionOK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La déconnexion avec le compte de l&#8217;Agence Bancaire a bien lieu.<br>
+Le bouton de gestion des clients n&#8217;est plus cliquable.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1 data-line-31">
+<h2 id="_fiche_de_test_gestion_des_clients">Fiche de Test : gestion des clients</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch data-line-35">
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -462,75 +507,96 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <th class="tableblock halign-left valign-top">id Test</th>
 <th class="tableblock halign-left valign-top">nom Test</th>
 <th class="tableblock halign-left valign-top">Condition de satisfaction</th>
-<th class="tableblock halign-left valign-top">résultat</th>
+<th class="tableblock halign-left valign-top">précondition</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">01</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TestQuitter l&#8217;Application</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Une fenêtre de confirmation s&#8217;affiche. Si le choix est « ok » l&#8217;application se ferme sinon elle continue de fonctionner.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Satisfaisant.<br>
- La fenêtre de confirmation s&#8217;affiche bien et en cliquant sur le bouton « ok » l&#8217;application se ferme.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">02</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TestConnexion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Une fenêtre d&#8217;identification s&#8217;ouvre.<br>
- Si les informations saisies sont correct, une connexion grâce à la Base de Données s&#8217;effectue, sinon un message d&#8217;erreur s&#8217;affiche</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Satisfaisant.<br>
- La fenêtre d&#8217;authentification s&#8217;ouvre bien et si les données saisies sont correct, la connexion avec le compte est bien établie sinon le message d&#8217;erreur s&#8217;affiche bien.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">03</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TestDeconnexion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Au clique du bouton « deconnexion » la deconnexion du compte a lieu grâce à la Base de Données</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Satisfaisant.<br>
- La déconnexion a bien lieu</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">04</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TestGestionClient</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Au clique du bouton « clients » la fenêtre de gestion des clients s&#8217;affiche.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Satisfaisant.<br>
- La fenêtre de gestion des clients s&#8217;affiche bien</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">05</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TestRechecherClient</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Au clique du bouton « rechercher » les informations de tous les clients contenue dans la Base de Données
- sont affichés.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Satisfaisant.<br>
- Les informations sont bien affichés à l&#8217;écran.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TestGestionClientOK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La fenêtre de gestion des clients de l&#8217;Agence s&#8217;affiche</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">On doit être connecter avec un compte ayant les droits d&#8217;accès guichetier ou chef d&#8217;Agence.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">06</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TestCreationClient</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">En cliquant sur le bouton « nouveau client » la fenêtre de création de  client s&#8217;affiche.<br>
-Au clique du bouton « ajouter » si les informations sont correct, le nouveau client est ajouter à la Base de Données sinon une fenêtre d&#8217;alerte s&#8217;affiche.<br>
-Au clique du bouton « annuler » le client n&#8217;est pas ajouter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Satisfaisant.<br>
- La fenêtre de création de client s&#8217;affiche et le compte, si toutes les informations saisies sont correct le client s&#8217;ajoute en effet à la Base de Données, sinon la fenêtre d&#8217;alerte s&#8217;affiche correctement.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TestRechercherClientOK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Affiche la liste des clients de l&#8217;Agence sur la fenêtre.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">On doit être connecter avec un compte ayant les droits d&#8217;accès guichetier ou chef d&#8217;Agence.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">07</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TestModificationClient</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">En cliquant sur le bouton « modifier client » la fenêtre de modification de  compte s&#8217;affiche.<br>
-Au clique du bouton « ajouter » si les informations sont correct, la modification du client se sauvegarde dans la Base de Données sinon une fenêtre d&#8217;alerte s&#8217;affiche en présentant l&#8217;erreur.<br>
-Au clique du bouton « annuler » le client ne se met pas à jour.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Satisfaisant.<br>
- La fenêtre de modification de client s&#8217;affiche et le compte, si toutes les informations saisies sont correct se met à jour dans la Base de Données, sinon la fenêtre d&#8217;alerte s&#8217;affiche bien en présentant l&#8217;erreur.<br>
- Au clique du bouton « annuler » le compte n&#8217;est bien pas mis à jour.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TestCréationClientOK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La fenêtre de création d&#8217;un nouveau client s&#8217;affiche.<br>
+Le numéro de téléphone doit être composé de 10 nombres et le mail doit contenur "@" et le numéro de client est unique.<br>
+La création du client s&#8217;enregistre dans la Base de Données.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">On doit être connecter avec un compte ayant les droits d&#8217;accès guichetier ou chef d&#8217;Agence.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">08</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TestGestionCompte</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">En cliquant sur le bouton « modifier client » la fenêtre de gestion des  comptes d&#8217;un cliant s&#8217;affiche.<br>
-Au clique du bouton « ajouter » si les informations sont correct, la modification du compte se sauvegarde dans la Base de Données sinon une fenêtre d&#8217;alerte s&#8217;affiche en présentant l&#8217;erreur.<br>
-Au clique du bouton « annuler » le compte n&#8217;est pas mis à jour</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Satisfaisant.<br>
- La fenêtre de modification de client s&#8217;affiche et le compte, si toutes les informations saisies sont correct se met à jour dans la Base de Données, sinon la fenêtre d&#8217;alerte s&#8217;affiche bien en présentant l&#8217;erreur.<br>
- Au clique du bouton « annuler » le compte n&#8217;est bien pas mis à jour.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TestCréationClientNOK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Une fenêtre d&#8217;erreur s&#8217;affiche si le nom, le prénom, l&#8217;adresse, le téléphone ou bien l&#8217;email n&#8217;est pas saisie.<br>
+La création du client ne s&#8217;enregistre pas dans la Base de Données.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">On doit être connecter avec un compte ayant les droits d&#8217;accès guichetier ou chef d&#8217;Agence.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">09</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TestModificationClientOK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La fenêtre de modification d&#8217;un client s&#8217;affiche.<br>
+Le numéro de téléphone doit être composé de 10 nombres et le mail doit contenur "@" et le numéro de client est unique.<br>
+La modification du client s&#8217;enregistre dans la Base de Données.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">On doit être connecter avec un compte ayant les droits d&#8217;accès guichetier ou chef d&#8217;Agence.
+ Les informations sont bien affichés à l&#8217;écran.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TestModificationClientNOK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Une fenêtre d&#8217;erreur s&#8217;affiche si le nom, le prénom, l&#8217;adresse, le téléphone ou bien l&#8217;email n&#8217;est pas saisie.<br>
+La modification du client ne s&#8217;enregistre pas dans la Base de Données.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">On doit être connecter avec un compte ayant les droits d&#8217;accès guichetier ou chef d&#8217;Agence.
+ Les informations sont bien affichés à l&#8217;écran.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1 data-line-79">
+<h2 id="_fiche_de_test_gestion_des_comptes">Fiche de test : Gestion des comptes</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch data-line-82">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">id Test</th>
+<th class="tableblock halign-left valign-top">nom Test</th>
+<th class="tableblock halign-left valign-top">Condition de satisfaction</th>
+<th class="tableblock halign-left valign-top">précondition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TestGestionComptesOK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La fenêtre de gestions des comptes d&#8217;un client s&#8217;affiche.
+Le client ne doit pas être désactiver.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Un client doit être sélectionner.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TestGestionOpérationOK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La fenêtre de gestion des opérations du compte d&#8217;un client s&#8217;affiche.<br>
+Le compte du client ne doit pas être clôturer.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Le compte du client doit être sélectionner.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TestVoirOperationOK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La listes des opérations du compte est visible sur la fenêtre.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Le compte du client doit être sélectionner</p></td>
 </tr>
 </tbody>
 </table>
