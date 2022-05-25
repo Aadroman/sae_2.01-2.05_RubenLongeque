@@ -242,6 +242,7 @@ public class OperationEditorPaneController implements Initializable {
 			//le montant doit être un montant valide (montantCredit > 0)
 			//le champ "montant" doit être renseigné
 			//le champ "vers compte numéro :" doit être renseigné
+			//le débit ne doit pas amener le compte en dessous de son découvert autorisé
 			double montantV;
 
 			this.txtMontant.getStyleClass().remove("borderred");
@@ -264,6 +265,18 @@ public class OperationEditorPaneController implements Initializable {
 					this.txtMontant.requestFocus();
 					return;
 				}
+			
+			if (this.compteEdite.solde - montantV < this.compteEdite.debitAutorise) {
+				info = "Dépassement du découvert ! - Cpt. : " + this.compteEdite.idNumCompte + "  "
+						+ String.format(Locale.ENGLISH, "%12.02f", this.compteEdite.solde) + "  /  "
+						+ String.format(Locale.ENGLISH, "%8d", this.compteEdite.debitAutorise);
+				this.lblMessage.setText(info);
+				this.txtMontant.getStyleClass().add("borderred");
+				this.lblMontant.getStyleClass().add("borderred");
+				this.lblMessage.getStyleClass().add("borderred");
+				this.txtMontant.requestFocus();
+				return;
+			}
 				
 			
 			String typeOpV = this.cbTypeOpe.getValue();
