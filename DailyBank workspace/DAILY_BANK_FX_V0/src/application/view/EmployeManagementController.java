@@ -76,7 +76,7 @@ public class EmployeManagementController implements Initializable {
 	@FXML
 	private ListView<Employe> lvEmploye;
 	@FXML
-	private Button btnDesactEmploye;
+	private Button btnSuppEmploye;
 	@FXML
 	private Button btnModifEmploye;
 	@Override
@@ -158,13 +158,13 @@ public class EmployeManagementController implements Initializable {
 	 * Permet de désactiver (supprimer) un employé
 	 */
 	@FXML
-	private void doDesactiverEmploye() {
+	private void doSuppEmploye() {
 		int selectedIndice = this.lvEmploye.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			Employe empDesac = this.olc.get(selectedIndice);
 			AccessEmploye ac = new AccessEmploye();
 			try {
-				ac.updateEmploye(empDesac);
+				ac.deleteEmploye(empDesac);
 			} catch (RowNotFoundOrTooManyRowsException | DataAccessException | DatabaseConnexionException e) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
 				ed.doExceptionDialog();
@@ -191,10 +191,10 @@ public class EmployeManagementController implements Initializable {
 		int selectedIndice = this.lvEmploye.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			this.btnModifEmploye.setDisable(false);
-			this.btnDesactEmploye.setDisable(false);
+			this.btnSuppEmploye.setDisable(false);
 		} else {
 			this.btnModifEmploye.setDisable(true);
-			this.btnDesactEmploye.setDisable(true);
+			this.btnSuppEmploye.setDisable(true);
 		}
 	}
 }

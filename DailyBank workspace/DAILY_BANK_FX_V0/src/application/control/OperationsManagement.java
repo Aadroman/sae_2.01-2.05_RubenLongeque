@@ -12,6 +12,9 @@ import application.view.OperationEditorPaneController;
 import application.view.OperationsManagementController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -140,6 +143,7 @@ public class OperationsManagement {
 	 */
 	public Operation enregistrerVirement() {
 		
+		int indiceErreur = 0;
 		ArrayList<CompteCourant> numCompte = new ArrayList<CompteCourant>();
 		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dbs);
 		Operation op = oep.doOperationEditorDialog(this.compteConcerne, CategorieOperation.VIREMENT);
@@ -148,15 +152,19 @@ public class OperationsManagement {
 				AccessCompteCourant acc = new AccessCompteCourant();
 				numCompte = acc.getListCompteCourant();
 				AccessOperation ao = new AccessOperation();
-				ao.insertDebit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
 				for(int i=0;i<numCompte.size();i++) {
 					if(oep.getOepc().getId() == numCompte.get(i).idNumCompte) {
 						CompteCourant compteDeux = acc.getCompteCourant(numCompte.get(i).idNumCompte);
+						ao.insertDebit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
 						ao.insertCredit(compteDeux.idNumCompte, op.montant, op.idTypeOp);
-						if(compteDeux.solde - op.montant < compteDeux.debitAutorise) {
-							
-						}
+						indiceErreur = 1;
 					}
+				}
+				if(indiceErreur == 0) {
+					Alert dialog = new Alert(AlertType.INFORMATION);
+					dialog.setTitle("Erreur numéro de compte");
+					dialog.setHeaderText("Numéro de compte saisi inexistant");
+					dialog.showAndWait();
 				}
 			} catch (DatabaseConnexionException e) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);

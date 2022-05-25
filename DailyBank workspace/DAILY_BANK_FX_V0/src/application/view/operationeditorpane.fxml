@@ -52,7 +52,7 @@
             </Label>
             <ComboBox fx:id="cbTypeOpe" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" />
             <TextField fx:id="txtMontant" layoutX="171.0" layoutY="23.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="lblNumCompte" alignment="CENTER_RIGHT" disable="true" layoutX="21.0" layoutY="41.0" maxWidth="1.7976931348623157E308" prefHeight="34.0" prefWidth="170.0" text="Vers le compte num :" visible="false" GridPane.rowIndex="2">
+            <Label fx:id="lblNumCompte" alignment="CENTER_RIGHT" layoutX="21.0" layoutY="41.0" maxWidth="1.7976931348623157E308" prefHeight="34.0" prefWidth="170.0" text="Vers le compte num :" visible="false" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>

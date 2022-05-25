@@ -11,6 +11,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
@@ -189,7 +191,16 @@ public class ClientsManagementController implements Initializable {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
 				ed.doExceptionDialog();
 			}
+			System.out.println(cliDesac.getEstInactif());
 		}
+		
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.setTitle("Désactiver le client");
+		alert.setHeaderText("Voulez vous réellement désactiver le client ?");
+		
+		alert.showAndWait();
+		
+		
 	}
 
 	
