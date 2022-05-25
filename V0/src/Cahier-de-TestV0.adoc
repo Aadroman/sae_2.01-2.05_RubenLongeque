@@ -1,0 +1,73 @@
+# CAHIER DE TEST VERSION  0
+:toc: left
+:toc-title: Table des matières
+:nofooter:
+
+## Fiche de Test 
+
+[cols="1,1,1,1"]
+|===
+|id Test |nom Test |Condition de satisfaction |résultat
+
+|01
+|TestQuitter l'Application
+|Une fenêtre de confirmation s'affiche. Si le choix est « ok » l'application se ferme sinon elle continue de fonctionner.
+|Satisfaisant. +
+ La fenêtre de confirmation s'affiche bien et en cliquant sur le bouton « ok » l'application se ferme. 
+
+|02
+|TestConnexion
+|Une fenêtre d'identification s'ouvre. +
+ Si les informations saisies sont correct, une connexion grâce à la Base de Données s'effectue, sinon un message d'erreur s'affiche
+|Satisfaisant. +
+ La fenêtre d'authentification s'ouvre bien et si les données saisies sont correct, la connexion avec le compte est bien établie sinon le message d'erreur s'affiche bien.
+
+|03
+|TestDeconnexion
+|Au clique du bouton « deconnexion » la deconnexion du compte a lieu grâce à la Base de Données
+|Satisfaisant. +
+ La déconnexion a bien lieu
+ 
+
+|04
+|TestGestionClient
+|Au clique du bouton « clients » la fenêtre de gestion des clients s'affiche.
+|Satisfaisant. +
+ La fenêtre de gestion des clients s'affiche bien
+
+|05
+|TestRechecherClient
+|Au clique du bouton « rechercher » les informations de tous les clients contenue dans la Base de Données 
+ sont affichés.
+|Satisfaisant. +
+ Les informations sont bien affichés à l'écran.
+
+|06
+|TestCreationClient
+|En cliquant sur le bouton « nouveau client » la fenêtre de création de  client s'affiche. +
+Au clique du bouton « ajouter » si les informations sont correct, le nouveau client est ajouter à la Base de Données sinon une fenêtre d'alerte s'affiche. +
+Au clique du bouton « annuler » le client n'est pas ajouter
+|Satisfaisant. +
+ La fenêtre de création de client s'affiche et le compte, si toutes les informations saisies sont correct le client s'ajoute en effet à la Base de Données, sinon la fenêtre d'alerte s'affiche correctement. 
+
+|07
+|TestModificationClient
+|En cliquant sur le bouton « modifier client » la fenêtre de modification de  compte s'affiche. +
+Au clique du bouton « ajouter » si les informations sont correct, la modification du client se sauvegarde dans la Base de Données sinon une fenêtre d'alerte s'affiche en présentant l'erreur. +
+Au clique du bouton « annuler » le client ne se met pas à jour.
+|Satisfaisant. +
+ La fenêtre de modification de client s'affiche et le client, si toutes les informations saisies sont correct se met en effet à jour dans la Base de Données, sinon la fenêtre d'alerte s'affiche bien en présentant l'erreur. +
+ Au clique du bouton « annuler » le client n'est effectivement pas mis à jour dans la Base de Données.
+
+|08
+|TestGestionCompte
+|En cliquant sur le bouton « comptes client » la fenêtre de gestion des  comptes d'un client s'affiche. +
+|Satisfaisant. +
+L'affichage de la fenêtre des gestion des comptes d'un client s'affiche effectivement au clique du bouton « comptes client »
+
+|09
+|TestOperationCompte
+|En cliquant sur le bouton « voir opération » la fenêtre de gestion des  opération du compte d'un client s'affiche.
+|Satisfaisant. +
+L'affichage de la fenêtre de gestion des opération du compte d'un client s'affiche effectivement au clique du bouton « voir opérations »
+|===
