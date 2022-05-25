@@ -80,10 +80,11 @@ Lorsque l'utilisateur clique sur le bouton « rechercher », le contrôleur de v
 *Consulter les comptes d'un client* : Fonctionnalité de la version existante
 
 Cette fonctionnalité permet de consulter la liste des comptes d'un client de l'Agence. +
-Lorsque l'utilisateur clique sur le bouton « comptes client », le contrôleur de vue comptesmanagementcontroller transfère les information nécessaire au contrôle comptesmanagement pour l'affichage de la fenêtre de gestion des comptes. + 
+Lorsque l'utilisateur clique sur le bouton « comptes client », le contrôleur de vue comptesmanagementcontroller transfère les information nécessaire au contrôle comptesmanagement pour l'affichage de la fenêtre de gestion des comptes. +
 La fenêtre de gestion des comptes s'ouvre et grâce au transfère des informations nécessaire à l'affichage de la liste des comptes à la classe AccessCompte.
 
 *Consulter les opérations des comptes des clients* : Fonctionnalité de la version existante
 
 Cette fonctionnalité permet de consulter la liste des opérations du compte d'un client. +
-Lorsque le client clique sur le bouton « voir opérations », le contrôleur de vue comptesmanagementcontroller transfère les informations nécessaire au contrôle operation operationmanagement pour l'affichage de la fenêtre 
+Lorsque le client clique sur le bouton « voir opérations », le contrôleur de vue comptesmanagementcontroller transfère les informations nécessaire au contrôle operation operationmanagement pour l'affichage de la fenêtre de gestion des opération. +
+La fenêtre de gestion des opérations s'ouvre grâce au transfère des informations nécessaire à l'affichage de la liste des opérations grâce à la classe AccessOperation.
