@@ -215,7 +215,6 @@ public class ClientsManagementController implements Initializable {
 			}
 			
 			System.out.println("est devenu : " + cliDesac.getEstInactif());
-			
 		}
 		
 		this.doRechercher();
@@ -254,19 +253,27 @@ public class ClientsManagementController implements Initializable {
 		}
 	}
 	
+	
 	/*
 	 * Permet de désactiver certains boutons
 	 */
 	private void validateComponentState() {
 		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
-		if (selectedIndice >= 0) {
+		Client client = this.lvClients.getSelectionModel().getSelectedItem();
+		if (selectedIndice >= 0 && client.estInactif.equals("O")) {
 			this.btnModifClient.setDisable(false);
 			this.btnComptesClient.setDisable(false);
 			this.btnDesactClient.setDisable(false);
+			this.btnDesactClient.setText("Réactiver Client");
 		} else {
-			this.btnModifClient.setDisable(true);
-			this.btnComptesClient.setDisable(true);
-			this.btnDesactClient.setDisable(true);
+			this.btnModifClient.setDisable(false);
+			this.btnComptesClient.setDisable(false);
+			this.btnDesactClient.setDisable(false);
+			this.btnDesactClient.setText("Désactiver Client");
 		}
+		
+		
 	}
+	
+
 }
