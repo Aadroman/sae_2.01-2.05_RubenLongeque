@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import model.data.Client;
 import model.data.CompteCourant;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
@@ -58,7 +59,7 @@ public class AccessCompteCourant {
 
 		return alResult;
 	}
-	
+
 	/**
 	 * Recherche d'un CompteCourant à partir de son id (idNumCompte).
 	 *
@@ -98,10 +99,10 @@ public class AccessCompteCourant {
 				return null;
 			}
 
-//			if (rs.next()) {
-//				throw new RowNotFoundOrTooManyRowsException(Table.CompteCourant, Order.SELECT,
-//						"Recherche anormale (en trouve au moins 2)", null, 2);
-//			}
+			//			if (rs.next()) {
+			//				throw new RowNotFoundOrTooManyRowsException(Table.CompteCourant, Order.SELECT,
+			//						"Recherche anormale (en trouve au moins 2)", null, 2);
+			//			}
 			rs.close();
 			pst.close();
 			return cc;
@@ -109,7 +110,7 @@ public class AccessCompteCourant {
 			throw new DataAccessException(Table.CompteCourant, Order.SELECT, "Erreur accès", e);
 		}
 	}
-	
+
 	/**
 	 * Recherche d'un CompteCourant à partir de son id (idNumCompte).
 	 *
@@ -128,11 +129,11 @@ public class AccessCompteCourant {
 			PreparedStatement pst;
 
 			String query;
-			
-				query = "SELECT * FROM COMPTECOURANT";
-				
-				pst = con.prepareStatement(query);
-			
+
+			query = "SELECT * FROM COMPTECOURANT";
+
+			pst = con.prepareStatement(query);
+
 
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
@@ -154,11 +155,11 @@ public class AccessCompteCourant {
 
 		return alCompte;
 	}
-	
+
 	public void insertCompte(CompteCourant compte) {
 		try {
 			Connection con = LogToDatabase.getConnexion();
-			
+
 			// requete sql pour ajouter un compte à la BD
 			String query = "INSERT INTO COMPTECOURANT VALUES (" + "seq_id_client.NEXTVAL" + ", " + "?" + ", " + "?" + ", " + "?" + ", " + "?" + ")";
 
@@ -184,8 +185,8 @@ public class AccessCompteCourant {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+
 
 	/**
 	 * Mise à jour d'un CompteCourant.
@@ -201,7 +202,7 @@ public class AccessCompteCourant {
 	 * @throws ManagementRuleViolation
 	 */
 	public void updateCompteCourant(CompteCourant cc) throws RowNotFoundOrTooManyRowsException, DataAccessException,
-			DatabaseConnexionException, ManagementRuleViolation {
+	DatabaseConnexionException, ManagementRuleViolation {
 		try {
 
 			CompteCourant cAvant = this.getCompteCourant(cc.idNumCompte);
@@ -234,8 +235,8 @@ public class AccessCompteCourant {
 			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
 		}
 	}
-	
-	
+
+
 	/**
 	 * Clôture d'un compte courant
 	 * 
@@ -246,18 +247,18 @@ public class AccessCompteCourant {
 	 * @throws ManagementRuleViolation
 	 */
 	public void closeCompteCourant(CompteCourant cc)throws RowNotFoundOrTooManyRowsException, DataAccessException,
-			DatabaseConnexionException, ManagementRuleViolation {
+	DatabaseConnexionException, ManagementRuleViolation {
 		try {
-			
+
 			Connection con = LogToDatabase.getConnexion();
-			
+
 			String query = "UPDATE CompteCourant SET " + "Solde = 0, estCloture='O' " + "WHERE idNumCompte = ?";
-			
+
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setInt(1, cc.idNumCompte);
-			
+
 			System.err.println(query);
-			
+
 			int result = pst.executeUpdate();
 			pst.close();
 			if (result != 1) {
@@ -266,13 +267,66 @@ public class AccessCompteCourant {
 						"Update anormal (update de moins ou plus d'une ligne)", null, result);
 			}
 			con.commit();
+
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
+		}
+	}
+
+	public void closeCompteClient(Client cc)throws RowNotFoundOrTooManyRowsException, DataAccessException,
+	DatabaseConnexionException, ManagementRuleViolation {
+		try {
+
+			Connection con = LogToDatabase.getConnexion();
+
+			String query = "UPDATE comptecourant SET estcloture = 'O' WHERE idnumcli = ? ";
+
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1, cc.idNumCli);
+
+			System.err.println(query);
+
+			int result = pst.executeUpdate();
+			pst.close();
 			
+			con.commit();
+
 		} catch (SQLException e) {
 			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
 		}
 	}
 	
-	
+	/**
+	 * Permet de réactiver tous les comptes d'un client
+	 * @param cc le client
+	 * @throws RowNotFoundOrTooManyRowsException
+	 * @throws DataAccessException
+	 * @throws DatabaseConnexionException
+	 * @throws ManagementRuleViolation
+	 */
+	public void openCompteClient(Client cc)throws RowNotFoundOrTooManyRowsException, DataAccessException,
+	DatabaseConnexionException, ManagementRuleViolation {
+		try {
+
+			Connection con = LogToDatabase.getConnexion();
+
+			String query = "UPDATE comptecourant SET estcloture = 'N' WHERE idnumcli = ? ";
+
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1, cc.idNumCli);
+
+			System.err.println(query);
+
+			int result = pst.executeUpdate();
+			pst.close();
+			
+			con.commit();
+
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
+		}
+	}
+
 	/**
 	 * Permet la réacitvation d'un compte
 	 * 
@@ -285,7 +339,7 @@ public class AccessCompteCourant {
 	 * @throws ManagementRuleViolation
 	 */
 	public void openagainCompteCourant(CompteCourant cc) throws RowNotFoundOrTooManyRowsException, DataAccessException,
-			DatabaseConnexionException, ManagementRuleViolation {
+	DatabaseConnexionException, ManagementRuleViolation {
 		try {
 
 			Connection con = LogToDatabase.getConnexion();
@@ -310,6 +364,6 @@ public class AccessCompteCourant {
 			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
 		}
 	}
-	
-	
+
+
 }

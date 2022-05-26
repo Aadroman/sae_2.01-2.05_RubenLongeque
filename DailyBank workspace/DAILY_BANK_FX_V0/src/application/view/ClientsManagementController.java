@@ -20,9 +20,12 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
+import model.data.CompteCourant;
 import model.orm.AccessClient;
+import model.orm.AccessCompteCourant;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
+import model.orm.exception.ManagementRuleViolation;
 import model.orm.exception.RowNotFoundOrTooManyRowsException;
 
 public class ClientsManagementController implements Initializable {
@@ -178,7 +181,45 @@ public class ClientsManagementController implements Initializable {
 	 * Permet de désactiver (supprimer) un client
 	 */
 	@FXML
-	private void doDesactiverClient() {
+	private void doDesactiverClient() throws ManagementRuleViolation, RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
+		
+		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			Client cliDesac = this.olc.get(selectedIndice);
+			AccessClient ac = new AccessClient();
+			AccessCompteCourant acc = new AccessCompteCourant();
+			
+			switch(cliDesac.getEstInactif()) {
+				case "O":
+					System.out.println("est Inactif");
+					cliDesac.setEstInactif("N");
+					try {
+						ac.updateClient(cliDesac);
+						acc.openCompteClient(cliDesac);
+					} catch (RowNotFoundOrTooManyRowsException | DataAccessException | DatabaseConnexionException e) {
+						ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+						ed.doExceptionDialog();
+					}
+					break;
+				case "N":
+					System.out.println("n'est pas inactif");
+					cliDesac.setEstInactif("O");
+					try {
+						ac.updateClient(cliDesac);
+						acc.closeCompteClient(cliDesac);
+					} catch (RowNotFoundOrTooManyRowsException | DataAccessException | DatabaseConnexionException e) {
+						ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+						ed.doExceptionDialog();
+					}
+					break;
+			}
+			
+			System.out.println("est devenu : " + cliDesac.getEstInactif());
+			
+		}
+		
+		this.doRechercher();
+		/*
 		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			Client cliDesac = this.olc.get(selectedIndice);
@@ -192,13 +233,12 @@ public class ClientsManagementController implements Initializable {
 			}
 			System.out.println(cliDesac.getEstInactif());
 		}
-		
+	
 		Alert alert = new Alert(AlertType.WARNING);
 		alert.setTitle("Désactiver le client");
 		alert.setHeaderText("Voulez vous réellement désactiver le client ?");
-		
 		alert.showAndWait();
-		
+		*/
 		
 	}
 	
