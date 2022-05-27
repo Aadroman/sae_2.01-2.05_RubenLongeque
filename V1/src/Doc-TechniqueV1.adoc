@@ -125,6 +125,26 @@ image:img/code-cloture-compte5.png[]
 
 Ici j’utilise une boîte de dialogue pour mettre en action la fonctionnalité pour s’assurer que c’est bien une action volontaire de la part de l’employé.
 
+##### Créditer/Débiter un compte : réaliser par Yann 
+
+Cette fonctionnalité répond à l'Use-Case : créditer un compte
+
+image:img/usecase-crediter.png[]
+
+et elle concerne le diagramme de classe :
+
+image:img/diagramme-crediter.png[]
+
+La fonction “créditer” est basée sur la fonction “débiter”. On peut donc s’en inspirer pour réaliser la fonctionnalité cependant la légère différence est que le crédit agit comme un débit inverse.
+Donc dans la classe “AccessOperation” dans le package model.orm il suffit de refaire la même méthode que “insertDebit” mais en y spécifiant un montant négatif.
+Pour le reste des classes à implémenter, celles-ci sont similaires à la fonction “débit”.
+
+image:img/crediter.png[]
+image:img/crediter2.png[]
+image:img/crediter3.png[]
+image:img/crediter4.png[]
+
+
 ##### Virement d'un compte à un autre : réaliser par Yann
 
 Cette fonctionnalité permet de réaliser un virement d'un compte vers un autre.

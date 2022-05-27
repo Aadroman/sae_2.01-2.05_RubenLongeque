@@ -172,6 +172,18 @@ l'opération n'est pas enregistrer dans la Base de Données.
 |Un message d'erreur s'affiche sur la fenêtre si le montant est inférieur ou égal à 0. +
 l'opération n'est pas enregistrer dans la Base de Données.
 |
+
+|22
+|TestEnregistrerVirementOK
+|La fenêtre d'enregistrement d'un virement s'ouvre. +
+L'opération s'enregistre dans las Base de Données et s'affiche sur la fenêtre. +
+Le montant de l'oprération est positif. +
+|Le compte ne doit pas être cloturer
+
+|TestEnregistrerVirementNOK
+|Le texte se met en rouge si une information est fausse. +
+L'opération ne s'enregistre pas dans la Base de Données. +
+|Le compte ne doit pas être cloturer
 |===
 
 ## Fiche de test : Gestion des employés
