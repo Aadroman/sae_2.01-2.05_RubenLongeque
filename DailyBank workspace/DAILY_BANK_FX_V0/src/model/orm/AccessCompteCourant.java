@@ -279,7 +279,7 @@ public class AccessCompteCourant {
 
 			Connection con = LogToDatabase.getConnexion();
 
-			String query = "UPDATE comptecourant SET estcloture = 'O' WHERE idnumcli = ? ";
+			String query = "UPDATE comptecourant SET estcloture = 'O', solde = 0 WHERE idnumcli = ? ";
 
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setInt(1, cc.idNumCli);
@@ -310,7 +310,7 @@ public class AccessCompteCourant {
 
 			Connection con = LogToDatabase.getConnexion();
 
-			String query = "UPDATE comptecourant SET estcloture = 'N' WHERE idnumcli = ? ";
+			String query = "UPDATE comptecourant SET estcloture = 'N', solde = 50 WHERE idnumcli = ? ";
 
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setInt(1, cc.idNumCli);
