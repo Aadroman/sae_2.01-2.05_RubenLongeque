@@ -75,6 +75,8 @@ public class ComptesManagementController implements Initializable {
 		this.loadList();
 		this.desaclist();
 		this.validateComponentState();
+		
+		
 	}
 
 	public void displayDialog() {
@@ -87,7 +89,9 @@ public class ComptesManagementController implements Initializable {
 		e.consume();
 		return null;
 	}
-
+	
+	@FXML
+    private Button btnNouveauCompte;
 	@FXML
 	private Label lblInfosClient;
 	@FXML
@@ -247,6 +251,11 @@ public class ComptesManagementController implements Initializable {
 			this.btnModifierCompte.setDisable(false);
 			this.btnSupprCompte.setDisable(false);
 			this.btnSupprCompte.setText("Clôturer Compte");
+		}
+		
+		if(this.clientDesComptes.estInactif.equals("O")) {
+			this.btnSupprCompte.setDisable(true);
+			this.btnNouveauCompte.setDisable(true);
 		}
 	}
 }

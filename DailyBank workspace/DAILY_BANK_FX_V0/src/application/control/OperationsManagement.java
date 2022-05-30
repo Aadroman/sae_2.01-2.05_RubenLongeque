@@ -150,7 +150,7 @@ public class OperationsManagement {
 		if (op != null) {
 			try {
 				AccessCompteCourant acc = new AccessCompteCourant();
-				numCompte = acc.getListCompteCourant();
+				numCompte = acc.getCompteCourants(this.compteConcerne.idNumCli);
 				AccessOperation ao = new AccessOperation();
 				for(int i=0;i<numCompte.size();i++) {
 					if(oep.getOepc().getId() == numCompte.get(i).idNumCompte) {
@@ -163,7 +163,7 @@ public class OperationsManagement {
 				if(indiceErreur == 0) {
 					Alert dialog = new Alert(AlertType.INFORMATION);
 					dialog.setTitle("Erreur numéro de compte");
-					dialog.setHeaderText("Numéro de compte saisi inexistant");
+					dialog.setHeaderText("Impossible de faire un virement vers un compte qui ne vous appartient pas !");
 					dialog.showAndWait();
 				}
 			} catch (DatabaseConnexionException e) {

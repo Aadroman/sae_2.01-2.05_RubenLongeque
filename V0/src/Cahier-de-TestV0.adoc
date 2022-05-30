@@ -3,71 +3,100 @@
 :toc-title: Table des matières
 :nofooter:
 
-## Fiche de Test 
+## Fiche de Test : gestion de l'Application
+
+[cols="1,1,1"]
+|===
+|id Test |nom Test |Condition de satisfaction
+
+|01
+|TestQuitterApplicationOK
+|Une fenêtre de confirmation s'affiche à l'écran.
+
+|02
+|TestConnexionOK
+|La connexion avec le compte de l'Agence bancaire à bien lieu. +
+Le bouton de gestion des clients devient cliquable.
+
+|03
+|TestConnexionNOK
+|La connexion avec le compte de l'Agence bancaire n'a pas lieu, les saisies ne sont pas correct. Affichage d'un message d'erreur.
+
+|04
+|TestDeconnexionOK
+|La déconnexion avec le compte de l'Agence Bancaire a bien lieu. +
+Le bouton de gestion des clients n'est plus cliquable.
+|===
+
+## Fiche de Test : gestion des clients 
+
 
 [cols="1,1,1,1"]
 |===
-|id Test |nom Test |Condition de satisfaction |résultat
-
-|01
-|TestQuitter l'Application
-|Une fenêtre de confirmation s'affiche. Si le choix est « ok » l'application se ferme sinon elle continue de fonctionner.
-|Satisfaisant. +
- La fenêtre de confirmation s'affiche bien et en cliquant sur le bouton « ok » l'application se ferme. 
-
-|02
-|TestConnexion
-|Une fenêtre d'identification s'ouvre. +
- Si les informations saisies sont correct, une connexion grâce à la Base de Données s'effectue, sinon un message d'erreur s'affiche
-|Satisfaisant. +
- La fenêtre d'authentification s'ouvre bien et si les données saisies sont correct, la connexion avec le compte est bien établie sinon le message d'erreur s'affiche bien.
-
-|03
-|TestDeconnexion
-|Au clique du bouton « deconnexion » la deconnexion du compte a lieu grâce à la Base de Données
-|Satisfaisant. +
- La déconnexion a bien lieu
- 
-
-|04
-|TestGestionClient
-|Au clique du bouton « clients » la fenêtre de gestion des clients s'affiche.
-|Satisfaisant. +
- La fenêtre de gestion des clients s'affiche bien
+|id Test |nom Test |Condition de satisfaction |précondition
 
 |05
-|TestRechecherClient
-|Au clique du bouton « rechercher » les informations de tous les clients contenue dans la Base de Données 
- sont affichés.
-|Satisfaisant. +
- Les informations sont bien affichés à l'écran.
+|TestGestionClientOK
+|La fenêtre de gestion des clients de l'Agence s'affiche
+|On doit être connecter avec un compte ayant les droits d'accès guichetier ou chef d'Agence.
 
 |06
-|TestCreationClient
-|En cliquant sur le bouton « nouveau client » la fenêtre de création de  client s'affiche. +
-Au clique du bouton « ajouter » si les informations sont correct, le nouveau client est ajouter à la Base de Données sinon une fenêtre d'alerte s'affiche. +
-Au clique du bouton « annuler » le client n'est pas ajouter
-|Satisfaisant. +
- La fenêtre de création de client s'affiche et le compte, si toutes les informations saisies sont correct le client s'ajoute en effet à la Base de Données, sinon la fenêtre d'alerte s'affiche correctement. 
+|TestRechercherClientOK
+|Affiche la liste des clients de l'Agence sur la fenêtre.
+|On doit être connecter avec un compte ayant les droits d'accès guichetier ou chef d'Agence.
 
 |07
-|TestModificationClient
-|En cliquant sur le bouton « modifier client » la fenêtre de modification de  compte s'affiche. +
-Au clique du bouton « ajouter » si les informations sont correct, la modification du client se sauvegarde dans la Base de Données sinon une fenêtre d'alerte s'affiche en présentant l'erreur. +
-Au clique du bouton « annuler » le client ne se met pas à jour.
-|Satisfaisant. +
- La fenêtre de modification de client s'affiche et le client, si toutes les informations saisies sont correct se met en effet à jour dans la Base de Données, sinon la fenêtre d'alerte s'affiche bien en présentant l'erreur. +
- Au clique du bouton « annuler » le client n'est effectivement pas mis à jour dans la Base de Données.
+|TestCréationClientOK
+|La fenêtre de création d'un nouveau client s'affiche. +
+Le numéro de téléphone doit être composé de 10 nombres et le mail doit contenur "@" et le numéro de client est unique. +
+La création du client s'enregistre dans la Base de Données.
+|On doit être connecter avec un compte ayant les droits d'accès guichetier ou chef d'Agence. 
+ 
 
 |08
-|TestGestionCompte
-|En cliquant sur le bouton « comptes client » la fenêtre de gestion des  comptes d'un client s'affiche. +
-|Satisfaisant. +
-L'affichage de la fenêtre des gestion des comptes d'un client s'affiche effectivement au clique du bouton « comptes client »
+|TestCréationClientNOK
+|Une fenêtre d'erreur s'affiche si le nom, le prénom, l'adresse, le téléphone ou bien l'email n'est pas saisie. +
+La création du client ne s'enregistre pas dans la Base de Données.
+|On doit être connecter avec un compte ayant les droits d'accès guichetier ou chef d'Agence.  
+
 
 |09
-|TestOperationCompte
-|En cliquant sur le bouton « voir opération » la fenêtre de gestion des  opération du compte d'un client s'affiche.
-|Satisfaisant. +
-L'affichage de la fenêtre de gestion des opération du compte d'un client s'affiche effectivement au clique du bouton « voir opérations »
+|TestModificationClientOK
+|La fenêtre de modification d'un client s'affiche. +
+Le numéro de téléphone doit être composé de 10 nombres et le mail doit contenur "@" et le numéro de client est unique. + 
+La modification du client s'enregistre dans la Base de Données.
+|On doit être connecter avec un compte ayant les droits d'accès guichetier ou chef d'Agence. 
+ Les informations sont bien affichés à l'écran.
+
+|10
+|TestModificationClientNOK
+|Une fenêtre d'erreur s'affiche si le nom, le prénom, l'adresse, le téléphone ou bien l'email n'est pas saisie. +
+La modification du client ne s'enregistre pas dans la Base de Données.
+|On doit être connecter avec un compte ayant les droits d'accès guichetier ou chef d'Agence. 
+ Les informations sont bien affichés à l'écran.
+|===
+
+## Fiche de test : Gestion des comptes
+
+[cols="1,1,1,1"]
+|===
+|id Test |nom Test |Condition de satisfaction |précondition
+
+|11
+|TestGestionComptesOK
+|La fenêtre de gestions des comptes d'un client s'affiche.
+Le client ne doit pas être désactiver. 
+|Un client doit être sélectionner.
+
+
+|12
+|TestGestionOpérationOK
+|La fenêtre de gestion des opérations du compte d'un client s'affiche. +
+Le compte du client ne doit pas être clôturer.
+|Le compte du client doit être sélectionner.
+
+|13
+|TestVoirOperationOK
+|La listes des opérations du compte est visible sur la fenêtre.
+|Le compte du client doit être sélectionner
 |===

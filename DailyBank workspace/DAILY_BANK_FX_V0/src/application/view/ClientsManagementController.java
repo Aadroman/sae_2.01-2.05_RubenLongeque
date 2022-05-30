@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
@@ -21,9 +22,12 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.Employe;
+import model.data.CompteCourant;
 import model.orm.AccessClient;
+import model.orm.AccessCompteCourant;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
+import model.orm.exception.ManagementRuleViolation;
 import model.orm.exception.RowNotFoundOrTooManyRowsException;
 
 public class ClientsManagementController implements Initializable {
@@ -179,7 +183,52 @@ public class ClientsManagementController implements Initializable {
 	 * Permet de désactiver (supprimer) un client
 	 */
 	@FXML
-	private void doDesactiverClient() {
+	private void doDesactiverClient() throws ManagementRuleViolation, RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
+		
+		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			Client cliDesac = this.olc.get(selectedIndice);
+			AccessClient ac = new AccessClient();
+			AccessCompteCourant acc = new AccessCompteCourant();
+			
+			switch(cliDesac.getEstInactif()) {
+				case "O":
+					System.out.println("est Inactif");
+					cliDesac.setEstInactif("N");
+					Alert alert = new Alert(AlertType.CONFIRMATION);
+					alert.setTitle("Réactiver le client ?");
+					alert.setHeaderText("Voulez-vous réactiver le client ?");
+					alert.setContentText("Le solde du compte sera mis à 50 et les compte seront réactivés");
+					alert.showAndWait().ifPresent(response -> {
+						if(response == ButtonType.OK) {
+							try {
+								ac.updateClient(cliDesac);
+								acc.openCompteClient(cliDesac);
+							} catch (RowNotFoundOrTooManyRowsException | DataAccessException | DatabaseConnexionException | ManagementRuleViolation e) {
+								ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+								ed.doExceptionDialog();
+							}
+						}
+					});
+					break;
+				case "N":
+					System.out.println("n'est pas inactif");
+					cliDesac.setEstInactif("O");
+					try {
+						ac.updateClient(cliDesac);
+						acc.closeCompteClient(cliDesac);
+					} catch (RowNotFoundOrTooManyRowsException | DataAccessException | DatabaseConnexionException e) {
+						ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+						ed.doExceptionDialog();
+					}
+					break;
+			}
+			
+			System.out.println("est devenu : " + cliDesac.getEstInactif());
+		}
+		
+		this.doRechercher();
+		/*
 		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			Client cliDesac = this.olc.get(selectedIndice);
@@ -193,13 +242,12 @@ public class ClientsManagementController implements Initializable {
 			}
 			System.out.println(cliDesac.getEstInactif());
 		}
-		
+	
 		Alert alert = new Alert(AlertType.WARNING);
 		alert.setTitle("Désactiver le client");
 		alert.setHeaderText("Voulez vous réellement désactiver le client ?");
-		
 		alert.showAndWait();
-		
+		*/
 		
 	}
 
@@ -216,26 +264,38 @@ public class ClientsManagementController implements Initializable {
 		}
 	}
 	
+	
 	/*
 	 * Permet de désactiver certains boutons
 	 */
 	private void validateComponentState() {
 		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
 		Employe e = this.dbs.getEmpAct();
-		if (selectedIndice >= 0 && e!=null) {
-			if(this.dbs.isChefDAgence()) {
+		if (selectedIndice >= 0 && e != null) {
+			if (this.dbs.isChefDAgence()) {
 				this.btnModifClient.setDisable(false);
 				this.btnComptesClient.setDisable(false);
 				this.btnDesactClient.setDisable(false);
-			}else {
+			} else {
 				this.btnModifClient.setDisable(false);
 				this.btnComptesClient.setDisable(false);
 				this.btnDesactClient.setDisable(true);
 			}
-		} else {
-			this.btnModifClient.setDisable(true);
-			this.btnComptesClient.setDisable(true);
-			this.btnDesactClient.setDisable(true);
+			Client client = this.lvClients.getSelectionModel().getSelectedItem();
+			if (selectedIndice >= 0 && client.estInactif.equals("O")) {
+				this.btnModifClient.setDisable(false);
+				this.btnComptesClient.setDisable(false);
+				this.btnDesactClient.setDisable(false);
+				this.btnDesactClient.setText("Réactiver Client");
+			} else {
+				this.btnModifClient.setDisable(false);
+				this.btnComptesClient.setDisable(false);
+				this.btnDesactClient.setDisable(false);
+				this.btnDesactClient.setText("Désactiver Client");
+			}
+
 		}
 	}
+	
+
 }

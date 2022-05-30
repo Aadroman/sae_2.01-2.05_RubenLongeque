@@ -3,27 +3,232 @@
 :toc-title: Table des matières
 :nofooter:
 
-## Fiche de Test 
+## Fiche de Test : gestion de l'Application
 
-[cols="1,1,1,1,1"]
+[cols="1,1,1"]
 |===
-|id Test |nom Test |nom Cas d'utilisation |Condition de satisfaction |Pré-condition
+|id Test |nom Test |Condition de satisfaction
 
 |01
-|
-|
-|
-|
+|TestQuitterApplicationOK
+|Une fenêtre de confirmation s'affiche à l'écran.
 
 |02
-|
-|
-|
-|
+|TestConnexionOK
+|La connexion avec le compte de l'Agence bancaire à bien lieu. +
+Le bouton de gestion des clients devient cliquable.
 
 |03
+|TestConnexionNOK
+|La connexion avec le compte de l'Agence bancaire n'a pas lieu, les saisies ne sont pas correct. Affichage d'un message d'erreur.
+
+|04
+|TestDeconnexionOK
+|La déconnexion avec le compte de l'Agence Bancaire a bien lieu. +
+Le bouton de gestion des clients n'est plus cliquable.
+|===
+
+## Fiche de Test : gestion des clients 
+
+
+[cols="1,1,1,1"]
+|===
+|id Test |nom Test |Condition de satisfaction |précondition
+
+|05
+|TestGestionClientOK
+|La fenêtre de gestion des clients de l'Agence s'affiche
+|On doit être connecter avec un compte ayant les droits d'accès guichetier ou chef d'Agence.
+
+|06
+|TestRechercherClientOK
+|Affiche la liste des clients de l'Agence sur la fenêtre.
+|On doit être connecter avec un compte ayant les droits d'accès guichetier ou chef d'Agence.
+
+|07
+|TestCréationClientOK
+|La fenêtre de création d'un nouveau client s'affiche. +
+Le numéro de téléphone doit être composé de 10 nombres et le mail doit contenur "@" et le numéro de client est unique. +
+La création du client s'enregistre dans la Base de Données.
+|On doit être connecter avec un compte ayant les droits d'accès guichetier ou chef d'Agence. 
+ 
+
+|08
+|TestCréationClientNOK
+|Une fenêtre d'erreur s'affiche si le nom, le prénom, l'adresse, le téléphone ou bien l'email n'est pas saisie. +
+La création du client ne s'enregistre pas dans la Base de Données.
+|On doit être connecter avec un compte ayant les droits d'accès guichetier ou chef d'Agence.  
+
+
+|09
+|TestModificationClientOK
+|La fenêtre de modification d'un client s'affiche. +
+Le numéro de téléphone doit être composé de 10 nombres et le mail doit contenur "@" et le numéro de client est unique. + 
+La modification du client s'enregistre dans la Base de Données.
+|On doit être connecter avec un compte ayant les droits d'accès guichetier ou chef d'Agence. 
+ Les informations sont bien affichés à l'écran.
+
+|10
+|TestModificationClientNOK
+|Une fenêtre d'erreur s'affiche si le nom, le prénom, l'adresse, le téléphone ou bien l'email n'est pas saisie. +
+La modification du client ne s'enregistre pas dans la Base de Données.
+|On doit être connecter avec un compte ayant les droits d'accès guichetier ou chef d'Agence. 
+ Les informations sont bien affichés à l'écran.
+
+|14
+|TestDésactiverClientOK
+|Une fenêtre de confirmation de la désactivation du client s'affiche. +
+ La liste de client afficher sur la fenêtre est mise à jour avec les nouveaux statuts des clients.
+|Le client doit être sélectionner.
+|===
+
+## Fiche de test : Gestion des comptes
+
+[cols="1,1,1,1"]
+|===
+|id Test |nom Test |Condition de satisfaction |précondition
+
+|11
+|TestGestionComptesOK
+|La fenêtre de gestions des comptes d'un client s'affiche.
+Le client ne doit pas être désactiver. 
+|Un client doit être sélectionner.
+
+
+|12
+|TestGestionOpérationOK
+|La fenêtre de gestion des opérations du compte d'un client s'affiche. +
+Le compte du client ne doit pas être clôturer.
+|Le compte du client doit être sélectionner.
+
+|13
+|TestVoirOperationOK
+|La listes des opérations du compte est visible sur la fenêtre.
+|Le compte du client doit être sélectionner
+
+|15
+|TestModificationCompteOK
+|La fenêtre de modification du compte d'un client s'affiche. +
+ La modification du compte s'enregistre dans la Base de Données.
+|Le compte du client doit être sélectionner
+
+|16
+|TestModificationCompteOK
+|Le montant du découvert n'est pas enregistrer. +
+ La modification du compte ne s'enregistre pas dans la Base de Données.
+|Le compte du client doit être sélectionner
+
+|17
+|TestClôturationCompteOK
+|Une fenêtre de confirmation de la clôturage du compte s'ouvre. +
+ L'état du compte se met à jour dans l'affichage sur la fenêtre. +
+ Les boutons « voir opérations » et « modifier compte » se désactive
+|Le compte du client doit être sélectionner
+
+|18
+|TestRéactivationCompteOK
+|Une fenêtre de confirmation de la réactivation du compte s'ouvre. +
+ L'état du compte se met à jour dans l'affichage sur la fenêtre. +
+ Les boutons « voir opérations » et « modifier compte » se réactive
+|Le compte du client doit être sélectionner
+
+|19
+|TestNouveauCompteOK
+|Une fenêtre de création d'un compte s'ouvre. +
+ L'état du compte se met à jour dans l'affichage sur la fenêtre. +
+ La création du compte s'enregistre dans la Base de données. + 
+ Le nouveau compte s'affiche sur la fenêtre.
 |
+|===
+
+## Fiche de test : Gestion des opérations
+
+[cols="1,1,1,1"]
+|===
+|id Test |nom Test |Condition de satisfaction |précondition
+
+|20
+|TestEnregistrerDebitOK
+|La fenêtre d'enregistrement d'un débit s'ouvre. +
+ L'opération est enregistrer dans la Base de Données et s'affiche sur la fenêtre. +
+ Le solde est mis à jour.
 |
+
+|21
+|TestEnregistrerDebitNOK
+|Un message d'erreur s'affiche sur la fenêtre. +
+l'opération n'est pas enregistrer dans la Base de Données.
 |
+
+|20
+|TestEnregistrerCrebitOK
+|La fenêtre d'enregistrement d'un crébit s'ouvre. +
+ L'opération est enregistrer dans la Base de Données et s'affiche sur la fenêtre. +
+ Le solde est mis à jour.
+|
+
+|21
+|TestEnregistrerCrebitNOK
+|Un message d'erreur s'affiche sur la fenêtre si le montant est inférieur ou égal à 0. +
+l'opération n'est pas enregistrer dans la Base de Données.
+|
+
+|22
+|TestEnregistrerVirementOK
+|La fenêtre d'enregistrement d'un virement s'ouvre. +
+L'opération s'enregistre dans las Base de Données et s'affiche sur la fenêtre. +
+Le montant de l'oprération est positif. +
+|Le compte ne doit pas être cloturer
+
+|TestEnregistrerVirementNOK
+|Le texte se met en rouge si une information est fausse. +
+L'opération ne s'enregistre pas dans la Base de Données. +
+|Le compte ne doit pas être cloturer
+|===
+
+## Fiche de test : Gestion des employés
+
+[cols="1,1,1,1"]
+|===
+|id Test |nom Test |Condition de satisfaction |précondition
+
+|22
+|TestRechercherEmployeOK
+|La liste des employés s'affiche sur la fenêtre avec leur informations. +
+|
+
+|23
+|TestModifierEmployeOK
+|La fenêtre de modification des employés s'affiche. +
+La modification s'enregistre dans la Base de Données. +
+L'affichage du compte est mis à jour sur la fenêtre.
+|L'employé doit être sélectionner.
+
+|24
+|TestMofierEmployeNOK
+|Une fenêtre d'erreur s'affiche. +
+La modification ne s'enregistre pas dans la Base de Données. +
+L'affichage du compte reste le même sur la fenêtre.
+|L'employé doit être sélectionner.
+
+|25
+|TestDésactiverEmployeOK
+|Une fenêtre d'erreur s'affiche. +
+La modification ne s'enregistre pas dans la Base de Données. +
+L'affichage du compte reste le même sur la fenêtre.
+|L'employé doit être sélectionner.
+
+|26
+|TestNouveauEmployeOK
+|Une fenêtre de création d'un nouvel employé s'affiche. +
+Le nouvel employé est enregistrer dans la Base de Données +
+Le nouvel employé s'affiche sur la fenêtre.
+|
+
+|26
+|TestNouveauEmployeNOK
+|Une fenêtre d'erreur s'affiche +
+Le nouvel employé n'est pas enregistrer dans la Base de Données +
+Le nouvel employé ne s'affiche pas sur la fenêtre.
 |
 |===

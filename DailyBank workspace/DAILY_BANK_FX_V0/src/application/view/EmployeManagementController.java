@@ -159,7 +159,7 @@ public class EmployeManagementController implements Initializable {
 	@FXML
 	private void doSuppEmploye() {
 		int selectedIndice = this.lvEmploye.getSelectionModel().getSelectedIndex();
-		if (selectedIndice >= 0) {
+		
 			Employe empDesac = this.olc.get(selectedIndice);
 			AccessEmploye ac = new AccessEmploye();
 			try {
@@ -168,7 +168,8 @@ public class EmployeManagementController implements Initializable {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
 				ed.doExceptionDialog();
 			}
-		}
+			this.doRechercher();
+		
 	}
 	
 	/*

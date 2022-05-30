@@ -77,7 +77,136 @@ NOTE: Une alerte de confirmation s'affiche à l'écran
 
 image:img/alert-desac-client.png[]
 
-#### Fenêtre gestion des comptes
+#### Fenêtre principale
+
+*quitter l'application*
+
+TIP: Un bouton « quitter » est accessible depuis l'onglet « utilisateur » 
+
+En cliquant sur ce bouton, l'utilisateur quittera l'application
+
+image:img/img2/quitter-appli.png[]
+
+NOTE: Une alerte de validation s'ouvrira
+
+image:img/img2/alerte-quitter.png[]
+
+*Connexion à un compte*
+
+TIP: Un bouton « connexion »  est accessible depuis l'onglet « utilisateur » 
+
+En cliquant sur le bouton « connexion » l'utilisateur pourra se connecter à son compte.
+Ce bouton ouvre une fenêtre de connexion demandant les information de l'utilisateur :
+
+* Login (le nom / identifiant de l'utilisateur)
+
+* Mot de passe
+
+image:img/img2/connection.png[]
+
+WARNING: Si l'une de ces deux informations est fausse ou bien les deux, un message d'erreur sera affiché à l'écran.
+
+image:img/img2/erreur-connection.png[]
+
+*Deconnexion d'un compte*
+
+TIP: Un bouton « deconnexion »  est accessible depuis l'onglet « utilisateur » 
+
+En cliquant sur le bouton « deconnexion » l'utilisateur pourra se déconnecter de son compte.
+
+image:img/img2/deconnection.png[]
+
+*Gestion des clients*
+
+NOTE: Cette fonctionnalités n'est accessible que si l'utilisateur est connectée
+      Cette fonctionnalités est accessible depuis l'onglet « gestion »
+
+image:img/img2/gestion-client.png[]
+
+En cliquant sur le bouton « client » l'utilisateur pourra gérer les clients de l'agence bancaire en ouvrant une fenêtre de gestion des clients.
+
+image:img/img2/gestion-client2.png[]
+
+#### Fenêtre gestion des clients
+
+*Recherche d'un client*
+
+En cliquant sur le bouton « rechercher » l'utilisateur pour rechercher un client de l'agence bancaire.
+Les résultats seront visible sur la ListView et peuvent être affinés en entrant les informations :
+
+* Numéro (numéro du client)
+
+* Nom
+
+* Prénom
+
+image:img/img2/recherche-client.png[]
+
+*Création d'un nouveau client*
+
+En cliquant sur le bouton « nouveau client » l'utilisateur pourra créer un nouveau client en ouvrant une nouvelle fenêtre de création d'un client et en entrant les informations :
+
+* Nom 
+* Prénom
+* Adresse
+* Téléphone
+* E-mail
+* Cliant actif
+
+image:img/img2/nouveau-client.png[]
+image:img/img2/nouveau-client2.png[]
+
+WARNING: Si l'une de ces informations n'est pas entrée une alerte s'affiche présentant l'erreur
+
+Cliquer sur le bouton « Ajouter » aura pour action de créer le nouveau client et de l'ajouter à la Base de Donnée et cliquer sur le bouton « annuler » aura pour action d'annuler la création du client. 
+
+image:img/img2/nouveau-client-erreur.png[]
+
+*Modification d'un client*
+
+TIP: Un client doit être sélectionner pour effectuer cette action
+
+image:img/img2/modification-client.png[]
+
+En cliquant sur le bouton « modifier client » une fenêtre s'ouvrira dans laquelle l'utilisateur pour modifier les informations de celui-ci :
+
+Cliquer sur le bouton « modifier » aura pour action de modifier les informations du client et de les enregistrer dans la Base de Donnée et cliquer sur le bouton « annuler » aura pour action d'annuler la modification du client. 
+
+* Nom
+* Prénom
+* Adresse
+* Téléphone
+* E-mail
+* Client-actif
+
+image:img/img2/modification-client2.png[]
+
+WARNING: Si l'une de ces informations n'est pas entrée une alerte s'affiche présentant l'erreur
+
+image:img/img2/modification-client-erreur.png[]
+
+
+*Gestion des comptes d'un client*
+
+TIP: Un client doit être sélectionner pour effectuer cette action
+
+En cliquant sur le bouton « comptes client » une fenêtre s'ouvrira dans laquelle l'utilisateur pour consulter les comptes d'un client.
+
+image:img/img2/gestion-compte.png[]
+
+image:img/img2/gestion-compte2.png[]
+
+#### Fenêtre gestion des comptes 
+
+*voir les opération d'un comptes*
+
+TIP: Cette fonctionnalité est accessible en sélectionnant un compte
+
+image:img/img2/gestion-operation.png[]
+
+En cliquant sur le bouton « voir opérations » un fenêtre s'ouvrira dans laquelle l'utilisateur pourra consulter les opérations du comptes d'un client.
+
+image:img/img2/gestion-operation2.png[]
 
 *modification d'un compte*
 

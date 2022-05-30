@@ -459,49 +459,328 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="sect2 data-line-9">
 <h3 id="_use_case_global">Use Case global</h3>
-
+<div class="paragraph data-line-11">
+<p>L&#8217;utilisation de l&#8217;application DailyBank se fait par deux utilisateurs distincts :</p>
 </div>
-<div class="sect2 data-line-11">
+<div class="paragraph data-line-13">
+<p><strong>Les guichetiers</strong> : Ils possèdent les droits leur permettant de gérer les clients de l&#8217;Agence bancaire ainsi que leur comptes.<br>
+Ainsi ils peuvent :</p>
+</div>
+<div class="ulist data-line-16">
+<ul>
+<li class="data-line-16">
+<p>gérer les clients de l&#8217;Agence bancaire :</p>
+<div class="ulist data-line-17">
+<ul>
+<li class="data-line-17">
+<p>Ajouter de nouveaux clients</p>
+</li>
+<li class="data-line-18">
+<p>Modifier les informations des clients déjà présent</p>
+</li>
+</ul>
+</div>
+</li>
+<li class="data-line-19">
+<p>gérer les comptes des clients de l&#8217;Agence bancaire :
+**</p>
+</li>
+</ul>
+</div>
+<div class="paragraph data-line-22">
+<p><strong>Les Chefs d&#8217;Agence</strong> : Ils possèdent les mêmes droits que les guichetiers et gèrent en plus les employés.<br>
+Ainsi ils peuvent :</p>
+</div>
+<div class="ulist data-line-25">
+<ul>
+<li class="data-line-25">
+<p>gérer le CRUD des employés</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 data-line-27">
 <h3 id="_structuration_en_packages">Structuration en packages</h3>
-<div class="sect3 data-line-13">
+<div class="sect3 data-line-29">
 <h4 id="_architecture_de_la_v1">Architecture de la V1</h4>
-<div class="paragraph data-line-15">
+<div class="paragraph data-line-31">
 <p><span class="image"><img src="img/architecture-v1.png" alt="architecture v1"></span></p>
 </div>
 </div>
-<div class="sect3 data-line-17">
+<div class="sect3 data-line-33">
 <h4 id="_arborescence_des_packages">Arborescence des packages</h4>
-<div class="ulist data-line-19">
+<div class="ulist data-line-35">
 <ul>
-<li class="data-line-19">
-<p>Application</p>
+<li class="data-line-35">
+<p>Application :<br>
+Continent les fichiers en .java qui permettent de lancer l&#8217;application.</p>
 </li>
-<li class="data-line-21">
-<p>Application.control</p>
+<li class="data-line-38">
+<p>Application.control :<br>
+Contient les contrôleurs de dialogue permettant l&#8217;accès aux données de l&#8217;application. En d&#8217;autres termes, il contient tous les fichiers .java permettant de représenter toutes les fenêtres de l&#8217;application.</p>
 </li>
-<li class="data-line-23">
-<p>Application.view</p>
+<li class="data-line-41">
+<p>Application.view :<br>
+Continent toutes les vues de l&#8217;application, c&#8217;est à dire tous les classes .fxml ainsi que les controlleurs associés. En d&#8217;autres termes, il contient tous les classes permettant l&#8217;interaction avec l&#8217;application (gestion des vues et contrôles des saisies)</p>
 </li>
-<li class="data-line-25">
-<p>Application.tools</p>
+<li class="data-line-44">
+<p>Application.tools :<br>
+Contient tous les classes utilisé pour le package view et le package control.</p>
 </li>
-<li class="data-line-27">
-<p>Model.data</p>
+<li class="data-line-47">
+<p>Model.data :<br>
+Contient les classes permettant d&#8217;intéragir avec la Base de Données puisque les classes de ce package représente les tables de la Base de Données.</p>
 </li>
-<li class="data-line-29">
-<p>Model.orm</p>
+<li class="data-line-50">
+<p>Model.orm :<br>
+Continent toutes les classes qui permettent d&#8217;effectuer des requêtes SQL dans la Base de Données.</p>
 </li>
-<li class="data-line-31">
-<p>Model.exception<br>
-packages contenant les classes des exceptions</p>
+<li class="data-line-53">
+<p>Model.exception :<br>
+Contient toutes les classes qui gère les différentes exception de l&#8217;application.<br></p>
 </li>
 </ul>
 </div>
 </div>
 </div>
-<div class="sect2 data-line-34">
+<div class="sect2 data-line-57">
 <h3 id="_fonctionnalités_de_lapplication">Fonctionnalités de l&#8217;application</h3>
-
+<div class="sect4 data-line-59">
+<h5 id="_création_dun_nouveau_client_fonctionnalité_de_la_version_existante">Création d&#8217;un nouveau client : Fonctionnalité de la version existante</h5>
+<div class="paragraph data-line-61">
+<p>Cette fonctionnalité répond à l&#8217;Use-Case : <strong>Créer un nouveau client</strong><br>
+Elle permet de créer un nouveau client dans l&#8217;Agence bancaire.<br>
+Lorsque l&#8217;utilisateur clique sur le bouton « nouveau client », le contrôleur de vue clientsmanagementcontroller transfère les informations nécessaire au contrôle clientsmanagement pour l&#8217;affichage de la fenêtre de création d&#8217;un client.<br>
+La fenêtre de création des clients s&#8217;ouvre et la classe clienteditorpane est utilisée et permet de transmettre les informations au contrôleur de vue clientseditorpanecontroller.<br>
+Ainsi les saisies de l&#8217;utilisateurs sont contrôlers et peuvent s&#8217;enregistrer dans la Base de Données si elles sont valides grâce à la classe AccessClients.</p>
+</div>
+</div>
+<div class="sect4 data-line-67">
+<h5 id="_modification_dun_client_fonctionnalité_de_la_version_existante">Modification d&#8217;un client : Fonctionnalité de la version existante</h5>
+<div class="paragraph data-line-69">
+<p>Cette fonctionnalité répond à l&#8217;Use-Case : <strong>modifier info client</strong><br>
+Elle permet de modifier les informations d&#8217;un client dans l&#8217;Agence bancaire.<br>
+Lorsque l&#8217;utilisateur clique sur le bouton « modifier client », le contrôleur de vue clientsmanagementcontroller transfère les informations nécessaire au contrôle clientsmanagement pour l&#8217;affichage de la fenêtre de modification d&#8217;un client.<br>
+La fenêtre de modification des clients s&#8217;ouvre et la classe clienteditorpane est utilisée et permet de transmettre les informations au contrôleur de vue clientseditorpanecontroller.<br>
+Ainsi les saisies de l&#8217;utilisateurs sont contrôlers et peuvent s&#8217;enregistrer dans la Base de Données si elles sont valides grâce à la classe AccessClients.</p>
+</div>
+</div>
+<div class="sect4 data-line-75">
+<h5 id="_consultation_des_clients_fonctionnalité_de_la_version_existante">Consultation des clients : Fonctionnalité de la version existante</h5>
+<div class="paragraph data-line-77">
+<p>Elle permet de consulter la liste des clients de l&#8217;Agence bancaire.<br>
+Lorsque l&#8217;utilisateur clique sur le bouton « rechercher », le contrôleur de vue clientmanagementcontroller transfère les informations nécessaire à l&#8217;affichage de la liste des clients à la classe AccessClients.</p>
+</div>
+</div>
+<div class="sect4 data-line-80">
+<h5 id="_consulter_les_comptes_dun_client_fonctionnalité_de_la_version_existante">Consulter les comptes d&#8217;un client : Fonctionnalité de la version existante</h5>
+<div class="paragraph data-line-82">
+<p>Cette fonctionnalité permet de consulter la liste des comptes d&#8217;un client de l&#8217;Agence.<br>
+Lorsque l&#8217;utilisateur clique sur le bouton « comptes client », le contrôleur de vue comptesmanagementcontroller transfère les information nécessaire au contrôle comptesmanagement pour l&#8217;affichage de la fenêtre de gestion des comptes.<br>
+La fenêtre de gestion des comptes s&#8217;ouvre et grâce au transfère des informations nécessaire à l&#8217;affichage de la liste des comptes à la classe AccessCompte.</p>
+</div>
+</div>
+<div class="sect4 data-line-86">
+<h5 id="_consulter_les_opérations_des_comptes_des_clients_fonctionnalité_de_la_version_existante">Consulter les opérations des comptes des clients : Fonctionnalité de la version existante</h5>
+<div class="paragraph data-line-88">
+<p>Cette fonctionnalité permet de consulter la liste des opérations du compte d&#8217;un client.<br>
+Lorsque le client clique sur le bouton « voir opérations », le contrôleur de vue comptesmanagementcontroller transfère les informations nécessaire au contrôle operation operationmanagement pour l&#8217;affichage de la fenêtre de gestion des opération.<br>
+La fenêtre de gestion des opérations s&#8217;ouvre grâce au transfère des informations nécessaire à l&#8217;affichage de la liste des opérations grâce à la classe AccessOperation.</p>
+</div>
+</div>
+<div class="sect4 data-line-92">
+<h5 id="_clôturer_et_réactiver_un_compte_réalisé_par_ruben">Clôturer et réactiver un compte : réalisé par Ruben</h5>
+<div class="paragraph data-line-94">
+<p>Cette fonctionnalité permet de clôturer ou bien de réactiver le compte d&#8217;un client.</p>
+</div>
+<div class="paragraph data-line-96">
+<p><span class="image"><img src="img/cloture-compte1.png" alt="cloture compte1"></span>
+<span class="image"><img src="img/cloture-compte2.png" alt="cloture compte2"></span></p>
+</div>
+<div class="paragraph data-line-99">
+<p>Elle concerne le Use-Case : <strong>Cloturer un compte</strong>
+et concerne ce diagramme de classe :</p>
+</div>
+<div class="paragraph data-line-102">
+<p><span class="image"><img src="img/diagramme-cloture-compte.png" alt="diagramme cloture compte"></span></p>
+</div>
+<div class="paragraph data-line-104">
+<p>La fonction “Clôturer/Reéactiver un compte” est une nouvelle fonctionnalité qui apparaît dans la v1. Celle-ci se développe aux travers de 2 classes : AccessCompteCourant et ComptesManagementController.
+D’abord dans AccessCompteCourant, on va créer 2 nouvelles méthodes afin de pouvoir utiliser une requête SQL afin de mettre à jour les comptes pour d’une part soit les clôturer et donc mettre leurs soldes à 0 ainsi que les rendre inactifs.</p>
+</div>
+<div class="paragraph data-line-107">
+<p><span class="image"><img src="img/code-cloture-compte1.png" alt="code cloture compte1"></span></p>
+</div>
+<div class="paragraph data-line-109">
+<p>Soit les réactiver en leur mettant par défaut un solde de 10 euros et un découvert de -200.</p>
+</div>
+<div class="paragraph data-line-111">
+<p><span class="image"><img src="img/code-cloture-compte2.png" alt="code cloture compte2"></span></p>
+</div>
+<div class="paragraph data-line-113">
+<p>Enfin dans ComptesManagementController, on crée une méthode qui va servir tant pour clôturer le compte que pour le réactiver et on va adapter la méthode validateComponentState() qui va rendre accessible certains boutons de la fenêtre selon si le compte est clôturé où non dans la base de données.</p>
+</div>
+<div class="paragraph data-line-115">
+<p><span class="image"><img src="img/code-cloture-compte3.png" alt="code cloture compte3"></span></p>
+</div>
+<div class="paragraph data-line-117">
+<p>Dans la méthode doCloturerCompte() qui a alors une double fonction, la différenciation de quel action à effectuer se fait en partie grâce au label affiché par le bouton concerné. En effet dans validateComponentState(), selon si le compte est clôturé ou non, celui-ci change le label du bouton concerné afin de marquer la différence d’état (si il est clôturé celui-ci “demandera” pour le réactiver et inversement). Et donc selon ce qui est écrit cela va lancer une partie différente de la méthode.
+Voici la partie concerné pour clôturer le compte :</p>
+</div>
+<div class="paragraph data-line-120">
+<p><span class="image"><img src="img/code-cloture-compte4.png" alt="code cloture compte4"></span></p>
+</div>
+<div class="paragraph data-line-122">
+<p>Et celle pour réactiver le compte :</p>
+</div>
+<div class="paragraph data-line-124">
+<p><span class="image"><img src="img/code-cloture-compte5.png" alt="code cloture compte5"></span></p>
+</div>
+<div class="paragraph data-line-126">
+<p>Ici j’utilise une boîte de dialogue pour mettre en action la fonctionnalité pour s’assurer que c’est bien une action volontaire de la part de l’employé.</p>
+</div>
+</div>
+<div class="sect4 data-line-128">
+<h5 id="_créditerdébiter_un_compte_réaliser_par_yann">Créditer/Débiter un compte : réaliser par Yann</h5>
+<div class="paragraph data-line-130">
+<p>Cette fonctionnalité répond à l&#8217;Use-Case : créditer un compte</p>
+</div>
+<div class="paragraph data-line-132">
+<p><span class="image"><img src="img/usecase-crediter.png" alt="usecase crediter"></span></p>
+</div>
+<div class="paragraph data-line-134">
+<p>et elle concerne le diagramme de classe :</p>
+</div>
+<div class="paragraph data-line-136">
+<p><span class="image"><img src="img/diagramme-crediter.png" alt="diagramme crediter"></span></p>
+</div>
+<div class="paragraph data-line-138">
+<p>La fonction “créditer” est basée sur la fonction “débiter”. On peut donc s’en inspirer pour réaliser la fonctionnalité cependant la légère différence est que le crédit agit comme un débit inverse.
+Donc dans la classe “AccessOperation” dans le package model.orm il suffit de refaire la même méthode que “insertDebit” mais en y spécifiant un montant négatif.
+Pour le reste des classes à implémenter, celles-ci sont similaires à la fonction “débit”.</p>
+</div>
+<div class="paragraph data-line-142">
+<p><span class="image"><img src="img/crediter.png" alt="crediter"></span>
+<span class="image"><img src="img/crediter2.png" alt="crediter2"></span>
+<span class="image"><img src="img/crediter3.png" alt="crediter3"></span>
+<span class="image"><img src="img/crediter4.png" alt="crediter4"></span></p>
+</div>
+</div>
+<div class="sect4 data-line-148">
+<h5 id="_virement_dun_compte_à_un_autre_réaliser_par_yann">Virement d&#8217;un compte à un autre : réaliser par Yann</h5>
+<div class="paragraph data-line-150">
+<p>Cette fonctionnalité permet de réaliser un virement d&#8217;un compte vers un autre.</p>
+</div>
+<div class="paragraph data-line-152">
+<p><span class="image"><img src="img/technique-virement.png" alt="technique virement"></span>
+<span class="image"><img src="img/technique-virement2.png" alt="technique virement2"></span>
+<span class="image"><img src="img/technique-virement3.png" alt="technique virement3"></span>
+<span class="image"><img src="img/technique-virement4.png" alt="technique virement4"></span></p>
+</div>
+<div class="paragraph data-line-157">
+<p>Elle concerne le Use-Case <strong>effectuer un virement compte à compte</strong> et concerne le diagramme de classe :</p>
+</div>
+<div class="paragraph data-line-159">
+<p><span class="image"><img src="img/diagramme-virement.png" alt="diagramme virement"></span></p>
+</div>
+<div class="paragraph data-line-161">
+<p>Lorsque cette fonctionnalité a été codée, l’un des points importants était de récupérer la liste complète des comptes existant dans la BD.
+Dans la classe “AccessCompteCourant” du package model.orm, j’ai donc rajouté la méthode sans paramètre “getListeCompteCourant” qui retourne une liste (ArrayList) de tous les comptes existants.</p>
+</div>
+<div class="paragraph data-line-165">
+<p>La partie la plus importante de la fonctionnalité se trouve dans la classe “OperationsManagement” du package application.control dans la méthode “enregistrerVirement()”.
+Ci-dessous un extrait du code de cette méthode dans laquelle on parcours notre liste de compte et :
+Si l’entier saisi (correspondant au numéro de compte à créditer) est égal à un numéro de compte existant alors on applique; - le débit sur le compte concerné; - le crédit sur le compte correspondant au numéro saisi.
+Sinon on affiche une boîte de dialogue.</p>
+</div>
+<div class="paragraph data-line-170">
+<p><span class="image"><img src="img/code-virement.png" alt="code virement"></span></p>
+</div>
+</div>
+<div class="sect4 data-line-172">
+<h5 id="_gérer_le_crud_des_employés_réaliser_par_christopher">Gérer le CRUD des employés : Réaliser par Christopher</h5>
+<div class="paragraph data-line-174">
+<p>Cette fonctionnalité répond à l&#8217;Use-Case : <strong>Gérer le CRUD des employé</strong></p>
+</div>
+<div class="paragraph data-line-176">
+<p><span class="image"><img src="img/usecase-crud.png" alt="usecase crud"></span></p>
+</div>
+<div class="paragraph data-line-178">
+<p>Elle concerne le diagramme de classe :</p>
+</div>
+<div class="paragraph data-line-180">
+<p><span class="image"><img src="img/diagramme-crud.png" alt="diagramme crud"></span></p>
+</div>
+<div class="ulist data-line-182">
+<ul>
+<li class="data-line-182">
+<p><strong>d&#8217;afficher la liste des employés</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph data-line-184">
+<p>Affiche la liste des employé présent dans l&#8217;Agence bancaire et stockée dans la Base Données.<br>
+En cliquant sur le bouton « rechercher » les informations des employés s&#8217;affiche sur la fenêtre. Le contrôleur de vue employemanagementcontroller transfère les informations au contrôleur employemanagement qui se connecte à la Base de Données en utilisant la classe AccessEmploye.</p>
+</div>
+<div class="paragraph data-line-187">
+<p><span class="image"><img src="img/rechercher-crud.png" alt="rechercher crud"></span></p>
+</div>
+<div class="paragraph data-line-189">
+<p><span class="image"><img src="img/code-crud1.png" alt="code crud1"></span></p>
+</div>
+<div class="paragraph data-line-191">
+<p><span class="image"><img src="img/code-crud2.png" alt="code crud2"></span></p>
+</div>
+<div class="ulist data-line-193">
+<ul>
+<li class="data-line-193">
+<p><strong>modifier les informations d&#8217;un employé</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph data-line-195">
+<p>Modifie les informations d&#8217;un employé de l&#8217;Agence bancaire stockée dans la Base de Données.</p>
+</div>
+<div class="paragraph data-line-197">
+<p><span class="image"><img src="img/modifier-crud.png" alt="modifier crud"></span></p>
+</div>
+<div class="paragraph data-line-199">
+<p><span class="image"><img src="img/modifier-crud2.png" alt="modifier crud2"></span></p>
+</div>
+<div class="paragraph data-line-201">
+<p>En cliquant sur le bouton « modifier employé » le contrôleur de vue employemanagementcontroller transfère les informations nécessaire au contrôleur Employemanagement pour afficher la page de modification des employé grace au contrôleur de vue employeeditorpane.<br>
+Si les saisies de l&#8217;utilisateur sont correct, la modification de l&#8217;employé s&#8217;effectue dans la Base de Données grâce à la classe AccessEmploye.</p>
+</div>
+<div class="paragraph data-line-204">
+<p><span class="image"><img src="img/code-modifier-crud.png" alt="code modifier crud"></span>
+<span class="image"><img src="img/code-modifier-crud2.png" alt="code modifier crud2"></span></p>
+</div>
+<div class="ulist data-line-207">
+<ul>
+<li class="data-line-207">
+<p><strong>de désactiver un employé</strong></p>
+</li>
+<li class="data-line-210">
+<p><strong>de créer un nouvel employé</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph data-line-212">
+<p>Créer un nouvel employé dans l&#8217;Agence bancaire, stockée dans la Base de Données.</p>
+</div>
+<div class="paragraph data-line-214">
+<p><span class="image"><img src="img/nouveau-employe.png" alt="nouveau employe"></span>
+<span class="image"><img src="img/nouveau-employe2.png" alt="nouveau employe2"></span></p>
+</div>
+<div class="paragraph data-line-217">
+<p>En cliquant sur le bouton « nouveau employé » le contrôleur de vue employemanagementcontroller transfère les informations nécessaire au contrôleur Employemanagement pour afficher la page de cration des employé grace au contrôleur de vue employeeditorpane.<br>
+Si les saisies de l&#8217;utilisateur sont correct, la cration de l&#8217;employé s&#8217;effectue dans la Base de Données grâce à la classe AccessEmploye.</p>
+</div>
+<div class="paragraph data-line-221">
+<p><span class="image"><img src="img/code-new-employe.png" alt="code new employe"></span>
+<span class="image"><img src="img/code-new-employe2.png" alt="code new employe2"></span></p>
+</div>
+</div>
 </div>
 </div>
 </div>
