@@ -27,7 +27,11 @@
 |         | Doc. Tec. V1 |                | J'ai mis des retours dans le fichier
 https://github.com/IUT-Blagnac/sae2022-bank-4b03/blob/main/V1/src/retourDocTechnique.adoc
 |         | Code V1     |                     | 
-|         | Recette V1 |                      | 
+|         | Recette V1 |             vous devez décrire l'application et les diférents types d'utilisateurs. Pour chaque fonctionnalité vous devez indiquer si elle est possible par tout ou restreinte au chef d'agence. Une bonne idée est peu être de mettre un use case commenté.
+
+Vos fiches de test ne sont pas correctes: les noms des tests doivent e^tre tous différents
+de plus les tests doivent être plus précis par exemple débitincorrect : 
+le compte dispose de tel solde, il n'y a pas de débit autorisé, on veut retirer une somme supérieure au solde ...  | 
 |         | Gantt V3 à jour   |                      | 
 |         | `jar` projet |    | 
 | 05/06   | Gantt V3 à Jour  |    |  
