@@ -1,13 +1,10 @@
 package application.view;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 import application.DailyBankState;
-import application.control.ComptesManagement;
-import application.tools.AlertUtilities;
 import application.tools.CategorieOperation;
 import application.tools.ConstantesIHM;
 import javafx.collections.FXCollections;

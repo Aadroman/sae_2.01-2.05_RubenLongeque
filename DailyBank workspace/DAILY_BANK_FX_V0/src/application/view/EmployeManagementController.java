@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import application.DailyBankState;
-import application.control.ClientsManagement;
 import application.control.EmployeManagement;
 import application.control.ExceptionDialog;
 import javafx.collections.FXCollections;
