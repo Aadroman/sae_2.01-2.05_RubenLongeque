@@ -24,7 +24,8 @@
 |         | Suivi projet|   | 
 | 22/05   | Gantt V2  à jour    |       | 
 |         | Doc. Util. V1 |         |         
-|         | Doc. Tec. V1 |                |     
+|         | Doc. Tec. V1 |                | J'ai mis des retours dans le fichier
+https://github.com/IUT-Blagnac/sae2022-bank-4b03/blob/main/V1/src/retourDocTechnique.adoc
 |         | Code V1     |                     | 
 |         | Recette V1 |                      | 
 |         | Gantt V3 à jour   |                      | 
