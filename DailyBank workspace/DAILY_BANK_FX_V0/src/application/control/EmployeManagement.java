@@ -122,6 +122,27 @@ public class EmployeManagement {
 		}
 		return employe;
 	}
+	
+	public Employe reactiverEmploye(Employe c) {
+		EmployeEditorPane cep = new EmployeEditorPane(this.primaryStage, this.dbs);
+		Employe result = cep.doEmployeEditorDialog(c, EditionMode.SUPPRESSION);
+		if (result != null) {
+			try {
+				AccessEmploye ac = new AccessEmploye();
+				ac.updateEmploye(result);
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+				ed.doExceptionDialog();
+				result = null;
+				this.primaryStage.close();
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+				result = null;
+			}
+		}
+		return result;
+	}
 
 	
 

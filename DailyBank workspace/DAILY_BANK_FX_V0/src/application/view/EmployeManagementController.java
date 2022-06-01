@@ -12,7 +12,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
@@ -82,7 +85,7 @@ public class EmployeManagementController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
-	
+
 	/*
 	 * Permet de fermer la fenêtre au clique d'un bouton
 	 */
@@ -90,7 +93,7 @@ public class EmployeManagementController implements Initializable {
 	private void doCancel() {
 		this.primaryStage.close();
 	}
-	
+
 	/*
 	 * Permet de rechercher un employé avec des informations spécifiques
 	 * si les informations ne sont pas présentes, elle seront vides dans le ListView
@@ -113,7 +116,7 @@ public class EmployeManagementController implements Initializable {
 			this.txtNum.setText("");
 			idEmp = -1;
 		}
-	
+
 		String login = this.txtLogin.getText();
 		String mdp = this.txtMDP.getText();
 
@@ -135,9 +138,9 @@ public class EmployeManagementController implements Initializable {
 
 		this.validateComponentState();
 	}
-	
-	
-	
+
+
+
 	/*
 	 * Permet de modifier les informations d'un employé
 	 */
@@ -153,26 +156,55 @@ public class EmployeManagementController implements Initializable {
 			}
 		}
 	}
-	
+
 	/*
 	 * Permet de désactiver (supprimer) un employé
 	 */
 	@FXML
 	private void doSuppEmploye() {
 		int selectedIndice = this.lvEmploye.getSelectionModel().getSelectedIndex();
-		
-			Employe empDesac = this.olc.get(selectedIndice);
-			AccessEmploye ac = new AccessEmploye();
-			try {
-				ac.deleteEmploye(empDesac);
-			} catch (RowNotFoundOrTooManyRowsException | DataAccessException | DatabaseConnexionException e) {
-				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
-				ed.doExceptionDialog();
-			}
-			this.doRechercher();
-		
+
+		Employe empDesac = this.olc.get(selectedIndice);
+		AccessEmploye ac = new AccessEmploye();
+		System.out.println(empDesac.droitsAccess);
+		if(empDesac.login == "") {
+			Alert alerte = new Alert(AlertType.CONFIRMATION);
+			alerte.setTitle("Réactiver l'employé");
+			alerte.setHeaderText("Voulez-vous réactiver l'employé ?");
+			alerte.showAndWait().ifPresent(response -> {
+				if (response == ButtonType.OK) {
+					int Indice = this.lvEmploye.getSelectionModel().getSelectedIndex();
+					if (Indice >= 0) {
+						Employe emp = this.olc.get(selectedIndice);
+						Employe result = this.em.reactiverEmploye(emp);
+						if (result != null) {
+							this.olc.set(selectedIndice, result);
+						}
+					}
+				}
+			});
+
+		} else {
+			Alert alerte = new Alert(AlertType.CONFIRMATION);
+			alerte.setTitle("Désactivation de l'employé");
+			alerte.setHeaderText("Voulez-vous désactiver l'employé ?");
+			alerte.setContentText("La connexion sur le compte de l'employé ne pourra plus être réalisé, mais ses informations seront toujours accessible");
+			alerte.showAndWait().ifPresent(response -> {
+				if (response == ButtonType.OK) {
+					try {
+						ac.desacEmploye(empDesac);
+					} catch (RowNotFoundOrTooManyRowsException | DataAccessException | DatabaseConnexionException e) {
+						ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+						ed.doExceptionDialog();
+					}
+				}
+			});
+
+		}
+		this.doRechercher();
+
 	}
-	
+
 	/*
 	 * Permet d'ajouter un nouveau employé
 	 */
@@ -184,18 +216,29 @@ public class EmployeManagementController implements Initializable {
 			this.olc.add(employe);
 		}
 	}
-	
+
 	/*
 	 * Permet de désactiver certains boutons
 	 */
 	private void validateComponentState() {
 		int selectedIndice = this.lvEmploye.getSelectionModel().getSelectedIndex();
-		if (selectedIndice >= 0) {
+		Employe emp = this.lvEmploye.getSelectionModel().getSelectedItem();
+		if (selectedIndice >= 0 && emp.login != "") {
 			this.btnModifEmploye.setDisable(false);
 			this.btnSuppEmploye.setDisable(false);
+			this.btnSuppEmploye.setText("Désactiver employé");
 		} else {
 			this.btnModifEmploye.setDisable(true);
+			this.btnSuppEmploye.setDisable(false);
+			this.btnSuppEmploye.setText("Réactiver employé");
+
+		}
+
+		if(selectedIndice < 0) {
 			this.btnSuppEmploye.setDisable(true);
 		}
+
+
+
 	}
 }

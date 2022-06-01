@@ -248,13 +248,13 @@ public class AccessEmploye {
 		}
 	}
 	
-	public void deleteEmploye(Employe employe)
+	public void desacEmploye(Employe employe)
 			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
 		try {
 
 			Connection con = LogToDatabase.getConnexion();
 
-			String query = "DELETE FROM EMPLOYE WHERE idEmploye=?";
+			String query = "UPDATE employe SET login = null, motpasse = null WHERE idemploye = ?";
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setInt(1, employe.idEmploye);
 
