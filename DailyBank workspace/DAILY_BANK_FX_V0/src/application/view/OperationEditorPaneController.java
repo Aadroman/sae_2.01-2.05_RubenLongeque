@@ -35,6 +35,8 @@ public class OperationEditorPaneController implements Initializable {
 	private CategorieOperation categorieOperation;
 	private CompteCourant compteEdite;
 	private Operation operationResultat;
+	
+	private boolean indiceAdmin = false;//indice signifiant si l'employé est chef d'agence ou non (true si oui)
 
 	// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, DailyBankState _dbstate) {
@@ -112,11 +114,10 @@ public class OperationEditorPaneController implements Initializable {
 			this.cbTypeOpe.getSelectionModel().select(0);
 			break;
 		}
-
 		// Paramétrages spécifiques pour les chefs d'agences
-		if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
-			// rien pour l'instant
-		}
+			if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
+					indiceAdmin = true;
+			}
 
 		this.operationResultat = null;
 		this.cbTypeOpe.requestFocus();
@@ -192,7 +193,7 @@ public class OperationEditorPaneController implements Initializable {
 				this.txtMontant.requestFocus();
 				return;
 			}
-			
+			if(indiceAdmin == false) { //si l'utilisateur n'est pas chef d'agence, on affiche les bonnes infos
 			 if (this.compteEdite.solde - montant < this.compteEdite.debitAutorise) {
 				info = "Dépassement du découvert ! - Cpt. : " + this.compteEdite.idNumCompte + "  "
 						+ String.format(Locale.ENGLISH, "%12.02f", this.compteEdite.solde) + "  /  "
@@ -203,7 +204,9 @@ public class OperationEditorPaneController implements Initializable {
 				this.lblMessage.getStyleClass().add("borderred");
 				this.txtMontant.requestFocus();
 				return;
+			 }
 			}
+			
 			String typeOp = this.cbTypeOpe.getValue();
 			this.operationResultat = new Operation(-1, montant, null, null, this.compteEdite.idNumCli, typeOp);
 			this.primaryStage.close();

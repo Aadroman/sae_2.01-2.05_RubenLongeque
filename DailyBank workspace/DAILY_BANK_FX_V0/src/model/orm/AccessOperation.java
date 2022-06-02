@@ -9,6 +9,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import application.DailyBankState;
+import application.control.OperationEditorPane;
+import application.tools.ConstantesIHM;
+import javafx.stage.Stage;
+import model.data.Employe;
 import model.data.Operation;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
@@ -18,6 +23,7 @@ import model.orm.exception.RowNotFoundOrTooManyRowsException;
 import model.orm.exception.Table;
 
 public class AccessOperation {
+	private DailyBankState dbs;
 
 	public AccessOperation() {
 	}
@@ -143,15 +149,14 @@ public class AccessOperation {
 			// Paramètres out
 			call.registerOutParameter(4, java.sql.Types.INTEGER);
 			// 4 type du quatrième paramètre qui est déclaré en OUT, cf. déf procédure
-
 			call.execute();
 
 			int res = call.getInt(4);
-
 			if (res != 0) { // Erreur applicative
 				throw new ManagementRuleViolation(Table.Operation, Order.INSERT,
 						"Erreur de règle de gestion : découvert autorisé dépassé", null);
 			}
+			
 		} catch (SQLException e) {
 			throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);
 		}
@@ -190,24 +195,19 @@ public class AccessOperation {
 
 			call.execute();
 
-			int res = call.getInt(4);
-
-			if (res != 0) { // Erreur applicative
-				throw new ManagementRuleViolation(Table.Operation, Order.INSERT,
-						"Erreur de règle de gestion : découvert autorisé dépassé", null);
-			}
+			
 		} catch (SQLException e) {
 			throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);
 		}
 	}
 	
 	/**
-	 * Enregistrement d'un crédit
+	 * Enregistrement d'un virement
 	 *
 	 * Se fait par procédure stockée :  - Enregistre l'opération - Met à jour le solde du compte.
 	 *
-	 * @param idNumCompte compte crédité
-	 * @param montant     montant crédité
+	 * @param idNumCompte compte débité
+	 * @param montant     montant débité
 	 * @param typeOp      libellé de l'opération effectuée (cf TypeOperation)
 	 * @throws RowNotFoundOrTooManyRowsException
 	 * @throws DataAccessException
@@ -226,7 +226,7 @@ public class AccessOperation {
 			// Paramètres in
 			call.setInt(1, idNumCompte);
 			// 1 -> valeur du premier paramètre, cf. déf procédure
-			call.setDouble(2, -montant);
+			call.setDouble(2, montant);
 			call.setString(3, typeOp);
 			// Paramètres out
 			call.registerOutParameter(4, java.sql.Types.INTEGER);
@@ -240,6 +240,44 @@ public class AccessOperation {
 				throw new ManagementRuleViolation(Table.Operation, Order.INSERT,
 						"Erreur de règle de gestion : découvert autorisé dépassé", null);
 			}
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);
+		}
+	}
+	
+	/**
+	 * Enregistrement d'un débit expetionnelle.
+	 *
+	 * Se fait par procédure stockée : - Enregistre l'opération - Met à jour le solde du compte.
+	 *
+	 * @param idNumCompte compte débité
+	 * @param montant     montant débité
+	 * @param typeOp      libellé de l'opération effectuée (cf TypeOperation)
+	 * @throws RowNotFoundOrTooManyRowsException
+	 * @throws DataAccessException
+	 * @throws DatabaseConnexionException
+	 * @throws ManagementRuleViolation
+	 */
+	public void insertDebitEx(int idNumCompte, double montant, String typeOp)
+			throws DatabaseConnexionException, ManagementRuleViolation, DataAccessException {
+		try {
+			Connection con = LogToDatabase.getConnexion();
+			CallableStatement call;
+
+			String q = "{call DebiterEx (?, ?, ?, ?)}";
+			// les ? correspondent aux paramètres : cf. déf procédure (4 paramètres)
+			call = con.prepareCall(q);
+			// Paramètres in
+			call.setInt(1, idNumCompte);
+			// 1 -> valeur du premier paramètre, cf. déf procédure
+			call.setDouble(2, montant);
+			call.setString(3, typeOp);
+			// Paramètres out
+			call.registerOutParameter(4, java.sql.Types.INTEGER);
+			// 4 type du quatrième paramètre qui est déclaré en OUT, cf. déf procédure
+
+			call.execute();
+			
 		} catch (SQLException e) {
 			throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);
 		}
