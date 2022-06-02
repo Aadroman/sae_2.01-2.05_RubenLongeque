@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import application.DailyBankState;
 import model.data.Operation;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
@@ -18,7 +19,7 @@ import model.orm.exception.RowNotFoundOrTooManyRowsException;
 import model.orm.exception.Table;
 
 public class AccessOperation {
-
+	private DailyBankState dbs;
 	public AccessOperation() {
 	}
 
@@ -144,13 +145,13 @@ public class AccessOperation {
 			call.registerOutParameter(4, java.sql.Types.INTEGER);
 			// 4 type du quatrième paramètre qui est déclaré en OUT, cf. déf procédure
 
-			call.execute();
-
 			int res = call.getInt(4);
 
 			if (res != 0) { // Erreur applicative
 				throw new ManagementRuleViolation(Table.Operation, Order.INSERT,
 						"Erreur de règle de gestion : découvert autorisé dépassé", null);
+			}else {
+				call.execute();
 			}
 		} catch (SQLException e) {
 			throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);

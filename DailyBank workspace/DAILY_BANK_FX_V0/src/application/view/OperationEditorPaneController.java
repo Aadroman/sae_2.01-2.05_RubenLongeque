@@ -33,6 +33,7 @@ public class OperationEditorPaneController implements Initializable {
 	private CompteCourant compteEdite;
 	private Operation operationResultat;
 
+
 	// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, DailyBankState _dbstate) {
 		this.primaryStage = _primaryStage;
@@ -112,7 +113,7 @@ public class OperationEditorPaneController implements Initializable {
 
 		// Paramétrages spécifiques pour les chefs d'agences
 		if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
-			// rien pour l'instant
+
 		}
 
 		this.operationResultat = null;
