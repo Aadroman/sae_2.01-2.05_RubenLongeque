@@ -1,4 +1,4 @@
-# CDUC VERSION 1
+# CDUC VERSION 3
 :toc: left
 :toc-title: Table des matières
 

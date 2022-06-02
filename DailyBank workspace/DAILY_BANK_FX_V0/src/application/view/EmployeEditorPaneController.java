@@ -83,10 +83,27 @@ public class EmployeEditorPaneController implements Initializable {
 			this.butCancel.setText("Annuler");
 			break;
 		case SUPPRESSION:
-
+			this.txtIdemp.setDisable(true);
+			this.txtNom.setDisable(true);
+			this.txtPrenom.setDisable(true);
+			this.rbChefAgence.setDisable(true);
+			this.rbGuichetier.setDisable(true);
+			
+			this.lblMessage.setText("Réactivation employé");
+			this.butOk.setText("Réactiver");
+			
+			
+			if(employe.droitsAccess == "guichetier") {
+				this.rbGuichetier.setSelected(true);
+			}
+			
+			if(employe.droitsAccess == "ChefAgence") {
+				this.rbChefAgence.setSelected(true);
+			}
+			
 			break;
 		}
-		// Paramétrages spécifiques pour les chefs d'agences
+		// Paramétrages spécifiques pour les chefs d'agencesx
 		if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
 			// rien pour l'instant
 		}

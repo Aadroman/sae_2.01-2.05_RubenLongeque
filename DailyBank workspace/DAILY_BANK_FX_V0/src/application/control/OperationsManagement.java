@@ -94,8 +94,15 @@ public class OperationsManagement {
 		if (op != null) {
 			try {
 				AccessOperation ao = new AccessOperation();
-
-				ao.insertDebit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
+				
+				//si l'employé est chef d'agence, il peut faire un débit exceptionnel
+				if(this.dbs.isChefDAgence()) {
+					ao.insertDebitEx(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
+				}
+				//sinon il ne peut faire qu'un débit standard (il reçoit donc une exception)
+				else {
+					ao.insertDebit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
+				}
 
 			} catch (DatabaseConnexionException e) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
