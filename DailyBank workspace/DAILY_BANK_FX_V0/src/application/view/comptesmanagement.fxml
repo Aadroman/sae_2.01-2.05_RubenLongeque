@@ -77,6 +77,11 @@
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </HBox.margin>
                   </Button>
+                  <Button fx:id="btnPrelevement" alignment="CENTER_RIGHT" contentDisplay="RIGHT" disable="true" mnemonicParsing="false" onAction="#doPrelevement" text="Prélèvement automatique">
+                     <HBox.margin>
+                        <Insets left="304.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
          </bottom>
