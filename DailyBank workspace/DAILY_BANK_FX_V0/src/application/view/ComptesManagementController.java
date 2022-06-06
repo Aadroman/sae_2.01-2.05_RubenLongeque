@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
+import model.data.PrelevementAutomatique;
 import model.orm.AccessCompteCourant;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
@@ -223,7 +224,7 @@ public class ComptesManagementController implements Initializable {
 			CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
 			this.cm.gererPrelevement(cpt);
 		}
-		//this.loadList();
+		//this.loadListPrelevement();
 		this.validateComponentState();
 	}
 	
@@ -238,6 +239,18 @@ public class ComptesManagementController implements Initializable {
 			this.olCompteCourant.add(co);
 		}
 	}
+	
+	/*
+	 * Ajoute les comptes d'un client dans une liste
+	 */
+	/*public void loadListPrelevement () {
+		ArrayList<PrelevementAutomatique> listeCpt;
+		listeCpt = this.cm.getComptesDunClient();
+		this.olCompteCourant.clear();
+		for (CompteCourant co : listeCpt) {
+			this.olCompteCourant.add(co);
+		}
+	}*/
 	
 	/**
 	 * Ajoute les comptes désactivés d'un client dans une liste

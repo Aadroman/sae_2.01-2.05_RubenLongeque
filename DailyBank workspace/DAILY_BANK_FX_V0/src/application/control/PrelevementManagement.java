@@ -1,7 +1,12 @@
 package application.control;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import application.DailyBankApp;
 import application.DailyBankState;
+import application.tools.EditionMode;
 import application.tools.StageManagement;
 import application.view.ComptesManagementController;
 import application.view.OperationsManagementController;
@@ -13,6 +18,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.data.Client;
 import model.data.CompteCourant;
+import model.data.PrelevementAutomatique;
+import model.orm.LogToDatabase;
+import model.orm.exception.ApplicationException;
+import model.orm.exception.DatabaseConnexionException;
+import model.orm.exception.Order;
+import model.orm.exception.Table;
 
 /**
  * @author yann
@@ -24,11 +35,10 @@ public class PrelevementManagement {
 	 * Attributs
 	 */
 	
-	private Stage primaryStage; //la fenêtre
+	private Stage primaryStage; //la fenêtre principale
+	private PrelevementManagementController pmc; //le controller relié au prélèvement
 	private DailyBankState dbs;
-	private Client clientDuCompte;
-	private CompteCourant compteConcerne; //le compte du client
-	private PrelevementManagementController pmc; //le controller
+	private CompteCourant compte; //un compte courant
 	
 	/**
 	 * @param _parentStage
@@ -38,17 +48,15 @@ public class PrelevementManagement {
 	 * représente la fenêtre "gestion des prélèvements" après avoir cliquer sur le bouton
 	 * "prélèvement automatique" des opérations d'un compte d'un client
 	 */
-	public PrelevementManagement(Stage _parentStage, DailyBankState _dbstate, Client client, CompteCourant compte) {
+	public PrelevementManagement(Stage _parentStage, DailyBankState _dbstate, Client client, CompteCourant Compte) {
 
-		this.clientDuCompte = client;
-		this.compteConcerne = compte;
+		this.compte = Compte;
 		this.dbs = _dbstate;
 		try {
-			FXMLLoader loader = new FXMLLoader(
-					OperationsManagementController.class.getResource("prelevementmanagement.fxml"));
+			FXMLLoader loader = new FXMLLoader(ComptesManagementController.class.getResource("prelevementmanagement.fxml"));
 			BorderPane root = loader.load();
 
-			Scene scene = new Scene(root, 900 + 20, 350 + 10);
+			Scene scene = new Scene(root, root.getPrefWidth()+50, root.getPrefHeight()+10);
 			scene.getStylesheets().add(DailyBankApp.class.getResource("application.css").toExternalForm());
 
 			this.primaryStage = new Stage();
@@ -60,7 +68,7 @@ public class PrelevementManagement {
 			this.primaryStage.setResizable(false);
 
 			this.pmc = loader.getController();
-			this.pmc.initContext(this.primaryStage, this, _dbstate, client, this.compteConcerne);
+			this.pmc.initContext(this.primaryStage, this, _dbstate, client);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -69,6 +77,56 @@ public class PrelevementManagement {
 	
 	public void doPrelevementManagementDialog() {
 		this.pmc.displayDialog();
+	}
+	
+	/**
+	 * @return le prélèvement automatique que l'on créer
+	 * @throws SQLException 
+	 */
+	public PrelevementAutomatique creerPrelevement() throws SQLException {
+		PrelevementAutomatique prelevement;
+		PrelevementEditorPane pep = new PrelevementEditorPane(this.primaryStage, this.dbs);
+		prelevement = pep.doPrelevementEditorDialog(this.compte, null, EditionMode.CREATION);
+		if (prelevement != null) {
+			try {
+				
+				Connection con = LogToDatabase.getConnexion(); //Connexion à la base de données
+                
+                String query = "INSERT INTO PRELEVEMENTAUTOMATIQUE VALUES (" + "seq_id_client.NEXTVAL" + ", " + "?" + ", " + "?" + ", " + "?" + ", " + "?" + ", "+ "?"+")";
+                
+                PreparedStatement pst = con.prepareStatement(query);
+                pst.setInt(1, prelevement.idPrelev);
+                pst.setDouble(2, prelevement.montant);
+                pst.setInt(3, prelevement.dateRecurrente);
+                pst.setString(4, prelevement.beneficiaire);
+                pst.setInt(5, prelevement.idNumCompte);
+                
+                int result = pst.executeUpdate();
+                pst.close();
+				
+				
+                
+                if (result != 1) {
+                    con.rollback();
+                    System.out.println("erreur lors du insert");
+                }else {
+                    con.commit();
+                }
+                
+				// existe pour compiler les catchs dessous
+				if (Math.random() < -1) {
+					throw new ApplicationException(Table.PrelevementAutomatique, Order.INSERT, "todo : test exceptions", null);
+				}
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+				ed.doExceptionDialog();
+				this.primaryStage.close();
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+			}
+		}
+		return prelevement;
 	}
 
 }
