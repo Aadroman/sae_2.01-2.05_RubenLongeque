@@ -16,6 +16,7 @@ public class SimulationEmpruntPane {
 	 * Attributs
 	 */
 	private Stage primaryStage; //la fenêtre
+	private DailyBankState dbs;
 	private SimulationEmpruntController simu;
 	
 	/**
@@ -23,6 +24,7 @@ public class SimulationEmpruntPane {
 	 * @param _dbstate
 	 */
 	public SimulationEmpruntPane(Stage _parentStage, DailyBankState _dbstate) {
+		this.dbs = _dbstate;
 		try {
 			FXMLLoader loader = new FXMLLoader(SimulationEmpruntController.class.getResource("simulationemprunt.fxml"));
 			BorderPane root = loader.load();
@@ -40,6 +42,8 @@ public class SimulationEmpruntPane {
 			
 			this.simu = loader.getController();
 			this.simu.initContext(_parentStage, this, _dbstate);
+			
+			this.primaryStage.showAndWait();
 			
 		}catch(Exception e) {
 			e.printStackTrace();

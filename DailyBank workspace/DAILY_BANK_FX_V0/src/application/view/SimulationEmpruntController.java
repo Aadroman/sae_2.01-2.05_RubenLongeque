@@ -7,14 +7,17 @@ import application.DailyBankState;
 import application.control.SimulationEmpruntPane;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import model.data.Emprunt;
 
 public class SimulationEmpruntController implements Initializable{
 	
 	// Etat application
 		private DailyBankState dbs;
 		private SimulationEmpruntPane sim;
+		private Emprunt emprunt;
 	
 	// Fenêtre physique
 	private Stage primaryStage;
@@ -34,9 +37,6 @@ public class SimulationEmpruntController implements Initializable{
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 	}
 	
-	public void displayDialog() {
-		this.primaryStage.showAndWait();
-	}
 
 	// Gestion du stage
 	private Object closeWindow(WindowEvent e) {
@@ -47,12 +47,37 @@ public class SimulationEmpruntController implements Initializable{
 	
 	
 	// Attributs de la scene + actions
+	@FXML
+	private TextField capital;
+	@FXML
+	private TextField duree;
+	@FXML
+	private TextField tauxAnnuel;
+	@FXML
+	private TextField tauxApplicable;
+	@FXML
+	private TextField nbPeriodes;
+	@FXML
+	private TextField mensualiteSansA;
+	@FXML
+	private TextField coutCredit;
+	@FXML
+	private TextField fraisDossier;
+	@FXML
+	private TextField total;
+	@FXML
+	private TextField tauxAssurance;
+	@FXML
+	private TextField mensualiteAssurance;
+	@FXML
+	private TextField mensualiteAvecA;
+	@FXML
+	private TextField coutAssurance;
 	
 	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		
 	}
 	
