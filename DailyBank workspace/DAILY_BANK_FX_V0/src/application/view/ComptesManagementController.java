@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
+import model.data.PrelevementAutomatique;
 import model.orm.AccessCompteCourant;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
@@ -102,6 +103,8 @@ public class ComptesManagementController implements Initializable {
 	private Button btnModifierCompte;
 	@FXML
 	private Button btnSupprCompte;
+	@FXML
+	private Button btnPrelevement;
 	
 		
 	@Override
@@ -198,6 +201,7 @@ public class ComptesManagementController implements Initializable {
 		this.desaclist();
 		this.validateComponentState();
 	}
+	
 	/*
 	 * Permet d'ajouter un nouveau compte
 	 */
@@ -209,6 +213,21 @@ public class ComptesManagementController implements Initializable {
 			this.olCompteCourant.add(compte);
 		}
 	}
+	
+	/*
+	 * 
+	 */
+	@FXML
+	private void doPrelevement() throws SQLException {
+		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
+			this.cm.gererPrelevement(cpt);
+		}
+		//this.loadListPrelevement();
+		this.validateComponentState();
+	}
+	
 	/*
 	 * Ajoute les comptes d'un client dans une liste
 	 */
@@ -220,6 +239,18 @@ public class ComptesManagementController implements Initializable {
 			this.olCompteCourant.add(co);
 		}
 	}
+	
+	/*
+	 * Ajoute les comptes d'un client dans une liste
+	 */
+	/*public void loadListPrelevement () {
+		ArrayList<PrelevementAutomatique> listeCpt;
+		listeCpt = this.cm.getComptesDunClient();
+		this.olCompteCourant.clear();
+		for (CompteCourant co : listeCpt) {
+			this.olCompteCourant.add(co);
+		}
+	}*/
 	
 	/**
 	 * Ajoute les comptes désactivés d'un client dans une liste
@@ -244,11 +275,13 @@ public class ComptesManagementController implements Initializable {
 		if (selectedIndice >= 0 && cpt.estCloture.equals("O")) {
 			this.btnVoirOpes.setDisable(true);
 			this.btnModifierCompte.setDisable(true);
+			this.btnPrelevement.setDisable(true);
 			this.btnSupprCompte.setDisable(false);
 			this.btnSupprCompte.setText("Reactiver Compte");
 		} else {
 			this.btnVoirOpes.setDisable(false);
 			this.btnModifierCompte.setDisable(false);
+			this.btnPrelevement.setDisable(false);
 			this.btnSupprCompte.setDisable(false);
 			this.btnSupprCompte.setText("Clôturer Compte");
 		}
@@ -256,6 +289,7 @@ public class ComptesManagementController implements Initializable {
 		if(this.clientDesComptes.estInactif.equals("O")) {
 			this.btnSupprCompte.setDisable(true);
 			this.btnNouveauCompte.setDisable(true);
+			this.btnPrelevement.setDisable(true);
 		}
 	}
 }

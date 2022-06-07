@@ -84,6 +84,14 @@ public class ComptesManagement {
 		OperationsManagement om = new OperationsManagement(this.primaryStage, this.dbs, this.clientDesComptes, cpt);
 		om.doOperationsManagementDialog();
 	}
+	
+	/**
+	 * @param cpt le compte
+	 */
+	public void gererPrelevement(CompteCourant cpt) {
+		PrelevementManagement om = new PrelevementManagement(this.primaryStage, this.dbs, this.clientDesComptes, cpt);
+		om.doPrelevementManagementDialog();
+	}
 
 	/**
 	 * @return le compteCourant que l'on créer
