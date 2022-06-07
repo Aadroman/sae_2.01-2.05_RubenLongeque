@@ -15,4 +15,9 @@ public class Emprunt {
 		if(tauxPret>0)
 			this.tauxPretAnnuel=tauxPret;
 	}
+	
+	public double getTauxApplicable(double tauxAnnuel) {
+		double res = tauxAnnuel/100/12;
+		return res;
+	}
 }
