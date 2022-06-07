@@ -46,7 +46,7 @@
                            </GridPane.margin>
                         </Button>
                         <Button fx:id="btnVirement" mnemonicParsing="false" onAction="#doVirement" prefHeight="25.0" prefWidth="233.0" text="Réaliser virement" GridPane.rowIndex="3" />
-                        <Button fx:id="btnEmprunt" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#doEmprunt" prefHeight="13.0" prefWidth="190.0" text="Simuler Emprunt" GridPane.rowIndex="4">
+                        <Button fx:id="btnGenererPdf" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#doGenererPdf" prefHeight="13.0" prefWidth="190.0" text="Générer PDF" GridPane.rowIndex="4">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin></Button>

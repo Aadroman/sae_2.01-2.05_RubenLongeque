@@ -44,17 +44,17 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="btnComptesClient" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doComptesClient" text="Comptes client">
+                        <Button fx:id="btnComptesClient" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doComptesClient" text="Comptes client">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button fx:id="btnModifClient" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doModifierClient" text="Modifier client" GridPane.rowIndex="2">
+                        <Button fx:id="btnModifClient" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doModifierClient" text="Modifier client" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button fx:id="btnDesactClient" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doDesactiverClient" text="Désactiver client" GridPane.rowIndex="3">
+                        <Button fx:id="btnDesactClient" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doDesactiverClient" text="Désactiver client" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>

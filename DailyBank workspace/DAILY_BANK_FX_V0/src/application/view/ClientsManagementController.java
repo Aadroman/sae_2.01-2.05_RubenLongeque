@@ -156,9 +156,9 @@ public class ClientsManagementController implements Initializable {
 	@FXML
 	private void doComptesClient() {
 		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
+		Client client = this.lvClients.getSelectionModel().getSelectedItem() /*this.olc.get(selectedIndice)*/;
 		// ouvre une fenêtre pour gérer les opérations du client
 		if (selectedIndice >= 0) {
-			Client client = this.olc.get(selectedIndice);
 			this.cm.gererComptesClient(client);
 		}
 	}
@@ -283,14 +283,10 @@ public class ClientsManagementController implements Initializable {
 			}
 			Client client = this.lvClients.getSelectionModel().getSelectedItem();
 			if (selectedIndice >= 0 && client.estInactif.equals("O")) {
-				this.btnModifClient.setDisable(false);
-				this.btnComptesClient.setDisable(false);
-				this.btnDesactClient.setDisable(false);
+				this.btnModifClient.setDisable(true);
+				this.btnComptesClient.setDisable(true);
 				this.btnDesactClient.setText("Réactiver Client");
 			} else {
-				this.btnModifClient.setDisable(false);
-				this.btnComptesClient.setDisable(false);
-				this.btnDesactClient.setDisable(false);
 				this.btnDesactClient.setText("Désactiver Client");
 			}
 
