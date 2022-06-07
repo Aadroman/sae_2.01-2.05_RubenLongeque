@@ -14,4 +14,19 @@
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="model.data.CompteCourant"/>
     <fullyQualifiedTypeName name="model.data.Employe"/>
+    <fullyQualifiedTypeName name="application.DailyBankState"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="javafx.fxml.Initializable"/>
+    <fullyQualifiedTypeName name="application.control.SimulationEmprunt"/>
+    <fullyQualifiedTypeName name="javafx.fxml.FXMLLoader"/>
+    <fullyQualifiedTypeName name="javafx.scene.layout.BorderPane"/>
+    <fullyQualifiedTypeName name="javafx.scene.Scene"/>
+    <fullyQualifiedTypeName name="application.DailyBankApp"/>
+    <fullyQualifiedTypeName name="javafx.stage.Modality"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="application.view.SimulationEmpruntController"/>
+    <fullyQualifiedTypeName name="application.control.SimulationEmpruntPane"/>
+    <fullyQualifiedTypeName name="model.data.Emprunt"/>
+    <fullyQualifiedTypeName name="java.awt.TextField"/>
+    <fullyQualifiedTypeName name="javafx.scene.control.TextField"/>
 </qualifiedTypeNameHistroy>

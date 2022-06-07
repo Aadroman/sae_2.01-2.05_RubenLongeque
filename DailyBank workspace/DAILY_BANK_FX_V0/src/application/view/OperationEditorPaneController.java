@@ -1,13 +1,10 @@
 package application.view;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 import application.DailyBankState;
-import application.control.ComptesManagement;
-import application.tools.AlertUtilities;
 import application.tools.CategorieOperation;
 import application.tools.ConstantesIHM;
 import javafx.collections.FXCollections;
@@ -37,6 +34,7 @@ public class OperationEditorPaneController implements Initializable {
 	private Operation operationResultat;
 	
 	private boolean indiceAdmin = false;//indice signifiant si l'employé est chef d'agence ou non (true si oui)
+
 
 	// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, DailyBankState _dbstate) {
@@ -115,6 +113,9 @@ public class OperationEditorPaneController implements Initializable {
 			break;
 		}
 		// Paramétrages spécifiques pour les chefs d'agences
+		if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
+
+		}
 			if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
 					indiceAdmin = true;
 			}

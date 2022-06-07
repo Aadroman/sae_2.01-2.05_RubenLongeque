@@ -21,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
+import model.data.Employe;
 import model.data.CompteCourant;
 import model.orm.AccessClient;
 import model.orm.AccessCompteCourant;
@@ -249,6 +250,7 @@ public class ClientsManagementController implements Initializable {
 		*/
 		
 	}
+
 	
 	/*
 	 * Permet d'ajouter un nouveau client
@@ -268,20 +270,31 @@ public class ClientsManagementController implements Initializable {
 	 */
 	private void validateComponentState() {
 		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
-		Client client = this.lvClients.getSelectionModel().getSelectedItem();
-		if (selectedIndice >= 0 && client.estInactif.equals("O")) {
-			this.btnModifClient.setDisable(false);
-			this.btnComptesClient.setDisable(false);
-			this.btnDesactClient.setDisable(false);
-			this.btnDesactClient.setText("Réactiver Client");
-		} else {
-			this.btnModifClient.setDisable(false);
-			this.btnComptesClient.setDisable(false);
-			this.btnDesactClient.setDisable(false);
-			this.btnDesactClient.setText("Désactiver Client");
+		Employe e = this.dbs.getEmpAct();
+		if (selectedIndice >= 0 && e != null) {
+			if (this.dbs.isChefDAgence()) {
+				this.btnModifClient.setDisable(false);
+				this.btnComptesClient.setDisable(false);
+				this.btnDesactClient.setDisable(false);
+			} else {
+				this.btnModifClient.setDisable(false);
+				this.btnComptesClient.setDisable(false);
+				this.btnDesactClient.setDisable(true);
+			}
+			Client client = this.lvClients.getSelectionModel().getSelectedItem();
+			if (selectedIndice >= 0 && client.estInactif.equals("O")) {
+				this.btnModifClient.setDisable(false);
+				this.btnComptesClient.setDisable(false);
+				this.btnDesactClient.setDisable(false);
+				this.btnDesactClient.setText("Réactiver Client");
+			} else {
+				this.btnModifClient.setDisable(false);
+				this.btnComptesClient.setDisable(false);
+				this.btnDesactClient.setDisable(false);
+				this.btnDesactClient.setText("Désactiver Client");
+			}
+
 		}
-		
-		
 	}
 	
 

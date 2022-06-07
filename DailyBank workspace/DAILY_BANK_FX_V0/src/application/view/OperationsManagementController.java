@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import application.DailyBankState;
 import application.control.OperationsManagement;
+import application.control.SimulationEmpruntPane;
 import application.tools.NoSelectionModel;
 import application.tools.PairsOfValue;
 import javafx.collections.FXCollections;
@@ -80,6 +81,8 @@ public class OperationsManagementController implements Initializable {
 	private Button btnCredit;
 	@FXML
 	private Button btnVirement;
+	@FXML
+	private Button btnEmprunt;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -122,11 +125,21 @@ public class OperationsManagementController implements Initializable {
 	@FXML
 	private void doAutre() {
 	}
+	
+	@FXML
+	private void doEmprunt() {
+		SimulationEmpruntPane simu = new SimulationEmpruntPane(primaryStage, dbs);
+	}
 
 	private void validateComponentState() {
-		// Non implémenté => désactivé
 		this.btnCredit.setDisable(false);
 		this.btnDebit.setDisable(false);
+		this.btnVirement.setDisable(false);
+		if(this.dbs.isChefDAgence()) {
+			this.btnEmprunt.setDisable(false);
+		}else {
+			this.btnEmprunt.setDisable(true);
+		}
 	}
 
 	private void updateInfoCompteClient() {

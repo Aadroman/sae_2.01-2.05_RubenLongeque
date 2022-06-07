@@ -10,10 +10,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import application.DailyBankState;
-import application.control.OperationEditorPane;
-import application.tools.ConstantesIHM;
-import javafx.stage.Stage;
-import model.data.Employe;
 import model.data.Operation;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
@@ -149,12 +145,16 @@ public class AccessOperation {
 			// Paramètres out
 			call.registerOutParameter(4, java.sql.Types.INTEGER);
 			// 4 type du quatrième paramètre qui est déclaré en OUT, cf. déf procédure
+
 			call.execute();
+
 
 			int res = call.getInt(4);
 			if (res != 0) { // Erreur applicative
 				throw new ManagementRuleViolation(Table.Operation, Order.INSERT,
 						"Erreur de règle de gestion : découvert autorisé dépassé", null);
+			}else {
+				call.execute();
 			}
 			
 		} catch (SQLException e) {
