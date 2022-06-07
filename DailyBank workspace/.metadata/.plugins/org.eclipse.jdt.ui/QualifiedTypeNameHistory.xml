@@ -9,4 +9,20 @@
     <fullyQualifiedTypeName name="model.orm.AccessCompteCourant"/>
     <fullyQualifiedTypeName name="model.data.Client"/>
     <fullyQualifiedTypeName name="javafx.event.ActionEvent"/>
+    <fullyQualifiedTypeName name="org.w3c.dom.Document"/>
+    <fullyQualifiedTypeName name="com.sun.xml.internal.txw2.Document"/>
+    <fullyQualifiedTypeName name="javax.swing.text.Document"/>
+    <fullyQualifiedTypeName name="com.itextpdf.text.Document"/>
+    <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+    <fullyQualifiedTypeName name="com.itextpdf.text.pdf.PdfWriter"/>
+    <fullyQualifiedTypeName name="com.itextpdf.text.Font"/>
+    <fullyQualifiedTypeName name="com.itextpdf.text.FontFactory"/>
+    <fullyQualifiedTypeName name="com.itextpdf.text.Paragraph"/>
+    <fullyQualifiedTypeName name="com.itextpdf.text.Element"/>
+    <fullyQualifiedTypeName name="com.itextpdf.text.Chunk"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="java.awt.Desktop"/>
+    <fullyQualifiedTypeName name="java.io.FileNotFoundException"/>
+    <fullyQualifiedTypeName name="com.itextpdf.text.DocumentException"/>
 </qualifiedTypeNameHistroy>

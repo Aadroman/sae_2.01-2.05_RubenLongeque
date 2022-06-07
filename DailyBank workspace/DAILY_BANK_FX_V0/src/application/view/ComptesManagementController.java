@@ -1,10 +1,24 @@
 package application.view;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import application.DailyBankState;
 import application.control.ComptesManagement;
@@ -109,6 +123,7 @@ public class ComptesManagementController implements Initializable {
 	private Button btnEmprunt;
 	@FXML
 	private Button btnPrelevement;
+	
 
 
 	@Override

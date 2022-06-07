@@ -8,6 +8,8 @@ import application.control.SimulationEmpruntPane;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Emprunt;
@@ -35,6 +37,7 @@ public class SimulationEmpruntController implements Initializable{
 		
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
+		this.validateComponent();
 	}
 	
 
@@ -78,7 +81,8 @@ public class SimulationEmpruntController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		emprunt = new Emprunt(Integer.parseInt(capital.getText()), Integer.parseInt(duree.getText()), Double.parseDouble(tauxAnnuel.getText()));
+		this.tauxApplicable.addEventHandler(KeyEvent.KEY_PRESSED, e->{if(e.getCode() == KeyCode.ENTER) {setTauxApplicable(tauxApplicable);} });
 	}
 	
 	/*
@@ -88,6 +92,15 @@ public class SimulationEmpruntController implements Initializable{
 	private void doCancel() {
 		this.primaryStage.close();
 	}
-
+	
+	
+	private void setTauxApplicable(TextField txt) {
+		String res = String.valueOf(emprunt.getTauxApplicable());
+		txt.setText(res);
+	}
+	
+	private void validateComponent() {
+		this.tauxApplicable.setEditable(false);;
+	}
 
 }

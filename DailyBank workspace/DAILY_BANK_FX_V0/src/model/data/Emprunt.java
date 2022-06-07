@@ -3,7 +3,7 @@ package model.data;
 
 public class Emprunt {
 	public int capitalEmprunt;
-	public int periodeEmprunt;
+	public int dureeEmprunt;
 	public double tauxPretAnnuel;
 	
 	
@@ -11,23 +11,35 @@ public class Emprunt {
 		if(capital > 100000)
 			this.capitalEmprunt=capital;
 		if(duree > 2)
-			this.periodeEmprunt=duree;
+			this.dureeEmprunt=duree;
 		if(tauxPret>0)
 			this.tauxPretAnnuel=tauxPret;
 	}
 	
-	public double getTauxApplicable(double tauxAnnuel) {
-		double res = tauxAnnuel/100/12;
+	public int getCapitalEmprunt() {
+		return capitalEmprunt;
+	}
+	
+	public int getPeriodeEmprunt() {
+		return dureeEmprunt;
+	}
+	
+	public double getTauxPretAnnuel() {
+		return tauxPretAnnuel;
+	}
+	
+	public double getTauxApplicable() {
+		double res = this.tauxPretAnnuel/100/12;
 		return res;
 	}
 	
-	public int getNbPeriode(int dureeEmprunt) {
-		int res = dureeEmprunt*12;
+	public int getNbPeriode() {
+		int res = this.dureeEmprunt*12;
 		return res;
 	}
 	
-	public double getMensualite(int capital, int nbPeriode, double tauxAplicable) {
-		
-		return 0;
+	public double getMensualite() {
+		double res = this.capitalEmprunt*(this.getTauxApplicable()/ Math.pow((1-(1+this.getTauxApplicable())),this.getNbPeriode()) );
+		return res;
 	}
 }

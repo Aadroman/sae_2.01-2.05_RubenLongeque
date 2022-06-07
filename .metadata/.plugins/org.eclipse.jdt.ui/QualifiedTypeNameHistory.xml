@@ -26,7 +26,10 @@
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="application.view.SimulationEmpruntController"/>
     <fullyQualifiedTypeName name="application.control.SimulationEmpruntPane"/>
-    <fullyQualifiedTypeName name="model.data.Emprunt"/>
     <fullyQualifiedTypeName name="java.awt.TextField"/>
+    <fullyQualifiedTypeName name="model.data.Emprunt"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="java.lang.Double"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="javafx.scene.control.TextField"/>
 </qualifiedTypeNameHistroy>

@@ -31,7 +31,6 @@
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
@@ -42,22 +41,17 @@
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button fx:id="btnModifierCompte" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doModifierCompte" text="Modifier compte" GridPane.rowIndex="2">
+                        <Button fx:id="btnModifierCompte" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doModifierCompte" text="Modifier compte" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button fx:id="btnSupprCompte" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doCloturerCompte" text="Clôturer Compte" GridPane.rowIndex="3">
+                        <Button fx:id="btnSupprCompte" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doCloturerCompte" text="Clôturer Compte" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Button" visible="false" GridPane.rowIndex="1">
-                           <GridPane.margin>
-                              <Insets bottom="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </Button>
-                        <Button fx:id="btnEmprunt" disable="true" mnemonicParsing="false" onAction="#doEmprunt" prefHeight="31.0" prefWidth="434.0" text="Simuler emprunt" GridPane.rowIndex="4" />
+                        <Button fx:id="btnEmprunt" disable="true" mnemonicParsing="false" onAction="#doEmprunt" prefHeight="31.0" prefWidth="434.0" text="Simuler emprunt" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                </children>
@@ -78,9 +72,9 @@
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btnPrelevement" alignment="CENTER_RIGHT" contentDisplay="RIGHT" disable="true" mnemonicParsing="false" onAction="#doPrelevement" text="Prélèvement automatique">
+                  <Button fx:id="btnPrelevement" alignment="CENTER_RIGHT" contentDisplay="RIGHT" disable="true" mnemonicParsing="false" onAction="#doPrelevement" prefHeight="31.0" prefWidth="199.0" text="Prélèvement automatique">
                      <HBox.margin>
-                        <Insets left="304.0" top="10.0" />
+                        <Insets left="10.0" right="20.0" top="10.0" />
                      </HBox.margin>
                   </Button>
                </children>
