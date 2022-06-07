@@ -9,8 +9,10 @@ import java.util.ResourceBundle;
 import application.DailyBankState;
 import application.control.ComptesManagement;
 import application.control.ExceptionDialog;
+import application.control.SimulationEmpruntPane;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -53,7 +55,7 @@ public class ComptesManagementController implements Initializable {
 		this.clientDesComptes = client;
 		this.configure();
 	}
-	
+
 	/*
 	 * Configuration de la fenêtre de la gestion des comptes
 	 */
@@ -76,8 +78,8 @@ public class ComptesManagementController implements Initializable {
 		this.loadList();
 		this.desaclist();
 		this.validateComponentState();
-		
-		
+
+
 	}
 
 	public void displayDialog() {
@@ -90,9 +92,9 @@ public class ComptesManagementController implements Initializable {
 		e.consume();
 		return null;
 	}
-	
+
 	@FXML
-    private Button btnNouveauCompte;
+	private Button btnNouveauCompte;
 	@FXML
 	private Label lblInfosClient;
 	@FXML
@@ -104,14 +106,16 @@ public class ComptesManagementController implements Initializable {
 	@FXML
 	private Button btnSupprCompte;
 	@FXML
+	private Button btnEmprunt;
+	@FXML
 	private Button btnPrelevement;
-	
-		
+
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.lvComptes.setItems(this.olCompteCourant);
 	}
-	
+
 	/*
 	 * Permet de fermer la fenêtre au clique d'un bouton
 	 */
@@ -119,7 +123,7 @@ public class ComptesManagementController implements Initializable {
 	private void doCancel() {
 		this.primaryStage.close();
 	}
-	
+
 	/*
 	 * Permet de voir les opérations d'un compte
 	 */
@@ -133,8 +137,8 @@ public class ComptesManagementController implements Initializable {
 		this.loadList();
 		this.validateComponentState();
 	}
-	
-	
+
+
 	/*
 	 * Permet de modifier les informations d'un compte
 	 */
@@ -148,8 +152,8 @@ public class ComptesManagementController implements Initializable {
 		this.loadList();
 		this.validateComponentState();
 	}
-	
-	
+
+
 	/*
 	 * Permet de clôturer un compte
 	 */
@@ -176,7 +180,7 @@ public class ComptesManagementController implements Initializable {
 				}
 			}
 			desac.close();
-		} else if (selectedIndice >= 0 && btnSupprCompte.getText().equals("Reactiver Compte")) {
+		} else if (selectedIndice >= 0 && btnSupprCompte.getText().equals("Réactiver Compte")) {
 			CompteCourant cptReac = this.olCompteCourant.get(selectedIndice);
 
 			Alert reac = new Alert(AlertType.CONFIRMATION);
@@ -201,7 +205,12 @@ public class ComptesManagementController implements Initializable {
 		this.desaclist();
 		this.validateComponentState();
 	}
-	
+
+	@FXML
+	void doEmprunt(ActionEvent event) {
+		SimulationEmpruntPane simu = new SimulationEmpruntPane(primaryStage, dbs);
+	}
+
 	/*
 	 * Permet d'ajouter un nouveau compte
 	 */
@@ -213,7 +222,7 @@ public class ComptesManagementController implements Initializable {
 			this.olCompteCourant.add(compte);
 		}
 	}
-	
+
 	/*
 	 * 
 	 */
@@ -227,7 +236,7 @@ public class ComptesManagementController implements Initializable {
 		//this.loadListPrelevement();
 		this.validateComponentState();
 	}
-	
+
 	/*
 	 * Ajoute les comptes d'un client dans une liste
 	 */
@@ -239,7 +248,7 @@ public class ComptesManagementController implements Initializable {
 			this.olCompteCourant.add(co);
 		}
 	}
-	
+
 	/*
 	 * Ajoute les comptes d'un client dans une liste
 	 */
@@ -251,7 +260,7 @@ public class ComptesManagementController implements Initializable {
 			this.olCompteCourant.add(co);
 		}
 	}*/
-	
+
 	/**
 	 * Ajoute les comptes désactivés d'un client dans une liste
 	 * (peut être useless)
@@ -265,31 +274,33 @@ public class ComptesManagementController implements Initializable {
 				this.olCompteDesactive.add(co);
 		}
 	}
-	
+
 	/*
 	 * Vérifie si les informations sont valide
 	 */
 	private void validateComponentState() {
+		
+		
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		CompteCourant cpt = this.lvComptes.getSelectionModel().getSelectedItem();
-		if (selectedIndice >= 0 && cpt.estCloture.equals("O")) {
-			this.btnVoirOpes.setDisable(true);
-			this.btnModifierCompte.setDisable(true);
-			this.btnPrelevement.setDisable(true);
-			this.btnSupprCompte.setDisable(false);
-			this.btnSupprCompte.setText("Reactiver Compte");
-		} else {
-			this.btnVoirOpes.setDisable(false);
-			this.btnModifierCompte.setDisable(false);
-			this.btnPrelevement.setDisable(false);
-			this.btnSupprCompte.setDisable(false);
-			this.btnSupprCompte.setText("Clôturer Compte");
-		}
 		
-		if(this.clientDesComptes.estInactif.equals("O")) {
-			this.btnSupprCompte.setDisable(true);
-			this.btnNouveauCompte.setDisable(true);
-			this.btnPrelevement.setDisable(true);
+		// Si un compte est sélectionner
+		if (selectedIndice >= 0) {
+			// si le compte n'est pas clôturer
+			if (cpt.estCloture.equals("N")){
+				this.btnVoirOpes.setDisable(false);
+				this.btnModifierCompte.setDisable(false);
+				this.btnSupprCompte.setDisable(false);
+				this.btnEmprunt.setDisable(false);
+				this.btnPrelevement.setDisable(false);
+			// si le compte est clôturer
+			} else {
+				this.btnVoirOpes.setDisable(true);
+				this.btnModifierCompte.setDisable(true);
+				this.btnSupprCompte.setDisable(true);
+				this.btnEmprunt.setDisable(true);
+				this.btnPrelevement.setDisable(true);
+			}
 		}
 	}
 }

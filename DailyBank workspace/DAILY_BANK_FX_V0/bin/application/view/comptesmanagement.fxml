@@ -37,17 +37,17 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="btnVoirOpes" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doVoirOperations" text="Voir opérations">
+                        <Button fx:id="btnVoirOpes" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doVoirOperations" text="Voir opérations">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button fx:id="btnModifierCompte" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doModifierCompte" text="Modifier compte" GridPane.rowIndex="3">
+                        <Button fx:id="btnModifierCompte" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doModifierCompte" text="Modifier compte" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button fx:id="btnSupprCompte" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doCloturerCompte" text="Supprimer compte" GridPane.rowIndex="4">
+                        <Button fx:id="btnSupprCompte" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doCloturerCompte" text="Clôturer Compte" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
@@ -57,6 +57,7 @@
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
                         </Button>
+                        <Button fx:id="btnEmprunt" disable="true" mnemonicParsing="false" onAction="#doEmprunt" prefHeight="31.0" prefWidth="434.0" text="Simuler emprunt" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
                </children>

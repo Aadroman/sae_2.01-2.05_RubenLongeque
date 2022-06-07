@@ -82,7 +82,7 @@ public class OperationsManagementController implements Initializable {
 	@FXML
 	private Button btnVirement;
 	@FXML
-	private Button btnEmprunt;
+	private Button btnGenererPdf;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -127,18 +127,18 @@ public class OperationsManagementController implements Initializable {
 	}
 	
 	@FXML
-	private void doEmprunt() {
-		SimulationEmpruntPane simu = new SimulationEmpruntPane(primaryStage, dbs);
+	private void doGenererPdf() {
+		System.out.println("pdf");
 	}
 
 	private void validateComponentState() {
 		this.btnCredit.setDisable(false);
-		this.btnDebit.setDisable(false);
-		this.btnVirement.setDisable(false);
+			this.btnDebit.setDisable(false);
+			this.btnVirement.setDisable(false);
 		if(this.dbs.isChefDAgence()) {
-			this.btnEmprunt.setDisable(false);
+			this.btnGenererPdf.setDisable(false);
 		}else {
-			this.btnEmprunt.setDisable(true);
+			this.btnGenererPdf.setDisable(true);
 		}
 	}
 
