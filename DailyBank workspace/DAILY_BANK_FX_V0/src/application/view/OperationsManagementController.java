@@ -1,6 +1,6 @@
 package application.view;
 
-import java.awt.Desktop;
+import java.awt.Desktop;	
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

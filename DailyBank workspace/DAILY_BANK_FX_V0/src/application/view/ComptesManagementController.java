@@ -23,6 +23,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import application.DailyBankState;
 import application.control.ComptesManagement;
 import application.control.ExceptionDialog;
+import application.control.PrelevementManagement;
 import application.control.SimulationEmpruntPane;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -52,6 +53,7 @@ public class ComptesManagementController implements Initializable {
 	// Etat application
 	private DailyBankState dbs;
 	private ComptesManagement cm;
+	private PrelevementManagement pm;
 
 	// Fenêtre physique
 	private Stage primaryStage;
@@ -60,6 +62,7 @@ public class ComptesManagementController implements Initializable {
 	private Client clientDesComptes;
 	private ObservableList<CompteCourant> olCompteCourant;
 	private ObservableList<CompteCourant> olCompteDesactive;
+	private ObservableList<PrelevementAutomatique> olPrelev;
 
 	// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, ComptesManagement _cm, DailyBankState _dbstate, Client client) {
@@ -248,7 +251,7 @@ public class ComptesManagementController implements Initializable {
 			CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
 			this.cm.gererPrelevement(cpt);
 		}
-		//this.loadListPrelevement();
+		this.loadListPrelevement();
 		this.validateComponentState();
 	}
 
@@ -265,16 +268,16 @@ public class ComptesManagementController implements Initializable {
 	}
 
 	/*
-	 * Ajoute les comptes d'un client dans une liste
+	 * Ajoute les prélèvements d'un compte dans une liste
 	 */
-	/*public void loadListPrelevement () {
-		ArrayList<PrelevementAutomatique> listeCpt;
-		listeCpt = this.cm.getComptesDunClient();
-		this.olCompteCourant.clear();
-		for (CompteCourant co : listeCpt) {
-			this.olCompteCourant.add(co);
+	public void loadListPrelevement () {
+		ArrayList<PrelevementAutomatique> listeP;
+		listeP = this.pm.getPrelevement();
+		this.olPrelev.clear();
+		for (PrelevementAutomatique p : listeP) {
+			this.olPrelev.add(p);
 		}
-	}*/
+	}
 
 	/**
 	 * Ajoute les comptes désactivés d'un client dans une liste

@@ -3,6 +3,7 @@ package application.control;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import application.DailyBankApp;
 import application.DailyBankState;
@@ -19,6 +20,8 @@ import javafx.stage.Stage;
 import model.data.Client;
 import model.data.CompteCourant;
 import model.data.PrelevementAutomatique;
+import model.orm.AccessCompteCourant;
+import model.orm.AccessPrelevement;
 import model.orm.LogToDatabase;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
@@ -53,7 +56,7 @@ public class PrelevementManagement {
 		this.compte = Compte;
 		this.dbs = _dbstate;
 		try {
-			FXMLLoader loader = new FXMLLoader(ComptesManagementController.class.getResource("prelevementmanagement.fxml"));
+			FXMLLoader loader = new FXMLLoader(PrelevementManagementController.class.getResource("prelevementmanagement.fxml"));
 			BorderPane root = loader.load();
 
 			Scene scene = new Scene(root, root.getPrefWidth()+50, root.getPrefHeight()+10);
@@ -92,14 +95,13 @@ public class PrelevementManagement {
 				
 				Connection con = LogToDatabase.getConnexion(); //Connexion à la base de données
                 
-                String query = "INSERT INTO PRELEVEMENTAUTOMATIQUE VALUES (" + "seq_id_client.NEXTVAL" + ", " + "?" + ", " + "?" + ", " + "?" + ", " + "?" + ", "+ "?"+")";
+                String query = "INSERT INTO PRELEVEMENTAUTOMATIQUE VALUES (" + "seq_id_client.NEXTVAL" + ", " + "?" + ", " + "?" + ", " + "?" + ", " + "?" +")";
                 
                 PreparedStatement pst = con.prepareStatement(query);
-                pst.setInt(1, prelevement.idPrelev);
-                pst.setDouble(2, prelevement.montant);
-                pst.setInt(3, prelevement.dateRecurrente);
-                pst.setString(4, prelevement.beneficiaire);
-                pst.setInt(5, prelevement.idNumCompte);
+                pst.setDouble(1, prelevement.montant);
+                pst.setInt(2, prelevement.dateRecurrente);
+                pst.setString(3, prelevement.beneficiaire);
+                pst.setInt(4, prelevement.idNumCompte);
                 
                 int result = pst.executeUpdate();
                 pst.close();
@@ -127,6 +129,28 @@ public class PrelevementManagement {
 			}
 		}
 		return prelevement;
+	}
+	
+	/**
+	 * @return une liste de prélèvement en fonction du compte sélectionné
+	 */
+	public ArrayList<PrelevementAutomatique> getPrelevement() {
+		ArrayList<PrelevementAutomatique> listeP = new ArrayList<>();
+
+		try {
+			AccessPrelevement ap = new AccessPrelevement();
+			listeP = ap.getPrelevement(this.compte.idNumCompte);
+		} catch (DatabaseConnexionException e) {
+			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+			ed.doExceptionDialog();
+			this.primaryStage.close();
+			listeP = new ArrayList<>();
+		} catch (ApplicationException ae) {
+			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+			ed.doExceptionDialog();
+			listeP = new ArrayList<>();
+		}
+		return listeP;
 	}
 
 }
