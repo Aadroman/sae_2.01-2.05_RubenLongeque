@@ -20,4 +20,14 @@ public class Emprunt {
 		double res = tauxAnnuel/100/12;
 		return res;
 	}
+	
+	public int getNbPeriode(int dureeEmprunt) {
+		int res = dureeEmprunt*12;
+		return res;
+	}
+	
+	public double getMensualite(int capital, int nbPeriode, double tauxAplicable) {
+		
+		return 0;
+	}
 }
