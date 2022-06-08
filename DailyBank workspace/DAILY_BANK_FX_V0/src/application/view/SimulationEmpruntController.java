@@ -188,12 +188,12 @@ public class SimulationEmpruntController implements Initializable{
 		}
 
 		try {
-			if (emprunt.dureeEmprunt < 0) {
+			if (emprunt.dureeEmprunt < 2) {
 				throw new NumberFormatException();
 			}
 		} catch (NumberFormatException nbF) {
 			this.duree.getStyleClass().add("borderred");
-			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Capital inférieur à 10 000 euros",AlertType.WARNING);
+			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Durée ifnrérieur à 2 ans",AlertType.WARNING);
 			this.duree.requestFocus();
 			return false;
 		}
@@ -205,7 +205,7 @@ public class SimulationEmpruntController implements Initializable{
 			}
 		} catch (NumberFormatException nbF) {
 			this.tauxAnnuel.getStyleClass().add("borderred");
-			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Capital inférieur à 10 000 euros",AlertType.WARNING);
+			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Taux de prêt annuel négatif",AlertType.WARNING);
 			this.tauxAnnuel.requestFocus();
 			return false;
 		}
