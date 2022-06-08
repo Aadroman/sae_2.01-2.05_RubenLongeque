@@ -59,12 +59,12 @@ Une connexion avec un compte d'employé doit être établie.
 |Se trouver sur la fenêtre principale. +
 Une connexion avec un compte d'employé Guichetier ou Chef Agence doit être établie.
 
-|6
+|7
 |TestRechercheClient
 |Au clique du bouton « rechercher » la liste des clients de l'Agence s'affiche à l'écran.
 |Se trouver sur la fenêtre gestion clients.
 
-|6
+|8
 |TestCreationClientOK
 |Au clique du bouton « nouveau client » la fenêtre de création d'un client s'affiche. +
 Au clique du bouton « ajouter » le nouveau compte s'ajoute dans la Base de Données. +
@@ -74,13 +74,13 @@ Les champs d'information à saisir ne doivent pas être vides. +
 le numéro de téléphone doit contenir exactement 10 chiffres. + 
 L'adresse e-mail doit terminer par : @_saisie_._saisie_
 
-|3
+|9
 |TestCreationClientNOK
 |Au clique du bouton « nouveau client » la fenêtre de création d'un client s'affiche. +
 Au clique du bouton « annuler » l'action s'annule et la fenêtre de création d'un client se ferme.
 |Se trouver sur la fenêtre gestion clients.
 
-|6
+|10
 |TestModificationClientOK
 |Au clique du bouton « modifier client » la fenêtre de modification d'un client s'affiche. +
 Au clique du bouton « modifier » le compte se met à jour dans la Base de Données. +
@@ -90,7 +90,7 @@ Les champs d'information à saisir ne doivent pas être vides. +
 le numéro de téléphone doit contenir exactement 10 chiffres. + 
 L'adresse e-mail doit terminer par : @_saisie_._saisie_
 
-|3
+|11
 |TestModificationClientNOK
 |Au clique du bouton « modifier client » la fenêtre de modification d'un client s'affiche. +
 Au clique du bouton « annuler » l'action s'annule et la fenêtre de modification d'un client se ferme.
@@ -103,14 +103,21 @@ Au clique du bouton « annuler » l'action s'annule et la fenêtre de modificati
 |===
 |id Test |nom Test |Condition de satisfaction |précondition
 
-|6
+|12
 |TestGestionCompteBancaire
 |Au clique du bouton « comptes client » la fenêtre de gestion des comptes bancaire d'un client s'affiche.
 |Se trouver sur la fenêtre gestion clients.
 Un client doit être sélectionner. +
 Le client doit être actif.
+|===
 
-|6
+## Fiche de Test : gestion des opération bancaire
+
+[cols="1,1,1,1"]
+|===
+|id Test |nom Test |Condition de satisfaction |précondition
+
+|13
 |TestVoirOperation
 |Au clique du bouton « voir opérations » la fenêtre de gestion des opération d'un compte bancaire s'affiche.
 |Se trouver sur la fenêtre gestion des comptes. +

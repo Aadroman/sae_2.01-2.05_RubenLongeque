@@ -1,0 +1,319 @@
+# CAHIER DE TEST VERSION  1
+:toc: left
+:toc-title: Table des matières
+:nofooter:
+
+## Fiche de Test : gestion de l'Application
+
+[cols="1,1,1,1"]
+|===
+|id Test |nom Test |Condition de satisfaction |précondition
+
+|1
+|TestConnexionCompteOK
+|Au clique du bouton « Connexion » une fenêtre d'identification s'affiche. +
+Au clique du bouton « valider » si les champ login et mot de passe appartiennent à un compte stocké dans la Base de Données, la connexion sur ce compte s'établie. +
+La fenêtre d'identification se ferme lorsque la connexion est établie.
+|Se trouver sur la fenêtre principale.
+
+|2
+|TestConnexionCompteNOK
+|Au clique du bouton « Connexion » une fenêtre d'identification s'affiche. +
+Au clique du bouton « Annuler » l'action s'annule et la fenêtre d'identification se ferme.
+|Se trouver sur la fenêtre principale. 
+
+|3
+|TestConnexionCompteGuichetier
+|Au clique du bouton « Connexion » une fenêtre d'identification s'affiche. +
+Au clique du bouton «  Valider » si les champ login et mot de passe appartiennent à un compte stocké dans la Base de Données, la connexion sur ce compte s'établie.
+La fenêtre d'identification se ferme lorsque la connexion est établie. +
+Le bouton « clients » dans l'onglet « gestion » s'active.
+|Se trouver sur la fenêtre principale. +
+le login et le mot de passe appartiennent à un compte guichetier.
+
+|4
+|TestConnexionCompteChefAgence
+|Au clique du bouton « Connexion » une fenêtre d'identification s'affiche. +
+Au clique du bouton «  Valider » si les champ login et mot de passe appartiennent à un compte stocké dans la Base de Données, la connexion sur ce compte s'établie.
+La fenêtre d'identification se ferme lorsque la connexion est établie. +
+Les bouton « clients » et « employé » dans l'onglet « gestion » s'active.
+|Se trouver sur la fenêtre principale. +
+le login et le mot de passe appartiennent à un compte Chef d'Agence.
+
+|5
+|TestDeconnexionCompte
+|Au clique du bouton « Deconnexion » le compte actif se déconnecte de la Base de Données. +
+|Se trouver sur la fenêtre principale. +
+Une connexion avec un compte d'employé doit être établie.
+|===
+
+## Fiche de Test : gestion des clients
+
+[cols="1,1,1,1"]
+|===
+|id Test |nom Test |Condition de satisfaction |précondition
+
+|6
+|TestGestionClient
+|Au clique du bouton « clients » dans l'onglet « gestion » la fenêtre de gestion des clients s'affiche.
+|Se trouver sur la fenêtre principale. +
+Une connexion avec un compte d'employé Guichetier ou Chef Agence doit être établie.
+
+|7
+|TestRechercheClient
+|Au clique du bouton « rechercher » la liste des clients de l'Agence s'affiche à l'écran.
+|Se trouver sur la fenêtre gestion clients.
+
+|8
+|TestCreationClientOK
+|Au clique du bouton « nouveau client » la fenêtre de création d'un client s'affiche. +
+Au clique du bouton « ajouter » le nouveau compte s'ajoute dans la Base de Données. +
+La fenêtre de création d'un client se ferme.
+|Se trouver sur la fenêtre gestion clients. +
+Les champs d'information à saisir ne doivent pas être vides. +
+le numéro de téléphone doit contenir exactement 10 chiffres. + 
+L'adresse e-mail doit terminer par : @_saisie_._saisie_
+
+|9
+|TestCreationClientNOK
+|Au clique du bouton « nouveau client » la fenêtre de création d'un client s'affiche. +
+Au clique du bouton « annuler » l'action s'annule et la fenêtre de création d'un client se ferme.
+|Se trouver sur la fenêtre gestion clients.
+
+|10
+|TestModificationClientOK
+|Au clique du bouton « modifier client » la fenêtre de modification d'un client s'affiche. +
+Au clique du bouton « modifier » le compte se met à jour dans la Base de Données. +
+La fenêtre de modification d'un client se ferme.
+|Se trouver sur la fenêtre gestion clients. +
+Les champs d'information à saisir ne doivent pas être vides. +
+le numéro de téléphone doit contenir exactement 10 chiffres. + 
+L'adresse e-mail doit terminer par : @_saisie_._saisie_
+
+|11
+|TestModificationClientNOK
+|Au clique du bouton « modifier client » la fenêtre de modification d'un client s'affiche. +
+Au clique du bouton « annuler » l'action s'annule et la fenêtre de modification d'un client se ferme.
+|Se trouver sur la fenêtre gestion clients.
+
+|12
+|TestDésactivationClientOK
+|Au clique du bouton « désactiver client » une fenêtre de confirmation s'affiche. +
+Au clique du bouton « ok » le compte se désactive dans la Base de Données. +
+La fenêtre de confirmation se ferme.
+|Se trouver sur la fenêtre gestion clients. +
+Le client ne doit pas être déjà désactiver.
+
+|13
+|TestDésactivationClientNOK
+|Au clique du bouton « désactiver client » une fenêtre de confirmation s'affiche. +
+Au clique du bouton « annuler » l'action s'annule et la fenêtre de confirmation se ferme.
+|Se trouver sur la fenêtre gestion clients. +
+Le client ne doit pas être déjà désactiver.
+|===
+
+## Fiche de Test : gestion des comptes bancaire
+
+[cols="1,1,1,1"]
+|===
+|id Test |nom Test |Condition de satisfaction |précondition
+
+|14
+|TestGestionCompteBancaire
+|Au clique du bouton « comptes client » la fenêtre de gestion des comptes bancaire d'un client s'affiche.
+|Se trouver sur la fenêtre gestion clients.
+Un client doit être sélectionner. +
+Le client doit être actif. +
+Le client ne doit pas être désactiver.
+
+|15
+|TestModificationCompteBancaireOK 
+|Au clique du bouton « modifier » la fenêtre de modification du compte bancaire d'un client s'affiche. +
+Au clique du bouton « modifier » la modification du compte s'enregistre dans la Base de Données. + 
+La fenêtre de modification d'un compte bancaire se ferme.
+|Se trouver sur la fenêtre gestion des comptes. +
+Un comptes bancaire doit être sélectionner. +
+Le compte bancaire ne doit pas être clôturer.
+
+|16
+|TestModificationCompteBancaireNOK 
+|Au clique du bouton « modifier » la fenêtre de modification du compte bancaire d'un client s'affiche. +
+Au clique du bouton « annuler » l'action s'annuler et la fenêtre de modification d'un compte bancaire se ferme.
+|Se trouver sur la fenêtre gestion des comptes. +
+Un comptes bancaire doit être sélectionner. +
+Le compte bancaire ne doit pas être clôturer.
+
+|17
+|TestCloturerCompteBancaireOK 
+|Au clique du bouton « clôturer compte » une fenêtre de confirmation s'affiche. +
+Au clique du bouton « ok » le compte se clôture dans la Base de Données. +
+La fenêtre de confirmation se ferme.
+|Se trouver sur la fenêtre gestion des comptes. +
+Un comptes bancaire doit être sélectionner. +
+Le compte bancaire ne doit pas être déjà clôturer.
+
+|18
+|TestCloturerCompteBancaireNOK 
+|Au clique du bouton « clôturer compte » une fenêtre de confirmation s'affiche. +
+Au clique du bouton « annuler » l'action s'annuler et la fenêtre de confirmation se ferme.
+|Se trouver sur la fenêtre gestion des comptes. +
+Un comptes bancaire doit être sélectionner. +
+Le compte bancaire ne doit pas être déjà clôturer.
+
+|19
+|TestReactiverCompteBancaireOK 
+|Au clique du bouton « réactiver compte » une fenêtre de confirmation s'affiche. +
+Au clique du bouton « ok » le compte se réactive dans la Base de Données. +
+La fenêtre de confirmation se ferme.
+|Se trouver sur la fenêtre gestion des comptes. +
+Un comptes bancaire doit être sélectionner. +
+Le compte bancaire ne doit pas être actif.
+
+|20
+|TestReactiverCompteBancaireNOK 
+|Au clique du bouton « réactiver compte » une fenêtre de confirmation s'affiche. +
+Au clique du bouton « annuler » l'action s'annuler et la fenêtre de confirmation se ferme.
+|Se trouver sur la fenêtre gestion des comptes. +
+Un comptes bancaire doit être sélectionner. +
+Le compte bancaire ne doit pas être actif.
+
+|21
+|TestCreationCompteBancaireOK
+|Au clique du bouton « nouveau compte » la fenêtre de création d'un compte bancaire s'affiche. +
+Au clique du bouton « ajouter » le nouveau compte s'enregistre dans la Base de Données. + 
+La fenêtre de création d'un compte bancaire se ferme.
+|Se trouver sur la fenêtre gestion des comptes.
+
+|22
+|TestCreationCompteBancaireNOK
+|Au clique du bouton « nouveau compte » la fenêtre de création d'un compte bancaire s'affiche. +
+Au clique du bouton « ok » l'action s'annule et la fenêtre de création d'un compte bancaire se ferme.
+|Se trouver sur la fenêtre gestion des comptes.
+|===
+
+## Fiche de Test : gestion des opération bancaire
+
+[cols="1,1,1,1"]
+|===
+|id Test |nom Test |Condition de satisfaction |précondition
+
+|23
+|TestVoirOperation
+|Au clique du bouton « voir opérations » la fenêtre de gestion des opération d'un compte bancaire s'affiche.
+|Se trouver sur la fenêtre gestion des comptes. +
+Un comptes bancaire doit être sélectionner. +
+Le compte bancaire ne doit pas être clôturer.
+
+|24
+|TestEnregistrerDebitOK
+|Au clique du bouton « Enregistrer débit » la fenêtre d'enregistrement d'opération s'affiche. +
+Au clique du bouton « effectuer débit » l'opération s'enregistre dans la Base de Données. +
+Le montant de l'opération se retire du compte bancaire. +
+La fenêtre de d'enregistrement d'une opération se ferme.
+|Se trouver sur la fenêtre gestion des opérations. +
+Le montant ne doit pas être strictement supérieur à 0 et ne pas dépasser le montant du découvert du compte.
+
+|25
+|TestEnregistrerDebitNOK
+|Au clique du bouton « Enregistrer débit » la fenêtre d'enregistrement d'opération s'affiche. +
+Au clique du bouton « annuler débit » l'action s'annuler et la fenêtre d'enregistrement d'un opération se ferme.
+|Se trouver sur la fenêtre gestion des opérations.
+
+|26
+|TestEnregistrerCreditOK
+|Au clique du bouton « Enregistrer crédit » la fenêtre d'enregistrement d'opération s'affiche. +
+Au clique du bouton « effectuer crédit » l'opération s'enregistre dans la Base de Données. +
+Le montant de l'opération s'ajoute au compte bancaire. +
+La fenêtre de d'enregistrement d'une opération se ferme.
+|Se trouver sur la fenêtre gestion des opérations. +
+Le montant ne doit pas être strictement supérieur à 0.
+
+|27
+|TestEnregistrerDebitNOK
+|Au clique du bouton « Enregistrer crédit » la fenêtre d'enregistrement d'opération s'affiche. +
+Au clique du bouton « annuler crédit » l'action s'annuler et la fenêtre d'enregistrement d'un opération se ferme.
+|Se trouver sur la fenêtre gestion des opérations.
+
+|28
+|TestRealiserVirementOK
+|Au clique du bouton « Réaliser virement » la fenêtre d'enregistrement d'opération s'affiche. +
+Au clique du bouton « effectuer virement » l'opération s'enregistre dans la Base de Données. +
+Le montant de l'opération s'ajoute au compte bancaire avec l'id saisie et se retire du compte qui réalise l'opération. +
+La fenêtre de d'enregistrement d'une opération se ferme.
+|Se trouver sur la fenêtre gestion des opérations. +
+Le montant ne doit pas être strictement supérieur à 0 et ne pas dépasser le montant du découvert autorisé du compte. +
+L'id du compte vers qui effectuer le virement doit être lié à un compte présent dans la Base de Données.
+
+|29
+|TestRealiserVirementNOK
+|Au clique du bouton « réaliser virement » la fenêtre d'enregistrement d'opération s'affiche. +
+Au clique du bouton « annuler virement » l'action s'annuler et la fenêtre d'enregistrement d'un opération se ferme.
+|Se trouver sur la fenêtre gestion des opérations.
+|===
+
+## Fiche de Test : gestion des employés de l'Agence
+
+[cols="1,1,1,1"]
+|===
+|id Test |nom Test |Condition de satisfaction |précondition
+
+|30
+|TestGestionEmploye
+|Au clique du bouton « Employés » dans l'onglet « gestion » la fenêtre de gestion des employés s'affiche.
+|Se trouver sur la fenêtre gestion principale. +
+Une connexion avec un compte Chef d'Agence doit être établie.
+
+|31
+|TestRechercheEmploye
+|Au clique du bouton « rechercher » la liste des employés s'affiche sur la fenêtre.
+|Se trouver sur la fenêtre gestion des employés.
+
+|32
+|TestModificationEmployeOK
+|Au clique du bouton « Modifier employé » la fenêtre de modification d'un employé s'affiche. +
+Au clique du bouton « modifier » l'employé se met à jour dans la Base de Données. +
+La fenêtre de modification d'un employé se ferme.
+|Se trouver sur la fenêtre gestion des employés. +
+Un employé doit être sélectionner. +
+l'employé ne doit pas être désactiver. +
+Les différents champs ne doivent pas être vides.
+
+|33
+|TestModificationEmployeNOK
+|Au clique du bouton « Modifier employé » la fenêtre de modification d'un employé s'affiche. +
+Au clique du bouton « annuler » l'action s'annule et la fenêtre de modification d'un employé se ferme.
+|Se trouver sur la fenêtre gestion des employés. +
+Un employé doit être sélectionner. +
+l'employé ne doit pas être désactiver.
+
+|34
+|TestDesactiverEmployeOK
+|Au clique du bouton « Désactiver employé » une fenêtre de confirmation s'affiche. +
+Au clique du bouton « ok » le login et le mot de passe de l'employé se supprimer et il n'est plus possible de se connecter sur le compte de l'employé. +
+La fenêtre de confirmation de ferme.
+|Se trouver sur la fenêtre gestion des employés. +
+Un employé doit être sélectionner. +
+l'employé ne doit pas être désactiver.
+
+|35
+|TestDesactiverEmployeNOK
+|Au clique du bouton « Désactiver employé » une fenêtre de confirmation s'affiche. +
+Au clique du bouton « annuler » l'action s'annule et la fenêtre de confirmation se ferme.
+|Se trouver sur la fenêtre gestion des employés. +
+Un employé doit être sélectionner. +
+l'employé ne doit pas être désactiver.
+
+|36
+|TestCreationEmployeOK
+|Au clique du bouton « Nouveau employé » une fenêtre de création d'un nouvel employé s'affiche. +
+Au clique du bouton « ajouter » l'employé s'enregistre dans la Base de Données. +
+La fenêtre de création d'un employé se ferme
+|Se trouver sur la fenêtre gestion des employés. +
+les différents champs ne doivent pas être vides.
+
+|37
+|TestCreationEmployeNOK
+|Au clique du bouton « Nouveau employé » une fenêtre de création d'un nouvel employé s'affiche. +
+Au clique du bouton « annuler » l'action s'annuler et la fenêtre de création d'un employé se ferme.
+|Se trouver sur la fenêtre gestion des employés.
+|===
