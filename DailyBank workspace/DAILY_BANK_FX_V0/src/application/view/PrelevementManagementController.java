@@ -2,6 +2,7 @@ package application.view;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import application.DailyBankState;
@@ -65,8 +66,8 @@ public class PrelevementManagementController implements Initializable{
 					+ this.clientDesComptes.idNumCli + ")";
 			this.lblInfosClient.setText(info);
 
-			//this.loadList();
-			//this.validateComponentState();
+			this.loadListPrelev();
+			this.validateComponentState();
 		}
 		
 		public void displayDialog() {
@@ -85,6 +86,8 @@ public class PrelevementManagementController implements Initializable{
 		@FXML
 		private Button btnNouveauPrelevement;
 		@FXML
+		private Button btnSupprimerPrelevement;
+		@FXML
 		private Label lblInfosClient;
 		@FXML
 		private ListView<PrelevementAutomatique> lvPrelevement;
@@ -98,7 +101,7 @@ public class PrelevementManagementController implements Initializable{
 		}
 		
 		/*
-		 * Permet d'ajouter un nouveau compte
+		 * Permet d'ajouter un nouveau prélèvement
 		 */
 		@FXML
 		private void doNouveauPrelevement() throws SQLException {
@@ -110,21 +113,63 @@ public class PrelevementManagementController implements Initializable{
 		}
 		
 		/*
-		 * Permet de modifier les informations d'un compte
+		 * Ajoute les prélèvements d'un compte dans une liste
+		 */
+		public void loadListPrelev () {
+			ArrayList<PrelevementAutomatique> listeP;
+			listeP = this.pm.getPrelevement();
+			this.olPrelevement.clear();
+			for (PrelevementAutomatique p : listeP) {
+				this.olPrelevement.add(p);
+			}
+		}
+		
+		/*
+		 * Permet de modifier les informations d'un prélèvement
 		 */
 		@FXML
 		private void doModifierPrelevement() {
+			int selectedIndice = this.lvPrelevement.getSelectionModel().getSelectedIndex();
+			PrelevementAutomatique pMod = this.olPrelevement.get(selectedIndice);
+			PrelevementAutomatique presult = this.pm.modifierPrelevement(pMod);
+			if (presult != null) {
+				this.olPrelevement.set(selectedIndice, presult);
+			}
+			this.loadListPrelev();
+			this.validateComponentState();
+		}
+		
+		/*
+		 * Permet de supprimer un prélèvement
+		 */
+		@FXML
+		private void doSupprimerPrelevement() {
 			/*int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 			if (selectedIndice >= 0) {
 				CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
 				this.cm.modifierCompte(cpt);
 			}
 			this.loadList();*/
+			this.validateComponentState();
 		}
 
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
-			// TODO Auto-generated method stub
+			this.lvPrelevement.setItems(this.olPrelevement);
 			
+		}
+		
+		/*
+		 * Vérifie si les informations sont valide
+		 */
+		private void validateComponentState() {
+			int selectedIndice = this.lvPrelevement.getSelectionModel().getSelectedIndex();
+			PrelevementAutomatique p = this.lvPrelevement.getSelectionModel().getSelectedItem();
+			
+			// Si un prélèvement est sélectionner
+			if (selectedIndice >= 0) {
+					this.btnModifierPrelevement.setDisable(true);
+					this.btnSupprimerPrelevement.setDisable(false);
+			}
 		}
 }

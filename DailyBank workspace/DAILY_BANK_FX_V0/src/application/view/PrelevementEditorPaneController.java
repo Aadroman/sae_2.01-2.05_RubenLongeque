@@ -12,6 +12,7 @@ import application.tools.EditionMode;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
@@ -61,38 +62,37 @@ public class PrelevementEditorPaneController implements Initializable{
 		this.compte = c;
 		this.em = mode;
 		if (prelevement == null) {
-			this.prelevementEdite = new PrelevementAutomatique(0, 10, 0, "N", this.compte.idNumCompte);
+			this.prelevementEdite = new PrelevementAutomatique(0, 10, 5 , "N", this.compte.idNumCompte);
 
 		} else {
 			this.prelevementEdite = new PrelevementAutomatique(prelevement);
 		}
 		this.prelevementResult = null;
-		this.txtIdPrelevement.setDisable(true);
-		this.txtIdNumCompte.setDisable(true);
 		switch (mode) {
 		case CREATION:
+			this.txtIdPrelevement.setDisable(true);
+			this.txtIdNumCompte.setDisable(true);
+			this.lblMessage.setText("Informations sur le nouveau prélèvement");
 			this.btnOk.setText("Ajouter");
 			this.btnCancel.setText("Annuler");
 			break;
 		case MODIFICATION:
-			/*this.txtDecAutorise.setDisable(false);
-			this.txtSolde.setDisable(true);
+			this.txtIdPrelevement.setDisable(true);
+			this.txtIdNumCompte.setDisable(true);
 			this.lblMessage.setText("Modification du compte");
 			this.btnOk.setText("Modifier");
 			this.btnCancel.setText("Annuler");
-			break;*/
+			break;
 		case SUPPRESSION:
 			//break;
-		}
-
-		// Paramétrages spécifiques pour les chefs d'agences
-		if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
-			// rien pour l'instant
 		}
 
 		// initialisation du contenu des champs
 		this.txtIdPrelevement.setText("" + this.prelevementEdite.idPrelev);
 		this.txtIdNumCompte.setText("" + this.prelevementEdite.idNumCompte);
+		this.txtMontant.setText("" + this.prelevementEdite.montant);
+		this.txtDateRecurrente.setText("" + this.prelevementEdite.dateRecurrente);
+		this.txtBeneficiaire.setText("" + this.prelevementEdite.beneficiaire);
 
 		this.prelevementResult = null;
 
@@ -112,6 +112,8 @@ public class PrelevementEditorPaneController implements Initializable{
 	private Button btnOk;
 	@FXML
 	private Button btnCancel;
+	@FXML
+	private Label lblMessage;
 	@FXML
 	private TextField txtIdPrelevement;
 	@FXML
@@ -154,18 +156,18 @@ public class PrelevementEditorPaneController implements Initializable{
 
 			break;
 		
-		/*case MODIFICATION:
+		case MODIFICATION:
 			if (this.isSaisieValide()) {
-				this.compteResult = this.compteEdite;
+				this.prelevementResult = this.prelevementEdite;
 				this.primaryStage.close();
 
 			}
 			break;
 		case SUPPRESSION:
-			this.compteResult = this.compteEdite;
+			this.prelevementResult = this.prelevementEdite;
 			this.primaryStage.close();
 
-			break;*/
+			break;
 		}
 
 	}
@@ -174,18 +176,41 @@ public class PrelevementEditorPaneController implements Initializable{
 	 * Permet de vérifiez si les saisies sont valides : 
 	 * renvoie une alerte si :
 	 * - le montant n'est pas saisi
-	 * - id de l'agence n'est pas valide
-	 * - le numéro de compte n'est pas valide
-	 * - le montant du découvert est négatif
-	 * - le montant du solde (du premier dépôt est négatif)
+	 * - la date saisi est inférieur ou égal à 0 et supérieur à 28
+	 * - le champ du bénéficaire ne doit pas être vide
 	 */
 	private boolean isSaisieValide() {
-		/*if (this.prelevementEdite.montant.isEmpty()) {
+		this.prelevementEdite.beneficiaire = this.txtBeneficiaire.getText().trim();
+		
+		/*String montant = String.valueOf(this.prelevementEdite.montant);
+		montant = this.txtMontant.getText().trim();
+		
+		String date = Integer.toString(this.prelevementEdite.dateRecurrente);
+		date = this.txtBeneficiaire.getText().trim();*/
+		
+		if (this.txtMontant.getText().equals("")) {
 			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le montant ne doit pas être vide",
 					AlertType.WARNING);
 			this.txtMontant.requestFocus();
 			return false;
-		}*/
+		}
+		
+		int date;
+		date = Integer.parseInt(this.txtDateRecurrente.getText());
+		if(date <= 0 || date > 28) {
+			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "La date doit être supérieur à 0 et "
+					+ "inférieur à 28",
+					AlertType.WARNING);
+			this.txtDateRecurrente.requestFocus();
+			return false;
+		}
+		
+		if (this.prelevementEdite.beneficiaire.isEmpty()) {
+			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le nom ne doit pas être vide",
+					AlertType.WARNING);
+			this.txtBeneficiaire.requestFocus();
+			return false;
+		}
 
 		return true;
 	}

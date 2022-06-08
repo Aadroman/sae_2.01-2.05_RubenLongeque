@@ -23,6 +23,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import application.DailyBankState;
 import application.control.ComptesManagement;
 import application.control.ExceptionDialog;
+import application.control.PrelevementManagement;
 import application.control.SimulationEmpruntPane;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -52,6 +53,7 @@ public class ComptesManagementController implements Initializable {
 	// Etat application
 	private DailyBankState dbs;
 	private ComptesManagement cm;
+	private PrelevementManagement pm;
 
 	// Fenêtre physique
 	private Stage primaryStage;
@@ -223,7 +225,7 @@ public class ComptesManagementController implements Initializable {
 
 	@FXML
 	void doEmprunt(ActionEvent event) {
-		SimulationEmpruntPane simu = new SimulationEmpruntPane(primaryStage, dbs);
+		SimulationEmpruntPane simu = new SimulationEmpruntPane(primaryStage);
 	}
 
 	/*
@@ -248,7 +250,7 @@ public class ComptesManagementController implements Initializable {
 			CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
 			this.cm.gererPrelevement(cpt);
 		}
-		//this.loadListPrelevement();
+		this.loadList();
 		this.validateComponentState();
 	}
 
@@ -263,18 +265,6 @@ public class ComptesManagementController implements Initializable {
 			this.olCompteCourant.add(co);
 		}
 	}
-
-	/*
-	 * Ajoute les comptes d'un client dans une liste
-	 */
-	/*public void loadListPrelevement () {
-		ArrayList<PrelevementAutomatique> listeCpt;
-		listeCpt = this.cm.getComptesDunClient();
-		this.olCompteCourant.clear();
-		for (CompteCourant co : listeCpt) {
-			this.olCompteCourant.add(co);
-		}
-	}*/
 
 	/**
 	 * Ajoute les comptes désactivés d'un client dans une liste
@@ -298,6 +288,7 @@ public class ComptesManagementController implements Initializable {
 		
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		CompteCourant cpt = this.lvComptes.getSelectionModel().getSelectedItem();
+		this.btnEmprunt.setDisable(false);
 		
 		// Si un compte est sélectionner
 		if (selectedIndice >= 0) {
@@ -306,14 +297,17 @@ public class ComptesManagementController implements Initializable {
 				this.btnVoirOpes.setDisable(false);
 				this.btnModifierCompte.setDisable(false);
 				this.btnSupprCompte.setDisable(false);
-				this.btnEmprunt.setDisable(false);
 				this.btnPrelevement.setDisable(false);
 				this.btnSupprCompte.setText("Clôturer Compte");
 			// si le compte est clôturer
 			} else {
 				this.btnVoirOpes.setDisable(true);
 				this.btnModifierCompte.setDisable(true);
+
 				this.btnEmprunt.setDisable(true);
+
+				this.btnSupprCompte.setDisable(true);
+
 				this.btnPrelevement.setDisable(true);
 				this.btnSupprCompte.setText("Réactiver Compte");
 				this.btnSupprCompte.setDisable(false);
