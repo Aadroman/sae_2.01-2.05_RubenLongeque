@@ -34,6 +34,7 @@ public class SimulationEmpruntController implements Initializable{
 		
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
+		this.capital.requestFocus();
 	
 		this.validateComponent();
 	}
@@ -177,7 +178,7 @@ public class SimulationEmpruntController implements Initializable{
         
         //verification de la valitdité des champs
 		try {
-			if (emprunt.capitalEmprunt < 10000) {
+			if (emprunt.capitalEmprunt < 5000) {
 				throw new NumberFormatException();
 			}
 		} catch (NumberFormatException nbF) {
@@ -188,7 +189,7 @@ public class SimulationEmpruntController implements Initializable{
 		}
 
 		try {
-			if (emprunt.dureeEmprunt < 2) {
+			if (emprunt.dureeEmprunt < 1) {
 				throw new NumberFormatException();
 			}
 		} catch (NumberFormatException nbF) {
