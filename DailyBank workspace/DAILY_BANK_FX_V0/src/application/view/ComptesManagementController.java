@@ -223,7 +223,7 @@ public class ComptesManagementController implements Initializable {
 
 	@FXML
 	void doEmprunt(ActionEvent event) {
-		SimulationEmpruntPane simu = new SimulationEmpruntPane(primaryStage, dbs);
+		SimulationEmpruntPane simu = new SimulationEmpruntPane(primaryStage);
 	}
 
 	/*
@@ -298,6 +298,7 @@ public class ComptesManagementController implements Initializable {
 		
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		CompteCourant cpt = this.lvComptes.getSelectionModel().getSelectedItem();
+		this.btnEmprunt.setDisable(false);
 		
 		// Si un compte est sélectionner
 		if (selectedIndice >= 0) {
@@ -306,14 +307,12 @@ public class ComptesManagementController implements Initializable {
 				this.btnVoirOpes.setDisable(false);
 				this.btnModifierCompte.setDisable(false);
 				this.btnSupprCompte.setDisable(false);
-				this.btnEmprunt.setDisable(false);
 				this.btnPrelevement.setDisable(false);
 			// si le compte est clôturer
 			} else {
 				this.btnVoirOpes.setDisable(true);
 				this.btnModifierCompte.setDisable(true);
 				this.btnSupprCompte.setDisable(true);
-				this.btnEmprunt.setDisable(true);
 				this.btnPrelevement.setDisable(true);
 			}
 		}

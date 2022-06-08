@@ -2,21 +2,26 @@ package model.data;
 
 
 public class Emprunt {
-	public int capitalEmprunt;
+	public double capitalEmprunt;
 	public int dureeEmprunt;
 	public double tauxPretAnnuel;
+	public double tauxAssurance;
 	
 	
-	public Emprunt(int capital, int duree, double tauxPret) {
-		if(capital > 100000)
-			this.capitalEmprunt=capital;
-		if(duree > 2)
-			this.dureeEmprunt=duree;
-		if(tauxPret>0)
-			this.tauxPretAnnuel=tauxPret;
+	public Emprunt(double capital, int duree, double tauxPret) {
+		this.capitalEmprunt = capital;
+		this.dureeEmprunt = duree;
+		this.tauxPretAnnuel = tauxPret;
 	}
 	
-	public int getCapitalEmprunt() {
+	public Emprunt(double capital, int duree, double tauxPret, double tauxAssurance) {
+		this.capitalEmprunt = capital;
+		this.dureeEmprunt = duree;
+		this.tauxPretAnnuel = tauxPret;
+		this.tauxAssurance = tauxAssurance;
+	}
+	
+	public double getCapitalEmprunt() {
 		return capitalEmprunt;
 	}
 	
@@ -38,8 +43,47 @@ public class Emprunt {
 		return res;
 	}
 	
-	public double getMensualite() {
-		double res = this.capitalEmprunt*(this.getTauxApplicable()/ Math.pow((1-(1+this.getTauxApplicable())),this.getNbPeriode()) );
+	public double getMensualiteAssurance() {
+		return this.tauxAssurance/100*(this.capitalEmprunt/12);
+	}
+	
+	public double getMensualiteSansAss() {
+		return this.capitalEmprunt*(this.getTauxApplicable()/ (1-Math.pow(1+this.getTauxApplicable(), -this.getNbPeriode())) );
+	}
+	
+	public double getMensualiteAvecAss() {
+		return this.getMensualiteSansAss()+this.getMensualiteAssurance();
+	}
+	
+
+	
+	public double coutCredit() {
+		double capitalRestant = this.capitalEmprunt;
+		double res = 0;
+		
+		do {
+			double interet = capitalRestant*this.getTauxApplicable();
+			double montantDuPricipal = this.getMensualiteSansAss() - interet;
+			capitalRestant = capitalRestant - montantDuPricipal;
+			res+=interet;
+		}while(capitalRestant>0);
+		
+		
 		return res;
+	}
+	
+	public double coutAssurance() {
+		return this.getMensualiteAssurance()*this.getNbPeriode();
+	}
+	
+	public double coutTotal(double frais) {
+		return (coutAssurance()+coutCredit())+frais;
+	}
+	
+	
+	public static void main(String[] args) {
+		Emprunt em =  new Emprunt(40000, 10, 0.8, 0.3);
+		
+		System.out.println(em.getMensualiteSansAss()+" "+em.getMensualiteAvecAss()+" "+em.coutCredit()+" "+em.coutAssurance()+ " "+em.coutTotal(200));
 	}
 }
