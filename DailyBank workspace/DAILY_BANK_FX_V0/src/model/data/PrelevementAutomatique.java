@@ -30,14 +30,14 @@ public class PrelevementAutomatique {
 	}
 	
 	public PrelevementAutomatique() {
-		this(0,0,0,"N",0);
+		this(-1000, -1000, -1000, "N", -1000);
 	}
 	
 	@Override
 	public String toString() {
 		
-		return "Prélèvement automatique [idPrélèvement=" + this.idPrelev + ", montant=" + this.montant
-				+ ", dateRecurrente=" + this.dateRecurrente
-				+ ", bénéficiaire=" + this.beneficiaire + ", idNumCompte=" + this.idNumCompte + "]";
+		return "Prélèvement automatique [" + this.idPrelev + "], montant = " + this.montant
+				+ ", date = " + this.dateRecurrente
+				+ ", bénéficiaire = " + this.beneficiaire + ", [" + this.idNumCompte + "]";
 	}
 }

@@ -36,7 +36,7 @@ public class PrelevementEditorPane {
 	public PrelevementEditorPane(Stage _parentStage, DailyBankState _dbstate) {
 
 		try {
-			FXMLLoader loader = new FXMLLoader(CompteEditorPaneController.class.getResource("prelevementeditorpane.fxml"));
+			FXMLLoader loader = new FXMLLoader(PrelevementEditorPaneController.class.getResource("prelevementeditorpane.fxml"));
 			BorderPane root = loader.load();
 
 			Scene scene = new Scene(root, root.getPrefWidth()+20, root.getPrefHeight()+10);

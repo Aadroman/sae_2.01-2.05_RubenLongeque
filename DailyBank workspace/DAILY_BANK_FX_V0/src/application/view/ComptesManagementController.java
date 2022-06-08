@@ -23,6 +23,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import application.DailyBankState;
 import application.control.ComptesManagement;
 import application.control.ExceptionDialog;
+import application.control.PrelevementManagement;
 import application.control.SimulationEmpruntPane;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -52,6 +53,7 @@ public class ComptesManagementController implements Initializable {
 	// Etat application
 	private DailyBankState dbs;
 	private ComptesManagement cm;
+	private PrelevementManagement pm;
 
 	// Fenêtre physique
 	private Stage primaryStage;
@@ -248,7 +250,7 @@ public class ComptesManagementController implements Initializable {
 			CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
 			this.cm.gererPrelevement(cpt);
 		}
-		//this.loadListPrelevement();
+		this.loadList();
 		this.validateComponentState();
 	}
 
@@ -263,18 +265,6 @@ public class ComptesManagementController implements Initializable {
 			this.olCompteCourant.add(co);
 		}
 	}
-
-	/*
-	 * Ajoute les comptes d'un client dans une liste
-	 */
-	/*public void loadListPrelevement () {
-		ArrayList<PrelevementAutomatique> listeCpt;
-		listeCpt = this.cm.getComptesDunClient();
-		this.olCompteCourant.clear();
-		for (CompteCourant co : listeCpt) {
-			this.olCompteCourant.add(co);
-		}
-	}*/
 
 	/**
 	 * Ajoute les comptes désactivés d'un client dans une liste

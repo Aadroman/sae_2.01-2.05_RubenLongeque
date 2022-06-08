@@ -67,8 +67,8 @@
                </GridPane.margin>
             </Label>
             <TextField fx:id="txtIdPrelevement" editable="false" GridPane.columnIndex="1" />
-            <TextField fx:id="txtMontant" editable="false" layoutX="171.0" layoutY="23.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="txtDateRecurrente" editable="false" layoutX="171.0" layoutY="58.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtMontant" layoutX="171.0" layoutY="23.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtDateRecurrente" layoutX="171.0" layoutY="58.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="txtBeneficiaire" layoutX="171.0" layoutY="93.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="txtIdNumCompte" layoutX="171.0" layoutY="128.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
