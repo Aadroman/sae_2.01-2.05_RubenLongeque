@@ -19,7 +19,7 @@ public class AccessEmploye {
 	public AccessEmploye() {
 	}
 
-	
+
 	/**
 	 * @param idAg
 	 * @param idEmploye
@@ -89,8 +89,8 @@ public class AccessEmploye {
 
 		return alResult;
 	}
-	
-	
+
+
 	/**
 	 * Recherche d'un employe par son login / mot de passe.
 	 *
@@ -149,7 +149,7 @@ public class AccessEmploye {
 			throw new DataAccessException(Table.Employe, Order.SELECT, "Erreur accès", e);
 		}
 	}
-	
+
 	/**
 	 * Insertion d'un employé.
 	 *
@@ -203,7 +203,7 @@ public class AccessEmploye {
 			throw new DataAccessException(Table.Employe, Order.INSERT, "Erreur accès", e);
 		}
 	}
-	
+
 	/**
 	 * Mise à jour d'un Employé.
 	 *
@@ -247,7 +247,9 @@ public class AccessEmploye {
 			throw new DataAccessException(Table.Employe, Order.UPDATE, "Erreur accès", e);
 		}
 	}
-	
+
+
+
 	public void desacEmploye(Employe employe)
 			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
 		try {
@@ -275,6 +277,35 @@ public class AccessEmploye {
 			System.err.println(query);
 			PreparedStatement pst2 = con.prepareStatement(query);
 
+			con.commit();
+
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.Employe, Order.INSERT, "Erreur accès", e);
+		}
+	}
+	
+	public void reacEmploye(Employe employe)
+			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
+		try {
+
+			Connection con = LogToDatabase.getConnexion();
+
+			String query = "UPDATE employe SET login = ?, motpasse = ? WHERE idemploye = ?";
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, employe.login);
+			pst.setString(2, employe.motPasse);
+			pst.setInt(3, employe.idEmploye);
+
+
+			System.err.println(query);
+			int result = pst.executeUpdate();
+			pst.close();
+
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.Employe, Order.DELETE,
+						"Delete anormal (delete de moins ou plus d'une ligne)", null, result);
+			}
 			con.commit();
 			
 		} catch (SQLException e) {

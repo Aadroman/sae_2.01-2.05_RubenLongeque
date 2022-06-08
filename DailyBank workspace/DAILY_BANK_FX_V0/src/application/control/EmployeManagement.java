@@ -129,7 +129,7 @@ public class EmployeManagement {
 		if (result != null) {
 			try {
 				AccessEmploye ac = new AccessEmploye();
-				ac.updateEmploye(result);
+				ac.reacEmploye(result);
 			} catch (DatabaseConnexionException e) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
 				ed.doExceptionDialog();
