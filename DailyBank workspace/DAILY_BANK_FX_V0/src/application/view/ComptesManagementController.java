@@ -62,7 +62,6 @@ public class ComptesManagementController implements Initializable {
 	private Client clientDesComptes;
 	private ObservableList<CompteCourant> olCompteCourant;
 	private ObservableList<CompteCourant> olCompteDesactive;
-	private ObservableList<PrelevementAutomatique> olPrelev;
 
 	// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, ComptesManagement _cm, DailyBankState _dbstate, Client client) {
@@ -251,7 +250,7 @@ public class ComptesManagementController implements Initializable {
 			CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
 			this.cm.gererPrelevement(cpt);
 		}
-		this.loadListPrelevement();
+		this.loadList();
 		this.validateComponentState();
 	}
 
@@ -264,18 +263,6 @@ public class ComptesManagementController implements Initializable {
 		this.olCompteCourant.clear();
 		for (CompteCourant co : listeCpt) {
 			this.olCompteCourant.add(co);
-		}
-	}
-
-	/*
-	 * Ajoute les prélèvements d'un compte dans une liste
-	 */
-	public void loadListPrelevement () {
-		ArrayList<PrelevementAutomatique> listeP;
-		listeP = this.pm.getPrelevement();
-		this.olPrelev.clear();
-		for (PrelevementAutomatique p : listeP) {
-			this.olPrelev.add(p);
 		}
 	}
 

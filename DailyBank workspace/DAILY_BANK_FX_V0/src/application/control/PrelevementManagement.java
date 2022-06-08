@@ -139,7 +139,7 @@ public class PrelevementManagement {
 
 		try {
 			AccessPrelevement ap = new AccessPrelevement();
-			listeP = ap.getPrelevement(this.compte.idNumCompte);
+			listeP = ap.getPrelevements(this.compte.idNumCompte);
 		} catch (DatabaseConnexionException e) {
 			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
 			ed.doExceptionDialog();

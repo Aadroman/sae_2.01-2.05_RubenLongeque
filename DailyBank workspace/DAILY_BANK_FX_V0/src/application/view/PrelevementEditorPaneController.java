@@ -61,7 +61,7 @@ public class PrelevementEditorPaneController implements Initializable{
 		this.compte = c;
 		this.em = mode;
 		if (prelevement == null) {
-			this.prelevementEdite = new PrelevementAutomatique(0, 10, 5, "N", this.compte.idNumCompte);
+			this.prelevementEdite = new PrelevementAutomatique(0, 0, 0 , "N", this.compte.idNumCompte);
 
 		} else {
 			this.prelevementEdite = new PrelevementAutomatique(prelevement);

@@ -27,14 +27,14 @@ public class AccessPrelevement {
 	 * @throws DataAccessException
 	 * @throws DatabaseConnexionException
 	 */
-	public ArrayList<PrelevementAutomatique> getPrelevement(int idNumCompte)
+	public ArrayList<PrelevementAutomatique> getPrelevements(int idNumCompte)
 			throws DataAccessException, DatabaseConnexionException {
 		ArrayList<PrelevementAutomatique> alResult = new ArrayList<>();
 
 		try {
 			Connection con = LogToDatabase.getConnexion();
 			String query = "SELECT * FROM PrelevementAutomatique where idNumCompte = ?";
-			query += " ORDER BY idNumCompte";
+			query += " ORDER BY idPrelev";
 
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setInt(1, idNumCompte);
@@ -42,13 +42,13 @@ public class AccessPrelevement {
 
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
-				int idPrelev = rs.getInt("idPrelevement");
+				int idPrelev = rs.getInt("idPrelev");
 				double montant = rs.getDouble("montant");
-				int dateReccurrente = rs.getInt("dateReccurrente");
+				int dateRecurrente = rs.getInt("dateRecurrente");
 				String beneficiaire = rs.getString("beneficiaire");
 				int idNumCompteTROUVEE = rs.getInt("idNumCompte");
 
-				alResult.add(new PrelevementAutomatique(idPrelev, montant, dateReccurrente, beneficiaire, idNumCompteTROUVEE));
+				alResult.add(new PrelevementAutomatique(idPrelev, montant, dateRecurrente, beneficiaire, idNumCompteTROUVEE));
 			}
 			rs.close();
 			pst.close();
