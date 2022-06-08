@@ -1,0 +1,119 @@
+# CAHIER DE TEST VERSION  0
+:toc: left
+:toc-title: Table des matières
+:nofooter:
+
+## Fiche de Test : gestion de l'Application
+
+[cols="1,1,1,1"]
+|===
+|id Test |nom Test |Condition de satisfaction |précondition
+
+|1
+|TestConnexionCompteOK
+|Au clique du bouton « Connexion » une fenêtre d'identification s'affiche. +
+Au clique du bouton « valider » si les champ login et mot de passe appartiennent à un compte stocké dans la Base de Données, la connexion sur ce compte s'établie. +
+La fenêtre d'identification se ferme lorsque la connexion est établie.
+|Se trouver sur la fenêtre principale.
+
+|2
+|TestConnexionCompteNOK
+|Au clique du bouton « Connexion » une fenêtre d'identification s'affiche. +
+Au clique du bouton « Annuler » l'action s'annule et la fenêtre d'identification se ferme.
+|Se trouver sur la fenêtre principale. 
+
+|3
+|TestConnexionCompteGuichetier
+|Au clique du bouton « Connexion » une fenêtre d'identification s'affiche. +
+Au clique du bouton «  Valider » si les champ login et mot de passe appartiennent à un compte stocké dans la Base de Données, la connexion sur ce compte s'établie.
+La fenêtre d'identification se ferme lorsque la connexion est établie. +
+Le bouton « clients » dans l'onglet « gestion » s'active.
+|Se trouver sur la fenêtre principale. +
+le login et le mot de passe appartiennent à un compte guichetier.
+
+|4
+|TestConnexionCompteChefAgence
+|Au clique du bouton « Connexion » une fenêtre d'identification s'affiche. +
+Au clique du bouton «  Valider » si les champ login et mot de passe appartiennent à un compte stocké dans la Base de Données, la connexion sur ce compte s'établie.
+La fenêtre d'identification se ferme lorsque la connexion est établie. +
+Les bouton « clients » et « employé » dans l'onglet « gestion » s'active.
+|Se trouver sur la fenêtre principale. +
+le login et le mot de passe appartiennent à un compte Chef d'Agence.
+
+|5
+|TestDeconnexionCompte
+|Au clique du bouton « Deconnexion » le compte actif se déconnecte de la Base de Données. +
+|Se trouver sur la fenêtre principale. +
+Une connexion avec un compte d'employé doit être établie.
+|===
+
+## Fiche de Test : gestion des clients
+
+[cols="1,1,1,1"]
+|===
+|id Test |nom Test |Condition de satisfaction |précondition
+
+|6
+|TestGestionClient
+|Au clique du bouton « clients » dans l'onglet « gestion » la fenêtre de gestion des clients s'affiche.
+|Se trouver sur la fenêtre principale. +
+Une connexion avec un compte d'employé Guichetier ou Chef Agence doit être établie.
+
+|6
+|TestRechercheClient
+|Au clique du bouton « rechercher » la liste des clients de l'Agence s'affiche à l'écran.
+|Se trouver sur la fenêtre gestion clients.
+
+|6
+|TestCreationClientOK
+|Au clique du bouton « nouveau client » la fenêtre de création d'un client s'affiche. +
+Au clique du bouton « ajouter » le nouveau compte s'ajoute dans la Base de Données. +
+La fenêtre de création d'un client se ferme.
+|Se trouver sur la fenêtre gestion clients. +
+Les champs d'information à saisir ne doivent pas être vides. +
+le numéro de téléphone doit contenir exactement 10 chiffres. + 
+L'adresse e-mail doit terminer par : @_saisie_._saisie_
+
+|3
+|TestCreationClientNOK
+|Au clique du bouton « nouveau client » la fenêtre de création d'un client s'affiche. +
+Au clique du bouton « annuler » l'action s'annule et la fenêtre de création d'un client se ferme.
+|Se trouver sur la fenêtre gestion clients.
+
+|6
+|TestModificationClientOK
+|Au clique du bouton « modifier client » la fenêtre de modification d'un client s'affiche. +
+Au clique du bouton « modifier » le compte se met à jour dans la Base de Données. +
+La fenêtre de modification d'un client se ferme.
+|Se trouver sur la fenêtre gestion clients. +
+Les champs d'information à saisir ne doivent pas être vides. +
+le numéro de téléphone doit contenir exactement 10 chiffres. + 
+L'adresse e-mail doit terminer par : @_saisie_._saisie_
+
+|3
+|TestModificationClientNOK
+|Au clique du bouton « modifier client » la fenêtre de modification d'un client s'affiche. +
+Au clique du bouton « annuler » l'action s'annule et la fenêtre de modification d'un client se ferme.
+|Se trouver sur la fenêtre gestion clients.
+|===
+
+## Fiche de Test : gestion des comptes bancaire
+
+[cols="1,1,1,1"]
+|===
+|id Test |nom Test |Condition de satisfaction |précondition
+
+|6
+|TestGestionCompteBancaire
+|Au clique du bouton « comptes client » la fenêtre de gestion des comptes bancaire d'un client s'affiche.
+|Se trouver sur la fenêtre gestion clients.
+Un client doit être sélectionner. +
+Le client doit être actif.
+
+|6
+|TestVoirOperation
+|Au clique du bouton « voir opérations » la fenêtre de gestion des opération d'un compte bancaire s'affiche.
+|Se trouver sur la fenêtre gestion des comptes. +
+Un comptes bancaire doit être sélectionner. +
+Le compte bancaire ne doit pas être clôturer.
+|===

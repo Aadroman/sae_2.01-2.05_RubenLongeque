@@ -132,6 +132,34 @@ public class PrelevementManagement {
 	}
 	
 	/**
+	 * Permet de modifier le prélèvement d'un compte
+	 * @param prelevement : prélèvement du compte séléctionné
+	 * @return prélèvement modifié
+	 */
+	public PrelevementAutomatique modifierPrelevement(PrelevementAutomatique p) {
+		PrelevementEditorPane pep = new PrelevementEditorPane(this.primaryStage, this.dbs);
+		PrelevementAutomatique result = pep.doPrelevementEditorDialog(this.compte, p, EditionMode.MODIFICATION);
+		if(result != null) {
+			try {
+				AccessPrelevement acpv = new AccessPrelevement();
+				acpv.updatePrelevement(result);
+				
+			}catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+				ed.doExceptionDialog();
+				this.primaryStage.close();
+				result = null;
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+				result = null;
+			}
+		}
+		
+		return result;
+	}
+	
+	/**
 	 * @return une liste de prélèvement en fonction du compte sélectionné
 	 */
 	public ArrayList<PrelevementAutomatique> getPrelevement() {

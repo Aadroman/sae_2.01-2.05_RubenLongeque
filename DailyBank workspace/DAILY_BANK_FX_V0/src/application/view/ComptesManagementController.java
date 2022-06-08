@@ -298,13 +298,21 @@ public class ComptesManagementController implements Initializable {
 				this.btnModifierCompte.setDisable(false);
 				this.btnSupprCompte.setDisable(false);
 				this.btnPrelevement.setDisable(false);
+				this.btnSupprCompte.setText("Clôturer Compte");
 			// si le compte est clôturer
 			} else {
 				this.btnVoirOpes.setDisable(true);
 				this.btnModifierCompte.setDisable(true);
+
+				this.btnEmprunt.setDisable(true);
+
 				this.btnSupprCompte.setDisable(true);
+
 				this.btnPrelevement.setDisable(true);
+				this.btnSupprCompte.setText("Réactiver Compte");
+				this.btnSupprCompte.setDisable(false);
 			}
+			
 		}
 	}
 }

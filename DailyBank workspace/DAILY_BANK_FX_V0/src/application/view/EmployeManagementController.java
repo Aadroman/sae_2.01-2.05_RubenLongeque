@@ -24,6 +24,7 @@ import model.data.Employe;
 import model.orm.AccessEmploye;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
+import model.orm.exception.ManagementRuleViolation;
 import model.orm.exception.RowNotFoundOrTooManyRowsException;
 
 public class EmployeManagementController implements Initializable {
@@ -167,6 +168,9 @@ public class EmployeManagementController implements Initializable {
 		AccessEmploye ac = new AccessEmploye();
 		System.out.println(empDesac.droitsAccess);
 		if(empDesac.login == "") {
+			
+			
+			/*
 			Alert alerte = new Alert(AlertType.CONFIRMATION);
 			alerte.setTitle("Réactiver l'employé");
 			alerte.setHeaderText("Voulez-vous réactiver l'employé ?");
@@ -174,15 +178,23 @@ public class EmployeManagementController implements Initializable {
 				if (response == ButtonType.OK) {
 					int Indice = this.lvEmploye.getSelectionModel().getSelectedIndex();
 					if (Indice >= 0) {
+
+						this.em.reactiverEmploye(empDesac);
+						System.out.println(empDesac.toString());
+						
 						Employe emp = this.olc.get(selectedIndice);
 						Employe result = this.em.reactiverEmploye(emp);
+
 						if (result != null) {
 							this.olc.set(selectedIndice, result);
 						}
+						 
+					
 					}
+
 				}
 			});
-
+			*/
 		} else {
 			Alert alerte = new Alert(AlertType.CONFIRMATION);
 			alerte.setTitle("Désactivation de l'employé");
@@ -224,12 +236,13 @@ public class EmployeManagementController implements Initializable {
 		Employe emp = this.lvEmploye.getSelectionModel().getSelectedItem();
 		if (selectedIndice >= 0 && emp.login != "") {
 			this.btnModifEmploye.setDisable(false);
+			this.btnModifEmploye.setVisible(true);
 			this.btnSuppEmploye.setDisable(false);
+			this.btnSuppEmploye.setVisible(true);
 			this.btnSuppEmploye.setText("Désactiver employé");
 		} else {
-			this.btnModifEmploye.setDisable(true);
-			this.btnSuppEmploye.setDisable(false);
-			this.btnSuppEmploye.setText("Réactiver employé");
+			this.btnModifEmploye.setVisible(false);
+			this.btnSuppEmploye.setVisible(false);
 
 		}
 
