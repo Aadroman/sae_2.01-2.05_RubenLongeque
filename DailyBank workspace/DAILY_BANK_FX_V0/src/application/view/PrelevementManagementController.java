@@ -129,13 +129,14 @@ public class PrelevementManagementController implements Initializable{
 		 */
 		@FXML
 		private void doModifierPrelevement() {
-			/*int selectedIndice = this.lvPrelevement.getSelectionModel().getSelectedIndex();
-			if (selectedIndice >= 0) {
-				PrelevementAutomatique p = this.olPrelevement.get(selectedIndice);
-				this.cm.modifierCompte(cpt);
+			int selectedIndice = this.lvPrelevement.getSelectionModel().getSelectedIndex();
+			PrelevementAutomatique pMod = this.olPrelevement.get(selectedIndice);
+			PrelevementAutomatique presult = this.pm.modifierPrelevement(pMod);
+			if (presult != null) {
+				this.olPrelevement.set(selectedIndice, presult);
 			}
-			this.loadList();
-			this.validateComponentState();*/
+			this.loadListPrelev();
+			this.validateComponentState();
 		}
 		
 		/*
@@ -162,14 +163,12 @@ public class PrelevementManagementController implements Initializable{
 		 * Vérifie si les informations sont valide
 		 */
 		private void validateComponentState() {
-			
-			
 			int selectedIndice = this.lvPrelevement.getSelectionModel().getSelectedIndex();
 			PrelevementAutomatique p = this.lvPrelevement.getSelectionModel().getSelectedItem();
 			
 			// Si un prélèvement est sélectionner
 			if (selectedIndice >= 0) {
-					this.btnModifierPrelevement.setDisable(false);
+					this.btnModifierPrelevement.setDisable(true);
 					this.btnSupprimerPrelevement.setDisable(false);
 			}
 		}

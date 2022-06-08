@@ -30,7 +30,7 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="btnModifierPrelevement" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doModifierPrelevement" text="Modifier prélèvement" GridPane.rowIndex="1">
+                        <Button fx:id="btnModifierPrelevement" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doModifierPrelevement" text="Modifier prélèvement" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
