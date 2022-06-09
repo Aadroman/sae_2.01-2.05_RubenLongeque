@@ -209,7 +209,7 @@ public class SimulationEmpruntController implements Initializable{
 	 */
 	@FXML
 	private void displayTotal() {
-		if(isSaisieValideEmprunt() && isSaisieValideAssurance())
+		if(isSaisieValideEmprunt() && isSaisieValideAssurance() && isSaisieValideTotal())
 			setTotal(total,emprunt);
 	}
 	
@@ -273,17 +273,6 @@ public class SimulationEmpruntController implements Initializable{
 			this.tauxAnnuel.requestFocus();
 			return false;
 		}
-        
-        try {
-			if (toDouble(this.fraisDossier.getText().trim()) < 0) {
-				throw new NumberFormatException();
-			}
-		} catch (NumberFormatException nbF) {
-			this.fraisDossier.getStyleClass().add("borderred");
-			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Frais de dossier négatif",AlertType.WARNING);
-			this.fraisDossier.requestFocus();
-			return false;
-		}
 
         return true;
     } 
@@ -338,6 +327,54 @@ public class SimulationEmpruntController implements Initializable{
         return true;
     } 
 	
+	/**
+	 * Vérifie si les entrées sont valides pour le total
+	 * 
+	 * @return Vrai si les entrées sont valides, Faux sinon
+	 */
+	private boolean isSaisieValideTotal() {
+		// reinitialisation du css pour afficher le champ avec erreur
+		this.coutCredit.getStyleClass().remove("borderred");
+		this.coutAssurance.getStyleClass().remove("borderred");
+		this.fraisDossier.getStyleClass().remove("borderred");
+
+		// verification de la valitdité des champs
+		try {
+			if (toDouble(this.coutCredit.getText().trim()) < 0) {
+				throw new NumberFormatException();
+			}
+		} catch (NumberFormatException nbF) {
+			this.coutCredit.getStyleClass().add("borderred");
+			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Coût du crédit négatif",
+					AlertType.WARNING);
+			return false;
+		}
+
+		try {
+			if (toDouble(this.coutAssurance.getText().trim()) < 0) {
+				throw new NumberFormatException();
+			}
+		} catch (NumberFormatException nbF) {
+			this.coutAssurance.getStyleClass().add("borderred");
+			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Coût de l'assurance négatif",
+					AlertType.WARNING);
+			return false;
+		}
+
+		try {
+			if (toDouble(this.fraisDossier.getText().trim()) < 0) {
+				throw new NumberFormatException();
+			}
+		} catch (NumberFormatException nbF) {
+			this.fraisDossier.getStyleClass().add("borderred");
+			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Frais de dossier négatif",
+					AlertType.WARNING);
+			this.fraisDossier.requestFocus();
+			return false;
+		}
+
+		return true;
+	}
     
 	private void validateComponent	() {
 		this.tauxApplicable.setEditable(false);
