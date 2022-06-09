@@ -3,6 +3,7 @@ package application.view;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import application.DailyBankState;
@@ -14,10 +15,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
@@ -140,28 +144,39 @@ public class PrelevementManagementController implements Initializable{
 				this.olPrelevement.set(selectedIndice, presult);
 			}
 			this.loadListPrelev();
-			this.validateComponentState();
 		}
 		
 		/*
 		 * Permet de supprimer un prélèvement
+		 * une boite de dialogue apparait nous demandant si on veut vraiment supprimer le prélèvement
+		 * si oui le prélèvement se supprime
+		 * si non on ne fait rien
 		 */
 		@FXML
 		private void doSupprimerPrelevement() throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException, ManagementRuleViolation {
 			int selectedIndice = this.lvPrelevement.getSelectionModel().getSelectedIndex();
 			if (selectedIndice >= 0) {
-				PrelevementAutomatique pa = this.olPrelevement.get(selectedIndice);
-				int indice = pa.idPrelev;
-				this.pm.supprimerPrelevement(indice);
+				Alert dialog = new Alert(AlertType.INFORMATION);
+				dialog.setTitle("Supprimer un prélèvement");
+				dialog.setHeaderText("Voulez-vous vraiment supprimer le prélèvement ?");
+				dialog.getButtonTypes().setAll(ButtonType.YES,ButtonType.NO);
+				Optional<ButtonType> response = dialog.showAndWait();
+			
+				if(response.orElse(null) == ButtonType.YES) {
+					PrelevementAutomatique pa = this.olPrelevement.get(selectedIndice);
+					int indice = pa.idPrelev;
+					this.pm.supprimerPrelevement(indice);
+				}
+				else {
+					return;
+				}
 			}
 			this.loadListPrelev();
-			this.validateComponentState();
 		}
 
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
 			this.lvPrelevement.setItems(this.olPrelevement);
-			
 		}
 		
 		/*
@@ -172,7 +187,7 @@ public class PrelevementManagementController implements Initializable{
 			
 			// Si un prélèvement est sélectionner
 			if (selectedIndice >= 0) {
-					this.btnModifierPrelevement.setDisable(true);
+					this.btnModifierPrelevement.setDisable(false);
 					this.btnSupprimerPrelevement.setDisable(false);
 			}
 		}
