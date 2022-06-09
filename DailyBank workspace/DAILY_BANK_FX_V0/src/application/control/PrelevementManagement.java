@@ -2,6 +2,7 @@ package application.control;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -106,17 +107,31 @@ public class PrelevementManagement {
                 pst.setString(3, prelevement.beneficiaire);
                 pst.setInt(4, prelevement.idNumCompte);
                 
+                System.err.println(query);
+                
                 int result = pst.executeUpdate();
                 pst.close();
 				
-				
-                
-                if (result != 1) {
+				 if (result != 1) {
                     con.rollback();
-                    System.out.println("erreur lors du insert");
-                }else {
-                    con.commit();
+                    throw new RowNotFoundOrTooManyRowsException(Table.PrelevementAutomatique, Order.INSERT,
+    						"Insert anormal (insert de moins ou plus d'une ligne)", null, result);
                 }
+				 
+				 query = "SELECT seq_id_client.CURRVAL from DUAL";
+
+					System.err.println(query);
+					PreparedStatement pst2 = con.prepareStatement(query);
+
+					ResultSet rs = pst2.executeQuery();
+					rs.next();
+					int numPrelev = rs.getInt(1);
+
+					con.commit();
+					rs.close();
+					pst2.close();
+					
+					prelevement.idPrelev = numPrelev;
                 
 				// existe pour compiler les catchs dessous
 				if (Math.random() < -1) {

@@ -69,13 +69,14 @@ public class PrelevementManagementController implements Initializable{
 			this.lvPrelevement.setItems(this.olPrelevement);
 			this.lvPrelevement.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 			this.lvPrelevement.getFocusModel().focus(-1);
+			this.lvPrelevement.getSelectionModel().selectedItemProperty().addListener(e -> this.validateComponentState());
+			this.validateComponentState();
 
 			info = this.clientDesComptes.nom + "  " + this.clientDesComptes.prenom + "  (id : "
 					+ this.clientDesComptes.idNumCli + ")";
 			this.lblInfosClient.setText(info);
 
 			this.loadListPrelev();
-			this.validateComponentState();
 		}
 		
 		public void displayDialog() {
