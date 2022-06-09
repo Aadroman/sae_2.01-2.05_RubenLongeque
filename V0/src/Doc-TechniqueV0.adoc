@@ -4,7 +4,60 @@
 :icons: font
 :nofooter:
 
+Version de l’application : 0
+Date : 20/04/2022
+Client : BankUniv
+Projet : Daily Bank
+
 ## Présentation générale
+
+### Répartition du travail 
+
+[cols="1,1,1,1,1,1,1"]
+|===
+|Version |User |Use case |Fonctionnalité |Christopher |Ruben |Yann
+
+// |
+// |
+// |
+// |
+// |
+// |
+// |
+
+|0
+|
+|
+|
+|
+|
+|
+
+|0
+|
+|
+|
+|
+|
+|
+
+|0
+|
+|
+|
+|
+|
+|
+
+|0
+|
+|
+|
+|
+|
+|
+|===
+F : Fonctionnel ; D : Développement
 
 ### Use Case global
 
