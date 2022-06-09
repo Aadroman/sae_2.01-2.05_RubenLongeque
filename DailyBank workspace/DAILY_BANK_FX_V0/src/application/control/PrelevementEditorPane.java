@@ -59,8 +59,8 @@ public class PrelevementEditorPane {
 	}
 	
 	/**
-	 * @param client
-	 * @param cpte
+	 * @param compte
+	 * @param prelevement
 	 * @param em
 	 * @return 
 	 */

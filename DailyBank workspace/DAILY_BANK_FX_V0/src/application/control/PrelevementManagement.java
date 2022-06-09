@@ -2,6 +2,7 @@ package application.control;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -24,8 +25,11 @@ import model.orm.AccessCompteCourant;
 import model.orm.AccessPrelevement;
 import model.orm.LogToDatabase;
 import model.orm.exception.ApplicationException;
+import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
+import model.orm.exception.ManagementRuleViolation;
 import model.orm.exception.Order;
+import model.orm.exception.RowNotFoundOrTooManyRowsException;
 import model.orm.exception.Table;
 
 /**
@@ -103,17 +107,31 @@ public class PrelevementManagement {
                 pst.setString(3, prelevement.beneficiaire);
                 pst.setInt(4, prelevement.idNumCompte);
                 
+                System.err.println(query);
+                
                 int result = pst.executeUpdate();
                 pst.close();
 				
-				
-                
-                if (result != 1) {
+				 if (result != 1) {
                     con.rollback();
-                    System.out.println("erreur lors du insert");
-                }else {
-                    con.commit();
+                    throw new RowNotFoundOrTooManyRowsException(Table.PrelevementAutomatique, Order.INSERT,
+    						"Insert anormal (insert de moins ou plus d'une ligne)", null, result);
                 }
+				 
+				 query = "SELECT seq_id_client.CURRVAL from DUAL";
+
+					System.err.println(query);
+					PreparedStatement pst2 = con.prepareStatement(query);
+
+					ResultSet rs = pst2.executeQuery();
+					rs.next();
+					int numPrelev = rs.getInt(1);
+
+					con.commit();
+					rs.close();
+					pst2.close();
+					
+					prelevement.idPrelev = numPrelev;
                 
 				// existe pour compiler les catchs dessous
 				if (Math.random() < -1) {
@@ -157,6 +175,41 @@ public class PrelevementManagement {
 		}
 		
 		return result;
+	}
+	
+	/**
+	 * Suppression d'un PrelevementAutomatique à partir de son id.
+	 *
+	 * @param idPrelev id du prélèvement (clé primaire)
+	 * @throws RowNotFoundOrTooManyRowsException
+	 * @throws DataAccessException
+	 * @throws DatabaseConnexionException
+	 * @throws ManagementRuleViolation
+	 */
+	public void supprimerPrelevement(int IdPrelev) throws RowNotFoundOrTooManyRowsException, DataAccessException,
+	DatabaseConnexionException, ManagementRuleViolation {
+		try {
+
+			Connection con = LogToDatabase.getConnexion();
+
+			String query = "DELETE FROM PrelevementAutomatique WHERE idPrelev = ?";
+
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1, IdPrelev);
+			
+			System.err.println(query);
+
+			int result = pst.executeUpdate();
+			pst.close();
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.PrelevementAutomatique, Order.DELETE,
+						"delete anormal (delete de moins ou plus d'une ligne)", null, result);
+			}
+			con.commit();
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.PrelevementAutomatique, Order.DELETE, "Erreur accès", e);
+		}
 	}
 	
 	/**

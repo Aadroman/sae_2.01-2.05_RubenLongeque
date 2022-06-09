@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.17">
-<title>DOCUMENTATION TECHNIQUE VERSION 1</title>
+<title>DOCUMENTATION UTILISATEUR VERSION 1</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -439,347 +439,756 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left data-line-1">
 <div id="header">
-<h1>DOCUMENTATION TECHNIQUE VERSION 1</h1>
+<h1>DOCUMENTATION UTILISATEUR VERSION 1</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table des matières</div>
 <ul class="sectlevel1">
 <li><a href="#_présentation_générale">Présentation générale</a>
 <ul class="sectlevel2">
-<li><a href="#_use_case_global">Use Case global</a></li>
-<li><a href="#_structuration_en_packages">Structuration en packages</a></li>
-<li><a href="#_fonctionnalités_de_lapplication">Fonctionnalités de l&#8217;application</a></li>
+<li><a href="#_objectifs_de_lapplication">Objectifs de l&#8217;application</a></li>
+</ul>
+</li>
+<li><a href="#_installation_de_lapplication">Installation de l&#8217;application</a></li>
+<li><a href="#_utilisation_de_lapplication">Utilisation de l&#8217;application</a></li>
+<li><a href="#_fonctionnement_de_lapplication">Fonctionnement de l&#8217;application</a>
+<ul class="sectlevel2">
+<li><a href="#_quitter_lapplication">quitter l&#8217;application</a></li>
+<li><a href="#_connexion_à_un_compte">Connexion à un compte</a></li>
+<li><a href="#_deconnexion_dun_compte">Deconnexion d&#8217;un compte</a></li>
+<li><a href="#_gestion_des_clients">Gestion des clients</a></li>
+<li><a href="#_recherche_dun_client">Recherche d&#8217;un client</a></li>
+<li><a href="#_gestion_des_comptes_bancaire_dun_client">Gestion des comptes bancaire d&#8217;un client</a></li>
+<li><a href="#_voir_les_opération_dun_comptes">voir les opération d&#8217;un comptes</a></li>
+<li><a href="#_modifier_un_compte_bancaire">Modifier un compte bancaire</a></li>
+<li><a href="#_clôturer_un_compte_bancaire">Clôturer un compte bancaire</a></li>
+<li><a href="#_réactiver_un_compte_bancaire">Réactiver un compte bancaire</a></li>
+<li><a href="#_création_dun_nouveau_client">Création d&#8217;un nouveau client</a></li>
+<li><a href="#_modification_dun_client">Modification d&#8217;un client</a></li>
+<li><a href="#_désactiver_un_client">Désactiver un client</a></li>
+<li><a href="#_gestion_des_employés_de_lagence">Gestion des employés de l&#8217;Agence</a></li>
+<li><a href="#_rechercher_les_employés_de_lagence">Rechercher les employés de l&#8217;Agence</a></li>
+<li><a href="#_modifier_un_employé">Modifier un employé</a></li>
+<li><a href="#_désactiver_un_employé">Désactiver un employé</a></li>
+<li><a href="#_créer_un_nouvel_employé">Créer un nouvel employé</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
-<div class="sect1 data-line-7">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph data-line-7">
+<p>Version de l’application : 1<br>
+Date : Semaine 20<br>
+Equipe : Christopher / Ruben / Yaan<br>
+Client : BankUniv<br>
+Projet : Daily Bank<br></p>
+</div>
+</div>
+</div>
+<div class="sect1 data-line-13">
 <h2 id="_présentation_générale">Présentation générale</h2>
 <div class="sectionbody">
-<div class="sect2 data-line-9">
-<h3 id="_use_case_global">Use Case global</h3>
-<div class="paragraph data-line-11">
-<p>L&#8217;utilisation de l&#8217;application DailyBank se fait par deux utilisateurs distincts :</p>
+<div class="sect2 data-line-15">
+<h3 id="_objectifs_de_lapplication">Objectifs de l&#8217;application</h3>
+<div class="paragraph data-line-17">
+<p>L’objectif recherché par la banque DailyBank est de développer une application Java-Oracle de gestion de comptes, pour remplacer plusieurs outils obsolètes.<br>
+Cette nouvelle version de l&#8217;appliation permettra de gérer les clients de l&#8217;Agence ainsi que leur comptes bancaire. De la même manière, il sera possible de gérer les opérations de chacun de ces comptes. Cette nouvelle version de l&#8217;application permettra aussi de gérer les employés de l&#8217;Agence bancaire.</p>
 </div>
-<div class="paragraph data-line-13">
-<p><strong>Les guichetiers</strong> : Ils possèdent les droits leur permettant de gérer les clients de l&#8217;Agence bancaire ainsi que leur comptes.<br>
-Ainsi ils peuvent :</p>
 </div>
-<div class="ulist data-line-16">
-<ul>
-<li class="data-line-16">
-<p>gérer les clients de l&#8217;Agence bancaire :</p>
-<div class="ulist data-line-17">
-<ul>
-<li class="data-line-17">
-<p>Ajouter de nouveaux clients</p>
-</li>
-<li class="data-line-18">
-<p>Modifier les informations des clients déjà présent</p>
-</li>
-</ul>
 </div>
-</li>
-<li class="data-line-19">
-<p>gérer les comptes des clients de l&#8217;Agence bancaire :
-**</p>
-</li>
-</ul>
 </div>
+<div class="sect1 data-line-20">
+<h2 id="_installation_de_lapplication">Installation de l&#8217;application</h2>
+<div class="sectionbody">
 <div class="paragraph data-line-22">
-<p><strong>Les Chefs d&#8217;Agence</strong> : Ils possèdent les mêmes droits que les guichetiers et gèrent en plus les employés.<br>
-Ainsi ils peuvent :</p>
+<p>Pour pouvoir lancer l&#8217;application, l&#8217;installation de Java en version 1.8 est nécessaire.
+Pour ce faire, vous devez  suivre ces étapes :</p>
 </div>
 <div class="ulist data-line-25">
 <ul>
 <li class="data-line-25">
-<p>gérer le CRUD des employés</p>
+<p>Télécharger gratuitement la version 1.8 de Java sur le <a href="https://www.java.com/fr/download/" data-href="https://www.java.com/fr/download/">site d&#8217;Oracle</a></p>
+<div class="ulist data-line-26">
+<ul>
+<li class="data-line-26">
+<p>Vous pouvez au préalable vérifiez que l&#8217;installation c&#8217;est bien réaliser (depuis un terminal) :</p>
+<div class="literalblock data-line-28">
+<div class="content">
+<pre>$ java -version</pre>
+</div>
+</div>
 </li>
 </ul>
 </div>
+</li>
+</ul>
 </div>
-<div class="sect2 data-line-27">
-<h3 id="_structuration_en_packages">Structuration en packages</h3>
-<div class="sect3 data-line-29">
-<h4 id="_architecture_de_la_v1">Architecture de la V1</h4>
-<div class="paragraph data-line-31">
-<p><span class="image"><img src="img/architecture-v1.png" alt="architecture v1"></span></p>
+<div class="paragraph data-line-30">
+<p>Ensuite lancer le fichier .jar depuis un terminal (si il ne s&#8217;ouvre par en double cliquant dessus) :</p>
+</div>
+<div class="paragraph data-line-32">
+<p>(depuis un terminal) :</p>
+</div>
+<div class="literalblock data-line-34">
+<div class="content">
+<pre>$ cd '.\Desktop\DailyBank workspace\'
+$ java -jar Dailybank.jar</pre>
 </div>
 </div>
-<div class="sect3 data-line-33">
-<h4 id="_arborescence_des_packages">Arborescence des packages</h4>
-<div class="ulist data-line-35">
+</div>
+</div>
+<div class="sect1 data-line-39">
+<h2 id="_utilisation_de_lapplication">Utilisation de l&#8217;application</h2>
+<div class="sectionbody">
+<div class="paragraph data-line-41">
+<p>Il existe deux rôles d&#8217;utilisation de l&#8217;application : les Guichetiers et les Chefs d&#8217;Agences.<br>
+Les guichetiers ont la possibilité de gérer les clients de l&#8217;Agence bancaire ainsi que leur comptes bancaire. :</p>
+</div>
+<div class="ulist data-line-44">
 <ul>
-<li class="data-line-35">
-<p>Application :<br>
-Continent les fichiers en .java qui permettent de lancer l&#8217;application.</p>
-</li>
-<li class="data-line-38">
-<p>Application.control :<br>
-Contient les contrôleurs de dialogue permettant l&#8217;accès aux données de l&#8217;application. En d&#8217;autres termes, il contient tous les fichiers .java permettant de représenter toutes les fenêtres de l&#8217;application.</p>
-</li>
-<li class="data-line-41">
-<p>Application.view :<br>
-Continent toutes les vues de l&#8217;application, c&#8217;est à dire tous les classes .fxml ainsi que les controlleurs associés. En d&#8217;autres termes, il contient tous les classes permettant l&#8217;interaction avec l&#8217;application (gestion des vues et contrôles des saisies)</p>
-</li>
 <li class="data-line-44">
-<p>Application.tools :<br>
-Contient tous les classes utilisé pour le package view et le package control.</p>
+<p>Consulter les comptes d&#8217;un client</p>
+<div class="ulist data-line-46">
+<ul>
+<li class="data-line-46">
+<p>Voir les opération d&#8217;un compte</p>
+<div class="ulist data-line-48">
+<ul>
+<li class="data-line-48">
+<p>Enregistrer un débit</p>
 </li>
-<li class="data-line-47">
-<p>Model.data :<br>
-Contient les classes permettant d&#8217;intéragir avec la Base de Données puisque les classes de ce package représente les tables de la Base de Données.</p>
+<li class="data-line-49">
+<p>Enregistrer un crédit</p>
 </li>
 <li class="data-line-50">
-<p>Model.orm :<br>
-Continent toutes les classes qui permettent d&#8217;effectuer des requêtes SQL dans la Base de Données.</p>
+<p>Réaliser un virement de compte à compte</p>
+</li>
+</ul>
+</div>
+</li>
+<li class="data-line-52">
+<p>Modifier les informations d&#8217;un compte</p>
 </li>
 <li class="data-line-53">
-<p>Model.exception :<br>
-Contient toutes les classes qui gère les différentes exception de l&#8217;application.<br></p>
+<p>Clôturer/Réouvrir un compte</p>
+</li>
+<li class="data-line-54">
+<p>Créer un nouveau client</p>
+</li>
+</ul>
+</div>
+</li>
+<li class="data-line-56">
+<p>Modifier les information d&#8217;un client</p>
+</li>
+<li class="data-line-58">
+<p>Désactiver/Réactiver un client</p>
+</li>
+<li class="data-line-60">
+<p>Créer un nouveau client</p>
+</li>
+</ul>
+</div>
+<div class="paragraph data-line-62">
+<p>Les Chefs d&#8217;Agence de leur côtés auront ces même droits avec en plus la possibilités de gérer les employés de l&#8217;Agence bancaire :</p>
+</div>
+<div class="ulist data-line-64">
+<ul>
+<li class="data-line-64">
+<p>Gérer les employés de l&#8217;Agence bancaire</p>
+<div class="ulist data-line-66">
+<ul>
+<li class="data-line-66">
+<p>modifier les informations d&#8217;un employé</p>
+</li>
+<li class="data-line-68">
+<p>Désactiver un employé</p>
+</li>
+<li class="data-line-70">
+<p>Créer un nouvel employé</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
 </div>
-<div class="sect2 data-line-57">
-<h3 id="_fonctionnalités_de_lapplication">Fonctionnalités de l&#8217;application</h3>
-<div class="sect4 data-line-59">
-<h5 id="_création_dun_nouveau_client_fonctionnalité_de_la_version_existante">Création d&#8217;un nouveau client : Fonctionnalité de la version existante</h5>
-<div class="paragraph data-line-61">
-<p>Cette fonctionnalité répond à l&#8217;Use-Case : <strong>Créer un nouveau client</strong><br>
-Elle permet de créer un nouveau client dans l&#8217;Agence bancaire.<br>
-Lorsque l&#8217;utilisateur clique sur le bouton « nouveau client », le contrôleur de vue clientsmanagementcontroller transfère les informations nécessaire au contrôle clientsmanagement pour l&#8217;affichage de la fenêtre de création d&#8217;un client.<br>
-La fenêtre de création des clients s&#8217;ouvre et la classe clienteditorpane est utilisée et permet de transmettre les informations au contrôleur de vue clientseditorpanecontroller.<br>
-Ainsi les saisies de l&#8217;utilisateurs sont contrôlers et peuvent s&#8217;enregistrer dans la Base de Données si elles sont valides grâce à la classe AccessClients.</p>
+<div class="sect1 data-line-72">
+<h2 id="_fonctionnement_de_lapplication">Fonctionnement de l&#8217;application</h2>
+<div class="sectionbody">
+<div class="sect2 data-line-74">
+<h3 id="_quitter_lapplication">quitter l&#8217;application</h3>
+<div class="admonitionblock tip data-line-76">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Un bouton « quitter » est accessible depuis l&#8217;onglet « utilisateur »
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph data-line-78">
+<p>En cliquant sur le bouton « quitter » une fenêtre de confirmation s&#8217;affiche.<br>
+Au clique du bouton « ok » si une connexion avec un compte à été établie, celle-ci s&#8217;arrete et la fenêtre de l&#8217;application se ferme.<br></p>
+</div>
+<div class="paragraph data-line-81">
+<p>Au clique du bouton « annuler » l&#8217;application continue de fonctionner et la fenêtre de confirmation se ferme.</p>
+</div>
+<div class="paragraph data-line-83">
+<p><span class="image"><img src="img/img2/quitter-appli.png" alt="quitter appli"></span></p>
+</div>
+<div class="paragraph data-line-85">
+<p><span class="image"><img src="img/img2/alerte-quitter.png" alt="alerte quitter"></span></p>
 </div>
 </div>
-<div class="sect4 data-line-67">
-<h5 id="_modification_dun_client_fonctionnalité_de_la_version_existante">Modification d&#8217;un client : Fonctionnalité de la version existante</h5>
-<div class="paragraph data-line-69">
-<p>Cette fonctionnalité répond à l&#8217;Use-Case : <strong>modifier info client</strong><br>
-Elle permet de modifier les informations d&#8217;un client dans l&#8217;Agence bancaire.<br>
-Lorsque l&#8217;utilisateur clique sur le bouton « modifier client », le contrôleur de vue clientsmanagementcontroller transfère les informations nécessaire au contrôle clientsmanagement pour l&#8217;affichage de la fenêtre de modification d&#8217;un client.<br>
-La fenêtre de modification des clients s&#8217;ouvre et la classe clienteditorpane est utilisée et permet de transmettre les informations au contrôleur de vue clientseditorpanecontroller.<br>
-Ainsi les saisies de l&#8217;utilisateurs sont contrôlers et peuvent s&#8217;enregistrer dans la Base de Données si elles sont valides grâce à la classe AccessClients.</p>
+<div class="sect2 data-line-87">
+<h3 id="_connexion_à_un_compte">Connexion à un compte</h3>
+<div class="admonitionblock tip data-line-89">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Un bouton « connexion »  est accessible depuis l&#8217;onglet « utilisateur »
+</td>
+</tr>
+</table>
 </div>
+<div class="paragraph data-line-91">
+<p>En cliquant sur le bouton « connexion » une fenêtre d&#8217;identification s&#8217;affiche.<br>
+Au clique du bouton « valider » une vérifiation des champs de saisie s&#8217;effectue. Si ils sont vides, un message d&#8217;erreur s&#8217;affiche.<br>
+Si le login et le mot de passe appartiennent à un compte de l&#8217;Agence, une connexion est établie.<br></p>
 </div>
-<div class="sect4 data-line-75">
-<h5 id="_consultation_des_clients_fonctionnalité_de_la_version_existante">Consultation des clients : Fonctionnalité de la version existante</h5>
-<div class="paragraph data-line-77">
-<p>Elle permet de consulter la liste des clients de l&#8217;Agence bancaire.<br>
-Lorsque l&#8217;utilisateur clique sur le bouton « rechercher », le contrôleur de vue clientmanagementcontroller transfère les informations nécessaire à l&#8217;affichage de la liste des clients à la classe AccessClients.</p>
+<div class="paragraph data-line-95">
+<p>Au clique du bouton « annuler » aucune connexion n&#8217;est établie et la fenêtre d&#8217;identification se ferme.</p>
 </div>
-</div>
-<div class="sect4 data-line-80">
-<h5 id="_consulter_les_comptes_dun_client_fonctionnalité_de_la_version_existante">Consulter les comptes d&#8217;un client : Fonctionnalité de la version existante</h5>
-<div class="paragraph data-line-82">
-<p>Cette fonctionnalité permet de consulter la liste des comptes d&#8217;un client de l&#8217;Agence.<br>
-Lorsque l&#8217;utilisateur clique sur le bouton « comptes client », le contrôleur de vue comptesmanagementcontroller transfère les information nécessaire au contrôle comptesmanagement pour l&#8217;affichage de la fenêtre de gestion des comptes.<br>
-La fenêtre de gestion des comptes s&#8217;ouvre et grâce au transfère des informations nécessaire à l&#8217;affichage de la liste des comptes à la classe AccessCompte.</p>
-</div>
-</div>
-<div class="sect4 data-line-86">
-<h5 id="_consulter_les_opérations_des_comptes_des_clients_fonctionnalité_de_la_version_existante">Consulter les opérations des comptes des clients : Fonctionnalité de la version existante</h5>
-<div class="paragraph data-line-88">
-<p>Cette fonctionnalité permet de consulter la liste des opérations du compte d&#8217;un client.<br>
-Lorsque le client clique sur le bouton « voir opérations », le contrôleur de vue comptesmanagementcontroller transfère les informations nécessaire au contrôle operation operationmanagement pour l&#8217;affichage de la fenêtre de gestion des opération.<br>
-La fenêtre de gestion des opérations s&#8217;ouvre grâce au transfère des informations nécessaire à l&#8217;affichage de la liste des opérations grâce à la classe AccessOperation.</p>
-</div>
-</div>
-<div class="sect4 data-line-92">
-<h5 id="_clôturer_et_réactiver_un_compte_réalisé_par_ruben">Clôturer et réactiver un compte : réalisé par Ruben</h5>
-<div class="paragraph data-line-94">
-<p>Cette fonctionnalité permet de clôturer ou bien de réactiver le compte d&#8217;un client.</p>
-</div>
-<div class="paragraph data-line-96">
-<p><span class="image"><img src="img/cloture-compte1.png" alt="cloture compte1"></span>
-<span class="image"><img src="img/cloture-compte2.png" alt="cloture compte2"></span></p>
+<div class="paragraph data-line-97">
+<p><span class="image"><img src="img/img2/connection.png" alt="connection"></span></p>
 </div>
 <div class="paragraph data-line-99">
-<p>Elle concerne le Use-Case : <strong>Cloturer un compte</strong>
-et concerne ce diagramme de classe :</p>
+<p><span class="image"><img src="img/img2/erreur-connection.png" alt="erreur connection"></span></p>
 </div>
-<div class="paragraph data-line-102">
-<p><span class="image"><img src="img/diagramme-cloture-compte.png" alt="diagramme cloture compte"></span></p>
 </div>
-<div class="paragraph data-line-104">
-<p>La fonction “Clôturer/Reéactiver un compte” est une nouvelle fonctionnalité qui apparaît dans la v1. Celle-ci se développe aux travers de 2 classes : AccessCompteCourant et ComptesManagementController.
-D’abord dans AccessCompteCourant, on va créer 2 nouvelles méthodes afin de pouvoir utiliser une requête SQL afin de mettre à jour les comptes pour d’une part soit les clôturer et donc mettre leurs soldes à 0 ainsi que les rendre inactifs.</p>
+<div class="sect2 data-line-101">
+<h3 id="_deconnexion_dun_compte">Deconnexion d&#8217;un compte</h3>
+<div class="admonitionblock tip data-line-103">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Un bouton « deconnexion »  est accessible depuis l&#8217;onglet « utilisateur »
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph data-line-105">
+<p>Au clique du bouton « déconnexion », la connexion actuellement établie s&#8217;arrête.</p>
 </div>
 <div class="paragraph data-line-107">
-<p><span class="image"><img src="img/code-cloture-compte1.png" alt="code cloture compte1"></span></p>
+<p><span class="image"><img src="img/img2/deconnection.png" alt="deconnection"></span></p>
 </div>
-<div class="paragraph data-line-109">
-<p>Soit les réactiver en leur mettant par défaut un solde de 10 euros et un découvert de -200.</p>
 </div>
-<div class="paragraph data-line-111">
-<p><span class="image"><img src="img/code-cloture-compte2.png" alt="code cloture compte2"></span></p>
-</div>
-<div class="paragraph data-line-113">
-<p>Enfin dans ComptesManagementController, on crée une méthode qui va servir tant pour clôturer le compte que pour le réactiver et on va adapter la méthode validateComponentState() qui va rendre accessible certains boutons de la fenêtre selon si le compte est clôturé où non dans la base de données.</p>
+<div class="sect2 data-line-109">
+<h3 id="_gestion_des_clients">Gestion des clients</h3>
+<div class="admonitionblock note data-line-111">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Cette fonctionnalité n&#8217;est accessible que si l&#8217;utilisateur est connectée.<br>
+Cette fonctionnalité est accessible depuis l&#8217;onglet « gestion »
+Tous les utilisateurs ont accès à cette fonctionnalité.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph data-line-115">
-<p><span class="image"><img src="img/code-cloture-compte3.png" alt="code cloture compte3"></span></p>
+<p>En cliquant sur le bouton « clients » la fenêtre de gestion des clients s&#8217;ouvre.</p>
 </div>
 <div class="paragraph data-line-117">
-<p>Dans la méthode doCloturerCompte() qui a alors une double fonction, la différenciation de quel action à effectuer se fait en partie grâce au label affiché par le bouton concerné. En effet dans validateComponentState(), selon si le compte est clôturé ou non, celui-ci change le label du bouton concerné afin de marquer la différence d’état (si il est clôturé celui-ci “demandera” pour le réactiver et inversement). Et donc selon ce qui est écrit cela va lancer une partie différente de la méthode.
-Voici la partie concerné pour clôturer le compte :</p>
+<p><span class="image"><img src="img/img2/gestion-client.png" alt="gestion client"></span></p>
 </div>
-<div class="paragraph data-line-120">
-<p><span class="image"><img src="img/code-cloture-compte4.png" alt="code cloture compte4"></span></p>
-</div>
-<div class="paragraph data-line-122">
-<p>Et celle pour réactiver le compte :</p>
-</div>
-<div class="paragraph data-line-124">
-<p><span class="image"><img src="img/code-cloture-compte5.png" alt="code cloture compte5"></span></p>
-</div>
-<div class="paragraph data-line-126">
-<p>Ici j’utilise une boîte de dialogue pour mettre en action la fonctionnalité pour s’assurer que c’est bien une action volontaire de la part de l’employé.</p>
+<div class="paragraph data-line-119">
+<p><span class="image"><img src="img/img2/gestion-client2.png" alt="gestion client2"></span></p>
 </div>
 </div>
-<div class="sect4 data-line-128">
-<h5 id="_créditerdébiter_un_compte_réaliser_par_yann">Créditer/Débiter un compte : réaliser par Yann</h5>
-<div class="paragraph data-line-130">
-<p>Cette fonctionnalité répond à l&#8217;Use-Case : créditer un compte</p>
+<div class="sect2 data-line-121">
+<h3 id="_recherche_dun_client">Recherche d&#8217;un client</h3>
+<div class="admonitionblock note data-line-123">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Tous les utilisateurs ont accès à cette fonctionnalité.
+</td>
+</tr>
+</table>
 </div>
-<div class="paragraph data-line-132">
-<p><span class="image"><img src="img/usecase-crediter.png" alt="usecase crediter"></span></p>
+<div class="paragraph data-line-125">
+<p>En cliquant sur le bouton « rechercher » la liste des clients ainsi que leur informations s&#8217;affiche sur la fenêtre.<br>
+Les résultats peuvent être affinés en entrant les informations :</p>
+</div>
+<div class="ulist data-line-128">
+<ul>
+<li class="data-line-128">
+<p>Numéro (numéro du client)</p>
+</li>
+<li class="data-line-130">
+<p>Nom</p>
+</li>
+<li class="data-line-132">
+<p>Prénom</p>
+</li>
+</ul>
 </div>
 <div class="paragraph data-line-134">
-<p>et elle concerne le diagramme de classe :</p>
-</div>
-<div class="paragraph data-line-136">
-<p><span class="image"><img src="img/diagramme-crediter.png" alt="diagramme crediter"></span></p>
-</div>
-<div class="paragraph data-line-138">
-<p>La fonction “créditer” est basée sur la fonction “débiter”. On peut donc s’en inspirer pour réaliser la fonctionnalité cependant la légère différence est que le crédit agit comme un débit inverse.
-Donc dans la classe “AccessOperation” dans le package model.orm il suffit de refaire la même méthode que “insertDebit” mais en y spécifiant un montant négatif.
-Pour le reste des classes à implémenter, celles-ci sont similaires à la fonction “débit”.</p>
-</div>
-<div class="paragraph data-line-142">
-<p><span class="image"><img src="img/crediter.png" alt="crediter"></span>
-<span class="image"><img src="img/crediter2.png" alt="crediter2"></span>
-<span class="image"><img src="img/crediter3.png" alt="crediter3"></span>
-<span class="image"><img src="img/crediter4.png" alt="crediter4"></span></p>
+<p><span class="image"><img src="img/img2/recherche-client.png" alt="recherche client"></span></p>
 </div>
 </div>
-<div class="sect4 data-line-148">
-<h5 id="_virement_dun_compte_à_un_autre_réaliser_par_yann">Virement d&#8217;un compte à un autre : réaliser par Yann</h5>
-<div class="paragraph data-line-150">
-<p>Cette fonctionnalité permet de réaliser un virement d&#8217;un compte vers un autre.</p>
+<div class="sect2 data-line-136">
+<h3 id="_gestion_des_comptes_bancaire_dun_client">Gestion des comptes bancaire d&#8217;un client</h3>
+<div class="admonitionblock tip data-line-138">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Un client doit être sélectionner pour effectuer cette action.<br>
+Tous les utilisateur ont accès à cette fonctionnalité
+</td>
+</tr>
+</table>
 </div>
-<div class="paragraph data-line-152">
-<p><span class="image"><img src="img/technique-virement.png" alt="technique virement"></span>
-<span class="image"><img src="img/technique-virement2.png" alt="technique virement2"></span>
-<span class="image"><img src="img/technique-virement3.png" alt="technique virement3"></span>
-<span class="image"><img src="img/technique-virement4.png" alt="technique virement4"></span></p>
+<div class="paragraph data-line-141">
+<p>En cliquant sur le bouton « comptes client » la fenêtre de gestion des comptes bancaire d&#8217;un client s&#8217;ouvre permettant de gérer les compte d&#8217;un client.</p>
+</div>
+<div class="paragraph data-line-143">
+<p><span class="image"><img src="img/img2/gestion-compte.png" alt="gestion compte"></span></p>
+</div>
+<div class="paragraph data-line-145">
+<p><span class="image"><img src="img/img2/gestion-compte2.png" alt="gestion compte2"></span></p>
+</div>
+</div>
+<div class="sect2 data-line-147">
+<h3 id="_voir_les_opération_dun_comptes">voir les opération d&#8217;un comptes</h3>
+<div class="admonitionblock tip data-line-149">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Cette fonctionnalité est accessible en sélectionnant un compte.<br>
+Tous les utilisateur ont accès à cette fonctionnalité.<br>
+Un compte doit être sélectonner.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph data-line-153">
+<p>En cliquant sur le bouton « voir opération » la fenêtre de gestion des opération s&#8217;ouvre, permettant à l&#8217;utilisateur de gérer les opération d&#8217;un compte bancaire.</p>
+</div>
+<div class="paragraph data-line-155">
+<p><span class="image"><img src="img/img2/gestion-operation.png" alt="gestion operation"></span></p>
 </div>
 <div class="paragraph data-line-157">
-<p>Elle concerne le Use-Case <strong>effectuer un virement compte à compte</strong> et concerne le diagramme de classe :</p>
+<p><span class="image"><img src="img/img2/gestion-operation2.png" alt="gestion operation2"></span></p>
 </div>
-<div class="paragraph data-line-159">
-<p><span class="image"><img src="img/diagramme-virement.png" alt="diagramme virement"></span></p>
 </div>
+<div class="sect2 data-line-159">
+<h3 id="_modifier_un_compte_bancaire">Modifier un compte bancaire</h3>
 <div class="paragraph data-line-161">
-<p>Lorsque cette fonctionnalité a été codée, l’un des points importants était de récupérer la liste complète des comptes existant dans la BD.
-Dans la classe “AccessCompteCourant” du package model.orm, j’ai donc rajouté la méthode sans paramètre “getListeCompteCourant” qui retourne une liste (ArrayList) de tous les comptes existants.</p>
+<p>En cliquant sur le bouton « modifier compte » une fenêtre de modification d&#8217;un compte bancaire s&#8217;affiche.<br>
+En cliquant sur le bouton « modifier » la modification du compte s&#8217;enregistre et la fenêtre de modification d&#8217;un compte se ferme.<br></p>
 </div>
-<div class="paragraph data-line-165">
-<p>La partie la plus importante de la fonctionnalité se trouve dans la classe “OperationsManagement” du package application.control dans la méthode “enregistrerVirement()”.
-Ci-dessous un extrait du code de cette méthode dans laquelle on parcours notre liste de compte et :
-Si l’entier saisi (correspondant au numéro de compte à créditer) est égal à un numéro de compte existant alors on applique; - le débit sur le compte concerné; - le crédit sur le compte correspondant au numéro saisi.
-Sinon on affiche une boîte de dialogue.</p>
+<div class="paragraph data-line-164">
+<p>En cliquant sur le bouton « annuler » la modification s&#8217;annule et la fenêtre de modification d&#8217;un compte se ferme.</p>
+</div>
+<div class="paragraph data-line-166">
+<p><span class="image"><img src="img/modif-client.png" alt="modif client"></span></p>
+</div>
+<div class="paragraph data-line-168">
+<p><span class="image"><img src="img/modif-client2.png" alt="modif client2"></span></p>
 </div>
 <div class="paragraph data-line-170">
-<p><span class="image"><img src="img/code-virement.png" alt="code virement"></span></p>
+<p><span class="image"><img src="img/erreur-modif-client.png" alt="erreur modif client"></span></p>
 </div>
 </div>
-<div class="sect4 data-line-172">
-<h5 id="_gérer_le_crud_des_employés_réaliser_par_christopher">Gérer le CRUD des employés : Réaliser par Christopher</h5>
-<div class="paragraph data-line-174">
-<p>Cette fonctionnalité répond à l&#8217;Use-Case : <strong>Gérer le CRUD des employé</strong></p>
-</div>
-<div class="paragraph data-line-176">
-<p><span class="image"><img src="img/usecase-crud.png" alt="usecase crud"></span></p>
+<div class="sect2 data-line-172">
+<h3 id="_clôturer_un_compte_bancaire">Clôturer un compte bancaire</h3>
+<div class="admonitionblock note data-line-174">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Tous les utilisateurs ont accès à cette fonctionnalité.<br>
+Un compte doit être sélectionner.<br>
+Le compte ne doit pas déjà être clôturer.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph data-line-178">
-<p>Elle concerne le diagramme de classe :</p>
+<p>En cliquant sur le bouton « clôturer compte » une fenêtre de confirmation s&#8217;affiche.<br>
+En cliquant sur le bouton « ok » le compte se clôture et la fenêtre de confirmation se ferme.<br></p>
 </div>
-<div class="paragraph data-line-180">
-<p><span class="image"><img src="img/diagramme-crud.png" alt="diagramme crud"></span></p>
+<div class="paragraph data-line-181">
+<p>En cliquant sur le bouton « annuler » le compte ne se clôture pas et la fenêtre de confirmation se ferme.</p>
 </div>
-<div class="ulist data-line-182">
-<ul>
-<li class="data-line-182">
-<p><strong>d&#8217;afficher la liste des employés</strong></p>
-</li>
-</ul>
+<div class="paragraph data-line-183">
+<p><span class="image"><img src="img/cloturer-compte.png" alt="cloturer compte"></span></p>
 </div>
-<div class="paragraph data-line-184">
-<p>Affiche la liste des employé présent dans l&#8217;Agence bancaire et stockée dans la Base Données.<br>
-En cliquant sur le bouton « rechercher » les informations des employés s&#8217;affiche sur la fenêtre. Le contrôleur de vue employemanagementcontroller transfère les informations au contrôleur employemanagement qui se connecte à la Base de Données en utilisant la classe AccessEmploye.</p>
+<div class="paragraph data-line-185">
+<p><span class="image"><img src="img/cloturer-compte2.png" alt="cloturer compte2"></span></p>
 </div>
 <div class="paragraph data-line-187">
-<p><span class="image"><img src="img/rechercher-crud.png" alt="rechercher crud"></span></p>
+<p><span class="image"><img src="img/cloturer-compte3.png" alt="cloturer compte3"></span></p>
 </div>
-<div class="paragraph data-line-189">
-<p><span class="image"><img src="img/code-crud1.png" alt="code crud1"></span></p>
 </div>
-<div class="paragraph data-line-191">
-<p><span class="image"><img src="img/code-crud2.png" alt="code crud2"></span></p>
-</div>
-<div class="ulist data-line-193">
-<ul>
-<li class="data-line-193">
-<p><strong>modifier les informations d&#8217;un employé</strong></p>
-</li>
-</ul>
+<div class="sect2 data-line-189">
+<h3 id="_réactiver_un_compte_bancaire">Réactiver un compte bancaire</h3>
+<div class="admonitionblock note data-line-191">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Tous les utilisateurs ont accès à cette fonctionnalités.<br>
+Un compte doit être sélectionner.<br>
+Le compte doit être clôturer.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph data-line-195">
-<p>Modifie les informations d&#8217;un employé de l&#8217;Agence bancaire stockée dans la Base de Données.</p>
+<p>En cliquant sur le bouton « réactiver compte » une fenêtre de confirmation s&#8217;affiche.<br>
+En cliquant sur le bouton « ok » le compte se réactive et la fenêtre de confirmation se ferme.<br></p>
 </div>
-<div class="paragraph data-line-197">
-<p><span class="image"><img src="img/modifier-crud.png" alt="modifier crud"></span></p>
+<div class="paragraph data-line-198">
+<p>En cliquant sur le bouton « annuler » le compte reste clôturer et la fenêtre de confirmation se ferme.</p>
 </div>
-<div class="paragraph data-line-199">
-<p><span class="image"><img src="img/modifier-crud2.png" alt="modifier crud2"></span></p>
 </div>
-<div class="paragraph data-line-201">
-<p>En cliquant sur le bouton « modifier employé » le contrôleur de vue employemanagementcontroller transfère les informations nécessaire au contrôleur Employemanagement pour afficher la page de modification des employé grace au contrôleur de vue employeeditorpane.<br>
-Si les saisies de l&#8217;utilisateur sont correct, la modification de l&#8217;employé s&#8217;effectue dans la Base de Données grâce à la classe AccessEmploye.</p>
+<div class="sect2 data-line-200">
+<h3 id="_création_dun_nouveau_client">Création d&#8217;un nouveau client</h3>
+<div class="admonitionblock note data-line-202">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Tous les utilisateurs ont accès à cette fonctionnalité.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph data-line-204">
-<p><span class="image"><img src="img/code-modifier-crud.png" alt="code modifier crud"></span>
-<span class="image"><img src="img/code-modifier-crud2.png" alt="code modifier crud2"></span></p>
+<p>En cliquant sur le bouton « nouveau client » la fenêtre de création d&#8217;un client s&#8217;affiche.<br>
+En cliquant sur le bouton « ajouter » les préconditions se vérifie :</p>
 </div>
 <div class="ulist data-line-207">
 <ul>
 <li class="data-line-207">
-<p><strong>de désactiver un employé</strong></p>
+<p>les champs de saisies ne sont pas vides</p>
 </li>
-<li class="data-line-210">
-<p><strong>de créer un nouvel employé</strong></p>
+<li class="data-line-208">
+<p>le numéro de téléphone à exactement 10 chiffres</p>
+</li>
+<li class="data-line-209">
+<p>le mail contient les caractères : @<em>saisie</em>.<em>saisie</em></p>
 </li>
 </ul>
 </div>
-<div class="paragraph data-line-212">
-<p>Créer un nouvel employé dans l&#8217;Agence bancaire, stockée dans la Base de Données.</p>
+<div class="paragraph data-line-211">
+<p>Si une préconditions est fausse, une fenêtre d&#8217;erreur s&#8217;affiche sinon le nouveau client se créer.<br></p>
 </div>
-<div class="paragraph data-line-214">
-<p><span class="image"><img src="img/nouveau-employe.png" alt="nouveau employe"></span>
-<span class="image"><img src="img/nouveau-employe2.png" alt="nouveau employe2"></span></p>
+<div class="paragraph data-line-213">
+<p>Au clique du bouton « annuler » la création du client s&#8217;annule et la fenêtre de création d&#8217;un client se ferme.</p>
+</div>
+<div class="paragraph data-line-215">
+<p><span class="image"><img src="img/img2/nouveau-client.png" alt="nouveau client"></span></p>
 </div>
 <div class="paragraph data-line-217">
-<p>En cliquant sur le bouton « nouveau employé » le contrôleur de vue employemanagementcontroller transfère les informations nécessaire au contrôleur Employemanagement pour afficher la page de cration des employé grace au contrôleur de vue employeeditorpane.<br>
-Si les saisies de l&#8217;utilisateur sont correct, la cration de l&#8217;employé s&#8217;effectue dans la Base de Données grâce à la classe AccessEmploye.</p>
+<p><span class="image"><img src="img/img2/nouveau-client2.png" alt="nouveau client2"></span></p>
 </div>
-<div class="paragraph data-line-221">
-<p><span class="image"><img src="img/code-new-employe.png" alt="code new employe"></span>
-<span class="image"><img src="img/code-new-employe2.png" alt="code new employe2"></span></p>
+<div class="paragraph data-line-219">
+<p><span class="image"><img src="img/img2/nouveau-client-erreur.png" alt="nouveau client erreur"></span></p>
 </div>
+</div>
+<div class="sect2 data-line-221">
+<h3 id="_modification_dun_client">Modification d&#8217;un client</h3>
+<div class="admonitionblock note data-line-223">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Un client doit être sélectionner pour effectuer cette action.<br>
+Tous les utilisateurs ont accès à cette fonctionnalité
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph data-line-226">
+<p>En cliquant sur le bouton « modifier client » la fenêtre de modification d&#8217;un client s&#8217;affiche.<br>
+En cliquant sur le bouton « modifier » les préconditions se vérifie :</p>
+</div>
+<div class="ulist data-line-229">
+<ul>
+<li class="data-line-229">
+<p>les champs de saisies ne sont pas vides</p>
+</li>
+<li class="data-line-230">
+<p>le numéro de téléphone à exactement 10 chiffres</p>
+</li>
+<li class="data-line-231">
+<p>le mail contient les caractères : @<em>saisie</em>.<em>saisie</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph data-line-233">
+<p>Si une préconditions est fausse, une fenêtre d&#8217;erreur s&#8217;affiche sinon le client se modifie.<br></p>
+</div>
+<div class="paragraph data-line-235">
+<p>Au clique du bouton « annuler » la modification du client s&#8217;annule et la fenêtre de modification d&#8217;un client se ferme.</p>
+</div>
+<div class="paragraph data-line-237">
+<p><span class="image"><img src="img/img2/modification-client.png" alt="modification client"></span></p>
+</div>
+<div class="paragraph data-line-239">
+<p><span class="image"><img src="img/img2/modification-client2.png" alt="modification client2"></span></p>
+</div>
+<div class="paragraph data-line-241">
+<p><span class="image"><img src="img/img2/modification-client-erreur.png" alt="modification client erreur"></span></p>
+</div>
+</div>
+<div class="sect2 data-line-243">
+<h3 id="_désactiver_un_client">Désactiver un client</h3>
+<div class="admonitionblock note data-line-245">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Tous les utilisateurs ont accès à cette fonctionnalité.<br>
+Un client doit être sélectionner.<br>
+Le client ne doit pas être déjà désactiver.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph data-line-249">
+<p>En cliquant sur le bouton « désactiver client » une fenêtre de confirmation s&#8217;affiche.<br>
+En cliquant sur le bouton « ok » le client se désactive et la fenêtre de confirmation se ferme.<br></p>
+</div>
+<div class="paragraph data-line-252">
+<p>En cliquant sur le bouton « annuler » le client ne se désactiver pas et la fenêtre de confirmation se ferme.</p>
+</div>
+<div class="paragraph data-line-254">
+<p><span class="image"><img src="img/desac-client.png" alt="desac client"></span></p>
+</div>
+<div class="paragraph data-line-256">
+<p><span class="image"><img src="img/alert-desac-client.png" alt="alert desac client"></span></p>
+</div>
+</div>
+<div class="sect2 data-line-258">
+<h3 id="_gestion_des_employés_de_lagence">Gestion des employés de l&#8217;Agence</h3>
+<div class="admonitionblock note data-line-260">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Seul les Chef d&#8217;Agence ont accès à cette fonctionnalité.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph data-line-262">
+<p>En cliquant sur le bouton « employé » la fenêtre de gestion des employés de l&#8217;Agence s&#8217;ouvre.</p>
+</div>
+</div>
+<div class="sect2 data-line-264">
+<h3 id="_rechercher_les_employés_de_lagence">Rechercher les employés de l&#8217;Agence</h3>
+<div class="admonitionblock note data-line-266">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Seul les Chef d&#8217;Agence ont accès à cette fonctionnalité.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph data-line-268">
+<p>En cliquant sur le bouton « rechercher » la liste des employés de l&#8217;Agence s&#8217;affiche sur la fenêtre de gestion des employés.<br>
+La recherche peut être affinée avec la saisies des différent champs :</p>
+</div>
+<div class="ulist data-line-271">
+<ul>
+<li class="data-line-271">
+<p>ID (l&#8217;identifiant de l&#8217;employé)</p>
+</li>
+<li class="data-line-272">
+<p>Login</p>
+</li>
+<li class="data-line-273">
+<p>MDP (le mot de passe de l&#8217;employé)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph data-line-275">
+<p><span class="image"><img src="img/recherche-employe.png" alt="recherche employe"></span></p>
+</div>
+<div class="paragraph data-line-277">
+<p><span class="image"><img src="img/recherche-employe2.png" alt="recherche employe2"></span></p>
+</div>
+</div>
+<div class="sect2 data-line-279">
+<h3 id="_modifier_un_employé">Modifier un employé</h3>
+<div class="admonitionblock note data-line-281">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Seul les Chef d&#8217;Agence ont accès à cette fonctionnalité.<br>
+Un employé doit être sélectionner.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph data-line-284">
+<p>En cliquant sur le bouton « modifier employé » la fenêtre de modification d&#8217;un employé s&#8217;affiche.<br>
+En cliquant sur le bouton « modifier » si les préconditions :</p>
+</div>
+<div class="ulist data-line-287">
+<ul>
+<li class="data-line-287">
+<p>les différents champs ne doivent pas être vides</p>
+</li>
+<li class="data-line-288">
+<p>le login et le mot de passe ne doivent pas appartenir à un autre employé</p>
+</li>
+</ul>
+</div>
+<div class="paragraph data-line-290">
+<p>sont valides, la modification s&#8217;enregistre sinon une fenêtre d&#8217;erreur s&#8217;affiche. Ensuite la fenêtre de modification d&#8217;un client se ferme.<br></p>
+</div>
+<div class="paragraph data-line-292">
+<p>En cliquant sur le bouton « annuler » la modification de l&#8217;employé s&#8217;annule et la fenêtre de modification d&#8217;un employé se ferme.</p>
+</div>
+<div class="paragraph data-line-294">
+<p><span class="image"><img src="img/modifier-employe.png" alt="modifier employe"></span></p>
+</div>
+<div class="paragraph data-line-296">
+<p><span class="image"><img src="img/modifier-employe2.png" alt="modifier employe2"></span></p>
+</div>
+<div class="paragraph data-line-298">
+<p><span class="image"><img src="img/modifier-employe3.png" alt="modifier employe3"></span></p>
+</div>
+<div class="paragraph data-line-300">
+<p><span class="image"><img src="img/modifier-employe4.png" alt="modifier employe4"></span></p>
+</div>
+<div class="paragraph data-line-302">
+<p><span class="image"><img src="img/modifier-employe5.png" alt="modifier employe5"></span></p>
+</div>
+</div>
+<div class="sect2 data-line-304">
+<h3 id="_désactiver_un_employé">Désactiver un employé</h3>
+<div class="admonitionblock note data-line-306">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Seul les Chef d&#8217;Agence ont acès à cette fonctionnalité.<br>
+Un employé doit être sélectionner.<br>
+L&#8217;employé ne doit pas être déjà désactiver.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph data-line-310">
+<p>En cliquant sur le bouton « désactiver employé » une fenêtre de confirmation s&#8217;affiche.<br>
+En cliquant sur le bouton « ok » l"employé se désactive, c&#8217;est-dire que son login et son mot de passe de supprime et il n&#8217;est donc plus possible de ce connecter sur son compte. Ensuite la fenêtre de confirmation se ferme.<br></p>
+</div>
+<div class="paragraph data-line-313">
+<p>En cliquant sur le bouton « annuler » la désactivation de l&#8217;employé s&#8217;annule et la fenêtre de confirmation se ferme.</p>
+</div>
+</div>
+<div class="sect2 data-line-315">
+<h3 id="_créer_un_nouvel_employé">Créer un nouvel employé</h3>
+<div class="admonitionblock note data-line-317">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Seul les Chef d&#8217;Agence ont accès à cette fonctionnalité.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph data-line-319">
+<p>En cliquant sur le bouton « nouveau employé » une fenêtre de création d&#8217;un employé s&#8217;affiche.<br>
+En cliquant sur le bouton « ajouter » si les préconditions :</p>
+</div>
+<div class="ulist data-line-322">
+<ul>
+<li class="data-line-322">
+<p>les différents champs ne doivent pas être vides</p>
+</li>
+<li class="data-line-323">
+<p>le login et le mot de passe ne doivent pas appartenir un employé</p>
+</li>
+</ul>
+</div>
+<div class="paragraph data-line-325">
+<p>sont valides, la création de l&#8217;employé s&#8217;enregistre, sinon une fenêtre d&#8217;erreur s&#8217;affiche. Ensuite, la fenêtre de création d&#8217;un client se ferme.<br></p>
+</div>
+<div class="paragraph data-line-327">
+<p>En cliquant sur le bouton « annuler » la création de l&#8217;employé s&#8217;annule et la fenêtre de création d&#8217;un employé se ferme.</p>
+</div>
+<div class="paragraph data-line-329">
+<p><span class="image"><img src="img/creer-employe.png" alt="creer employe"></span></p>
+</div>
+<div class="paragraph data-line-331">
+<p><span class="image"><img src="img/creer-employe2.png" alt="creer employe2"></span></p>
+</div>
+<div class="paragraph data-line-333">
+<p><span class="image"><img src="img/creer-employe3.png" alt="creer employe3"></span></p>
+</div>
+<div class="paragraph data-line-335">
+<p><span class="image"><img src="img/creer-employe4.png" alt="creer employe4"></span></p>
+</div>
+<div class="paragraph data-line-337">
+<p><span class="image"><img src="img/creer-employe5.png" alt="creer employe5"></span></p>
 </div>
 </div>
 </div>

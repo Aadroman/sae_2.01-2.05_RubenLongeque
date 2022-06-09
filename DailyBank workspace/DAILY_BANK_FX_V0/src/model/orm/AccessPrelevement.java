@@ -130,7 +130,8 @@ public class AccessPrelevement {
 	 * @throws DatabaseConnexionException
 	 * @throws ManagementRuleViolation
 	 */
-	public void updatePrelevement(PrelevementAutomatique pa) throws RowNotFoundOrTooManyRowsException, DataAccessException,
+	public void updatePrelevement(PrelevementAutomatique pa) 
+			throws RowNotFoundOrTooManyRowsException, DataAccessException,
 	DatabaseConnexionException, ManagementRuleViolation {
 		try {
 
@@ -159,5 +160,7 @@ public class AccessPrelevement {
 			throw new DataAccessException(Table.PrelevementAutomatique, Order.UPDATE, "Erreur accès", e);
 		}
 	}
+	
+	
 
 }

@@ -1,4 +1,4 @@
-# DOCUMENTATION UTILISATEUR VERSION 0
+# DOCUMENTATION UTILISATEUR VERSION 2
 :toc: left
 :toc-title: Table des matières
 :icons: font
@@ -46,36 +46,40 @@ Ensuite lancer le fichier .jar depuis un terminal (si il ne s'ouvre par en doubl
 
 ## Utilisation de l'application
 
-Deux utilisateurs distincts peuvent être constaté, ils sont le guichetier et le chef d'agence. En plus des fonctionnalités qu'ont les guichetier qui sont :
+Deux utilisateurs distincts peuvent être constaté, ils sont le guichetier et le chef d'agence. +
+En plus des fonctionnalités qu'ont *les guichetier qui sont :*
 
-* débiter un compte (java et BD avec procédure stockée)
+* Consulter les comptes d'un client
 
-* Créer un compte
+** Voir les opération d'un compte
 
-* Effectuer un virement de compte à compte
+*** Enregistrer un débit 
+*** Enregistrer un crédit
+*** Réaliser un virement de compte à compte  
 
-* Clôturer un compte
+** Modifier les informations d'un compte
+** Clôturer/Réouvrir un compte 
+** Simuler un emprunt
+** Créer un nouveau client
+** Réaliser un prélévement automatique
 
-les chef d'agence peuvent :
+* Modifier les information d'un client
 
-Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
+* Désactiver/Réactiver un client
+
+* Créer un nouveau client
+
+*les chef d'agence peuvent :*
+
+* modifier les informations d'un employé 
+
+* Désactiver un employé
+
+* Créer un nouvel employé 
 
 ## Fonctionnement de l'application
 
-### Utilisateur : Guichetier
-
-#### Fenêtre gestion clients 
-
-*Désactivation d'un client*
-
-Cette fonctionnalité permet de désactiver le compte du client sélectionner. +
-En cliquant sur le bouton « désactiver client », l'utilisateur fait passer l'etat du client sélectionner à "inactif".
-
-image:img/desac-client.png[]
-
-NOTE: Une alerte de confirmation s'affiche à l'écran
-
-image:img/alert-desac-client.png[]
+### Utilisateur : Tous les utilisateurs
 
 #### Fenêtre principale
 
@@ -83,11 +87,11 @@ image:img/alert-desac-client.png[]
 
 TIP: Un bouton « quitter » est accessible depuis l'onglet « utilisateur » 
 
-En cliquant sur ce bouton, l'utilisateur quittera l'application
+En cliquant sur le bouton « quitter » une fenêtre de confirmation s'affiche. +
+Au clique du bouton « ok » si une connexion à un compte est établie, celle-ci est arreté et la fenêtre de l'application se ferme. +
+Au clique du bouton « annuler » l'application continue de fonctionner et la fenêtre de confirmation se ferme.
 
 image:img/img2/quitter-appli.png[]
-
-NOTE: Une alerte de validation s'ouvrira
 
 image:img/img2/alerte-quitter.png[]
 
@@ -127,7 +131,9 @@ En cliquant sur le bouton « client » l'utilisateur pourra gérer les clients d
 
 image:img/img2/gestion-client2.png[]
 
-#### Fenêtre gestion des clients
+### Utilisateur : Guichetier
+
+#### Fenêtre gestion clients 
 
 *Recherche d'un client*
 
@@ -142,25 +148,15 @@ Les résultats seront visible sur la ListView et peuvent être affinés en entra
 
 image:img/img2/recherche-client.png[]
 
-*Création d'un nouveau client*
+*Gestion des comptes d'un client*
 
-En cliquant sur le bouton « nouveau client » l'utilisateur pourra créer un nouveau client en ouvrant une nouvelle fenêtre de création d'un client et en entrant les informations :
+TIP: Un client doit être sélectionner pour effectuer cette action
 
-* Nom 
-* Prénom
-* Adresse
-* Téléphone
-* E-mail
-* Cliant actif
+En cliquant sur le bouton « comptes client » une fenêtre s'ouvrira dans laquelle l'utilisateur pour consulter les comptes d'un client.
 
-image:img/img2/nouveau-client.png[]
-image:img/img2/nouveau-client2.png[]
+image:img/img2/gestion-compte.png[]
 
-WARNING: Si l'une de ces informations n'est pas entrée une alerte s'affiche présentant l'erreur
-
-Cliquer sur le bouton « Ajouter » aura pour action de créer le nouveau client et de l'ajouter à la Base de Donnée et cliquer sur le bouton « annuler » aura pour action d'annuler la création du client. 
-
-image:img/img2/nouveau-client-erreur.png[]
+image:img/img2/gestion-compte2.png[]
 
 *Modification d'un client*
 
@@ -185,20 +181,44 @@ WARNING: Si l'une de ces informations n'est pas entrée une alerte s'affiche pr�
 
 image:img/img2/modification-client-erreur.png[]
 
+*Désactivation d'un client*
 
-*Gestion des comptes d'un client*
+Cette fonctionnalité permet de désactiver le client sélectionner. +
+En cliquant sur le bouton « désactiver client », l'utilisateur fait passer l'etat du client sélectionner à "inactif".
 
-TIP: Un client doit être sélectionner pour effectuer cette action
+image:img/desac-client.png[]
 
-En cliquant sur le bouton « comptes client » une fenêtre s'ouvrira dans laquelle l'utilisateur pour consulter les comptes d'un client.
+NOTE: Une alerte de confirmation s'affiche à l'écran
 
-image:img/img2/gestion-compte.png[]
+image:img/alert-desac-client.png[]
 
-image:img/img2/gestion-compte2.png[]
+*Réactivation d'un client*
+
+Cette fonctionnalité permet de réactiver le client sélectionner. Ainsi il sera de nouveau possible de gérer ses compte qui se réactiveront aussi.  +
+En cliquant sur le bouton « réactiver client », l'état de l'Utilisateur passe de "
+*Création d'un nouveau client*
+
+En cliquant sur le bouton « nouveau client » l'utilisateur pourra créer un nouveau client en ouvrant une nouvelle fenêtre de création d'un client et en entrant les informations :
+
+* Nom 
+* Prénom
+* Adresse
+* Téléphone
+* E-mail
+* Cliant actif
+
+image:img/img2/nouveau-client.png[]
+image:img/img2/nouveau-client2.png[]
+
+WARNING: Si l'une de ces informations n'est pas entrée une alerte s'affiche présentant l'erreur
+
+Cliquer sur le bouton « Ajouter » aura pour action de créer le nouveau client et de l'ajouter à la Base de Donnée et cliquer sur le bouton « annuler » aura pour action d'annuler la création du client. 
+
+image:img/img2/nouveau-client-erreur.png[]
 
 #### Fenêtre gestion des comptes 
 
-*voir les opération d'un comptes*
+*gestion des opération d'un comptes*
 
 TIP: Cette fonctionnalité est accessible en sélectionnant un compte
 
@@ -232,6 +252,10 @@ image:img/cloturer-compte2.png[]
 
 image:img/cloturer-compte3.png[]
 
+*réactivation d'un compte*
+
+*simulation d'un emprunt*
+
 *création d'un nouveau compte*
 
 Cette fonctionnalité permet de crée un nouveau compte pour le client. +
@@ -245,20 +269,7 @@ image:img/nouveau-compte2.png[]
 
 image:img/nouveau-compte3.png[]
 
-*modification d'un compte*
-
-Cette fonctionnalité permet de modifier le compte d'un client. + 
-En cliquant sur le bouton « modifier compte », une fenêtre de modification du compte sélectionner s'ouvre
-
-image:img/modifier-compte.png[]
-
-image:img/modifier-compte2.png[]
-
-En cliquant sur le bouton « modifier » cela aura pour effet de modifier le compte dans la Base de Données et en cliquant sur le bouton « annuler » cela annulera l'action
-
-image:img/modifier-compte3.png[]
-
-image:img/modifier-compte4.png[]
+*prélévement automatique*
 
 #### Fenêtre gestion des opérations
 
@@ -306,7 +317,7 @@ NOTE: le type d'opération peut être "espèces" ou "chèque"
 
 image:img/credit6.png[]
 
-*réaliser un virement*
+*réaliser un virement compte à compte*
 
 Cette fonctionnalité permet de réaliser un virement de compte à compte. +
 En cliquant sur le bouton « enregistrer virement » une fenêtre d'enregistrement d'un  s'ouvrira
@@ -323,9 +334,17 @@ WARNING: si le découvert est dépassé, une fenêtre d'Exception s'ouvre
 
 image:img/virement5.png[]
 
+*générer un relevé bancaire pdf*
+
 ### utilisateur : Chef D'agence
 
 NOTE: Ces fonctionnalités ne sont disponible que pour les comptes ayant les droits d'accès "Chef d'Agence"
+
+#### Fenêtre principale 
+
+*gestion des employés*
+
+#### Fenêtre gestion des employés
 
 *rechercher les employés*
 
@@ -355,7 +374,6 @@ WARNING: si une information saisies n'est pas correct, une fenêtre d'alerte s'o
 image:img/modifier-employe5.png[]
 
 *Désactivation d'un employé*
-
 
 *création d'un employé*
 

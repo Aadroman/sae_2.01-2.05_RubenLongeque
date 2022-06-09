@@ -114,11 +114,8 @@ public class OperationEditorPaneController implements Initializable {
 		}
 		// Paramétrages spécifiques pour les chefs d'agences
 		if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
-
+			indiceAdmin = true;
 		}
-			if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
-					indiceAdmin = true;
-			}
 
 		this.operationResultat = null;
 		this.cbTypeOpe.requestFocus();

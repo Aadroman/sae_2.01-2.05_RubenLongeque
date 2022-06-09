@@ -6,6 +6,103 @@
 
 ## Présentation générale
 
+### Répartition du travail 
+
+[cols="1,1,1,1,1,1,1"]
+|===
+|Version |User |Use case |Fonctionnalité |Christopher |Ruben |Yann
+
+// |
+// |
+// |
+// |
+// |
+// |
+// |
+
+|1
+|Guichetier
+|/
+|Enregistrer un débit
+|
+|
+|F
+
+|1
+|Guichetier
+|/
+|Enregistrer un crédit 
+|
+|
+|F
+
+
+|1
+|Guichetier
+|/
+|Réaliser un virement
+|
+|
+|F
+
+|1
+|Guichetier
+|/
+|Créer un compte bancaire
+|F
+|
+|
+
+|1
+|Guichetier
+|/
+|Clôturer un compte bancaire
+|
+|F
+|
+
+|1
+|Guichetier
+|/
+|Réouvrir un compte bancaire
+|
+|F
+|
+
+|1
+|Chef d'Agence
+|/
+|Rechercher les employés
+|
+|F
+|
+
+|1
+|Chef d'Agence
+|/
+|Modifier un employé
+|F
+|
+|
+
+|1
+|Chef d'Agence
+|/
+|Désactiver un employé
+|F
+|
+|
+
+|1
+|Guichetier
+|/
+|Créer un employé
+|F
+|
+|
+|===
+F : Fonctionnel ; D : Développement
+
 ### Use Case global
 
 L'utilisation de l'application DailyBank se fait par deux utilisateurs distincts : 

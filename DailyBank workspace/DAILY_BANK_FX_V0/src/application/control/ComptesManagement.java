@@ -2,6 +2,7 @@ package application.control;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -22,6 +23,7 @@ import model.orm.LogToDatabase;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
 import model.orm.exception.Order;
+import model.orm.exception.RowNotFoundOrTooManyRowsException;
 import model.orm.exception.Table;
 
 /**
@@ -121,10 +123,24 @@ public class ComptesManagement {
                 
                 if (result != 1) {
                     con.rollback();
-                    System.out.println("erreur lors du insert");
-                }else {
-                    con.commit();
+                    throw new RowNotFoundOrTooManyRowsException(Table.CompteCourant, Order.INSERT,
+    						"Insert anormal (insert de moins ou plus d'une ligne)", null, result);
                 }
+                
+                query = "SELECT seq_id_client.CURRVAL from DUAL";
+
+				System.err.println(query);
+				PreparedStatement pst2 = con.prepareStatement(query);
+
+				ResultSet rs = pst2.executeQuery();
+				rs.next();
+				int numCompte = rs.getInt(1);
+
+				con.commit();
+				rs.close();
+				pst2.close();
+				
+				compte.idNumCompte = numCompte;
                 
 				// existe pour compiler les catchs dessous
 				if (Math.random() < -1) {

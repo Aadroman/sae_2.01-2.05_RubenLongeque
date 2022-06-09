@@ -9,8 +9,10 @@ import application.DailyBankState;
 import application.tools.AlertUtilities;
 import application.tools.ConstantesIHM;
 import application.tools.EditionMode;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -49,12 +51,15 @@ public class PrelevementEditorPaneController implements Initializable{
 	
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
+		
+		this.txtMontant.focusedProperty().addListener((t, o, n) -> this.focusMontant(t, o, n));
+		this.txtDateRecurrente.focusedProperty().addListener((t, o, n) -> this.focusDate(t, o, n));
 	}
 	
 	/*
-	 * Configuration de la fenêtre d'édition d'un compte
-	 * @param in client : le client
-	 * @param in cpte : le client
+	 * Configuration de la fenêtre d'édition d'un prelevement
+	 * @param in c : le compte courant
+	 * @param in prelevement : le prelevement
 	 * @param in mode : le mode de modification
 	 * return le resultat
 	 */
@@ -62,7 +67,7 @@ public class PrelevementEditorPaneController implements Initializable{
 		this.compte = c;
 		this.em = mode;
 		if (prelevement == null) {
-			this.prelevementEdite = new PrelevementAutomatique(0, 10, 5 , "N", this.compte.idNumCompte);
+			this.prelevementEdite = new PrelevementAutomatique(0 ,10 , 5 , "N", this.compte.idNumCompte);
 
 		} else {
 			this.prelevementEdite = new PrelevementAutomatique(prelevement);
@@ -90,7 +95,7 @@ public class PrelevementEditorPaneController implements Initializable{
 		// initialisation du contenu des champs
 		this.txtIdPrelevement.setText("" + this.prelevementEdite.idPrelev);
 		this.txtIdNumCompte.setText("" + this.prelevementEdite.idNumCompte);
-		this.txtMontant.setText("" + this.prelevementEdite.montant);
+		this.txtMontant.setText(String.format(Locale.ENGLISH, "%10.02f", this.prelevementEdite.montant));
 		this.txtDateRecurrente.setText("" + this.prelevementEdite.dateRecurrente);
 		this.txtBeneficiaire.setText("" + this.prelevementEdite.beneficiaire);
 
@@ -107,6 +112,48 @@ public class PrelevementEditorPaneController implements Initializable{
 			return null;
 		}
 	
+		/*
+		 * permet de récupérer la valeur du montant saisi lors de la création d'un nouveau prélèvement
+		 */
+		private Object focusMontant(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
+				boolean newPropertyValue) {
+			if (oldPropertyValue) {
+				try {
+					double val;
+					val = Double.parseDouble(this.txtMontant.getText().trim());
+					if (val < 0) {
+						throw new NumberFormatException();
+					}
+					this.prelevementEdite.montant = val;
+				} catch (NumberFormatException nfe) {
+					this.txtMontant.setText(String.format(Locale.ENGLISH, "%10.02f", this.prelevementEdite.montant));
+				}
+			}
+			this.txtMontant.setText(String.format(Locale.ENGLISH, "%10.02f", this.prelevementEdite.montant));
+			return null;
+		}
+		
+		/*
+		 * permet de récupérer la valeur de la date récurrente saisi lors de la création d'un nouveau prélèvement
+		 */
+		private Object focusDate(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
+				boolean newPropertyValue) {
+			if (oldPropertyValue) {
+				try {
+					int val;
+					val = Integer.parseInt(this.txtDateRecurrente.getText().trim());
+					if (val < 0) {
+						throw new NumberFormatException();
+					}
+					this.prelevementEdite.dateRecurrente = val;
+				} catch (NumberFormatException nfe) {
+					this.txtDateRecurrente.setText("" + this.prelevementEdite.dateRecurrente);
+				}
+			}
+			return null;
+		}
+		
+		
 	// Attributs de la scene + actions
 	@FXML
 	private Button btnOk;
@@ -163,10 +210,9 @@ public class PrelevementEditorPaneController implements Initializable{
 
 			}
 			break;
+			
 		case SUPPRESSION:
-			this.prelevementResult = this.prelevementEdite;
 			this.primaryStage.close();
-
 			break;
 		}
 
@@ -181,12 +227,6 @@ public class PrelevementEditorPaneController implements Initializable{
 	 */
 	private boolean isSaisieValide() {
 		this.prelevementEdite.beneficiaire = this.txtBeneficiaire.getText().trim();
-		
-		/*String montant = String.valueOf(this.prelevementEdite.montant);
-		montant = this.txtMontant.getText().trim();
-		
-		String date = Integer.toString(this.prelevementEdite.dateRecurrente);
-		date = this.txtBeneficiaire.getText().trim();*/
 		
 		if (this.txtMontant.getText().equals("")) {
 			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le montant ne doit pas être vide",
@@ -206,7 +246,7 @@ public class PrelevementEditorPaneController implements Initializable{
 		}
 		
 		if (this.prelevementEdite.beneficiaire.isEmpty()) {
-			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le nom ne doit pas être vide",
+			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le Bénéficiaire ne doit pas être vide",
 					AlertType.WARNING);
 			this.txtBeneficiaire.requestFocus();
 			return false;
