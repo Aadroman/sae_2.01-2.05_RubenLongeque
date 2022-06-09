@@ -7,10 +7,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import application.DailyBankState;
-import application.control.ComptesManagement;
-import application.control.OperationsManagement;
 import application.control.PrelevementManagement;
-import application.tools.NoSelectionModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,8 +22,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
-import model.data.CompteCourant;
-import model.data.Operation;
 import model.data.PrelevementAutomatique;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
@@ -185,7 +180,7 @@ public class PrelevementManagementController implements Initializable{
 		 */
 		private void validateComponentState() {
 			int selectedIndice = this.lvPrelevement.getSelectionModel().getSelectedIndex();
-<<<<<<< HEAD
+
 			//PrelevementAutomatique p = this.lvPrelevement.getSelectionModel().getSelectedItem();
 
 			// Si un prélèvement est sélectionner
@@ -193,8 +188,7 @@ public class PrelevementManagementController implements Initializable{
 				this.btnModifierPrelevement.setDisable(true);
 				this.btnSupprimerPrelevement.setDisable(false);
 			} 
-=======
->>>>>>> 53b40fa4f9929898ed37688e9ef1158c98d71f28
+
 			
 			// Si un prélèvement est sélectionner
 			if (selectedIndice >= 0) {
