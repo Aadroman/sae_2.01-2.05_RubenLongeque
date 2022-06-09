@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import model.data.Client;
 import model.data.CompteCourant;
 import model.data.Operation;
+import model.data.PrelevementAutomatique;
 import model.orm.AccessCompteCourant;
 import model.orm.AccessOperation;
 import model.orm.exception.ApplicationException;
@@ -41,7 +42,6 @@ public class OperationsManagement {
 	private OperationsManagementController omc; //le controller de gestion des opérations
 	private Client clientDuCompte; //un client ayant un compte
 	private CompteCourant compteConcerne; //le compte du client
-	private OperationEditorPaneController oepc;
 
 	/**
 	 * @param _parentStage

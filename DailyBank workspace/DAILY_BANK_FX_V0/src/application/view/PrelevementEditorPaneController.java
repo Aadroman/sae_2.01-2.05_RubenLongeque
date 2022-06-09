@@ -6,6 +6,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import application.DailyBankState;
+import application.control.PrelevementManagement;
 import application.tools.AlertUtilities;
 import application.tools.ConstantesIHM;
 import application.tools.EditionMode;
@@ -21,6 +22,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
+import model.data.Operation;
 import model.data.PrelevementAutomatique;
 import model.orm.exception.DatabaseConnexionException;
 
@@ -41,6 +43,7 @@ public class PrelevementEditorPaneController implements Initializable{
 		private CompteCourant compte;
 		private PrelevementAutomatique prelevementEdite;
 		private PrelevementAutomatique prelevementResult;
+		private boolean indiceOperation = false;
 		
 	// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, DailyBankState _dbstate) {
@@ -153,6 +156,14 @@ public class PrelevementEditorPaneController implements Initializable{
 			return null;
 		}
 		
+		public boolean getOperation() {
+			return this.indiceOperation;
+		}
+		
+		public int getJourDate() {
+			return Integer.parseInt(this.txtDateRecurrente.getText());
+		}
+		
 		
 	// Attributs de la scene + actions
 	@FXML
@@ -196,6 +207,7 @@ public class PrelevementEditorPaneController implements Initializable{
 		case CREATION:
 			
 			if (this.isSaisieValide()) {
+				indiceOperation = true;
 				this.prelevementResult = this.prelevementEdite;
 				this.primaryStage.close();
 			}

@@ -21,6 +21,8 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import application.DailyBankState;
 import application.control.OperationsManagement;
+import application.control.PrelevementEditorPane;
+import application.control.PrelevementManagement;
 import application.control.SimulationEmpruntPane;
 import application.tools.NoSelectionModel;
 import application.tools.PairsOfValue;
@@ -50,6 +52,8 @@ public class OperationsManagementController implements Initializable {
 	private Client clientDuCompte;
 	private CompteCourant compteConcerne;
 	private ObservableList<Operation> olOperation;
+	private PrelevementManagement pm;
+	private PrelevementEditorPane pep;
 
 	// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, OperationsManagement _om, DailyBankState _dbstate, Client client, CompteCourant compte) {
@@ -68,10 +72,22 @@ public class OperationsManagementController implements Initializable {
 		this.lvOperations.setSelectionModel(new NoSelectionModel<Operation>());
 		this.updateInfoCompteClient();
 		this.validateComponentState();
+		//this.doPrelevement();
 	}
 
 	public void displayDialog() {
 		this.primaryStage.showAndWait();
+	}
+	
+	private void doPrelevement() {
+		boolean verif = this.pep.getPepc().getOperation();
+		if(verif == true) {
+			Operation op = this.pm.enregistrerPrelevement();
+			if (op != null) {
+				this.updateInfoCompteClient();
+				this.validateComponentState();
+			}
+		}
 	}
 
 
