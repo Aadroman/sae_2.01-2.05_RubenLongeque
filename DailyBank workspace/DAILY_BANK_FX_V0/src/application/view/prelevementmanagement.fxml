@@ -36,7 +36,7 @@
                            </GridPane.margin>
                         </Button>
                         <Button fx:id="btnNouveauPrelevement" mnemonicParsing="false" onAction="#doNouveauPrelevement" prefHeight="25.0" prefWidth="233.0" text="Nouveau prélèvement" GridPane.rowIndex="4" />
-                        <Button fx:id="btnSupprimerPrelevement" disable="true" mnemonicParsing="false" onAction="#doSupprimerPrelevement" prefHeight="25.0" prefWidth="233.0" text="Supprimer prélèvement" GridPane.rowIndex="2" />
+                        <Button fx:id="btnSupprimerPrelevement" mnemonicParsing="false" onAction="#doSupprimerPrelevement" prefHeight="25.0" prefWidth="233.0" text="Supprimer prélèvement" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                </children>
