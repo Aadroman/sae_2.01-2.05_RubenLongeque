@@ -185,6 +185,7 @@ public class PrelevementManagementController implements Initializable{
 		 */
 		private void validateComponentState() {
 			int selectedIndice = this.lvPrelevement.getSelectionModel().getSelectedIndex();
+<<<<<<< HEAD
 			//PrelevementAutomatique p = this.lvPrelevement.getSelectionModel().getSelectedItem();
 
 			// Si un prélèvement est sélectionner
@@ -192,6 +193,8 @@ public class PrelevementManagementController implements Initializable{
 				this.btnModifierPrelevement.setDisable(true);
 				this.btnSupprimerPrelevement.setDisable(false);
 			} 
+=======
+>>>>>>> 53b40fa4f9929898ed37688e9ef1158c98d71f28
 			
 			// Si un prélèvement est sélectionner
 			if (selectedIndice >= 0) {
