@@ -100,7 +100,7 @@ public class OperationsManagementController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		this.lvOperations.setItems(this.olOperation);
+
 	}
 
 	@FXML
