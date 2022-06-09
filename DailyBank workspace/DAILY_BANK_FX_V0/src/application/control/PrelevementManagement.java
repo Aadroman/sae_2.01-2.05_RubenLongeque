@@ -24,8 +24,11 @@ import model.orm.AccessCompteCourant;
 import model.orm.AccessPrelevement;
 import model.orm.LogToDatabase;
 import model.orm.exception.ApplicationException;
+import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
+import model.orm.exception.ManagementRuleViolation;
 import model.orm.exception.Order;
+import model.orm.exception.RowNotFoundOrTooManyRowsException;
 import model.orm.exception.Table;
 
 /**
@@ -157,6 +160,41 @@ public class PrelevementManagement {
 		}
 		
 		return result;
+	}
+	
+	/**
+	 * Suppression d'un PrelevementAutomatique à partir de son id.
+	 *
+	 * @param idPrelev id du prélèvement (clé primaire)
+	 * @throws RowNotFoundOrTooManyRowsException
+	 * @throws DataAccessException
+	 * @throws DatabaseConnexionException
+	 * @throws ManagementRuleViolation
+	 */
+	public void supprimerPrelevement(int IdPrelev) throws RowNotFoundOrTooManyRowsException, DataAccessException,
+	DatabaseConnexionException, ManagementRuleViolation {
+		try {
+
+			Connection con = LogToDatabase.getConnexion();
+
+			String query = "DELETE FROM PrelevementAutomatique WHERE idPrelev = ?";
+
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1, IdPrelev);
+			
+			System.err.println(query);
+
+			int result = pst.executeUpdate();
+			pst.close();
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.PrelevementAutomatique, Order.DELETE,
+						"delete anormal (delete de moins ou plus d'une ligne)", null, result);
+			}
+			con.commit();
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.PrelevementAutomatique, Order.DELETE, "Erreur accès", e);
+		}
 	}
 	
 	/**

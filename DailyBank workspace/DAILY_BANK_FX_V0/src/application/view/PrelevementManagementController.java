@@ -24,6 +24,10 @@ import model.data.Client;
 import model.data.CompteCourant;
 import model.data.Operation;
 import model.data.PrelevementAutomatique;
+import model.orm.exception.DataAccessException;
+import model.orm.exception.DatabaseConnexionException;
+import model.orm.exception.ManagementRuleViolation;
+import model.orm.exception.RowNotFoundOrTooManyRowsException;
 
 /**
  * @author yann
@@ -143,13 +147,14 @@ public class PrelevementManagementController implements Initializable{
 		 * Permet de supprimer un prélèvement
 		 */
 		@FXML
-		private void doSupprimerPrelevement() {
-			/*int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+		private void doSupprimerPrelevement() throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException, ManagementRuleViolation {
+			int selectedIndice = this.lvPrelevement.getSelectionModel().getSelectedIndex();
 			if (selectedIndice >= 0) {
-				CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
-				this.cm.modifierCompte(cpt);
+				PrelevementAutomatique pa = this.olPrelevement.get(selectedIndice);
+				int indice = pa.idPrelev;
+				this.pm.supprimerPrelevement(indice);
 			}
-			this.loadList();*/
+			this.loadListPrelev();
 			this.validateComponentState();
 		}
 
@@ -164,7 +169,6 @@ public class PrelevementManagementController implements Initializable{
 		 */
 		private void validateComponentState() {
 			int selectedIndice = this.lvPrelevement.getSelectionModel().getSelectedIndex();
-			PrelevementAutomatique p = this.lvPrelevement.getSelectionModel().getSelectedItem();
 			
 			// Si un prélèvement est sélectionner
 			if (selectedIndice >= 0) {

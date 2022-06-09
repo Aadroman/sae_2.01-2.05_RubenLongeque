@@ -52,9 +52,9 @@ public class PrelevementEditorPaneController implements Initializable{
 	}
 	
 	/*
-	 * Configuration de la fenêtre d'édition d'un compte
-	 * @param in client : le client
-	 * @param in cpte : le client
+	 * Configuration de la fenêtre d'édition d'un prelevement
+	 * @param in c : le compte courant
+	 * @param in prelevement : le prelevement
 	 * @param in mode : le mode de modification
 	 * return le resultat
 	 */
@@ -90,7 +90,7 @@ public class PrelevementEditorPaneController implements Initializable{
 		// initialisation du contenu des champs
 		this.txtIdPrelevement.setText("" + this.prelevementEdite.idPrelev);
 		this.txtIdNumCompte.setText("" + this.prelevementEdite.idNumCompte);
-		this.txtMontant.setText("" + this.prelevementEdite.montant);
+		this.txtMontant.setText(String.format(Locale.ENGLISH, "%10.02f", this.prelevementEdite.montant));
 		this.txtDateRecurrente.setText("" + this.prelevementEdite.dateRecurrente);
 		this.txtBeneficiaire.setText("" + this.prelevementEdite.beneficiaire);
 
@@ -163,8 +163,9 @@ public class PrelevementEditorPaneController implements Initializable{
 
 			}
 			break;
+			
 		case SUPPRESSION:
-			this.prelevementResult = this.prelevementEdite;
+			
 			this.primaryStage.close();
 
 			break;
