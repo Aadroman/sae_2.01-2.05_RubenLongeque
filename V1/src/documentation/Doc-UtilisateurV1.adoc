@@ -160,7 +160,7 @@ image:img/img2/gestion-operation.png[]
 
 image:img/img2/gestion-operation2.png[]
 
-### Enregistrer un débit 
+### Enregistrer un débit : développer par Yann
 
 NOTE: Tous les utilisateur ont accès à cette fonctionnalité. +
 Cette fonctionnalité est accessible en sélectionnant un compte.
@@ -175,7 +175,7 @@ sont valides, l'opération s'enregistre et le montant du débit se retire du com
 
 En cliquant sur le bouton « annuler » l'opération s'annule et la fenêtre d'enregistrement d'une opération se ferme.
 
-### Enregistrer un crédit 
+### Enregistrer un crédit : développer par Yann
 
 NOTE: Tous les utilisateur ont accès à cette fonctionnalité. +
 Cette fonctionnalité est accessible en sélectionnant un compte.
@@ -189,7 +189,7 @@ sont valides, l'opération s'enregistre et le montant du débit s'ajoute au comp
 
 En cliquant sur le bouton « annuler » l'opération s'annule et la fenêtre d'enregistrement d'une opération se ferme.
 
-### Réaliser un virement de compte à compte 
+### Réaliser un virement de compte à compte : développer par Yann
 
 NOTE: Tous les utilisateur ont accès à cette fonctionnalité. +
 Cette fonctionnalité est accessible en sélectionnant un compte.
@@ -205,7 +205,7 @@ sont valides, l'opération s'enregistre et le montant du débit s'ajoute au comp
 
 En cliquant sur le bouton « annuler » l'opération s'annule et la fenêtre d'enregistrement d'une opération se ferme.
 
-### Modifier un compte bancaire
+### Modifier un compte bancaire : développer par Christopher
 
 En cliquant sur le bouton « modifier compte » une fenêtre de modification d'un compte bancaire s'affiche. +
 En cliquant sur le bouton « modifier » la modification du compte s'enregistre et la fenêtre de modification d'un compte se ferme. +
@@ -218,7 +218,7 @@ image:img/modif-client2.png[]
 
 image:img/erreur-modif-client.png[]
 
-### Clôturer un compte bancaire
+### Clôturer un compte bancaire : développer par Ruben
 
 NOTE: Tous les utilisateurs ont accès à cette fonctionnalité. +
 Un compte doit être sélectionner. +
@@ -235,7 +235,7 @@ image:img/cloturer-compte2.png[]
 
 image:img/cloturer-compte3.png[]
 
-### Réactiver un compte bancaire
+### Réactiver un compte bancaire : développer par Ruben
 
 NOTE: Tous les utilisateurs ont accès à cette fonctionnalités. +
 Un compte doit être sélectionner. +
@@ -246,7 +246,7 @@ En cliquant sur le bouton « ok » le compte se réactive et la fenêtre de conf
 
 En cliquant sur le bouton « annuler » le compte reste clôturer et la fenêtre de confirmation se ferme.
 
-### Création d'un nouveau client
+### Création d'un nouveau client : développer par Christopher
 
 NOTE: Tous les utilisateurs ont accès à cette fonctionnalité.
 
@@ -289,7 +289,7 @@ image:img/img2/modification-client2.png[]
 
 image:img/img2/modification-client-erreur.png[]
 
-### Désactiver un client
+### Désactiver un client : développer par Ruben
 
 NOTE: Tous les utilisateurs ont accès à cette fonctionnalité. +
 Un client doit être sélectionner. +
@@ -325,7 +325,7 @@ image:img/recherche-employe.png[]
 
 image:img/recherche-employe2.png[]
 
-### Modifier un employé
+### Modifier un employé : développer par Christopher
 
 NOTE: Seul les Chef d'Agence ont accès à cette fonctionnalité. +
 Un employé doit être sélectionner.
@@ -350,7 +350,7 @@ image:img/modifier-employe4.png[]
 
 image:img/modifier-employe5.png[]
 
-### Désactiver un employé 
+### Désactiver un employé  : développer par Christopher
 
 NOTE: Seul les Chef d'Agence ont acès à cette fonctionnalité. +
 Un employé doit être sélectionner. +
@@ -361,7 +361,7 @@ En cliquant sur le bouton « ok » l"employé se désactive, c'est-dire que son 
 
 En cliquant sur le bouton « annuler » la désactivation de l'employé s'annule et la fenêtre de confirmation se ferme. 
 
-### Créer un nouvel employé 
+### Créer un nouvel employé : développer par Christopher
 
 NOTE: Seul les Chef d'Agence ont accès à cette fonctionnalité.
 

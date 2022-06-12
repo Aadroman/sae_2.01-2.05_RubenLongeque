@@ -20,7 +20,7 @@ Projet : DailyBank
 
 |1
 |Guichetier
-|/
+|créditer / débiter un compte
 |Enregistrer un débit
 |
 |
@@ -28,7 +28,7 @@ Projet : DailyBank
 
 |1
 |Guichetier
-|/
+|créditer / débiter un compte
 |Enregistrer un crédit 
 |
 |
@@ -36,7 +36,7 @@ Projet : DailyBank
 
 |1
 |Guichetier
-|/
+|effectuer un virement d'un compte à un compte
 |Réaliser un virement
 |
 |
@@ -44,7 +44,7 @@ Projet : DailyBank
 
 |1
 |Guichetier
-|/
+|modifier info compte
 |Modifier un compte bancaire
 |F
 |
@@ -52,7 +52,7 @@ Projet : DailyBank
 
 |1
 |Guichetier
-|/
+|clôturer / réactiver un compte
 |Clôturer un compte bancaire
 |
 |F
@@ -60,7 +60,7 @@ Projet : DailyBank
 
 |1
 |Guichetier
-|/
+|clôturer / réactiver un compte
 |Réactiver un compte bancaire
 |
 |F
@@ -68,7 +68,7 @@ Projet : DailyBank
 
 |1
 |Guichetier
-|/
+|créer un compte
 |Créer un nouveau compte bancaire
 |F
 |
@@ -76,15 +76,7 @@ Projet : DailyBank
 
 |1
 |Guichetier
-|/
-|Modifier un client
-|
-|
-|
-
-|1
-|Guichetier
-|/
+|désactiver / réactiver un client
 |Désactiver un client
 |
 |F
@@ -92,31 +84,31 @@ Projet : DailyBank
 
 |1
 |Guichetier
-|/
+|désactiver / réactiver un client
 |Réactiver un client
 |
 |F
 |
 
 |1
-|Guichetier
-|/
+|Employé
+|Gérer le crud des employés
 |Modifier un employé
 |F
 |
 |
 
 |1
-|Guichetier
-|/
+|Employé
+|Gérer le crud des employés
 |Désactiver un employé
 |F
 |
 |
 
 |1
-|Guichetier
-|/
+|Employé
+|Gérer le crud des employés
 |Créer un nouvel employé
 |F
 |
