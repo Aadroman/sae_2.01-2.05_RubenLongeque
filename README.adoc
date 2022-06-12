@@ -30,12 +30,12 @@ Les remarques V1 n'ont pas toutes été prises en compte
 |         | Doc User V1    | https://github.com/IUT-Blagnac/sae2022-bank-4b03/blob/main/V1/src/Doc-UtilisateurV1.adoc        |
 |         | Recette V1  | https://github.com/IUT-Blagnac/sae2022-bank-4b03/blob/main/V1/src/Cahier-de-TestV1.adoc                     | 
 |         | Suivi projet|   | 
-| 22/05   | Gantt V2  à jour    |       | 
-|         | Doc. Util. V1 |         |    Rappel : vous devez indiquer les liens vers les docs dans le readme  !!     
-|         | Doc. Tec. V1 |                | J'ai mis des retours dans le fichier
+| 22/05   | Gantt V2  à jour    |https://github.com/IUT-Blagnac/sae2022-bank-4b03/tree/main/V2/src/GANTT       | 
+|         | Doc. Util. V1 |https://github.com/IUT-Blagnac/sae2022-bank-4b03/blob/main/V1/src/documentation/Doc-UtilisateurV1.adoc         |    Rappel : vous devez indiquer les liens vers les docs dans le readme  !!     
+|         | Doc. Tec. V1 | https://github.com/IUT-Blagnac/sae2022-bank-4b03/blob/main/V1/src/documentation/Doc-TechniqueV1.adoc               | J'ai mis des retours dans le fichier
 https://github.com/IUT-Blagnac/sae2022-bank-4b03/blob/main/V1/src/retourDocTechnique.adoc
 |         | Code V1     |                     | 
-|         | Recette V1 |              |  
+|         | Recette V1 | https://github.com/IUT-Blagnac/sae2022-bank-4b03/blob/main/V1/src/documentation/Cahier-de-TestV1.adoc             |  
   Attention à vos emploi de l'infinitif ex l'emplyé est sélectionner. Ce n'est pas  er... Il y a de nombreuses erreurs du m^me type 
 Vous devez décrire l'application et les diférents types d'utilisateurs. Pour chaque fonctionnalité vous devez indiquer si elle est possible par tout ou restreinte au chef d'agence. Une bonne idée est peu être de mettre un use case commenté.
 
@@ -49,19 +49,19 @@ Autre chose par exemple quand on crée un employé. Le test doit se continuer av
 Ce ne sont que des exemples.
 
 Revoir
-|         | Gantt V3 à jour   |                      | 
-|         | `jar` projet |    | 
-| 05/06   | Gantt V3 à Jour  |    |  
-|         | Doc. Util. V2 |         |           
-|         | Doc. Tec. V2 |    |     
+|         | Gantt V3 à jour   | https://github.com/IUT-Blagnac/sae2022-bank-4b03/blob/main/V3/src/Gantt%20V3%20final%20SAE%202.03%204B03.pdf                     | 
+|         | `jar` projet | https://github.com/IUT-Blagnac/sae2022-bank-4b03/blob/main/DailyBankApp.jar   | 
+| 05/06   | Gantt V3 à Jour  | https://github.com/IUT-Blagnac/sae2022-bank-4b03/blob/main/V3/src/Gantt%20V3%20final%20SAE%202.03%204B03.pdf    |  
+|         | Doc. Util. V2 | https://github.com/IUT-Blagnac/sae2022-bank-4b03/blob/main/V2/src/documentation/Doc-UtilisateurV2.adoc         |           
+|         | Doc. Tec. V2 | https://github.com/IUT-Blagnac/sae2022-bank-4b03/blob/main/V2/src/documentation/Doc-TechniqueV2.adoc    |     
 |         | Code V2     |                       |
-|         | Recette V2  |   |
-|         | `jar` projet |     |
-|12/06   | Gantt V3 à Jour  |    |  
-|         | Doc. Util. V3 |         |           
-|         | Doc. Tec. V3 |    |     
+|         | Recette V2  |https://github.com/IUT-Blagnac/sae2022-bank-4b03/blob/main/V2/src/documentation/Cahier-de-TestV2.adoc   |
+|         | `jar` projet | https://github.com/IUT-Blagnac/sae2022-bank-4b03/blob/main/DailyBankApp.jar     |
+|12/06   | Gantt V3 à Jour  |https://github.com/IUT-Blagnac/sae2022-bank-4b03/blob/main/V3/src/Gantt%20V3%20final%20SAE%202.03%204B03.pdf      |  
+|         | Doc. Util. V3 | pas fait         |           
+|         | Doc. Tec. V3 | pas fait   |     
 |         | Code V3     |                       |
-|         | Recette V3  |   |
-|         | `jar` projet |     |
+|         | Recette V3  | pas fait  |
+|         | `jar` projet | https://github.com/IUT-Blagnac/sae2022-bank-4b03/blob/main/DailyBankApp.jar    |
 |===
 
