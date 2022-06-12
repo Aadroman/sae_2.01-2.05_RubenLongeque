@@ -1,4 +1,4 @@
-# DOCUMENTATION UTILISATEUR VERSION 1
+# DOCUMENTATION UTILISATEUR VERSION 2
 :toc: left
 :toc-title: Table des matières
 :icons: font
