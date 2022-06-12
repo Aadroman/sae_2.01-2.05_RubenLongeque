@@ -38,35 +38,40 @@ Ensuite lancer le fichier .jar depuis un terminal (si il ne s'ouvre par en doubl
 
 ## Utilisation de l'application
 
-Il existe deux rôles d'utilisation de l'application : les Guichetiers et les Chefs d'Agences. +
-Les guichetiers ont la possibilité de gérer les clients de l'Agence bancaire ainsi que leur comptes bancaire. :
+L'utilisation de l'application DailyBank se fait par deux utilisateurs distincts : 
 
-* Consulter les comptes d'un client
+*Les guichetiers* : Ils possèdent les droits leur permettant de gérer les clients de l'Agence bancaire ainsi que leur comptes. +
+Ainsi ils peuvent :
 
-** Voir les opération d'un compte
+* gérer les clients de l'Agence bancaire :
 
-*** Enregistrer un débit 
-*** Enregistrer un crédit
-*** Réaliser un virement de compte à compte  
+** Rechercher les clients 
+** consulter les comptes bancaire d'un client
 
-** Modifier les informations d'un compte
-** Clôturer/Réouvrir un compte
-** Créer un nouveau client
+*** gérer les opérations d'un compte bancaire d'un client 
 
-* Modifier les information d'un client
+**** enregistrer un débit
+**** enregistrer un crédit
+**** réaliser un virement
 
-* Désactiver/Réactiver un client
+*** modifier les information d'un compte bancaire d'un client
+*** clôturer un compte bancaire d'un client
+*** réactiver un compte bancaire d'un client
+*** créer un nouveau compte bancaire pour un client
 
-* Créer un nouveau client
+** modifier les informations d'un client
+** désactiver un client
+** réactiver un client
+** créer un nouveau client
 
-Les Chefs d'Agence de leur côtés auront ces même droits avec en plus la possibilités de gérer les employés de l'Agence bancaire : 
+*Les Chefs d'Agence* : Ils possèdent les mêmes droits que les guichetiers et gèrent en plus les employés. +
+Ainsi ils peuvent : 
 
-* Gérer les employés de l'Agence bancaire
+* gérer les employés de l'agence :
 
-** modifier les informations d'un employé 
-
-** Désactiver un employé
-
+** rechercher les employés de l'agence
+** modifier les informations d'un employé
+** désactiver un employé
 ** Créer un nouvel employé
 
 ## Fonctionnement de l'application

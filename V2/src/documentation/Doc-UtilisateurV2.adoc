@@ -1,29 +1,21 @@
-# DOCUMENTATION UTILISATEUR VERSION 2
+# DOCUMENTATION UTILISATEUR VERSION 1
 :toc: left
 :toc-title: Table des matières
 :icons: font
 :nofooter:
 
+Version de l’application : 1 +
+Date : Semaine 20 +
+Equipe : Christopher / Ruben / Yaan +
+Client : BankUniv +
+Projet : Daily Bank +
+
 ## Présentation générale
-
-### Contexte 
-
-Pour s’adapter aux exigences d’instantanéité de leurs clients, les banques françaises ont accentué leurs efforts de restructuration et leurs investissements dans le digital. Des chantiers longs et coûteux. Elles ne se contentent pas de créer des offres alternatives : elles rénovent aussi en profondeur leurs services de banque au quotidien. +
-Le réseaux de bancaire Dailybank possèdent plusieurs outils qui deviennent obsolètes et une première version d’application qui nécessite une refonte. Les besoins de la banque ont évolués, tout comme ceux de leurs clients, il faut donc développer plusieurs fonctionnalités pour répondre à ces nouveaux besoins.
 
 ### Objectifs de l'application
 
-L’objectif recherché par la banque DailyBank est de développer une application Java-Oracle de gestion de comptes, pour remplacer plusieurs outils obsolètes.
-Pour ce faire, une première version est mise à dispotion "DailyBank" qu’il faudra adapter aux nouveaux besoins.
-Ces nouveaux besoins sont :
-
-* Elle doit permettre de gérer des comptes bancaires de dépôt pour des clients créés
-
-* Elle doit permettre de débiter et de créditer un compte de deux manières différentes :
-
-** Par échange d’argent entre deux comptes distincts domiciliés dans le même réseau bancaire
-
-** Par personne physique se présentant devant un guichet
+L’objectif recherché par la banque DailyBank est de développer une application Java-Oracle de gestion de comptes, pour remplacer plusieurs outils obsolètes. +
+Cette nouvelle version de l'appliation permettra de gérer les clients de l'Agence ainsi que leur comptes bancaire. De la même manière, il sera possible de gérer les opérations de chacun de ces comptes. Cette nouvelle version de l'application permettra aussi de gérer les employés de l'Agence bancaire.
 
 ## Installation de l'application
 
@@ -46,8 +38,8 @@ Ensuite lancer le fichier .jar depuis un terminal (si il ne s'ouvre par en doubl
 
 ## Utilisation de l'application
 
-Deux utilisateurs distincts peuvent être constaté, ils sont le guichetier et le chef d'agence. +
-En plus des fonctionnalités qu'ont *les guichetier qui sont :*
+Il existe deux rôles d'utilisation de l'application : les Guichetiers et les Chefs d'Agences. +
+Les guichetiers ont la possibilité de gérer les clients de l'Agence bancaire ainsi que leur comptes bancaire. :
 
 * Consulter les comptes d'un client
 
@@ -58,10 +50,8 @@ En plus des fonctionnalités qu'ont *les guichetier qui sont :*
 *** Réaliser un virement de compte à compte  
 
 ** Modifier les informations d'un compte
-** Clôturer/Réouvrir un compte 
-** Simuler un emprunt
+** Clôturer/Réouvrir un compte
 ** Créer un nouveau client
-** Réaliser un prélévement automatique
 
 * Modifier les information d'un client
 
@@ -69,76 +59,71 @@ En plus des fonctionnalités qu'ont *les guichetier qui sont :*
 
 * Créer un nouveau client
 
-*les chef d'agence peuvent :*
+Les Chefs d'Agence de leur côtés auront ces même droits avec en plus la possibilités de gérer les employés de l'Agence bancaire : 
 
-* modifier les informations d'un employé 
+* Gérer les employés de l'Agence bancaire
 
-* Désactiver un employé
+** modifier les informations d'un employé 
 
-* Créer un nouvel employé 
+** Désactiver un employé
+
+** Créer un nouvel employé
 
 ## Fonctionnement de l'application
 
-### Utilisateur : Tous les utilisateurs
-
-#### Fenêtre principale
-
-*quitter l'application*
+### quitter l'application
 
 TIP: Un bouton « quitter » est accessible depuis l'onglet « utilisateur » 
 
 En cliquant sur le bouton « quitter » une fenêtre de confirmation s'affiche. +
-Au clique du bouton « ok » si une connexion à un compte est établie, celle-ci est arreté et la fenêtre de l'application se ferme. +
-Au clique du bouton « annuler » l'application continue de fonctionner et la fenêtre de confirmation se ferme.
+Au clique du bouton « ok » si une connexion avec un compte à été établie, celle-ci s'arrete et la fenêtre de l'application se ferme. +
+
+Au clique du bouton « annuler » l'application continue de fonctionner et la fenêtre de confirmation se ferme.  
 
 image:img/img2/quitter-appli.png[]
 
 image:img/img2/alerte-quitter.png[]
 
-*Connexion à un compte*
+### Connexion à un compte
 
 TIP: Un bouton « connexion »  est accessible depuis l'onglet « utilisateur » 
 
-En cliquant sur le bouton « connexion » l'utilisateur pourra se connecter à son compte.
-Ce bouton ouvre une fenêtre de connexion demandant les information de l'utilisateur :
+En cliquant sur le bouton « connexion » une fenêtre d'identification s'affiche. +
+Au clique du bouton « valider » une vérifiation des champs de saisie s'effectue. Si ils sont vides, un message d'erreur s'affiche. +
+Si le login et le mot de passe appartiennent à un compte de l'Agence, une connexion est établie. +
 
-* Login (le nom / identifiant de l'utilisateur)
-
-* Mot de passe
+Au clique du bouton « annuler » aucune connexion n'est établie et la fenêtre d'identification se ferme.
 
 image:img/img2/connection.png[]
 
-WARNING: Si l'une de ces deux informations est fausse ou bien les deux, un message d'erreur sera affiché à l'écran.
-
 image:img/img2/erreur-connection.png[]
 
-*Deconnexion d'un compte*
+### Deconnexion d'un compte
 
 TIP: Un bouton « deconnexion »  est accessible depuis l'onglet « utilisateur » 
 
-En cliquant sur le bouton « deconnexion » l'utilisateur pourra se déconnecter de son compte.
+Au clique du bouton « déconnexion », la connexion actuellement établie s'arrête.
 
 image:img/img2/deconnection.png[]
 
-*Gestion des clients*
+### Gestion des clients
 
-NOTE: Cette fonctionnalités n'est accessible que si l'utilisateur est connectée
-      Cette fonctionnalités est accessible depuis l'onglet « gestion »
+NOTE: Cette fonctionnalité n'est accessible que si l'utilisateur est connectée. +
+Cette fonctionnalité est accessible depuis l'onglet « gestion »
+Tous les utilisateurs ont accès à cette fonctionnalité.
+
+En cliquant sur le bouton « clients » la fenêtre de gestion des clients s'ouvre.
 
 image:img/img2/gestion-client.png[]
 
-En cliquant sur le bouton « client » l'utilisateur pourra gérer les clients de l'agence bancaire en ouvrant une fenêtre de gestion des clients.
-
 image:img/img2/gestion-client2.png[]
 
-### Utilisateur : Guichetier
+### Recherche d'un client
 
-#### Fenêtre gestion clients 
+NOTE: Tous les utilisateurs ont accès à cette fonctionnalité.
 
-*Recherche d'un client*
-
-En cliquant sur le bouton « rechercher » l'utilisateur pour rechercher un client de l'agence bancaire.
-Les résultats seront visible sur la ListView et peuvent être affinés en entrant les informations :
+En cliquant sur le bouton « rechercher » la liste des clients ainsi que leur informations s'affiche sur la fenêtre. +
+Les résultats peuvent être affinés en entrant les informations :
 
 * Numéro (numéro du client)
 
@@ -148,103 +133,96 @@ Les résultats seront visible sur la ListView et peuvent être affinés en entra
 
 image:img/img2/recherche-client.png[]
 
-*Gestion des comptes d'un client*
+### Gestion des comptes bancaire d'un client
 
-TIP: Un client doit être sélectionner pour effectuer cette action
+TIP: Un client doit être sélectionner pour effectuer cette action. +
+Tous les utilisateur ont accès à cette fonctionnalité
 
-En cliquant sur le bouton « comptes client » une fenêtre s'ouvrira dans laquelle l'utilisateur pour consulter les comptes d'un client.
+En cliquant sur le bouton « comptes client » la fenêtre de gestion des comptes bancaire d'un client s'ouvre permettant de gérer les compte d'un client.
 
 image:img/img2/gestion-compte.png[]
 
 image:img/img2/gestion-compte2.png[]
 
-*Modification d'un client*
+### voir les opération d'un comptes
 
-TIP: Un client doit être sélectionner pour effectuer cette action
+TIP: Cette fonctionnalité est accessible en sélectionnant un compte. +
+Tous les utilisateur ont accès à cette fonctionnalité. +
 
-image:img/img2/modification-client.png[]
-
-En cliquant sur le bouton « modifier client » une fenêtre s'ouvrira dans laquelle l'utilisateur pour modifier les informations de celui-ci :
-
-Cliquer sur le bouton « modifier » aura pour action de modifier les informations du client et de les enregistrer dans la Base de Donnée et cliquer sur le bouton « annuler » aura pour action d'annuler la modification du client. 
-
-* Nom
-* Prénom
-* Adresse
-* Téléphone
-* E-mail
-* Client-actif
-
-image:img/img2/modification-client2.png[]
-
-WARNING: Si l'une de ces informations n'est pas entrée une alerte s'affiche présentant l'erreur
-
-image:img/img2/modification-client-erreur.png[]
-
-*Désactivation d'un client*
-
-Cette fonctionnalité permet de désactiver le client sélectionner. +
-En cliquant sur le bouton « désactiver client », l'utilisateur fait passer l'etat du client sélectionner à "inactif".
-
-image:img/desac-client.png[]
-
-NOTE: Une alerte de confirmation s'affiche à l'écran
-
-image:img/alert-desac-client.png[]
-
-*Réactivation d'un client*
-
-Cette fonctionnalité permet de réactiver le client sélectionner. Ainsi il sera de nouveau possible de gérer ses compte qui se réactiveront aussi.  +
-En cliquant sur le bouton « réactiver client », l'état de l'Utilisateur passe de "
-*Création d'un nouveau client*
-
-En cliquant sur le bouton « nouveau client » l'utilisateur pourra créer un nouveau client en ouvrant une nouvelle fenêtre de création d'un client et en entrant les informations :
-
-* Nom 
-* Prénom
-* Adresse
-* Téléphone
-* E-mail
-* Cliant actif
-
-image:img/img2/nouveau-client.png[]
-image:img/img2/nouveau-client2.png[]
-
-WARNING: Si l'une de ces informations n'est pas entrée une alerte s'affiche présentant l'erreur
-
-Cliquer sur le bouton « Ajouter » aura pour action de créer le nouveau client et de l'ajouter à la Base de Donnée et cliquer sur le bouton « annuler » aura pour action d'annuler la création du client. 
-
-image:img/img2/nouveau-client-erreur.png[]
-
-#### Fenêtre gestion des comptes 
-
-*gestion des opération d'un comptes*
-
-TIP: Cette fonctionnalité est accessible en sélectionnant un compte
+En cliquant sur le bouton « voir opération » la fenêtre de gestion des opération s'ouvre, permettant à l'utilisateur de gérer les opération d'un compte bancaire.
 
 image:img/img2/gestion-operation.png[]
 
-En cliquant sur le bouton « voir opérations » un fenêtre s'ouvrira dans laquelle l'utilisateur pourra consulter les opérations du comptes d'un client.
-
 image:img/img2/gestion-operation2.png[]
 
-*modification d'un compte*
+### Enregistrer un débit 
 
-Cette fonctionnalité permet de modifier les informations du client sélectionner. +
-En cliquant sur le bouton « modifier client », une fenêtre de modification des client s'ouvrira.
+NOTE: Tous les utilisateur ont accès à cette fonctionnalité. +
+Cette fonctionnalité est accessible en sélectionnant un compte.
+
+En cliquant sur le bouton « enregistrer débit » une fenêtre d'enregistrement d'une opération s'ouvre. +
+En cliquant sur le bouton « effectuer débit » si les préconditions :
+
+* le montant de l'opération ne doit pas être inférieur à 0
+* le montant de l'opération ne doit être supérieur au découvert autorisé du compte + au solde du compte. 
+
+sont valides, l'opération s'enregistre et le montant du débit se retire du compte. Ensuite la fenêtre d'enregistrement d'une opération se ferme. +
+
+En cliquant sur le bouton « annuler » l'opération s'annule et la fenêtre d'enregistrement d'une opération se ferme.
+
+### Enregistrer un crédit 
+
+NOTE: Tous les utilisateur ont accès à cette fonctionnalité. +
+Cette fonctionnalité est accessible en sélectionnant un compte.
+
+En cliquant sur le bouton « enregistrer crédit » une fenêtre d'enregistrement d'une opération s'ouvre. +
+En cliquant sur le bouton « effectuer crédit » si les préconditions :
+
+* le montant de l'opération ne doit pas être inférieur à 0
+
+sont valides, l'opération s'enregistre et le montant du débit s'ajoute au compte. Ensuite la fenêtre d'enregistrement d'une opération se ferme. +
+
+En cliquant sur le bouton « annuler » l'opération s'annule et la fenêtre d'enregistrement d'une opération se ferme.
+
+### Réaliser un virement de compte à compte 
+
+NOTE: Tous les utilisateur ont accès à cette fonctionnalité. +
+Cette fonctionnalité est accessible en sélectionnant un compte.
+
+En cliquant sur le bouton « réaliser virement » une fenêtre d'enregistrement d'une opération s'ouvre. +
+En cliquant sur le bouton « effectuer virement » si les préconditions :
+
+* le montant de l'opération ne doit pas être inférieur à 0
+* le montant de l'opération ne doit être supérieur au découvert autorisé du compte + au solde du compte.
+* l'ID du compte qui reçoit le virement doit appartenir à un compte de ce même client.
+
+sont valides, l'opération s'enregistre et le montant du débit s'ajoute au compte qui reçoit l'opération et se retire du compte qui effectue l'opération. Ensuite la fenêtre d'enregistrement d'une opération se ferme. +
+
+En cliquant sur le bouton « annuler » l'opération s'annule et la fenêtre d'enregistrement d'une opération se ferme.
+
+### Modifier un compte bancaire
+
+En cliquant sur le bouton « modifier compte » une fenêtre de modification d'un compte bancaire s'affiche. +
+En cliquant sur le bouton « modifier » la modification du compte s'enregistre et la fenêtre de modification d'un compte se ferme. +
+
+En cliquant sur le bouton « annuler » la modification s'annule et la fenêtre de modification d'un compte se ferme. 
 
 image:img/modif-client.png[]
 
 image:img/modif-client2.png[]
 
-WARNING: si les informations saisies ne sont pas correct, une alerte s'affiche
-
 image:img/erreur-modif-client.png[]
 
-*clôturation d'un compte*
+### Clôturer un compte bancaire
 
-Cette fonctionnalité permet de clôturer le compte d'un client. +
-En cliquant sur le bouton « clôturer compte », une fenêtre de confirmation s'ouvrira et si l'utilisateur clique sur le bouton «  oui », l'etat du compte passe en inactif (cloturer).
+NOTE: Tous les utilisateurs ont accès à cette fonctionnalité. +
+Un compte doit être sélectionner. +
+Le compte ne doit pas déjà être clôturer.
+
+En cliquant sur le bouton « clôturer compte » une fenêtre de confirmation s'affiche. +
+En cliquant sur le bouton « ok » le compte se clôture et la fenêtre de confirmation se ferme. +
+
+En cliquant sur le bouton « annuler » le compte ne se clôture pas et la fenêtre de confirmation se ferme.
 
 image:img/cloturer-compte.png[]
 
@@ -252,142 +230,152 @@ image:img/cloturer-compte2.png[]
 
 image:img/cloturer-compte3.png[]
 
-*réactivation d'un compte*
+### Réactiver un compte bancaire
 
-*simulation d'un emprunt*
+NOTE: Tous les utilisateurs ont accès à cette fonctionnalités. +
+Un compte doit être sélectionner. +
+Le compte doit être clôturer.
 
-*création d'un nouveau compte*
+En cliquant sur le bouton « réactiver compte » une fenêtre de confirmation s'affiche. +
+En cliquant sur le bouton « ok » le compte se réactive et la fenêtre de confirmation se ferme. +
 
-Cette fonctionnalité permet de crée un nouveau compte pour le client. +
-En cliquant sur le bouton « nouveau compte », une fenêtre de création d'un nouveau compte s'ouvre
+En cliquant sur le bouton « annuler » le compte reste clôturer et la fenêtre de confirmation se ferme.
 
-image:img/nouveau-compte.png[]
+### Création d'un nouveau client
 
-En cliquant sur le bouton « ajouter », le nouveau compte s'ajoutera à la Base de Données, et en cliquant sur le bouton « annuler », l'action s'annulera.
+NOTE: Tous les utilisateurs ont accès à cette fonctionnalité.
 
-image:img/nouveau-compte2.png[]
+En cliquant sur le bouton « nouveau client » la fenêtre de création d'un client s'affiche. +
+En cliquant sur le bouton « ajouter » les préconditions se vérifie : 
 
-image:img/nouveau-compte3.png[]
+* les champs de saisies ne sont pas vides
+* le numéro de téléphone à exactement 10 chiffres
+* le mail contient les caractères : @_saisie_._saisie_
 
-*prélévement automatique*
+Si une préconditions est fausse, une fenêtre d'erreur s'affiche sinon le nouveau client se créer. +
 
-#### Fenêtre gestion des opérations
+Au clique du bouton « annuler » la création du client s'annule et la fenêtre de création d'un client se ferme.
 
-*enregistrer un débit*
+image:img/img2/nouveau-client.png[]
 
-Cette fonctionnalité permet d'enregistrer un débit sur le compte d'un client. +
-En cliquant sur le bouton « enregistrer débit », une fenêtre d'enregistrement de débit s'ouvrira
+image:img/img2/nouveau-client2.png[]
 
-image:img/enregistrer-debit.png[]
-image:img/enregistrer-debit2.png[]
+image:img/img2/nouveau-client-erreur.png[]
 
-En cliquant sur le bouton « effectuer débit », cela aura pour effet de retirer le montant du débit sur le compte dans la Base de Données, et en cliquant sur le bouton « annuler débit » cela annulera l'action.
+### Modification d'un client
 
-image:img/enregistrer-debit3.png[]
-image:img/enregistrer-debit4.png[]
+NOTE: Un client doit être sélectionner pour effectuer cette action. +
+Tous les utilisateurs ont accès à cette fonctionnalité
 
-WARNING: Le montant à débiter ne peut pas dépasser le découvert autorisé du compte
+En cliquant sur le bouton « modifier client » la fenêtre de modification d'un client s'affiche. +
+En cliquant sur le bouton « modifier » les préconditions se vérifie : 
 
-image:img/enregistrer-debit5.png[]
+* les champs de saisies ne sont pas vides
+* le numéro de téléphone à exactement 10 chiffres
+* le mail contient les caractères : @_saisie_._saisie_
 
-NOTE: le type d'opération peut être "espèces" ou carte bancaire
+Si une préconditions est fausse, une fenêtre d'erreur s'affiche sinon le client se modifie. +
 
-image:img/enregistrer-debit6.png[]
+Au clique du bouton « annuler » la modification du client s'annule et la fenêtre de modification d'un client se ferme.
 
-*enregistrer un crédit*
+image:img/img2/modification-client.png[]
 
-Cette fonctionnalité permet d'enregistrer un crédit sur le compte d'un client +
-En cliquant sur le bouton « enregistrer crédit » une fenêtre d'enregistrement de crédit s'ouvrira
+image:img/img2/modification-client2.png[]
 
-image:img/credit.png[]
+image:img/img2/modification-client-erreur.png[]
 
-image:img/credit2.png[]
+### Désactiver un client
 
-En cliquant sur le bouton « effectuer crédit », cela aura pour effet d'ajouter le montant du crédit sur le compte dans la Base de Données et en cliquant sur le bouton « annuler crédit » cela annulera l'action
+NOTE: Tous les utilisateurs ont accès à cette fonctionnalité. +
+Un client doit être sélectionner. +
+Le client ne doit pas être déjà désactiver.
 
-image:img/credit3.png[]
+En cliquant sur le bouton « désactiver client » une fenêtre de confirmation s'affiche. +
+En cliquant sur le bouton « ok » le client se désactive et la fenêtre de confirmation se ferme. +
 
-image:img/credit4.png[]
+En cliquant sur le bouton « annuler » le client ne se désactiver pas et la fenêtre de confirmation se ferme.
 
-WARNING: si le montant est trop élevé, une exception est levé
+image:img/desac-client.png[]
 
-image:img/credit5.png[]
+image:img/alert-desac-client.png[]
 
-NOTE: le type d'opération peut être "espèces" ou "chèque"
+### Gestion des employés de l'Agence
 
-image:img/credit6.png[]
+NOTE: Seul les Chef d'Agence ont accès à cette fonctionnalité.
 
-*réaliser un virement compte à compte*
+En cliquant sur le bouton « employé » la fenêtre de gestion des employés de l'Agence s'ouvre. 
 
-Cette fonctionnalité permet de réaliser un virement de compte à compte. +
-En cliquant sur le bouton « enregistrer virement » une fenêtre d'enregistrement d'un  s'ouvrira
+### Rechercher les employés de l'Agence
 
-image:img/virement.png[]
-image:img/virement2.png[]
+NOTE: Seul les Chef d'Agence ont accès à cette fonctionnalité. 
 
-En cliquant sur le bouton « effectuer virement » cela aura pour effet de transférer le montant sélection du compte vers le compte portant l'id enregistrer et en cliquant sur le bouton « annuler virement » l'action sera annuler
+En cliquant sur le bouton « rechercher » la liste des employés de l'Agence s'affiche sur la fenêtre de gestion des employés. +
+La recherche peut être affinée avec la saisies des différent champs :
 
-image:img/virement3.png[]
-image:img/virement4.png[]
-
-WARNING: si le découvert est dépassé, une fenêtre d'Exception s'ouvre
-
-image:img/virement5.png[]
-
-*générer un relevé bancaire pdf*
-
-### utilisateur : Chef D'agence
-
-NOTE: Ces fonctionnalités ne sont disponible que pour les comptes ayant les droits d'accès "Chef d'Agence"
-
-#### Fenêtre principale 
-
-*gestion des employés*
-
-#### Fenêtre gestion des employés
-
-*rechercher les employés*
-
-Cette fonctionnalité permet de rechercher les employés dans l'Agence bancaire. +
-En cliquant sur le bouton « rechercher » les information des employés s'afficheront dans la fenêtre
+* ID (l'identifiant de l'employé)
+* Login 
+* MDP (le mot de passe de l'employé)
 
 image:img/recherche-employe.png[]
+
 image:img/recherche-employe2.png[]
 
+### Modifier un employé
 
-*modification d'un employé*
+NOTE: Seul les Chef d'Agence ont accès à cette fonctionnalité. +
+Un employé doit être sélectionner.
 
-Cette fonctionnalité permet de modifié les informations de l'employé sélectionné. +
-En cliquant sur le bouton « modifier employé » une fenêtre de modification des employés s'ouvre.
+En cliquant sur le bouton « modifier employé » la fenêtre de modification d'un employé s'affiche. +
+En cliquant sur le bouton « modifier » si les préconditions :
+
+* les différents champs ne doivent pas être vides
+* le login et le mot de passe ne doivent pas appartenir à un autre employé
+
+sont valides, la modification s'enregistre sinon une fenêtre d'erreur s'affiche. Ensuite la fenêtre de modification d'un client se ferme. +
+
+En cliquant sur le bouton « annuler » la modification de l'employé s'annule et la fenêtre de modification d'un employé se ferme.
 
 image:img/modifier-employe.png[]
 
 image:img/modifier-employe2.png[]
 
-En cliquant sur le bouton « modifier » les nouvelles informations de l'employés s'enregistreront dans la Base de Données et en cliquant sur le bouton « annuler » cela annulera l'action
-
 image:img/modifier-employe3.png[]
-image:img/modifier-employe4.png[]
 
-WARNING: si une information saisies n'est pas correct, une fenêtre d'alerte s'ouvrira
+image:img/modifier-employe4.png[]
 
 image:img/modifier-employe5.png[]
 
-*Désactivation d'un employé*
+### Désactiver un employé 
 
-*création d'un employé*
+NOTE: Seul les Chef d'Agence ont acès à cette fonctionnalité. +
+Un employé doit être sélectionner. +
+L'employé ne doit pas être déjà désactiver.
 
-Cette fonctionnalité permet de créer un employé. +
-En cliquant sur le bouton « nouveau employé » une fenêtre de création d'un employé s'ouvre.
+En cliquant sur le bouton « désactiver employé » une fenêtre de confirmation s'affiche. +
+En cliquant sur le bouton « ok » l"employé se désactive, c'est-dire que son login et son mot de passe de supprime et il n'est donc plus possible de ce connecter sur son compte. Ensuite la fenêtre de confirmation se ferme. +
+
+En cliquant sur le bouton « annuler » la désactivation de l'employé s'annule et la fenêtre de confirmation se ferme. 
+
+### Créer un nouvel employé 
+
+NOTE: Seul les Chef d'Agence ont accès à cette fonctionnalité.
+
+En cliquant sur le bouton « nouveau employé » une fenêtre de création d'un employé s'affiche. +
+En cliquant sur le bouton « ajouter » si les préconditions :
+
+* les différents champs ne doivent pas être vides 
+* le login et le mot de passe ne doivent pas appartenir un employé
+
+sont valides, la création de l'employé s'enregistre, sinon une fenêtre d'erreur s'affiche. Ensuite, la fenêtre de création d'un client se ferme. +
+
+En cliquant sur le bouton « annuler » la création de l'employé s'annule et la fenêtre de création d'un employé se ferme.
 
 image:img/creer-employe.png[]
+
 image:img/creer-employe2.png[]
 
-En cliquant sur le bouton « ajouter » la création de l'employé sera enregistrer dans la Base de Données et en cliquant sur le bouton « annuler », cela annulera l'action.
-
 image:img/creer-employe3.png[]
-image:img/creer-employe4.png[]
 
-WARNING: si l'une des informations n'est pas correct, une fenêtre d'alerte s'affiche
+image:img/creer-employe4.png[]
 
 image:img/creer-employe5.png[]

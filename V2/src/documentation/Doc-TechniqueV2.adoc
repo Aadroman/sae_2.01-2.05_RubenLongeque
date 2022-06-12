@@ -4,6 +4,12 @@
 :icons: font
 :nofooter:
 
+Version de l’application : 1
+Date : semaine 20
+Equipe : Christopher / Ruben / Yann 
+Client : BankUniv
+Projet : DailyBank
+
 ## Présentation générale
 
 ### Répartition du travail 
@@ -11,6 +17,87 @@
 [cols="1,1,1,1,1,1,1"]
 |===
 |Version |User |Use case |Fonctionnalité |Christopher |Ruben |Yann
+
+|1
+|Guichetier
+|/
+|Enregistrer un débit
+|
+|
+|F
+
+|1
+|Guichetier
+|/
+|Enregistrer un crédit 
+|
+|
+|F
+
+
+|1
+|Guichetier
+|/
+|Réaliser un virement
+|
+|
+|F
+
+|1
+|Guichetier
+|/
+|Créer un compte bancaire
+|F
+|
+|
+
+|1
+|Guichetier
+|/
+|Clôturer un compte bancaire
+|
+|F
+|
+
+|1
+|Guichetier
+|/
+|Réouvrir un compte bancaire
+|
+|F
+|
+
+|1
+|Chef d'Agence
+|/
+|Rechercher les employés
+|
+|F
+|
+
+|1
+|Chef d'Agence
+|/
+|Modifier un employé
+|F
+|
+|
+
+|1
+|Chef d'Agence
+|/
+|Désactiver un employé
+|F
+|
+|
+
+|1
+|Guichetier
+|/
+|Créer un employé
+|F
+|
+|
 
 |2
 |Guichetier
@@ -54,23 +141,59 @@ L'utilisation de l'application DailyBank se fait par deux utilisateurs distincts
 Ainsi ils peuvent :
 
 * gérer les clients de l'Agence bancaire :
-** Ajouter de nouveaux clients 
-** Modifier les informations des clients déjà présent 
-* gérer les comptes des clients de l'Agence bancaire :
-** 
+
+** Rechercher les clients 
+** consulter les comptes bancaire d'un client
+
+*** gérer les opérations d'un compte bancaire d'un client 
+
+**** enregistrer un débit
+**** enregistrer un crédit
+**** réaliser un virement
+**** Générer un relevé bancaire PDF
+
+*** modifier les information d'un compte bancaire d'un client
+*** clôturer un compte bancaire d'un client
+*** réactiver un compte bancaire d'un client
+*** Simuler un emprunt
+*** créer un nouveau compte bancaire pour un client
+*** réaliser un prélévement automatique
+
+** modifier les informations d'un client
+** désactiver un client
+** réactiver un client
+** créer un nouveau client
 
 *Les Chefs d'Agence* : Ils possèdent les mêmes droits que les guichetiers et gèrent en plus les employés. +
 Ainsi ils peuvent : 
 
-* gérer le CRUD des employés
+* gérer les employés de l'agence :
+
+** rechercher les employés de l'agence
+** modifier les informations d'un employé
+** désactiver un employé
+
+### Diagramme de classe de données 
+
+image:img/diagramme.png[]
+
+Une agence bancaire peut posséder plusieurs clients qui possédent un certain nombres de comptes bancaire. Ces comptes bancaires peuvent avoir réalisé un certain nombre d'opérations.
+
+## Architecture
+
+### Architecture générale
+
+L'application est développer en utilisant le langage de programmation Java dans sa version 1.8, son framework JavaFX qui permet de mettre en place l'interface graphique, ainsi qu'une base de données Oracle. +
+Elle est utilisée pour permettre au employés d'une Agence bancaire comprise parmis celles de DailyBank, de gérer les clients de leur Agence ainsi que leur comptes bancaire et les opérations de ces comptes. +
+De la même manière, elle permet aux employés possédant les droits nécessaire de gérer les employés de leur Agence bancaire. 
+
+### Ressources externes 
+
+Plusieurs fichier .jar ayant des rôles précis sont utilisés pour cette application :
+
+* DailyBankApp.jar : il permet de lancer l'application pour l'utiliser
 
 ### Structuration en packages
-
-#### Architecture de la V1
-
-image:img/architecture-v1.png[]
-
-#### Arborescence des packages
 
 * Application : +
 Continent les fichiers en .java qui permettent de lancer l'application.
@@ -91,8 +214,263 @@ Contient les classes permettant d'intéragir avec la Base de Données puisque le
 Continent toutes les classes qui permettent d'effectuer des requêtes SQL dans la Base de Données. 
 
 * Model.exception : +
-Contient toutes les classes qui gère les différentes exception de l'application. +
+Contient toutes les classes qui gère les différentes exception de l'application.
 
+## Fonctionnalités de l'application
+
+### Connexion / Deconnexion d'un compte
+
+NOTE: Fonctionnalité de la version existante 
+
+### Gestion des clients 
+
+NOTE: Fonctionnalité de la version existante
+
+### Recherche des clients
+
+NOTE: Fonctionnalité de la version existante
+
+### Gestion des comptes bancaire
+
+NOTE: Fonctionnalité de la version existante
+
+Cette fonctionnalité permet de consulter la liste des comptes d'un client de l'Agence. +
+Lorsque l'utilisateur clique sur le bouton « comptes client », le contrôleur de vue comptesmanagementcontroller transfère les information nécessaire au contrôle comptesmanagement pour l'affichage de la fenêtre de gestion des comptes. +
+La fenêtre de gestion des comptes s'ouvre et grâce au transfère des informations nécessaire à l'affichage de la liste des comptes à la classe AccessCompte.
+
+### Voir les opérations d'un compte bancaire
+
+NOTE: Fonctionnalité de la version existante
+
+Cette fonctionnalité permet de consulter la liste des opérations du compte d'un client. +
+Lorsque le client clique sur le bouton « voir opérations », le contrôleur de vue comptesmanagementcontroller transfère les informations nécessaire au contrôle operation operationmanagement pour l'affichage de la fenêtre de gestion des opération. +
+La fenêtre de gestion des opérations s'ouvre grâce au transfère des informations nécessaire à l'affichage de la liste des opérations grâce à la classe AccessOperation.
+
+### Enregistrer un débit
+
+### Enregistrer un crédit
+
+### Réaliser un virement compte à compte
+
+### Générer un relevé de compte bancaire PDF
+
+### Modification d'un client
+
+NOTE: Fonctionnalité de la version existante
+
+Cette fonctionnalité répond à l'Use-Case : *modifier info client* +
+Elle permet de modifier les informations d'un client dans l'Agence bancaire. +
+Lorsque l'utilisateur clique sur le bouton « modifier client », le contrôleur de vue clientsmanagementcontroller transfère les informations nécessaire au contrôle clientsmanagement pour l'affichage de la fenêtre de modification d'un client. +
+La fenêtre de modification des clients s'ouvre et la classe clienteditorpane est utilisée et permet de transmettre les informations au contrôleur de vue clientseditorpanecontroller. + 
+Ainsi les saisies de l'utilisateurs sont contrôlers et peuvent s'enregistrer dans la Base de Données si elles sont valides grâce à la classe AccessClients.
+
+### Clôturer un compte bancaire 
+
+### Réactiver un compte bancaire
+
+### Simuler un emprunt bancaire
+
+### Créer un nouveau compte bancaire
+
+### Réaliser un prélévement bancaire automatique
+
+### Modifier les informations d'un client
+
+### Désactiver un client
+
+### Réactiver un client
+
+### Création d'un client
+
+NOTE: Fonctionnalité de la version existante
+
+Cette fonctionnalité répond à l'Use-Case : *Créer un nouveau client* +
+Elle permet de créer un nouveau client dans l'Agence bancaire. +
+Lorsque l'utilisateur clique sur le bouton « nouveau client », le contrôleur de vue clientsmanagementcontroller transfère les informations nécessaire au contrôle clientsmanagement pour l'affichage de la fenêtre de création d'un client. +
+La fenêtre de création des clients s'ouvre et la classe clienteditorpane est utilisée et permet de transmettre les informations au contrôleur de vue clientseditorpanecontroller. + 
+Ainsi les saisies de l'utilisateurs sont contrôlers et peuvent s'enregistrer dans la Base de Données si elles sont valides grâce à la classe AccessClients.
+
+### Gestion des clients
+
+### Recherche des employés
+
+### Modification des informations d'un employé
+
+### Désactivation d'un employé
+
+### Création d'un nouvel employé
+
+// __________________________________________________________________________
+
+### Fonctionnalités de l'application
+
+##### Création d'un nouveau client : Fonctionnalité de la version existante
+
+Cette fonctionnalité répond à l'Use-Case : *Créer un nouveau client* +
+Elle permet de créer un nouveau client dans l'Agence bancaire. +
+Lorsque l'utilisateur clique sur le bouton « nouveau client », le contrôleur de vue clientsmanagementcontroller transfère les informations nécessaire au contrôle clientsmanagement pour l'affichage de la fenêtre de création d'un client. +
+La fenêtre de création des clients s'ouvre et la classe clienteditorpane est utilisée et permet de transmettre les informations au contrôleur de vue clientseditorpanecontroller. + 
+Ainsi les saisies de l'utilisateurs sont contrôlers et peuvent s'enregistrer dans la Base de Données si elles sont valides grâce à la classe AccessClients.
+
+##### Modification d'un client : Fonctionnalité de la version existante
+
+Cette fonctionnalité répond à l'Use-Case : *modifier info client* +
+Elle permet de modifier les informations d'un client dans l'Agence bancaire. +
+Lorsque l'utilisateur clique sur le bouton « modifier client », le contrôleur de vue clientsmanagementcontroller transfère les informations nécessaire au contrôle clientsmanagement pour l'affichage de la fenêtre de modification d'un client. +
+La fenêtre de modification des clients s'ouvre et la classe clienteditorpane est utilisée et permet de transmettre les informations au contrôleur de vue clientseditorpanecontroller. + 
+Ainsi les saisies de l'utilisateurs sont contrôlers et peuvent s'enregistrer dans la Base de Données si elles sont valides grâce à la classe AccessClients.
+
+##### Consultation des clients : Fonctionnalité de la version existante
+
+Elle permet de consulter la liste des clients de l'Agence bancaire. +
+Lorsque l'utilisateur clique sur le bouton « rechercher », le contrôleur de vue clientmanagementcontroller transfère les informations nécessaire à l'affichage de la liste des clients à la classe AccessClients. 
+
+##### Consulter les comptes d'un client : Fonctionnalité de la version existante
+
+Cette fonctionnalité permet de consulter la liste des comptes d'un client de l'Agence. +
+Lorsque l'utilisateur clique sur le bouton « comptes client », le contrôleur de vue comptesmanagementcontroller transfère les information nécessaire au contrôle comptesmanagement pour l'affichage de la fenêtre de gestion des comptes. +
+La fenêtre de gestion des comptes s'ouvre et grâce au transfère des informations nécessaire à l'affichage de la liste des comptes à la classe AccessCompte.
+
+##### Consulter les opérations des comptes des clients : Fonctionnalité de la version existante
+
+Cette fonctionnalité permet de consulter la liste des opérations du compte d'un client. +
+Lorsque le client clique sur le bouton « voir opérations », le contrôleur de vue comptesmanagementcontroller transfère les informations nécessaire au contrôle operation operationmanagement pour l'affichage de la fenêtre de gestion des opération. +
+La fenêtre de gestion des opérations s'ouvre grâce au transfère des informations nécessaire à l'affichage de la liste des opérations grâce à la classe AccessOperation.
+
+##### Clôturer et réactiver un compte : réalisé par Ruben
+
+Cette fonctionnalité permet de clôturer ou bien de réactiver le compte d'un client. 
+
+image:img/cloture-compte1.png[]
+image:img/cloture-compte2.png[]
+
+Elle concerne le Use-Case : *Cloturer un compte*
+et concerne ce diagramme de classe : 
+
+image:img/diagramme-cloture-compte.png[]
+
+La fonction “Clôturer/Reéactiver un compte” est une nouvelle fonctionnalité qui apparaît dans la v1. Celle-ci se développe aux travers de 2 classes : AccessCompteCourant et ComptesManagementController. 
+D’abord dans AccessCompteCourant, on va créer 2 nouvelles méthodes afin de pouvoir utiliser une requête SQL afin de mettre à jour les comptes pour d’une part soit les clôturer et donc mettre leurs soldes à 0 ainsi que les rendre inactifs.
+
+image:img/code-cloture-compte1.png[]
+
+Soit les réactiver en leur mettant par défaut un solde de 10 euros et un découvert de -200.
+
+image:img/code-cloture-compte2.png[]
+
+Enfin dans ComptesManagementController, on crée une méthode qui va servir tant pour clôturer le compte que pour le réactiver et on va adapter la méthode validateComponentState() qui va rendre accessible certains boutons de la fenêtre selon si le compte est clôturé où non dans la base de données. 
+
+image:img/code-cloture-compte3.png[]
+
+Dans la méthode doCloturerCompte() qui a alors une double fonction, la différenciation de quel action à effectuer se fait en partie grâce au label affiché par le bouton concerné. En effet dans validateComponentState(), selon si le compte est clôturé ou non, celui-ci change le label du bouton concerné afin de marquer la différence d’état (si il est clôturé celui-ci “demandera” pour le réactiver et inversement). Et donc selon ce qui est écrit cela va lancer une partie différente de la méthode.
+Voici la partie concerné pour clôturer le compte : 
+
+image:img/code-cloture-compte4.png[]
+
+Et celle pour réactiver le compte :
+
+image:img/code-cloture-compte5.png[]
+
+Ici j’utilise une boîte de dialogue pour mettre en action la fonctionnalité pour s’assurer que c’est bien une action volontaire de la part de l’employé.
+
+##### Créditer/Débiter un compte : réaliser par Yann 
+
+Cette fonctionnalité répond à l'Use-Case : créditer un compte
+
+image:img/usecase-crediter.png[]
+
+et elle concerne le diagramme de classe :
+
+image:img/diagramme-crediter.png[]
+
+La fonction “créditer” est basée sur la fonction “débiter”. On peut donc s’en inspirer pour réaliser la fonctionnalité cependant la légère différence est que le crédit agit comme un débit inverse.
+Donc dans la classe “AccessOperation” dans le package model.orm il suffit de refaire la même méthode que “insertDebit” mais en y spécifiant un montant négatif.
+Pour le reste des classes à implémenter, celles-ci sont similaires à la fonction “débit”.
+
+image:img/crediter.png[]
+image:img/crediter2.png[]
+image:img/crediter3.png[]
+image:img/crediter4.png[]
+
+
+##### Virement d'un compte à un autre : réaliser par Yann
+
+Cette fonctionnalité permet de réaliser un virement d'un compte vers un autre.
+
+image:img/technique-virement.png[]
+image:img/technique-virement2.png[]
+image:img/technique-virement3.png[]
+image:img/technique-virement4.png[]
+
+Elle concerne le Use-Case *effectuer un virement compte à compte* et concerne le diagramme de classe : 
+
+image:img/diagramme-virement.png[]
+
+Lorsque cette fonctionnalité a été codée, l’un des points importants était de récupérer la liste complète des comptes existant dans la BD.
+Dans la classe “AccessCompteCourant” du package model.orm, j’ai donc rajouté la méthode sans paramètre “getListeCompteCourant” qui retourne une liste (ArrayList) de tous les comptes existants.
+
+
+La partie la plus importante de la fonctionnalité se trouve dans la classe “OperationsManagement” du package application.control dans la méthode “enregistrerVirement()”.
+Ci-dessous un extrait du code de cette méthode dans laquelle on parcours notre liste de compte et :
+Si l’entier saisi (correspondant au numéro de compte à créditer) est égal à un numéro de compte existant alors on applique; - le débit sur le compte concerné; - le crédit sur le compte correspondant au numéro saisi.
+Sinon on affiche une boîte de dialogue.
+
+image:img/code-virement.png[]
+
+##### Gérer le CRUD des employés : Réaliser par Christopher
+
+Cette fonctionnalité répond à l'Use-Case : *Gérer le CRUD des employé*
+
+image:img/usecase-crud.png[]
+
+Elle concerne le diagramme de classe :
+
+image:img/diagramme-crud.png[]
+
+* *d'afficher la liste des employés*
+
+Affiche la liste des employé présent dans l'Agence bancaire et stockée dans la Base Données. +
+En cliquant sur le bouton « rechercher » les informations des employés s'affiche sur la fenêtre. Le contrôleur de vue employemanagementcontroller transfère les informations au contrôleur employemanagement qui se connecte à la Base de Données en utilisant la classe AccessEmploye.
+
+image:img/rechercher-crud.png[]
+
+image:img/code-crud1.png[]
+
+image:img/code-crud2.png[]
+
+* *modifier les informations d'un employé*
+
+Modifie les informations d'un employé de l'Agence bancaire stockée dans la Base de Données. 
+
+image:img/modifier-crud.png[]
+
+image:img/modifier-crud2.png[]
+
+En cliquant sur le bouton « modifier employé » le contrôleur de vue employemanagementcontroller transfère les informations nécessaire au contrôleur Employemanagement pour afficher la page de modification des employé grace au contrôleur de vue employeeditorpane. +
+Si les saisies de l'utilisateur sont correct, la modification de l'employé s'effectue dans la Base de Données grâce à la classe AccessEmploye.
+
+image:img/code-modifier-crud.png[]
+image:img/code-modifier-crud2.png[]
+
+* *de désactiver un employé*
+
+
+* *de créer un nouvel employé*
+
+Créer un nouvel employé dans l'Agence bancaire, stockée dans la Base de Données.
+
+image:img/nouveau-employe.png[]
+image:img/nouveau-employe2.png[]
+
+En cliquant sur le bouton « nouveau employé » le contrôleur de vue employemanagementcontroller transfère les informations nécessaire au contrôleur Employemanagement pour afficher la page de cration des employé grace au contrôleur de vue employeeditorpane. +
+Si les saisies de l'utilisateur sont correct, la cration de l'employé s'effectue dans la Base de Données grâce à la classe AccessEmploye.
+
+
+image:img/code-new-employe.png[]
+image:img/code-new-employe2.png[]
+
+
+// ______________________________________________
 
 ### Fonctionnalités de l'application
 

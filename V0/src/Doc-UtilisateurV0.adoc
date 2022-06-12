@@ -8,7 +8,7 @@ Version de l’application : 0
 Date : semaine 20
 Equipe : Christopher / Ruben / Yaan 
 Client : BankUniv
-Projet : Daily Bank
+Projet : DailyBank
 
 ## Présentation générale
 
@@ -38,21 +38,25 @@ Ensuite lancer le fichier .jar depuis un terminal (si il ne s'ouvre par en doubl
 
 ## Utilisation de l'application
 
-Il existe deux rôles d'utilisation de l'application : les Guichetiers et les Chefs d'Agences. +
-Les guichetiers ont la possibilité de gérer les clients de l'Agence bancaire ainsi que leur comptes bancaire. :
+L'utilisation de l'application DailyBank se fait par deux utilisateurs distincts : 
 
-* Gérer les clients de l'Agence bancaire :
+*Les guichetiers* : Ils possèdent les droits leur permettant de gérer les clients de l'Agence bancaire ainsi que leur comptes. +
+Ainsi ils peuvent :
 
-** Créer un nouveau client 
-** Modifier les informations d'un client
+* gérer les clients de l'Agence bancaire :
 
-* Gérer les comptes bancaire des clients : 
+** Rechercher les clients 
+** Ajouter de nouveaux clients 
+** Modifier les informations des clients
 
-** Voir les opérations d'un compte
+* gérer les comptes bancaire des clients :
 
-Les Chefs d'Agence de leur côtés auront ces même droits avec en plus la possibilités de gérer les employés de l'Agence bancaire : 
+** voir les opérations d'un compte bancaire
 
-* Gérer les employés de l'Agence bancaire
+*Les Chefs d'Agence* : Ils possèdent les mêmes droits que les guichetiers et gèrent en plus les employés. +
+Ainsi ils peuvent : 
+
+* gérer le CRUD des employés
 
 ## Fonctionnement de l'application
 
@@ -167,7 +171,7 @@ En cliquant sur le bouton « comptes client » la fenêtre de gestion des compte
 image:img/gestion-compte.png[]
 image:img/gestion-compte2.png[]
 
-### voir les opération d'un comptes
+### voir les opérations d'un compte
 
 TIP: Cette fonctionnalité est accessible en sélectionnant un compte. +
 Tous les utilisateur ont accès à cette fonctionnalité. +
