@@ -224,11 +224,47 @@ Le solde du premier dépôt ne doit pas être inférieur à 0.
 
 |19
 |TestNouveauCompteNOK
-|En cliquant sur le bouton « nouveau compte » une fenêtre de création d'un compte bancaire s'affiche.
-En cliquant sur le bouton « annuler » le nouveau compte bancaire n'est pas ajouter à la base de données et la fenêtre de création d'un compte bancaire se ferme.
-|Une connexion avec un compte doit êtr établie. +
-Se trouver sur la fenêtre de gestion des comptes bancaires. +
-Le client ne doit pas être désactiver. 
+|On saisi le montant, la date et le bénéficiaire (ex:10,5,Yann) +
+Le prélèvement se créer pour le compte et apparaît dans la liste avec les bonnes valeurs
+|Le compte est sélectionné
+
+|19
+|TestCréerPrélèvementOK
+|On ne saisi pas une des trois valeurs nécessaire
+(ex:10,5,…) +
+Une boite de dialogue apparaît et invite l’utilisateur à bien ressaisir le champ.
+Le prélèvement ne se créer pas (tant qu’il ne fait pas le changement).
+|Le compte est sélectionné
+
+|19
+|TestModifierPrélèvementOK
+|On modifie le montant, la date ou le bénéficiaire (ex:10,30,Yann) +
+Le changement se créer pour le prélèvement et apparaît dans la liste avec les bonnes valeurs
+|Le compte est sélectionné
+
+|19
+|TestModifierPrélèvementNOK
+|On ne saisi pas une des trois valeurs nécessaire
+(ex:10,5,…) +
+Une boite de dialogue apparaît et invite l’utilisateur à bien ressaisir le champ.
+Le changement ne se créer pas.
+|Le prélèvement est sélectionné
+
+|19
+|TestSupprimerPrélèvementOK
+|On clique sur le bouton « supprimer ». +
+Une boite de dialogue apparaît pour savoir si on veut bien le supprimer. +
+On clique sur « oui ». +
+Le prélèvement se supprime et n’apparaît plus dans la liste
+|Le prélèvement est sélectionné
+
+|19
+|TestSupprimerPrélèvementNOK
+|On clique sur le bouton « supprimer ». +
+Une boite de dialogue apparaît pour savoir si on veut bien le supprimer. +
+On clique sur « non ». +
+Le prélèvement ne se supprime pas et apparaît toujours dans la liste
+|Le prélèvement est sélectionné
 |===
 
 ## Fiche de test : Gestion des opérations
@@ -301,14 +337,16 @@ Le montant de l'opération doit être supérieur à 0. +
 Le montant de l'opération doit être inférieur au solde + au découvert autorisé du compte qui réalise l'opération. +
 Le numéro du compte qui reçoit le virement doit appartenir à un compte du client qui réalise l'opération.
 
-|TestEnregistrerVirementNOK
-|En cliquant sur le bouton « réaliser virement » une fenêtre d'enregistrement d'une opération s'affiche. +
-En cliquant sur le bouton « annuler » l'opération n'est pas réalisé et n'est pas enregistrer dans la base de données. +
-La fenêtre d'enregistrement d'une opération se ferme.
-|Une connexion à un compte doit être établie. +
-Se trouver sur la fenêtre de gestion des opérations d'un compte. +
-Le comptes bancaire ne doit pas être clôturer. +
-Le client ne doit pas être désactiver.
+|TestDebitExceptionnelOK
+|Le compte à un solde de 10. On  débite 400 sachant que le débit autorisé est de 200. Le nouveau solde est -390. +
+On a créé une nouvelle opération.
+Et l’opération est dans la liste des opérations avec le bon montant et la bonne date 
+|Le compte est sélectionné
+
+|TestDebitExceptionnelNOK   
+|Le compte à un solde de 10. On  débite 400 sachant que le débit autorisé est de 200. (la personne n’est pas un chef d’agence). +
+ Blocage + label en rouge. Virement non effectué et le nombre d’opération reste inchangé
+|Le compte est sélectionné
 |===
 
 ## Fiche de test : Gestion des employés
