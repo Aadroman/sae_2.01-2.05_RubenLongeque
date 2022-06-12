@@ -218,6 +218,8 @@ Plusieurs fichier .jar ayant des rôles précis sont utilisés pour cette applic
 
 * DailyBankApp.jar : il permet de lancer l'application pour l'utiliser
 
+* itextpdf-5.4.0.jar : librairie pour générer des documents PDF en java
+
 ### Structuration en packages
 
 * Application : +
@@ -505,11 +507,36 @@ image:img-doc_tech/virement4.png[]
 
 *Partie du Use case concerné :*
 
+image:img-doc_tech/releve-use_case.png[]
+
 *Partie du diagramme nécessaire :*
+
+image:img-doc_tech/releve-diagramme.png[]
 
 *Classes impliquées dans chaque package :*
 
+* package application.control :
+** OperationManagement.java
+* package application.view :
+** OperationManagementController.java
+* package model.data :
+** Client.java
+** CompteCourant.java
+** Operation.java
+
+En cliquant sur le bouton « générer relevé PDF» le contrôleur de vue OperationManagementController fait appel à la librairie itext pour créer un fichier pdf. Ce document contient les informations du client ainsi que de son compte et les opérations de ce compte. 
+
+image:img-doc_tech/releve-code1.png[]
+
+image:img-doc_tech/releve-code2.png[]
+image:img-doc_tech/releve-code3 .png[]
+
 *Copies d'écran principale de la fonctionnalité :*
+
+
+image:img-doc_tech/releve1.png[]
+
+image:img-doc_tech/releve2 .png[]
 
 ### Modification d'un compte bancaire
 
@@ -628,11 +655,11 @@ NOTE: Fonctionnalité développer par Ruben
 
 *Partie du Use case concerné :*
 
-image:img-doc_tech/Emprint-use_case.png[]
+image:img-doc_tech/Emprunt-use_case.png[]
 
 *Partie du diagramme nécessaire :*
 
-image:img-doc_tech/Emprint-diagramme.png[]
+image:img-doc_tech/Emprunt-diagramme.png[]
 
 *Classes impliquées dans chaque package :*
 
@@ -647,11 +674,11 @@ Tout d’abord, il est important de savoir que contrairement à ce que “préco
 de classe concernant cette fonctionnalité, j’ai fait le choix arbitraire de développer le tout sur
 dans une seule et même classe, que ce soit pour l’emprunt ou l’assurance d’emprunt :
 
-image:img-doc_tech/Emprint-code1.png[]
+image:img-doc_tech/Emprunt-code1.png[]
 
-image:img-doc_tech/Emprint-code2.png[]
+image:img-doc_tech/Emprunt-code2.png[]
 
-image:img-doc_tech/Emprint-code3.png[]
+image:img-doc_tech/Emprunt-code3.png[]
 
 Si j’ai fait ce choix, c’est que je considère qu'étant donné qu’il s’agit d’une simulation ne se
 basant sur aucune “véritable donnée”, il est alors pas nécessaire de faire tout un ensemble
@@ -668,14 +695,14 @@ Enfin, pour effectuer la gestion d’erreur des TextField contenant les informat
 nécessaires, rentré par l’utilisateur, pour effectuer les simulations.
 Tout d’abord une méthode appelé toDouble() :
 
-image:img-doc_tech/Emprint-code4.png[]
+image:img-doc_tech/Emprunt-code4.png[]
 
 Concrètement, c’est simplement une version plus facile d’utilisation de la méthode déjà
 existante Double.parseDouble(). A la différence que celle-ci renvoie -1 si une exception est
 trouvée. A partir de ceci, j’associe une autre méthode qui va effectuer la vérification des
 champs appelé isSaisieValide() :
 
-image:img-doc_tech/Emprint-code5.png[]
+image:img-doc_tech/Emprunt-code5.png[]
 
 Voici un exemple d’un des trois isSaisieValide() présent dans le controller.
 La méthode fonctionne ainsi, d’abord elle va créer un objet de type Emprunt, en prenant
@@ -688,23 +715,19 @@ celui-ci soit complété correctement.
 
 *Copies d'écran principale de la fonctionnalité :*
 
-image:img-doc_tech/Emprint1.png[]
+image:img-doc_tech/Emprunt1.png[]
 
-image:img-doc_tech/Emprint2.png[]
+image:img-doc_tech/Emprunt2.png[]
 
-image:img-doc_tech/Emprint3.png[]
+image:img-doc_tech/Emprunt3.png[]
 
-image:img-doc_tech/Emprint4.png[]
+image:img-doc_tech/Emprunt4.png[]
 
 ### Réaliser un débit exceptionnel
 
 *Partie du Use case concerné :*
 
-image:img-doc_tech/Emprint-use_case.png[]
-
 *Partie du diagramme nécessaire :*
-
-image:img-doc_tech/Emprint-diagramme.png[]
 
 *Classes impliquées dans chaque package :*
 
@@ -760,11 +783,57 @@ image:img-doc_tech/creerCompte3.png[]
 
 *Partie du Use case concerné :*
 
+image:img-doc_tech/Prelevement-use_case.png[]
+
 *Partie du diagramme nécessaire :*
+
+image:img-doc_tech/Prelevement-diagramme.png[]
 
 *Classes impliquées dans chaque package :*
 
+* package application.control:
+** classe CompteManagement.java
+** classe CompteEditorPane.java
+** classe PrelevementManagement.java
+** classe PrelevementEditorPane.java
+* package application.tools:
+** classe CategorieOperation.java
+** classe ConstantesIHM.java
+* package application.view:
+** classe CompteManagementController.java
+** classe PrelevementManagementController.java
+** classe PrelevementEditorPaneController.java
+* package model.data:
+** Operation.java
+** CompteCourant.java
+** PrelevementAutomatique.java
+** package model.orm:
+** AccessPrelevement.java
+
+Un élément important a relevé se trouve au niveau de la création ou de la
+modification d’un prélèvement. Pour faire en sorte que les valeurs saisies
+correspondent aux valeurs affichées dans la liste, il faut bien les récupérer en
+amont pour pouvoir les stocker dans les champs et que les textField puissent
+les prendre.
+Ci-dessous un exemple de la méthode pour le montant et la date récurrente
+d’un prélèvement.
+
+image:img-doc_tech/Prelevement-code1.png[]
+
+La méthode ci-dessous permet ainsi, d’associer la valeur qui va être montré
+dans le textField avec la valeur saisi du nouveau prélèvement ou du
+prélèvement édité:
+(exemple pour le montant)
+
+image:img-doc_tech/Prelevement-code2.png[]
+
 *Copies d'écran principale de la fonctionnalité :*
+
+image:img-doc_tech/Prelevement1.png[]
+
+image:img-doc_tech/Prelevement2.png[]
+
+image:img-doc_tech/Prelevement3.png[]
 
 ### Modifier les informations d'un client
 
