@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.CompteCourant;
 import model.data.Operation;
+import model.data.PrelevementAutomatique;
 
 public class OperationEditorPaneController implements Initializable {
 
@@ -31,6 +32,7 @@ public class OperationEditorPaneController implements Initializable {
 	// Données de la fenêtre
 	private CategorieOperation categorieOperation;
 	private CompteCourant compteEdite;
+	private PrelevementAutomatique prelev;
 	private Operation operationResultat;
 	
 	private boolean indiceAdmin = false;//indice signifiant si l'employé est chef d'agence ou non (true si oui)
@@ -110,6 +112,18 @@ public class OperationEditorPaneController implements Initializable {
 
 			this.cbTypeOpe.setItems(listVirement);
 			this.cbTypeOpe.getSelectionModel().select(0);
+			break;
+		case PRELEVEMENT:
+			ObservableList<String> listPrelevement = FXCollections.observableArrayList();
+
+			for (String tyOp : ConstantesIHM.OPERATIONS_PRELEVEMENT_GUICHET) {
+				listPrelevement.add(tyOp);
+			}
+
+			this.cbTypeOpe.setItems(listPrelevement);
+			this.cbTypeOpe.getSelectionModel().select(0);
+			break;
+		default:
 			break;
 		}
 		// Paramétrages spécifiques pour les chefs d'agences
@@ -239,7 +253,7 @@ public class OperationEditorPaneController implements Initializable {
 			this.primaryStage.close();
 			break;
 		case VIREMENT:
-			//règle de validation d'un crédit :
+			//règle de validation d'un virement :
 			//le montant doit être un montant valide (montantCredit > 0)
 			//le champ "montant" doit être renseigné
 			//le champ "vers compte numéro :" doit être renseigné
@@ -283,6 +297,13 @@ public class OperationEditorPaneController implements Initializable {
 			String typeOpV = this.cbTypeOpe.getValue();
 			this.operationResultat = new Operation(-1, montantV, null, null, this.compteEdite.idNumCli, typeOpV);
 			this.primaryStage.close();
+			break;
+		case PRELEVEMENT:
+			double montantP = this.prelev.montant;
+			String typeOpP = this.cbTypeOpe.getValue();
+			this.operationResultat = new Operation(-1, montantP, null, null, this.compteEdite.idNumCli, typeOpP);
+			break;
+		default:
 			break;
 		}
 	}

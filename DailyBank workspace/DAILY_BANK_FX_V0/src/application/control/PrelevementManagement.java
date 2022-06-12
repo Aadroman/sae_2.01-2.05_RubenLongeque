@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import application.DailyBankApp;
 import application.DailyBankState;
+import application.tools.CategorieOperation;
 import application.tools.EditionMode;
 import application.tools.StageManagement;
 import application.view.ComptesManagementController;
@@ -15,13 +16,17 @@ import application.view.OperationsManagementController;
 import application.view.PrelevementManagementController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.data.Client;
 import model.data.CompteCourant;
+import model.data.Operation;
 import model.data.PrelevementAutomatique;
 import model.orm.AccessCompteCourant;
+import model.orm.AccessOperation;
 import model.orm.AccessPrelevement;
 import model.orm.LogToDatabase;
 import model.orm.exception.ApplicationException;
@@ -56,7 +61,6 @@ public class PrelevementManagement {
 	 * "prélèvement automatique" des opérations d'un compte d'un client
 	 */
 	public PrelevementManagement(Stage _parentStage, DailyBankState _dbstate, Client client, CompteCourant Compte) {
-
 		this.compte = Compte;
 		this.dbs = _dbstate;
 		try {
@@ -232,6 +236,47 @@ public class PrelevementManagement {
 			listeP = new ArrayList<>();
 		}
 		return listeP;
+	}
+	
+	/**
+	 * @return une opération lorsqu'on effectue un prélèvement
+	 */
+	public Operation enregistrerPrelevement() {
+		
+		//int indiceErreur = 0;
+		ArrayList<PrelevementAutomatique> numP = new ArrayList<PrelevementAutomatique>();
+		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dbs);
+		PrelevementEditorPane pep = new PrelevementEditorPane(this.primaryStage, this.dbs);
+		Operation op = oep.doOperationEditorDialog(this.compte, CategorieOperation.PRELEVEMENT);
+		if (op != null) {
+			try {
+				AccessPrelevement ap = new AccessPrelevement();
+				numP = ap.getPrelevements(this.compte.idNumCompte);
+				AccessOperation ao = new AccessOperation();
+				for(int i=0;i<numP.size();i++) {
+					if(pep.getPepc().getJourDate() == numP.get(i).dateRecurrente) {
+						ao.insertDebit(this.compte.idNumCompte, op.montant, op.idTypeOp);
+						//indiceErreur = 1;
+					}
+				}
+			/*	if(indiceErreur == 0) {
+					Alert dialog = new Alert(AlertType.INFORMATION);
+					dialog.setTitle("Erreur numéro de compte");
+					dialog.setHeaderText("Impossible de faire un virement vers un compte qui ne vous appartient pas !");
+					dialog.showAndWait();
+				}*/
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+				ed.doExceptionDialog();
+				this.primaryStage.close();
+				op = null;
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+				op = null;
+			}
+		}
+		return op;
 	}
 
 }

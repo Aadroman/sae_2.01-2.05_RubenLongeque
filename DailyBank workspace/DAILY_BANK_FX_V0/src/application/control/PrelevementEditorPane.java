@@ -5,6 +5,7 @@ import application.DailyBankState;
 import application.tools.EditionMode;
 import application.tools.StageManagement;
 import application.view.CompteEditorPaneController;
+import application.view.OperationEditorPaneController;
 import application.view.PrelevementEditorPaneController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -66,6 +67,13 @@ public class PrelevementEditorPane {
 	 */
 	public PrelevementAutomatique doPrelevementEditorDialog(CompteCourant compte, PrelevementAutomatique prelevement, EditionMode em) {
 		return this.pepc.displayDialog(compte, prelevement, em);
+	}
+	
+	/**
+	 * @return le controller de la classe : PrelevementEditorPane
+	 */
+	public PrelevementEditorPaneController getPepc() {
+		return pepc;
 	}
 
 }
