@@ -168,33 +168,6 @@ public class EmployeManagementController implements Initializable {
 		AccessEmploye ac = new AccessEmploye();
 		System.out.println(empDesac.droitsAccess);
 		if(empDesac.login == "") {
-			
-			
-			/*
-			Alert alerte = new Alert(AlertType.CONFIRMATION);
-			alerte.setTitle("Réactiver l'employé");
-			alerte.setHeaderText("Voulez-vous réactiver l'employé ?");
-			alerte.showAndWait().ifPresent(response -> {
-				if (response == ButtonType.OK) {
-					int Indice = this.lvEmploye.getSelectionModel().getSelectedIndex();
-					if (Indice >= 0) {
-
-						this.em.reactiverEmploye(empDesac);
-						System.out.println(empDesac.toString());
-						
-						Employe emp = this.olc.get(selectedIndice);
-						Employe result = this.em.reactiverEmploye(emp);
-
-						if (result != null) {
-							this.olc.set(selectedIndice, result);
-						}
-						 
-					
-					}
-
-				}
-			});
-			*/
 		} else {
 			Alert alerte = new Alert(AlertType.CONFIRMATION);
 			alerte.setTitle("Désactivation de l'employé");

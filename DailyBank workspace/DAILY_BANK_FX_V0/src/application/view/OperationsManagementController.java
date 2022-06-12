@@ -228,7 +228,7 @@ public class OperationsManagementController implements Initializable {
 
 				e.printStackTrace();
 			}
-
+            
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch(DocumentException d) {
